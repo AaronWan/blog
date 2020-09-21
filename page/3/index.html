@@ -1,865 +1,290 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta charset="utf-8">
-  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Share
+    </title>
+    <meta name="description" content= 嘿，我是刘训灼～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,万松,Wansong,Aaron >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
 
-  
-  <title>Share</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生活点滴和知识分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Share">
-<meta property="og:url" content="http://www.wansonglife.com/page/3/index.html">
-<meta property="og:site_name" content="Share">
-<meta property="og:description" content="生活点滴和知识分享">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="万松">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Share" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Share" type="application/atom+xml">
+</head>
+<body id="bodyx">
+    <div class="hd logodiv">
+    <img src="/img/male.png" class="logopng" alt="logo">
+    <p class="logot">
+         生活点滴和知识分享 
+         <span class="logo_2"></span>
+        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
+            Share
+        </h3>
+    </p>
+</div>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Share</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+
+<div class="hd">
+    <ol class="breadcrumb">
         
-          <a class="main-nav-link" href="/">Home</a>
+            <li><a class="ba" href="/about">关于我👀</a></li>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+            <li><a class="ba" target="_blank" rel="noopener" href="https://aaronwan.github.io">访问主站🎉</a></li>
         
-      </nav>
-      <nav id="sub-nav">
+            <li><a class="ba" target="_blank" rel="noopener" href="https://github.com/AaronWan">GitHub🐒</a></li>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+
+            
+<script src="/libs/jquery.min.js"></script>
+
+            
+<script src="/js/search.js"></script>
+
+            
+                <form class="site-search-form">
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(100);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
+    </ol>
+    <hr>
+</div>
+<div class="hd">
+    
+    
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wansonglife.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="detail-ansible的安装与使用" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/30/ansible%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2015-10-29T16:00:00.000Z" itemprop="datePublished">2015-10-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/">日常工具</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/ansible/">ansible</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/30/ansible%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">Ansible</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#<a target="_blank" rel="noopener" href="http://sofar.blog.51cto.com/353572/1579894">ansible</a></p>
-<pre><code>apt-get install ansible</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/10/30/ansible%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-id="ckfci5hne001ivl2f3kua849l" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-消息队列一：涉及MQ基本知识整理" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/16/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%80%EF%BC%9A%E6%B6%89%E5%8F%8AMQ%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" class="article-date">
-  <time datetime="2015-10-15T16:00:00.000Z" itemprop="datePublished">2015-10-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>►<a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2015年 🕛
+                </p>
+            </div>
+            
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/16/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%80%EF%BC%9A%E6%B6%89%E5%8F%8AMQ%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">消息队列一：涉及MQ基本知识整理</a>
-    </h1>
-  
-
-      </header>
+        <a class="flink" href="/2015/10/30/ansible%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+            <div class="list">
+                <div class="postname">
+                    Ansible
+                </div>
+                <div class="posttime">
+                    October 30th
+                </div>
+            </div>
+        </a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/alibaba/RocketMQ">RocketMQ</a></p>
-</blockquote>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/a19881029/article/details/34446629">参考sean-zou的博客</a><br><a target="_blank" rel="noopener" href="http://sofar.blog.51cto.com/353572/1540874">workming 的BLOG </a></p>
-</blockquote>
-<h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="http://kafka.apache.org/#introduction">Kafka</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/10/16/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%80%EF%BC%9A%E6%B6%89%E5%8F%8AMQ%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" data-id="ckfci5hnd001fvl2f1vniec9w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" rel="tag">消息对列</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-jmeter进行压力测试" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/10/jmeter%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" class="article-date">
-  <time datetime="2015-10-09T16:00:00.000Z" itemprop="datePublished">2015-10-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a>►<a class="article-category-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a>►<a class="article-category-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/JMeter/">JMeter</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/10/jmeter%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">JMeter</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##JMeter是用来做什么的</p>
-<blockquote>
-<p>是一个Apache的一个开源程序，一个100%的针对压力模块和功能压力测试纯Java应用，最初是专门为Web应用程序而设计 的，但是目前已经扩展到别的功能 测试。</p>
-</blockquote>
-<ul>
-<li><p>能做什么？</p>
-<p>用来测试动态 和 静态资源(Webservices(SOAP/REST),Web dynamic languages -PHP,JAva,ASP.NET,Files,etc.Jav)</p>
-</li>
-</ul>
-<p>##如何本地进行服务压力测试</p>
-<ul>
-<li><p>在lib下建一个文件夹，如tests，将所有自己用到的jar，放到这个文件夹中。</p>
-</li>
-<li><p>将自己的测试jar放到 lib/ext下面</p>
-</li>
-<li><p>将自己的程序依赖的jar文件夹，配置到配置文件<br>user.classpath=../lib/tests</p>
-</li>
-</ul>
-<p>##如何分发到不同的机器进行压力测试</p>
-<blockquote>
-<p>参考官方文档<a target="_blank" rel="noopener" href="http://jmeter.apache.org/usermanual/jmeter_distributed_testing_step_by_step.pdf">http://jmeter.apache.org/usermanual/jmeter_distributed_testing_step_by_step.pdf</a></p>
-</blockquote>
-<p>##聚合分析</p>
-<pre><code>Label：每个 JMeter 的 element（例如 HTTP Request）都有一个 Name 属性，这里显示的就是 Name 属性的值
-
-#Samples：表示你这次测试中一共发出了多少个请求，如果模拟10个用户，每个用户迭代10次，那么这里显示100
-
-Average：平均响应时间——默认情况下是单个 Request 的平均响应时间，当使用了 Transaction Controller 时，也可以以Transaction 为单位显示平均响应时间
-
-Median：中位数，也就是 50％ 用户的响应时间
-
-90% Line：90％ 用户的响应时间
-
-Note：关于 50％ 和 90％ 并发用户数的含义，请参考下文
-
-http://www.cnblogs.com/jackei/archive/2006/11/11/557972.html
-
-Min：最小响应时间
-
-Max：最大响应时间
-
-Error%：本次测试中出现错误的请求的数量/请求的总数
-
-Throughput：吞吐量——默认情况下表示每秒完成的请求数（Request per Second），当使用了 Transaction Controller 时，也可以表示类似 LoadRunner 的 Transaction per Second 数
-
-KB/Sec：每秒从服务器端接收到的数据量，相当于LoadRunner中的Throughput/Sec</code></pre>
-<p>###问题</p>
-<p>####Jmeter-server启动失败：Cannot start. Unable to get local host IP address. is a loopback address</p>
-<pre><code>    在Windows下启动Jmeter非常顺利，转到Linux下居然启动失败。
-    想起之前 遇到“/etc/hosts文件设置不对导致Jboss启动失败”， 立马把焦点指向/etc/hosts。
-
-    果然还是这个问题，贴/etc/hosts示例：
-
-    127.0.0.1       localhost.localdomain localhost
-    10.20.10.31   higkoo.rdev.company.net higkoo
-
-    执行命令`hostname`查看当前机器名如果当前机器名与/etc/hosts不一致 ，可手动先执行成一次`hostname yourhostname`或直接加到jmeter-server文件中（注意机器名中不要含域信息，譬如：myname.rdev.company.com。这样设置仍然启动失败）。
-
-    由/etc/hosts文件导致启动失败的错误有：
-    1
-    Created remote object: UnicastServerRef [liveRef: [endpoint:[10.20.10.31:62090](local),objID:[2c639f6d:12794fca52a:-7fff, 712947915258586677]]]
-    Server failed to start: java.rmi.RemoteException: Cannot start. higkoo is a loopback address.
-    2
-    Created remote object: UnicastServerRef [liveRef: [endpoint:[10.20.10.31:38796](local),objID:[-b0d822e:12794fee8b1:-7fff, 8314597152635832475]]]
-    Server failed to start: java.rmi.RemoteException: Cannot start. Unable to get local host IP address.</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/10/10/jmeter%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" data-id="ckfci5hnb001cvl2ff9r665dl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" rel="tag">压力测试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="tag">性能测试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-zookeeper学习及项目实战" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/25/zookeeper%E5%AD%A6%E4%B9%A0%E5%8F%8A%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" class="article-date">
-  <time datetime="2015-09-24T16:00:00.000Z" itemprop="datePublished">2015-09-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>►<a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/">zookeeper</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/25/zookeeper%E5%AD%A6%E4%B9%A0%E5%8F%8A%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/">zookeeper学习及项目实践</a>
-    </h1>
-  
-
-      </header>
+        <a class="flink" href="/2015/10/16/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%80%EF%BC%9A%E6%B6%89%E5%8F%8AMQ%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">
+            <div class="list">
+                <div class="postname">
+                    消息队列一：涉及MQ基本知识整理
+                </div>
+                <div class="posttime">
+                    October 16th
+                </div>
+            </div>
+        </a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<blockquote>
-<p>ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. 。</p>
-</blockquote>
-</blockquote>
-<pre><code>它设计一种新的数据结构——Znode，然后在该数据结构的基础上定义了一些原语，也就是一些关于该数据结构的一些操作。有了这些数据结构和原语还不够，因为我们的ZooKeeper是工作在一个分布式的环境下，我们的服务是通过消息以网络的形式发送给我们的分布式应用程序，所以还需要一个通知机制——Watcher机制。那么总结一下，ZooKeeper所提供的服务主要是通过：数据结构+原语+watcher机制，三个部分来实现的。</code></pre>
-<h2 id="使用场景下会使用zookeeper"><a href="#使用场景下会使用zookeeper" class="headerlink" title="使用场景下会使用zookeeper"></a>使用场景下会使用zookeeper</h2><ol>
-<li>项目中在监控mongodb的oplog来进行同步数据库的变更给别的部门.若想做的多机互备,就需要使用到分布式锁,由一台机器进行对oplog的变化进行同步</li>
-<li>项目在定时发送提醒,多台服务器进行周期扫库操作,也同样用到了1中的分布式锁</li>
-<li>假设我们有20个搜索引擎的服务器(每个负责总索引中的一部分的搜索任务)和一个总服务器(负责向这20个搜索引擎的服务器发出搜索请求并合并结果集)，一个备用的总服务器(负责当总服务器宕机时替换总服务器)，一个web的cgi(向总服务器发出搜索请求)。搜索引擎的服务器中的15个服务器提供搜索服务，5个服务器正在生成索引。这20个搜索引擎的服务器经常要让正在提供搜索服务的服务器停止提供服务开始生成索引，或生成索引的服务器已经把索引生成完成可以提供搜索服务了。使用Zookeeper可以保证总服务器自动感知有多少提供搜索引擎的服务器并向这些服务器发出搜索请求，当总服务器宕机时自动启用备用的总服务器.—<a target="_blank" rel="noopener" href="https://www.oschina.net/p/zookeeper">分布式系统协调 ZooKeeper</a></li>
-</ol>
-<h2 id="zookeeper来源是什么"><a href="#zookeeper来源是什么" class="headerlink" title="zookeeper来源是什么?"></a>zookeeper来源是什么?</h2><p>ZooKeeper是一种为分布式应用所设计的高可用、高性能且一致的开源协调服务，它提供了一项基本服务：分布式锁服务。由于ZooKeeper的开源特性，后来我们的开发者在分布式锁的基础上，摸索了出了其他的使用方法：配置维护、组服务、分布式消息队列、分布式通知/协调等。</p>
-<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><ol>
-<li>每个Server在内存中存储了一份数据；</li>
-<li>Zookeeper启动时，将从实例中选举一个leader（Leader选举算法采用了<a href="/2016/09/16/Paxos/">Paxos协议</a>；Paxos核心思想：当多数Server写成功，则任务数据写成功。故 Server数目一般为奇数）；</li>
-<li>Leader负责处理数据更新等操作（<a target="_blank" rel="noopener" href="http://blog.jobbole.com/104985/">Zab协议</a>）；</li>
-<li>一个更新操作成功，当且仅当大多数Server在内存中成功修改数据。</li>
-</ol>
-<h2 id="结构组成"><a href="#结构组成" class="headerlink" title="结构组成"></a>结构组成</h2><ol>
-<li>Leader 负责进行投票的发起和决议,更新系统状态</li>
-<li>Learner–&gt;跟随者Follower 用于接收客户请求并向客户端返回结果,在选择中参与投票</li>
-<li>Learner–&gt;观察者Observer 可以接收客户端连接,将写请求转发给Leader节点,但其不参悟投票过程,只同步Leader的状态.其目的是为了扩展系统,提高读取速度</li>
-<li>client 请求发起方</li>
-</ol>
-<h2 id="具体用在哪里"><a href="#具体用在哪里" class="headerlink" title="具体用在哪里"></a>具体用在哪里</h2><ol>
-<li>配置管理,一处修改,监听者进行更新</li>
-<li>命名服务</li>
-<li>分布式锁 即 Leader Election</li>
-<li>集群管理</li>
-<li>队列管理</li>
-</ol>
-<h2 id="Zookeeper文件系统"><a href="#Zookeeper文件系统" class="headerlink" title="Zookeeper文件系统"></a>Zookeeper文件系统</h2><p>   每个子目录项如 NameService 都被称作为znode，和文件系统一样，我们能够自由的增加、删除znode，在一个znode下增加、删除子znode，唯一的不同在于znode是可以存储数据的。<br>   有四种类型的znode：</p>
-<ol>
-<li>PERSISTENT-持久化目录节点:客户端与zookeeper断开连接后，该节点依旧存在</li>
-<li>PERSISTENT_SEQUENTIAL-持久化顺序编号目录节点:客户端与zookeeper断开连接后，该节点依旧存在，只是Zookeeper给该节点名称进行顺序编号</li>
-<li>EPHEMERAL-临时目录节点:客户端与zookeeper断开连接后，该节点被删除</li>
-<li>EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点:客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号</li>
-</ol>
-<h2 id="Zookeeper的特点"><a href="#Zookeeper的特点" class="headerlink" title="Zookeeper的特点"></a>Zookeeper的特点</h2><ol>
-<li>最终一致性：为客户端展示同一视图，这是zookeeper最重要的功能。</li>
-<li>可靠性：如果消息被到一台服务器接受，那么它将被所有的服务器接受。</li>
-<li>实时性：Zookeeper不能保证两个客户端能同时得到刚更新的数据，如果需要最新数据，应该在读数据之前调用sync()接口。</li>
-<li>等待无关（wait-free）：慢的或者失效的client不干预快速的client的请求。</li>
-<li>原子性：更新只能成功或者失败，没有中间状态。</li>
-<li>顺序性：所有Server，同一消息发布顺序一致。</li>
-</ol>
-<h2 id="场景分析"><a href="#场景分析" class="headerlink" title="场景分析"></a>场景分析</h2><ol>
-<li>分布式锁的场景使用</li>
-</ol>
-<pre><code><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">zkCli.sh -server x.x.x.x:4180</span><br><span class="line"></span><br><span class="line">ls /key</span><br><span class="line"></span><br><span class="line">&gt;[data, leader]</span><br><span class="line"></span><br><span class="line">[zk: x.x.x.x:4180(CONNECTED) 6] get /key/leader</span><br><span class="line"></span><br><span class="line">cZxid = 0xc1098cd0b0</span><br><span class="line">ctime = Sun Jul 16 13:10:01 CST 2017</span><br><span class="line">mZxid = 0xc1098cd0b0</span><br><span class="line">mtime = Sun Jul 16 13:10:01 CST 2017</span><br><span class="line">pZxid = 0xc112aec1c0</span><br><span class="line">cversion = 152</span><br><span class="line">dataVersion = 0</span><br><span class="line">aclVersion = 0</span><br><span class="line">ephemeralOwner = 0x0</span><br><span class="line">dataLength = 0</span><br><span class="line">numChildren = 2</span><br><span class="line"></span><br><span class="line">[zk: x.x.x.x:4180(CONNECTED) 7] ls /key/leader</span><br><span class="line">[_c_7ea9234d-3973-4e1d-8a6a-e2e30062cdc4-latch-0000000076, _c_5444e12a-c7ef-48bb-8ee6-271eea4a1c29-latch-0000000075]</span><br><span class="line">[zk: x.x.x.x:4180(CONNECTED) 8] get /key/leader/_c_7ea9234d-3973-4e1d-8a6a-e2e30062cdc4-latch-0000000076</span><br><span class="line">24</span><br><span class="line">cZxid = 0xc112aec1c0</span><br><span class="line">ctime = Fri Mar 30 16:58:50 CST 2018</span><br><span class="line">mZxid = 0xc112aec1c0</span><br><span class="line">mtime = Fri Mar 30 16:58:50 CST 2018</span><br><span class="line">pZxid = 0xc112aec1c0</span><br><span class="line">cversion = 0</span><br><span class="line">dataVersion = 0</span><br><span class="line">aclVersion = 0</span><br><span class="line">ephemeralOwner = 0xd5848ddc5ec71f6</span><br><span class="line">dataLength = 2</span><br><span class="line">numChildren = 0</span><br><span class="line"></span><br><span class="line">[zk: x.x.x.x:4180(CONNECTED) 9] get /key/leader/_c_5444e12a-c7ef-48bb-8ee6-271eea4a1c29-latch-0000000075</span><br><span class="line">5</span><br><span class="line">cZxid = 0xc1123e0f90</span><br><span class="line">ctime = Tue Mar 27 10:55:03 CST 2018</span><br><span class="line">mZxid = 0xc1123e0f90</span><br><span class="line">mtime = Tue Mar 27 10:55:03 CST 2018</span><br><span class="line">pZxid = 0xc1123e0f90</span><br><span class="line">cversion = 0</span><br><span class="line">dataVersion = 0</span><br><span class="line">aclVersion = 0</span><br><span class="line">ephemeralOwner = 0x259977a5b1b3de0</span><br><span class="line">dataLength = 1</span><br><span class="line">numChildren = 0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></code></pre>
-<h2 id="经典文章链接"><a href="#经典文章链接" class="headerlink" title="经典文章链接"></a>经典文章链接</h2><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012185902">zookeeper系列</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/gaoshan12345678910/article/details/67638657">Leader选举</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jsStudyjj/p/5360740.html">基本概念</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/09/25/zookeeper%E5%AD%A6%E4%B9%A0%E5%8F%8A%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" data-id="ckfci5hna001avl2f3a5f48o8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" rel="tag">消息对列</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-MBean是什么东西" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/22/MBean%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF/" class="article-date">
-  <time datetime="2015-09-21T16:00:00.000Z" itemprop="datePublished">2015-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">Java 基本知识</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/22/MBean%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF/">MBean是什么东西</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
         
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/09/22/MBean%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF/" data-id="ckfci5hn50010vl2f3shr5eux" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-Protobuf是什么" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/22/Protobuf%E6%98%AF%E4%BB%80%E4%B9%88/" class="article-date">
-  <time datetime="2015-09-21T16:00:00.000Z" itemprop="datePublished">2015-09-22</time>
-</a>
+        <a class="flink" href="/2015/10/10/jmeter%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">
+            <div class="list">
+                <div class="postname">
+                    JMeter
+                </div>
+                <div class="posttime">
+                    October 10th
+                </div>
+            </div>
+        </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>►<a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/22/Protobuf%E6%98%AF%E4%BB%80%E4%B9%88/">Protobuf是什么</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>欢迎来到protocol buffer的开发者指南文档，一种语言无关、平台无关、扩展性好的用于通信协议、数据存储的结构化数据串行化方法。本文档面向希望使用protocol buffer的Java、C++或Python开发者。这个概览介绍了protocol buffer，并告诉你如何开始，你随后可以跟随<a target="_blank" rel="noopener" href="http://code.google.com/apis/protocolbuffers/docs/tutorials.html">编程指导</a>深入了解<a target="_blank" rel="noopener" href="http://code.google.com/apis/protocolbuffers/docs/encoding.html">protocol buffer编码方式</a>。<a target="_blank" rel="noopener" href="http://code.google.com/apis/protocolbuffers/docs/reference/overview.html">API参考文档</a>同样也是提供了这三种编程语言的版本，不够<a target="_blank" rel="noopener" href="http://code.google.com/apis/protocolbuffers/docs/proto.html">协议语言</a>和<a target="_blank" rel="noopener" href="http://code.google.com/apis/protocolbuffers/docs/style.html">样式</a>指导都是编写 .proto 文件。</p>
-</blockquote>
-<h4 id="什么是protocol-buffer"><a href="#什么是protocol-buffer" class="headerlink" title="什么是protocol buffer"></a>什么是<a target="_blank" rel="noopener" href="http://www.ibm.com/developerworks/cn/linux/l-cn-gpb/">protocol buffer</a></h4><p>ProtocolBuffer是用于结构化数据串行化的灵活、高效、自动的方法，有如XML，不过它更小、更快、也更简单。你可以定义自己的数据结构，然后使用代码生成器生成的代码来读写这个数据结构。你甚至可以在无需重新部署程序的情况下更新数据结构。</p>
-<h4 id="他们如何工作"><a href="#他们如何工作" class="headerlink" title="他们如何工作"></a>他们如何工作</h4><p>你首先需要在一个 .proto 文件中定义你需要做串行化的数据结构信息。每个ProtocolBuffer信息是一小段逻辑记录，包含一系列的键值对。这里有个非常简单的 .proto 文件定义了个人信息:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">message Person &#123;</span><br><span class="line">    required string name=<span class="number">1</span>;</span><br><span class="line">    required int32 id=<span class="number">2</span>;</span><br><span class="line">    optional string email=<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">PhoneType</span> </span>&#123;</span><br><span class="line">        MOBILE=<span class="number">0</span>;</span><br><span class="line">        HOME=<span class="number">1</span>;</span><br><span class="line">        WORK=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    message PhoneNumber &#123;</span><br><span class="line">        required string number=<span class="number">1</span>;</span><br><span class="line">        optional PhoneType type=<span class="number">2</span> [<span class="keyword">default</span>=HOME];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    repeated PhoneNumber phone=<span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>有如你所见，消息格式很简单，每个消息类型拥有一个或多个特定的数字字段，每个字段拥有一个名字和一个值类型。值类型可以是数字(整数或浮点)、布尔型、字符串、原始字节或者其他ProtocolBuffer类型，还允许数据结构的分级。你可以指定可选字段，必选字段和重复字段。你可以在<a target="_blank" rel="noopener" href="http://code.google.com/apis/protocolbuffers/docs/proto.html">proto.html</a>找到更多关于如何编写 .proto 文件的信息。</p>
-<p>一旦你定义了自己的报文格式(message)，你就可以运行ProtocolBuffer编译器，将你的 .proto 文件编译成特定语言的类。</p>
-<h4 id="为什么不用XML"><a href="#为什么不用XML" class="headerlink" title="为什么不用XML?"></a>为什么不用XML?</h4><p>ProtocolBuffer拥有多项比XML更高级的串行化结构数据的特性，ProtocolBuffer：</p>
-<pre><code>    更简单
-    小3-10倍
-    快20-100倍
-    更少的歧义
-    可以方便的生成数据存取类 </code></pre>
-<p>例如，让我们看看如何在XML中建模Person的name和email字段:</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">person</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>John Doe<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">email</span>&gt;</span>jdoe@example.com<span class="tag">&lt;/<span class="name">email</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">person</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>对应的ProtocolBuffer报文则如下:</p>
-<p>ProtocolBuffer的文本表示<br>这不是正常时使用的二进制数据</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">person</span> &#123;</span><br><span class="line">    <span class="attribute">name</span>: <span class="string">&quot;John Doe&quot;</span></span><br><span class="line">    email: <span class="string">&quot;jdoe@example.com&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当这个报文编码到ProtocolBuffer的<a target="_blank" rel="noopener" href="http://code.google.com/apis/protocolbuffers/docs/encoding.html">二进制格式</a>时(上面的文本仅用于调试和编辑)，它只需要28字节和100-200ns的解析时间。而XML的版本需要69字节(除去空白)和 5000-10000ns的解析时间。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/09/22/Protobuf%E6%98%AF%E4%BB%80%E4%B9%88/" data-id="ckfci5hn60011vl2f09ys2t2i" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Protobuf/" rel="tag">Protobuf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-一、Kafka介绍" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/22/%E4%B8%80%E3%80%81Kafka%E4%BB%8B%E7%BB%8D/" class="article-date">
-  <time datetime="2015-09-21T16:00:00.000Z" itemprop="datePublished">2015-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>►<a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a>►<a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/">Kafka</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/22/%E4%B8%80%E3%80%81Kafka%E4%BB%8B%E7%BB%8D/">一、Kafka介绍</a>
-    </h1>
-  
-
-      </header>
+        <a class="flink" href="/2015/09/25/zookeeper%E5%AD%A6%E4%B9%A0%E5%8F%8A%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/">
+            <div class="list">
+                <div class="postname">
+                    zookeeper学习及项目实践
+                </div>
+                <div class="posttime">
+                    September 25th
+                </div>
+            </div>
+        </a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>原来项目中用的是rabbitmq ，但是最近性能发现不是很好，所以导师说让学习一下Kafka</p>
-</blockquote>
-<p>###<a target="_blank" rel="noopener" href="http://kafka.apache.org/#introduction">介绍</a></p>
-<p>kafka是一种高吞吐量的分布式发布订阅消息系.</p>
-<p>###快速的</p>
-<p>单个Kafka代理，每秒可以处理客户端 成千上万字节的读写。</p>
-<p>###扩展性</p>
-<p>Kafka被设计为允许单个集群作为大型组织的中央数据主干。它可以在不用停机的情况下进行弹性的透明的扩展。数据流是分区的分布在集群的机器上，处理数据流的能力远远大于一台单机的处理能力。并允许消费者集群进行协同工作。</p>
-<p>###持久性</p>
-<p>消息被重复的持久化在集群的机器上来阻止数据的丢失。每一个代理都能够轻松的处理成千上万字节的消息。</p>
-<p>###分布式的设计</p>
-<p>Kafka 的现代中心集群设计提供了强大的耐用性和容错性。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/09/22/%E4%B8%80%E3%80%81Kafka%E4%BB%8B%E7%BB%8D/" data-id="ckfci5hn80014vl2f372kd16c" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" rel="tag">消息对列</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-二、Kafka起步" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/22/%E4%BA%8C%E3%80%81Kafka%E8%B5%B7%E6%AD%A5/" class="article-date">
-  <time datetime="2015-09-21T16:00:00.000Z" itemprop="datePublished">2015-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>►<a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a>►<a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/">Kafka</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/22/%E4%BA%8C%E3%80%81Kafka%E8%B5%B7%E6%AD%A5/">二、Kafka起步</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###介绍</p>
-<blockquote>
-<p>Kafka是一个分布式的、分区，复制提交日志服务。它提供了一个消息分发的功能，但它有自己的一个独特设计。</p>
-</blockquote>
-<p>为什么要这样说呢？</p>
-<p>首先让我们回顾一下基础的消息术语：</p>
-<ul>
-<li>Kafka 提供分类的消息，即主题</li>
-<li>我们发布信息到一个Kafka主题生产者上</li>
-<li>我们将要订阅主题和处理收到的消息</li>
-<li>Kafka作为一个集群运行它由一台或多台服务器组成，每一个服务都被称作一个代理 。</li>
-</ul>
-<p>因此，从另一个层面说，生产者通过网络发送消息到Kafka集群上，然后将消息提供给消费者，如图：</p>
-<p>![kafka customer](/images/kafka/producer_consumer.png =300x)</p>
-<p>客户端与服务通信这样简单、商效、与语言无关通过<a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol">TCP协议</a>完成。我们提供了Kafka 的java客户端，但另外也提供了另外一些<a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/KAFKA/Clients">语言的客户端</a>。</p>
-<p>####主题与记录：</p>
-<p>让我们首先了解一下 主题</p>
-<p>一个主题就是发布的消息的 一个类别或feed名称。对每一个主题，Kafka集群维持一个分割后的记录，就像下图：</p>
-<p>![kafka customer](/images/kafka/log_anatomy.png =300x)</p>
-<p>每一份都是有序的、不变的序列化信息，这些信息会被持续的加入到一个提交记录中。分片中的每一部分信息都有一个序列号，序列号是该分片在消息中的偏移。</p>
-<p>Kafka集群保留所有发布后的信息-无论该信息是否被消耗-这个保留时间是可以设置的。例如 如果这消息的保留时长设置为两天，该消息发布后两天内是可以可以消耗的，之后会被释放其所占的空间。Kafka的执行效率是高效稳定的，对保存大量的数据是没有问题的。</p>
-<p>实际上，唯一保存每一个消费者的元数据是消费者在在记录中的位置，叫做偏移。这个偏移是被消费者控制的：通常消费者将线性读取消息，这个偏移可以使消费者以任何顺序使用消息。如消费者可以重围一个使用过的偏移来进行重新处理。</p>
-<p>这些特性的组合意味着Kafka消费者是非常廉价的-它们可以在不影响集群和其它消费者的情况下自如而。例如：你可以在不影响任何其它现有消费者的消费的同时通过命令行工具来订阅查看任何一个主题内容。</p>
-<p>消息被分片有以下几点考虑：</p>
-<ul>
-<li>可以使信息以服务器允许的大小存在。一个主题可能有多个分片，可以处理大量的数据。</li>
-<li>它们是平行的单元。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/09/22/%E4%BA%8C%E3%80%81Kafka%E8%B5%B7%E6%AD%A5/" data-id="ckfci5hn90016vl2fh1j575rp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" rel="tag">消息对列</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-JAVA设计模式之创建型模式" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/13/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time datetime="2015-09-12T16:00:00.000Z" itemprop="datePublished">2015-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/13/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/">设计模式之创建型模式</a>
-    </h1>
-  
-
-      </header>
+        <a class="flink" href="/2015/09/22/MBean%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF/">
+            <div class="list">
+                <div class="postname">
+                    MBean是什么东西
+                </div>
+                <div class="posttime">
+                    September 22nd
+                </div>
+            </div>
+        </a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##创建型模式<br>这六个模式都是与创建对象相关的</p>
-<ul>
-<li>简单工厂模式（Simple Factory）；</li>
-<li>工厂方法模式（Factory Method）；</li>
-<li>抽象工厂模式（Abstract Factory）；</li>
-<li>创建者模式（Builder）；</li>
-<li>原型模式（Prototype）；</li>
-<li>单例模式（Singleton）；</li>
-</ul>
-<h3 id="简单工厂模式-Simple-Factory-；"><a href="#简单工厂模式-Simple-Factory-；" class="headerlink" title="简单工厂模式(Simple Factory)；"></a>简单工厂模式(Simple Factory)；</h3><h3 id="工厂方法模式-Factory-Method-；"><a href="#工厂方法模式-Factory-Method-；" class="headerlink" title="工厂方法模式(Factory Method)；"></a>工厂方法模式(Factory Method)；</h3><p>建立一个工厂类，对实现同一接口的类进行实例化创建。</p>
-<img  src='/images/pattern/factory_1.png' class='col-xs-12 thumbnail'/>
-``
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.factory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IParser</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">parse</span><span class="params">(Object obj)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.factory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JSONParser</span> <span class="keyword">implements</span> <span class="title">IParser</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">parse</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//create json string</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&#123;class:&quot;</span>+obj.getClass()+<span class="string">&quot;&#125;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.factory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XMLParser</span> <span class="keyword">implements</span> <span class="title">IParser</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">parse</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//create xml string....</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;object&gt;&lt;class&gt;&quot;</span>+obj.getClass()+<span class="string">&quot;&lt;/class&gt;&lt;/object&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.factory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ParserFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span>  String  TYPE_XML=<span class="string">&quot;xml&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String  TYPE_JSON=<span class="string">&quot;json&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IParser <span class="title">buildParser</span><span class="params">(String type)</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (type)&#123;</span><br><span class="line">            <span class="keyword">case</span> ParserFactory.TYPE_XML:<span class="keyword">return</span> <span class="keyword">new</span> XMLParser();</span><br><span class="line">            <span class="keyword">case</span> ParserFactory.TYPE_JSON:<span class="keyword">return</span> <span class="keyword">new</span> JSONParser();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">       IParser parser= ParserFactory.buildParser(ParserFactory.TYPE_JSON);</span><br><span class="line">        System.out.print(parser.parse(parser));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//output &#123;class:JSONParser&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="抽象工厂模式-Abstract-Factory-；"><a href="#抽象工厂模式-Abstract-Factory-；" class="headerlink" title="抽象工厂模式(Abstract Factory)；"></a>抽象工厂模式(Abstract Factory)；</h3><p>工厂方法，每创建一个新的类时，就要个性类工厂类，这样拓展性比较差，如何能通过不个性工厂类而进行扩展呢。这里就用到了抽象工厂模式，就是创建多个工厂，一旦要增加新的类型就增加一个新的工厂，不需要修改现有代码。</p>
-<img  src='/images/pattern/abstractfactory.png' class='col-xs-12 thumbnail'/>
-基于上面代码将ParserFactory工厂类用一个抽象工厂类和两个子工厂类进行代替
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.abstractfactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> design.pattern.factory.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractParserFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> IParser <span class="title">create</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.abstractfactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JSONParserFactory</span> <span class="keyword">extends</span> <span class="title">AbstractParserFactory</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function">IParser <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JSONParser();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.abstractfactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XMLParserFactory</span> <span class="keyword">extends</span> <span class="title">AbstractParserFactory</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function">IParser <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> XMLParser();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="建造者模式-Builder-；"><a href="#建造者模式-Builder-；" class="headerlink" title="建造者模式(Builder)；"></a>建造者模式(Builder)；</h3><p><code>GoF这样定义：</code></p>
-<blockquote>
-<p>建造者模式：是将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
-</blockquote>
-<img  src='/images/pattern/builder.png' class='col-xs-12 thumbnail'/>
-咱们这里以创建应用为例，这里我们创建两个应用，考试系统和CRM系统，创建过程是，需求->原型图->开发计划->表设计->架构设计->功能实现->测试->交付 大概是这样一个简单的过程,这里就会看到同样的构建过程得到不同的表示。
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Vector;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Project</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Vector&lt;String&gt; impleProcess=<span class="keyword">new</span> Vector&lt;String&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(String imple)</span></span>&#123;</span><br><span class="line">        impleProcess.add(imple);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vector&lt;String&gt; <span class="title">getImpleProcess</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> impleProcess;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IProjectBuilder</span> </span>&#123;</span><br><span class="line">    <span class="function">Project <span class="title">getProject</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeRequirement</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makePrototype</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeScheduler</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeTables</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeAppFrameWork</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">programming</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">delivery</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExamProjectBuilder</span> <span class="keyword">implements</span> <span class="title">IProjectBuilder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Project project;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ExamProjectBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project = <span class="keyword">new</span> Project();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Project <span class="title">getProject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> project;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeRequirement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试系统需求&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makePrototype</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试原型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeScheduler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试计划&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeTables</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试系统表&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeAppFrameWork</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试应用架构&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">programming</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;考试应用代码实现&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;测试考试应用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delivery</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;交付考试应用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CRMProjectBuilder</span> <span class="keyword">implements</span> <span class="title">IProjectBuilder</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CRMProjectBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project = <span class="keyword">new</span> Project();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Project <span class="title">getProject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> project;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Project project;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeRequirement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM系统需求&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makePrototype</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM原型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeScheduler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM计划&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeTables</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM系统表&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeAppFrameWork</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM应用架构&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">programming</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;CRM应用代码实现&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;测试CRM应用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delivery</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;交付CRM应用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Director</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IProjectBuilder builder;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Director</span><span class="params">(IProjectBuilder builder)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.builder=builder;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Project <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.builder.makeRequirement();</span><br><span class="line">        <span class="keyword">this</span>.builder.makePrototype();</span><br><span class="line">        <span class="keyword">this</span>.builder.makeScheduler();</span><br><span class="line">        <span class="keyword">this</span>.builder.makeAppFrameWork();</span><br><span class="line">        <span class="keyword">this</span>.builder.makeTables();</span><br><span class="line">        <span class="keyword">this</span>.builder.programming();</span><br><span class="line">        <span class="keyword">this</span>.builder.test();</span><br><span class="line">        <span class="keyword">this</span>.builder.delivery();</span><br><span class="line">        <span class="keyword">return</span> builder.getProject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Director  director = <span class="keyword">new</span> Director(<span class="keyword">new</span> CRMProjectBuilder());</span><br><span class="line">        Project project = director.process();</span><br><span class="line">        System.out.println(project.getImpleProcess());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出  [创建CRM系统需求, 创建CRM原型, 创建CRM计划, 创建CRM应用架构, 创建CRM系统表, CRM应用代码实现, 测试CRM应用, 交付CRM应用]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="原型模式-Prototype-；"><a href="#原型模式-Prototype-；" class="headerlink" title="原型模式(Prototype)；"></a>原型模式(Prototype)；</h3><p>GoF这样定义：</p>
-<blockquote>
-<p>用原型实例指定创建对象的种类,并且通过拷贝这个原型来创建新的对象。 </p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.prototype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Vector;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeepClonePrototype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>,<span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Vector&lt;String&gt; attrs=<span class="keyword">new</span> Vector&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">deepClone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException, IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">        ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(<span class="keyword">this</span>);</span><br><span class="line">        ByteArrayInputStream bais = <span class="keyword">new</span> ByteArrayInputStream(baos.toByteArray());</span><br><span class="line">        ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(bais);</span><br><span class="line">        <span class="keyword">return</span> ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        Object pro=<span class="keyword">new</span> DeepClonePrototype().deepClone();</span><br><span class="line">        System.out.println(pro.getClass());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="单例模式-Singleton-；"><a href="#单例模式-Singleton-；" class="headerlink" title="单例模式(Singleton)；"></a>单例模式(Singleton)；</h3><blockquote>
-<p>保证一个类仅有一个实例,并提供一个访问它的全局访问点。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.singleton;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> instance;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Singleton.class.getName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Singleton instance = Singleton.getInstance();</span><br><span class="line">        System.out.print(instance.getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/09/13/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" data-id="ckfci5hmz000uvl2f678f035y" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pattern/" rel="tag">pattern</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-MVN日常使用" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/13/MVN%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2015-09-12T16:00:00.000Z" itemprop="datePublished">2015-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/">日常工具</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/13/MVN%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/">MVN日常使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>工作中日常使用</p>
-</blockquote>
-<p>#command</p>
-<p>跳过测试进行</p>
-<pre><code>mvn  -Dmaven.test.skip=true package</code></pre>
-<h1 id="指定打包的环境"><a href="#指定打包的环境" class="headerlink" title="指定打包的环境"></a>指定打包的环境</h1><pre><code>mvn -DskipTests clean package -P FTE2</code></pre>
-<blockquote>
-<p>mvn -U clean package -Dmaven.test.skip=true -pl biz/pom.xml -am<br>    <a target="_blank" rel="noopener" href="http://www.mzone.cc/article/277.html">maven中snapshot快照库和release发布库的区别和作用</a></p>
-</blockquote>
-<blockquote>
-<p>mvn -am -DskipTests -U -pl biz-web clean package       </p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/09/13/MVN%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/" data-id="ckfci5hn3000wvl2fcxnhazm7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">项目管理工具</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页 &amp;raquo;</a>
-  </nav>
-
-</section>
         
-          <aside id="sidebar">
-  
+        <a class="flink" href="/2015/09/22/Protobuf%E6%98%AF%E4%BB%80%E4%B9%88/">
+            <div class="list">
+                <div class="postname">
+                    Protobuf是什么
+                </div>
+                <div class="posttime">
+                    September 22nd
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">Java 基本知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/CAP/">CAP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/rpc/">rpc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/">zookeeper</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/">Kafka</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">文件存储</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/">缓存</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/redis/">redis</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/%E5%91%BD%E4%BB%A4/">命令</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E4%B9%A6%E7%B1%8D/">书籍</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/">日常工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/ansible/">ansible</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/mac/">mac</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/python/">python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/JMeter/">JMeter</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E8%BF%90%E5%8A%A8/">运动</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E9%9F%B3%E4%B9%90/">音乐</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/%E7%BB%8F%E5%85%B8%E5%9D%91/">经典坑</a></li></ul></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
+        
+        
+        <a class="flink" href="/2015/09/22/%E4%B8%80%E3%80%81Kafka%E4%BB%8B%E7%BB%8D/">
+            <div class="list">
+                <div class="postname">
+                    一、Kafka介绍
+                </div>
+                <div class="posttime">
+                    September 22nd
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protobuf/" rel="tag">Protobuf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/" rel="tag">awk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/" rel="tag">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/core/" rel="tag">core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/" rel="tag">crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-rq/" rel="tag">django-rq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-schedule/" rel="tag">django-schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastcgi/" rel="tag">fastcgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastfs/" rel="tag">fastfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux%E5%91%BD%E4%BB%A4/" rel="tag">linux命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mp3/" rel="tag">mp3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nocomment/" rel="tag">nocomment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl/" rel="tag">openssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pattern/" rel="tag">pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsa/" rel="tag">rsa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/" rel="tag">sed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/share/" rel="tag">share</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" rel="tag">一致性算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F/" rel="tag">人生</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" rel="tag">人生感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" rel="tag">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" rel="tag">代码仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" rel="tag">压力测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" rel="tag">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/" rel="tag">存储</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6/" rel="tag">定时</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="tag">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E6%82%9F/" rel="tag">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" rel="tag">服务治理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" rel="tag">消息对列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%96%91%E6%83%91/" rel="tag">疑惑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" rel="tag">算法加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" rel="tag">音频转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">项目管理工具</a></li></ul>
-    </div>
-  </div>
-
-
-  
+        
+        
+        <a class="flink" href="/2015/09/22/%E4%BA%8C%E3%80%81Kafka%E8%B5%B7%E6%AD%A5/">
+            <div class="list">
+                <div class="postname">
+                    二、Kafka起步
+                </div>
+                <div class="posttime">
+                    September 22nd
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Protobuf/" style="font-size: 10px;">Protobuf</a> <a href="/tags/angularjs/" style="font-size: 15px;">angularjs</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/awk/" style="font-size: 10px;">awk</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/book/" style="font-size: 18.33px;">book</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/core/" style="font-size: 10px;">core</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-rq/" style="font-size: 10px;">django-rq</a> <a href="/tags/django-schedule/" style="font-size: 10px;">django-schedule</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/fastcgi/" style="font-size: 10px;">fastcgi</a> <a href="/tags/fastfs/" style="font-size: 10px;">fastfs</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/linux%E5%91%BD%E4%BB%A4/" style="font-size: 11.67px;">linux命令</a> <a href="/tags/maven/" style="font-size: 11.67px;">maven</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/music/" style="font-size: 10px;">music</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nocomment/" style="font-size: 11.67px;">nocomment</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/pattern/" style="font-size: 15px;">pattern</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/rsa/" style="font-size: 11.67px;">rsa</a> <a href="/tags/schedule/" style="font-size: 16.67px;">schedule</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/share/" style="font-size: 10px;">share</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" style="font-size: 10px;">一致性算法</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 10px;">人生</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 10px;">人生感悟</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" style="font-size: 10px;">人脸识别</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" style="font-size: 10px;">代码仓库</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">压力测试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 11.67px;">图片处理</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 15px;">多线程</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 10px;">存储</a> <a href="/tags/%E5%AE%9A%E6%97%B6/" style="font-size: 10px;">定时</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 15px;">并发</a> <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">性能测试</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 10px;">感悟</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" style="font-size: 11.67px;">服务治理</a> <a href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" style="font-size: 15px;">消息对列</a> <a href="/tags/%E7%96%91%E6%83%91/" style="font-size: 10px;">疑惑</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 11.67px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">算法加密</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 13.33px;">缓存</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.67px;">运维</a> <a href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">音频转换</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 11.67px;">项目管理工具</a>
-    </div>
-  </div>
-
-  
+        
+        
+        <a class="flink" href="/2015/09/13/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
+            <div class="list">
+                <div class="postname">
+                    设计模式之创建型模式
+                </div>
+                <div class="posttime">
+                    September 13th
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
-    </div>
-  </div>
-
-
-  
+        
+        
+        <a class="flink" href="/2015/09/13/MVN%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/">
+            <div class="list">
+                <div class="postname">
+                    MVN日常使用
+                </div>
+                <div class="posttime">
+                    September 13th
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/">Alfred Workflow快速打开idea项目</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/15/redis/">redis</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">微服务相关概念.md</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/29/%E6%8E%92%E5%BA%8F/">排序</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/29/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%89%A9%E5%B1%95/">二分法查找及扩展</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+</div>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 万松<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: 万松 | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
     
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="light">
+<input type="hidden" id="valine_appid" value="b13h0PpoiVVieODkmdrjUw2R-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="NMiO8n8rxtwYIaUdndXwbcKH">
+
+<script src="/libs/jquery.min.js"></script>
 
 
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+<script src="/libs/highlight/highlight.pack.js"></script>
 
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
+<script src="/js/js.js"></script>
 
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>

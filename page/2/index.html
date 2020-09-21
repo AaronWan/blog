@@ -1,1219 +1,297 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta charset="utf-8">
-  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Share
+    </title>
+    <meta name="description" content= 嘿，我是刘训灼～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,万松,Wansong,Aaron >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
 
-  
-  <title>Share</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生活点滴和知识分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Share">
-<meta property="og:url" content="http://www.wansonglife.com/page/2/index.html">
-<meta property="og:site_name" content="Share">
-<meta property="og:description" content="生活点滴和知识分享">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="万松">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Share" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Share" type="application/atom+xml">
+</head>
+<body id="bodyx">
+    <div class="hd logodiv">
+    <img src="/img/male.png" class="logopng" alt="logo">
+    <p class="logot">
+         生活点滴和知识分享 
+         <span class="logo_2"></span>
+        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
+            Share
+        </h3>
+    </p>
+</div>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Share</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+
+<div class="hd">
+    <ol class="breadcrumb">
         
-          <a class="main-nav-link" href="/">Home</a>
+            <li><a class="ba" href="/about">关于我👀</a></li>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+            <li><a class="ba" target="_blank" rel="noopener" href="https://aaronwan.github.io">访问主站🎉</a></li>
         
-      </nav>
-      <nav id="sub-nav">
+            <li><a class="ba" target="_blank" rel="noopener" href="https://github.com/AaronWan">GitHub🐒</a></li>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+
+            
+<script src="/libs/jquery.min.js"></script>
+
+            
+<script src="/js/search.js"></script>
+
+            
+                <form class="site-search-form">
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(100);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
+    </ol>
+    <hr>
+</div>
+<div class="hd">
+    
+    
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wansonglife.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-paxos" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/16/paxos/" class="article-date">
-  <time datetime="2016-09-16T06:58:22.000Z" itemprop="datePublished">2016-09-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>►<a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/CAP/">CAP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/16/paxos/">Paxos</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="作者介绍"><a href="#作者介绍" class="headerlink" title="作者介绍"></a>作者介绍</h2><p>1982，Lamport 提出了一种计算机容错理论，并于1900年论证。<br>这是一种<br>基于消传递且具有高度容错特性的一致性算法，是目前公认的解决分布式一致性问题最有效的算法之一。</p>
-<blockquote>
-<p>时间时钟、面包店算法、拜占庭将军及paxos算法的创建性容错</p>
-</blockquote>
-<h2 id="paxos的目的"><a href="#paxos的目的" class="headerlink" title="paxos的目的"></a>paxos的目的</h2><p>  提高分布式系统容错性的一致性算法</p>
-<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><p>  一致性算法</p>
-<h2 id="算法三个角色："><a href="#算法三个角色：" class="headerlink" title="算法三个角色："></a>算法三个角色：</h2><p>  Proposer<br>  Acceptor<br>  Learner</p>
-<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><h3 id="paxos-描述："><a href="#paxos-描述：" class="headerlink" title="paxos 描述："></a>paxos 描述：</h3><p>  参与者之间可以进行通信，可以记录一些信息，来确定最终的值<br>  消息内容不会被篡改</p>
-<h3 id="知行学社的分布式系统与Paxos算法-对paxos算法核心思想的描述"><a href="#知行学社的分布式系统与Paxos算法-对paxos算法核心思想的描述" class="headerlink" title="知行学社的分布式系统与Paxos算法 对paxos算法核心思想的描述"></a>知行学社的分布式系统与Paxos算法 对paxos算法核心思想的描述</h3><ul>
-<li><p>在抢占式访问权的基础上引入多acceptor</p>
-</li>
-<li><p>保证一个epoch,只有一个proposer运行，proposer按照epoch递增的顺序依次运行。</p>
-</li>
-<li><p>新的epoch的proposer采用后者认同前者的思路运行。</p>
-</li>
-<li><p>在肯定旧epoch无法生成确定性取值时，新的epoch 会提交自己的取值。不会冲突。</p>
-</li>
-<li><p>一旦旧epoch形成确定性取值，新epoch肯定可以获取到此取值，并且会认同此取值，不会破坏。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2016/09/16/paxos/" data-id="ckfci5hnr002bvl2f75cbg439" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" rel="tag">一致性算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="blog-MAC下完成人脸检测代码环境构建" class="article article-type-blog" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/15/MAC%E4%B8%8B%E5%AE%8C%E6%88%90%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/" class="article-date">
-  <time datetime="2016-09-15T10:29:07.000Z" itemprop="datePublished">2016-09-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2016年 🕛
+                </p>
+            </div>
+            
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/15/MAC%E4%B8%8B%E5%AE%8C%E6%88%90%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/">MAC下完成人脸检测代码环境构建</a>
-    </h1>
-  
-
-      </header>
+        <a class="flink" href="/2016/09/16/paxos/">
+            <div class="list">
+                <div class="postname">
+                    Paxos
+                </div>
+                <div class="posttime">
+                    September 16th
+                </div>
+            </div>
+        </a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>工作中用到图片的截图，但在使用过程中出现了一个尴尬的问题，就是截图时，有的人没有了头<br>，只留下身子.</p>
-<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><p>通过代码来检测出头部所以位置，然后来决定载哪些区域（目前，只是对一个人进行剪切。</p>
-<h2 id="具体方案"><a href="#具体方案" class="headerlink" title="具体方案"></a>具体方案</h2><ol>
-<li><p>找到一个合适的类库来进行人头位置检测</p>
-<pre><code> _python-opencv_</code></pre>
-</li>
-<li><p>使用python 对人裁剪范围进行处理(GraphicsMagick)得到想要的区域</p>
-</li>
-</ol>
-<h2 id="正题-如何在MAC上安装开发环境"><a href="#正题-如何在MAC上安装开发环境" class="headerlink" title="正题 如何在MAC上安装开发环境"></a>正题 如何在MAC上安装开发环境</h2><p>利用  python-opencv 库<br><a target="_blank" rel="noopener" href="http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/">http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/</a></p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=<span class="regexp">/usr/</span>local \</span><br><span class="line">-D PYTHON2_PACKAGES_PATH=~<span class="regexp">/.virtualenvs/</span>cv<span class="regexp">/lib/</span>python2.<span class="number">7</span>/site-packages \</span><br><span class="line">-D</span><br><span class="line">PYTHON2_LIBRARY=<span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>python<span class="regexp">/2.7.10/</span>Frameworks<span class="regexp">/Python.framework/</span>Versions<span class="regexp">/2.7/</span>bin</span><br><span class="line">\</span><br><span class="line">-D PYTHON2_INCLUDE_DIR=<span class="regexp">/usr/</span>local<span class="regexp">/Frameworks/</span>Python.framework/Headers \</span><br><span class="line">-D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON \</span><br><span class="line">-D BUILD_EXAMPLES=ON \</span><br><span class="line">-D OPENCV_EXTRA_MODULES_PATH=~<span class="regexp">/opencv_contrib/m</span>odules ..</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> <a target="_blank" rel="noopener" href="http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation">http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation</a></p>
- <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">brew</span> <span class="string">tap homebrew/science</span></span><br><span class="line"><span class="attr">brew</span> <span class="string">install opencv3</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p> <a target="_blank" rel="noopener" href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html">http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2016/09/15/MAC%E4%B8%8B%E5%AE%8C%E6%88%90%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/" data-id="ckfci5hnp0027vl2f7xa3gi72" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" rel="tag">人脸识别</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" rel="tag">图片处理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-第N次百望山到植物园" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/12/%E7%AC%ACN%E6%AC%A1%E7%99%BE%E6%9C%9B%E5%B1%B1%E5%88%B0%E6%A4%8D%E7%89%A9%E5%9B%AD/" class="article-date">
-  <time datetime="2016-09-12T11:23:10.000Z" itemprop="datePublished">2016-09-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>►<a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/%E8%BF%90%E5%8A%A8/">运动</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/12/%E7%AC%ACN%E6%AC%A1%E7%99%BE%E6%9C%9B%E5%B1%B1%E5%88%B0%E6%A4%8D%E7%89%A9%E5%9B%AD/">第N次百望山到植物园</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="为什么是N次"><a href="#为什么是N次" class="headerlink" title="为什么是N次"></a>为什么是N次</h2><p>2015年已经多次走这样同一个路线</p>
-<h2 id="为什么第N次记录了一下"><a href="#为什么第N次记录了一下" class="headerlink" title="为什么第N次记录了一下"></a>为什么第N次记录了一下</h2><p>之前来走的时候都是正常13公里，到植物园进行小息游园后坐公交回家。但是这次遇到了一些事情，也许今后不会再次走这条路，故在此进行记录</p>
-<h2 id="百望山路段"><a href="#百望山路段" class="headerlink" title="百望山路段"></a>百望山路段</h2><p>不得不说百望山发展之迅速，从去年到今天常走的路基本上都已经修成了马路，真的是‘大功’ 一件，这样子人们就不用走泥路了，也不用那么接地气了  <del>~</del></p>
-<h2 id="百望山到黑山头路段"><a href="#百望山到黑山头路段" class="headerlink" title="百望山到黑山头路段"></a>百望山到黑山头路段</h2><p>这段路不算长，也就二三公里的样子，不过曾经一个人走过N次。清醒的记得去年走的一幕幕，黑黑的，阴阴的，凉凉的，热热的，鸟儿到处都是，有时甚至还有蛐蛐在歌唱。真可以说精神上的放松。期间老婆也走过一两次，由于全程走下来比较累，基本上都是我一个人在走。<br>基本上每次走完，一周都感到比较轻松。</p>
-<h2 id="黑山头到冷泉村防火道"><a href="#黑山头到冷泉村防火道" class="headerlink" title="黑山头到冷泉村防火道"></a>黑山头到冷泉村防火道</h2><p>这路其实都一两个比较大的景点，也许只有我自己认为那算做景点吧！</p>
-<h3 id="山泉"><a href="#山泉" class="headerlink" title="山泉"></a>山泉</h3><p>若想去山泉取水，每次要多走2公里。一般情况下会想去但是由于后面路程的问题会选择赶路。这次我去了，其实也是被迫了基本上。嘿嘿</p>
-<h3 id="天泉寺"><a href="#天泉寺" class="headerlink" title="天泉寺"></a>天泉寺</h3><p>今天才知道这个寺届是 <code>天泉寺</code> 之前走到这里总感觉是一片废墟，从没想过这地如此的大。这次到这里，发现有人在整修，并且已经把原来的地基轮廓都已经整理出来。<br>在这里呆了差不多一个小时，感叹时间的厉害，也感叹我们在时间长流中是那么微不足道。<br>后来又来到寺庙傍边的佛塔傍边，从佛塔的视角可以看清楚整个寺庙的全景。于是我便非常想知道，这个寺庙到底经历了哪些历史…</p>
-<p><img src="/images/tianquansi/IMG_1938.jpg"><br><img src="/images/tianquansi/IMG_1939.jpg"><br><img src="/images/tianquansi/IMG_1940.jpg"><br><img src="/images/tianquansi/IMG_1941.jpg"><br><img src="/images/tianquansi/IMG_1942.jpg"><br><img src="/images/tianquansi/IMG_1943.jpg"><br><img src="/images/tianquansi/IMG_1944.jpg"><br><img src="/images/tianquansi/IMG_1947.jpg"><br><img src="/images/tianquansi/IMG_1948.jpg"><br><img src="/images/tianquansi/IMG_1949.jpg"><br><img src="/images/tianquansi/IMG_1950.jpg"><br><img src="/images/tianquansi/IMG_1951.jpg"><br><img src="/images/tianquansi/IMG_1958.jpg"><br><img src="/images/tianquansi/IMG_1959.jpg"><br><img src="/images/tianquansi/IMG_1963.jpg"></p>
-<h2 id="冷泉村到植物园"><a href="#冷泉村到植物园" class="headerlink" title="冷泉村到植物园"></a>冷泉村到植物园</h2><p>这次走了一半，在去植物园的路已经被我们解放军战士把守，说是军事重地，人民不能进入。我问了一下，他们说可以从别的地方翻跃过去。同时我也看到有一帮人从这些士兵可见的范围内进行翻跃围墙。有一种说不出来的心情充上心头，但感觉在我们体制下好多类似的事情发生，从而又感叹了一些国家怎么样才能提高全民素质等等事情～～～～</p>
-<p>我可不想去翻墙，我还是回寺庙再去看看，同时去喝些泉水，也好久没有去泉眼了。<br>今天泉水非常多，有一位好心的兄弟给帮我搞了一水袋。我便带着回家了。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>不知道下次什么时候才能再进行穿越，也不晓得我们伟大的部队是怎么想的，防普通人民做甚。嘿，也只有自己问问自己，反正我们国家也不会真正的搞什么民主。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2016/09/12/%E7%AC%ACN%E6%AC%A1%E7%99%BE%E6%9C%9B%E5%B1%B1%E5%88%B0%E6%A4%8D%E7%89%A9%E5%9B%AD/" data-id="ckfci5hno0024vl2f9b9h1j14" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" rel="tag">人生感悟</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-图片处理环境构建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/12/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/" class="article-date">
-  <time datetime="2016-09-12T08:30:53.000Z" itemprop="datePublished">2016-09-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/12/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/">图片处理环境构建</a>
-    </h1>
-  
-
-      </header>
+        <a class="flink" href="/2016/09/15/MAC%E4%B8%8B%E5%AE%8C%E6%88%90%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/">
+            <div class="list">
+                <div class="postname">
+                    MAC下完成人脸检测代码环境构建
+                </div>
+                <div class="posttime">
+                    September 15th
+                </div>
+            </div>
+        </a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>对存储的文件进行并发处理，由于处理的图片量比较大。<br>图片处理又比较耗内存，为防止影响正常的服务，故将其与业务服务分开部署</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>python+uwsgi+imagemagick</p>
-<h2 id="环境安装："><a href="#环境安装：" class="headerlink" title="环境安装："></a>环境安装：</h2><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1.</span>配置</span><br><span class="line">     <span class="number">16</span>Core,<span class="number">16</span>G内存，<span class="number">50</span>G硬盘</span><br><span class="line"><span class="number">2.</span>端口</span><br><span class="line">    <span class="number">13814</span>（fcp），<span class="number">8010</span>(http)</span><br><span class="line"><span class="number">3.</span>安装 graphicsmagick</span><br><span class="line">     jasper<span class="number">-1.900</span><span class="number">.1</span>.zip  jpegsrc.v9a.tar.gz</span><br><span class="line"></span><br><span class="line">wget http:<span class="comment">//www.imagemagick.org/download/delegates/jpegsrc.v9a.tar.gz</span></span><br><span class="line">wget http:<span class="comment">//www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.1.zip</span></span><br><span class="line">gm 命令ln /usr/local/graphicsmagick/bin/gm usr/bin/gm</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>装音频插件和字体</span><br><span class="line">http:<span class="comment">//my.oschina.net/ethan09/blog/372435?fromerr=WsZSucMx</span></span><br><span class="line">安装微软雅黑字体</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span>python版本升级</span><br><span class="line">http:<span class="comment">//blog.csdn.net/jcjc918/article/details/11022345  由于django必须要用2.7，所以这里要进行升级</span></span><br><span class="line">注意修改完后  要修改/usr/bin/supervisord,/usr/bin/supervisorctl 的头为/usr/bin/python2<span class="number">.6</span></span><br><span class="line"></span><br><span class="line"><span class="number">6.</span>重新安装pip和c++库</span><br><span class="line">wget https:<span class="comment">//bootstrap.pypa.io/get-pip.py</span></span><br><span class="line">python <span class="keyword">get</span>-pip.py</span><br><span class="line"></span><br><span class="line">安装c++库</span><br><span class="line">sudo yum install GraphicsMagick-c++-devel</span><br><span class="line">sudo yum install boost-devel</span><br><span class="line"><span class="number">7.</span>安装python插件</span><br><span class="line"></span><br><span class="line">sudo pip install -r requirements.txt</span><br><span class="line">requirements.txt内容</span><br><span class="line">Django==<span class="number">1.9</span><span class="number">.7</span></span><br><span class="line">beautifulsoup4==<span class="number">4.4</span><span class="number">.1</span></span><br><span class="line">protobuf==<span class="number">2.6</span><span class="number">.1</span></span><br><span class="line">pgmagick==<span class="number">0.6</span><span class="number">.2</span></span><br><span class="line">uWSGI==<span class="number">2.0</span><span class="number">.13</span><span class="number">.1</span></span><br><span class="line">wsgiref==<span class="number">0.1</span><span class="number">.2</span></span><br><span class="line">django-log-request-id==<span class="number">1.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line"><span class="number">8.</span>安装nginx</span><br><span class="line">yum install nginx</span><br><span class="line"><span class="number">9.</span>安装uwsgi</span><br><span class="line">sudo yum install uwsgi</span><br><span class="line">sudo yum install uwsgi-plugin-python</span><br><span class="line"></span><br><span class="line">nginx配置</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">  uwsgi_pass unix:<span class="comment">///tmp/uwsgi.sock;</span></span><br><span class="line">  include /etc/nginx/uwsgi_params; # the uwsgi_params file you installed</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">client_max_body_size <span class="number">20</span>M;</span><br><span class="line"></span><br><span class="line"><span class="number">10.</span>安装图片处理服务</span><br><span class="line">cd /opt/fs/</span><br><span class="line">git clone http:<span class="comment">//git.firstshare.cn/Qixin/FSPythonWSGIProcess.git</span></span><br><span class="line">cd FSPythonWSGIProcess</span><br><span class="line"></span><br><span class="line">uwsgi --ini online_uwsgi.ini --buffer-size <span class="number">20971520</span>   --daemonize ./logs/uwsgi.log</span><br><span class="line"></span><br><span class="line"><span class="number">11.</span>异常</span><br><span class="line">*** Starting uWSGI <span class="number">2.0</span><span class="number">.12</span> (<span class="number">64</span>bit) on [Tue Jun <span class="number">14</span> <span class="number">16</span>:<span class="number">36</span>:<span class="number">20</span> <span class="number">2016</span>] ***</span><br><span class="line">compiled with version: <span class="number">4.4</span><span class="number">.7</span> <span class="number">20120313</span> (Red Hat <span class="number">4.4</span><span class="number">.7</span><span class="number">-16</span>) on <span class="number">02</span> January <span class="number">2016</span> <span class="number">19</span>:<span class="number">53</span>:<span class="number">13</span></span><br><span class="line">os: Linux<span class="number">-2.6</span><span class="number">.32</span><span class="number">-573.8</span><span class="number">.1</span>.el6.x86_64 #<span class="number">1</span> SMP Tue Nov <span class="number">10</span> <span class="number">18</span>:<span class="number">01</span>:<span class="number">38</span> UTC <span class="number">2015</span></span><br><span class="line">nodename: vlnx160170.fsceshi.com</span><br><span class="line">machine: x86_64</span><br><span class="line">clock source: unix</span><br><span class="line">pcre jit disabled</span><br><span class="line">detected number of CPU cores: <span class="number">4</span></span><br><span class="line">current working directory: /home/wans/FSPythonWSGIProcess</span><br><span class="line">writing pidfile to /tmp/FsPythonWSGIProcess.pid</span><br><span class="line">detected binary path: /usr/sbin/uwsgi</span><br><span class="line">your processes number limit <span class="keyword">is</span> <span class="number">1024</span></span><br><span class="line">your memory page size <span class="keyword">is</span> <span class="number">4096</span> bytes</span><br><span class="line">detected max file descriptor number: <span class="number">60000</span></span><br><span class="line">lock engine: pthread robust mutexes</span><br><span class="line">thunder lock: disabled (you can enable it with --thunder-lock)</span><br><span class="line">uwsgi socket <span class="number">0</span> bound to UNIX address /tmp/uwsgi.sock fd <span class="number">4</span></span><br><span class="line">your server socket listen backlog <span class="keyword">is</span> limited to <span class="number">100</span> connections</span><br><span class="line">your mercy <span class="keyword">for</span> graceful operations on workers <span class="keyword">is</span> <span class="number">60</span> seconds</span><br><span class="line">mapped <span class="number">1476277</span> bytes (<span class="number">1441</span> KB) <span class="keyword">for</span> <span class="number">10</span> cores</span><br><span class="line">*** Operational MODE: preforking ***</span><br><span class="line">*** no app loaded. going <span class="keyword">in</span> full dynamic mode ***</span><br><span class="line"></span><br><span class="line">关闭nginx   ,启动uwsgi后再启动nginx</span><br><span class="line"></span><br><span class="line">优化点：</span><br><span class="line"><span class="number">1.</span>调整nginx</span><br><span class="line">worker_processes     <span class="number">4</span>;</span><br><span class="line">worker_cpu_affinity <span class="number">1000</span> <span class="number">0100</span> <span class="number">0010</span> <span class="number">0001</span>;</span><br><span class="line"><span class="number">2.</span>#cluster</span><br><span class="line">upstream backend&#123;</span><br><span class="line">server unix:<span class="comment">///tmp/uwsgi.sock;</span></span><br><span class="line">server unix:<span class="comment">///tmp/uwsgi1.sock;</span></span><br><span class="line">server unix:<span class="comment">///tmp/uwsgi2.sock;</span></span><br><span class="line">server unix:<span class="comment">///tmp/uwsgi3.sock;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">                    include uwsgi_params;</span><br><span class="line">uwsgi_pass backend;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">问题总结:</span><br><span class="line"><span class="number">1.</span>yum安装遇到如下类似问题:</span><br><span class="line">        yum install uwsgi</span><br><span class="line">        Loaded plugins: fastestmirror</span><br><span class="line">        Loading mirror speeds <span class="keyword">from</span> cached hostfile</span><br><span class="line">         * base: mirrors.btte.net</span><br><span class="line">         * extras: mirrors.btte.net</span><br><span class="line">         * updates: mirrors<span class="number">.163</span>.com</span><br><span class="line">        No package uwsgi available.</span><br><span class="line">        Error: Nothing to <span class="keyword">do</span></span><br><span class="line">   解决方案,添加epl至yum的源即可:</span><br><span class="line">   yum install http:<span class="comment">//mirrors.isu.net.sa/pub/fedora/fedora-epel/7/x86_64/e/epel-release-7-6.noarch.rpm</span></span><br><span class="line">   参考文档:https:<span class="comment">//fedoraproject.org/wiki/EPEL/zh-cn</span></span><br><span class="line">   </span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2016/09/12/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/" data-id="ckfci5hnn0021vl2f32v3hujo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fastcgi/" rel="tag">fastcgi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" rel="tag">图片处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="private-我的音乐目录" class="article article-type-private" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/10/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90%E7%9B%AE%E5%BD%95/" class="article-date">
-  <time datetime="2016-01-09T16:00:00.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>►<a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/%E9%9F%B3%E4%B9%90/">音乐</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90%E7%9B%AE%E5%BD%95/">我的音乐目录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>Django</p>
-</li>
-<li><p>当我老了</p>
-</li>
-<li><p>朋友</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2016/01/10/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90%E7%9B%AE%E5%BD%95/" data-id="ckfci5hnm001yvl2f948v11rn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/" rel="tag">music</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-将amr,caf转mp3" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/27/%E5%B0%86amr,caf%E8%BD%ACmp3/" class="article-date">
-  <time datetime="2015-12-26T16:00:00.000Z" itemprop="datePublished">2015-12-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/27/%E5%B0%86amr,caf%E8%BD%ACmp3/">将amr,caf转mp3</a>
-    </h1>
-  
-
-      </header>
+        <a class="flink" href="/2016/09/12/%E7%AC%ACN%E6%AC%A1%E7%99%BE%E6%9C%9B%E5%B1%B1%E5%88%B0%E6%A4%8D%E7%89%A9%E5%9B%AD/">
+            <div class="list">
+                <div class="postname">
+                    第N次百望山到植物园
+                </div>
+                <div class="posttime">
+                    September 12th
+                </div>
+            </div>
+        </a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><hr>
-<p><code>公司原有文件存储现在要用java进行重构，其中涉及到Android和ios上的音频问题。</code></p>
-<ol>
-<li><p>Android录音是格式是amr，在电脑上一般是播放不出来的，必须要进行转码。</p>
-</li>
-<li><p>iPhone录音传上来的是caf，在android上是不能进行播放的。</p>
-</li>
-</ol>
-<p><code>由于上面的问题，我们要进行文件的转换，另外还有一个需求就是，amr转wav ,这里我们将amr和caf统一转换为map3,另外提供一个接口进行amr2wav的转换。 在网上参考了许多，总结下来还都是调用ffmpeg 进行想着音频的转换。总也来说比较简单。这里时间的关系 ，也不可能去研究底层编解码的东西。</code></p>
-<hr>
-<h1 id="开工"><a href="#开工" class="headerlink" title="开工"></a>开工</h1><h2 id="安装ffmpeg"><a href="#安装ffmpeg" class="headerlink" title="安装ffmpeg"></a>安装<a target="_blank" rel="noopener" href="https://www.ffmpeg.org/ffmpeg.html#Audio-Options">ffmpeg</a></h2><ul>
-<li>参考<a target="_blank" rel="noopener" href="http://my.oschina.net/ethan09/blog/372435">http://my.oschina.net/ethan09/blog/372435</a></li>
-</ul>
-<h2 id="查看当前ffmpeg对mp3的编解码支持情况"><a href="#查看当前ffmpeg对mp3的编解码支持情况" class="headerlink" title="查看当前ffmpeg对mp3的编解码支持情况"></a>查看当前ffmpeg对mp3的编解码支持情况</h2><pre><code>    ffmpeg -codecs|grep mp3                                        
-
-     D.A.L. mp3                  MP3 (MPEG audio layer 3) (decoders: mp3 mp3float )
-     D.A.L. mp3adu               ADU (Application Data Unit) MP3 (MPEG audio layer 3) (decoders: mp3adu mp3adufloat )
-     D.A.L. mp3on4               MP3onMP4 (decoders: mp3on4 mp3on4float )
-
-
-
-     </code></pre>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ul>
-<li>ffmpeg: error while loading shared libraries: libavdevice.so.53: cannot open shared object file: No such file or directory</li>
-</ul>
-<pre><code>      ffmpeg正常安装后执行ffmpeg时出现如下错误：
-
-      解决办法：
-
-      vi /etc/ld.so.conf
-
-      加入：/usr/local/lib
-
-      执行ldconfig</code></pre>
-<ul>
-<li><p>ffmpeg -i test.amr test.mp3<br>ffmpeg: error while loading shared libraries: libavdevice.so.56: cannot open shared object file: No such file or directory</p>
-<pre><code> &lt;http://www.tjcarroll.org/?p=51&gt;</code></pre>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/12/27/%E5%B0%86amr,caf%E8%BD%ACmp3/" data-id="ckfci5hnk001vvl2fcun863mb" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arm/" rel="tag">arm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mp3/" rel="tag">mp3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" rel="tag">音频转换</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-FASTFS" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/08/FASTFS/" class="article-date">
-  <time datetime="2015-12-07T16:00:00.000Z" itemprop="datePublished">2015-12-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a>►<a class="article-category-link" href="/categories/%E5%AD%98%E5%82%A8/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">文件存储</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/08/FASTFS/">FASTDFS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a target="_blank" rel="noopener" href="http://www.oschina.net/p/fastdfs">基本介绍</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/12/08/FASTFS/" data-id="ckfci5hnh001mvl2f44sbd6ly" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fastfs/" rel="tag">fastfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/" rel="tag">存储</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-git工作与学习" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/08/git%E5%B7%A5%E4%BD%9C%E4%B8%8E%E5%AD%A6%E4%B9%A0/" class="article-date">
-  <time datetime="2015-12-07T16:00:00.000Z" itemprop="datePublished">2015-12-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/">日常工具</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/git/">git</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/08/git%E5%B7%A5%E4%BD%9C%E4%B8%8E%E5%AD%A6%E4%B9%A0/">git工作与学习</a>
-    </h1>
-  
-
-      </header>
+        <a class="flink" href="/2016/09/12/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/">
+            <div class="list">
+                <div class="postname">
+                    图片处理环境构建
+                </div>
+                <div class="posttime">
+                    September 12th
+                </div>
+            </div>
+        </a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="tag的作用与学习"><a href="#tag的作用与学习" class="headerlink" title="tag的作用与学习"></a>tag的作用与学习</h1><ul>
-<li><p>git tag ‘name’ -m ‘desc’ 创建</p>
-</li>
-<li><p>git tag -d ‘name’ 删除</p>
-</li>
-<li><p>git tag -l  查看</p>
-</li>
-<li><p>git push –tags 提交</p>
-</li>
-<li><p>git push origin :refs/tags/tags_name</p>
-</li>
-</ul>
-<h1 id="git-在使用项目中的实践模型"><a href="#git-在使用项目中的实践模型" class="headerlink" title="git 在使用项目中的实践模型"></a>git 在使用项目中的实践模型</h1><ol>
-<li>master</li>
-<li>release-6.1</li>
-<li>develop</li>
-<li>hotfix-xxx</li>
-<li>release-release-6.1-xx</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/12/08/git%E5%B7%A5%E4%BD%9C%E4%B8%8E%E5%AD%A6%E4%B9%A0/" data-id="ckfci5hnj001svl2fbhg9dtax" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" rel="tag">代码仓库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-redis致命错误的出现" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/22/redis%E8%87%B4%E5%91%BD%E9%94%99%E8%AF%AF%E7%9A%84%E5%87%BA%E7%8E%B0/" class="article-date">
-  <time datetime="2015-11-21T16:00:00.000Z" itemprop="datePublished">2015-11-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/%E7%BB%8F%E5%85%B8%E5%9D%91/">经典坑</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/22/redis%E8%87%B4%E5%91%BD%E9%94%99%E8%AF%AF%E7%9A%84%E5%87%BA%E7%8E%B0/">redis致命错误的出现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#错误描述<br>我们将文件缓存到redis,但是在线上出现了一个问题，就是A企业群中发的文件，在B企业群中看文件时却看到了A企业群中的图片。</p>
-<p>#经排查，结果如下：</p>
-<p>##案例代码如下：</p>
-<pre><code>    import com.google.common.collect.Lists;
-    import org.apache.commons.lang3.StringUtils;
-    import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-    import org.slf4j.Logger;
-    import org.slf4j.LoggerFactory;
-    import redis.clients.jedis.Jedis;
-    import redis.clients.jedis.JedisPool;
-
-    import java.util.Arrays;
-    import java.util.Collections;
-    import java.util.List;
-    import java.util.concurrent.*;
-
-    /**
-     * Created by Aaron on 15/11/12.
-     */
-    public class FileRedisFactory &#123;
-        private static Logger log = LoggerFactory.getLogger(FileRedisFactory.class);
-        public ThreadPoolExecutor threadPoolExecutor;
-        // 格式为 ： 127.0.0.1:6379#0;127.0.0.2:6379#1    IP:PORT#index
-        private String hosts;
-        private String password;
-        private int size;
-        private List&lt;JedisPool&gt; pools=Lists.newArrayList();//连接池
-
-        public FileRedisFactory(String hosts, String password) &#123;
-            this.hosts = hosts;
-            this.password = password;
-            this.init(hosts, password);
-        &#125;
-
-        public FileRedisFactory(String hosts) &#123;
-            this.hosts = hosts;
-            this.init(hosts, null);
-        &#125;
-
-
-        private synchronized void init(String hosts, String password) &#123;
-            if (StringUtils.isNotEmpty(hosts)) &#123;
-                String[] hostsArray = hosts.split(&quot;;&quot;);
-                List&lt;String&gt; hostList = Arrays.asList(hostsArray);
-                Collections.sort(hostList);
-                System.out.println(hostList);
-                for (String host : hostList) &#123;
-                    try &#123;
-                        String[] uriDb=host.split(&quot;#&quot;);
-                        String[] host_port = uriDb[0].split(&quot;:&quot;);
-                        String ip = host_port[0];
-                        String port = host_port[1];
-                        int index=uriDb.length&gt;0?Integer.valueOf(uriDb[1]):0;
-                        GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
-
-                        poolConfig.setMaxTotal(16);
-                        poolConfig.setMaxIdle(16);
-                        if (StringUtils.isNotEmpty(password)) &#123;
-                            pools.add(new JedisPool(poolConfig, ip, Integer.valueOf(port), 2000, password, index));
-                        &#125; else &#123;
-                            pools.add(new JedisPool(poolConfig, ip, Integer.valueOf(port), 2000, null, index));
-                        &#125;
-                    &#125; catch (Exception e) &#123;
-                        pools = Lists.newArrayList();
-                        e.printStackTrace();
-                        log.error(&quot;[ShardedRedisFactory] [initByShard] [error] [hosts:&quot; + hosts + &quot;] [password:&quot; + password + &quot;]&quot;, e);
-                    &#125;
-                &#125;
-                size = pools.size();
-            &#125;
-            this.threadPoolExecutor = new ThreadPoolExecutor(10,20,3, TimeUnit.MINUTES,new LinkedBlockingDeque&lt;&gt;(),new ThreadPoolExecutor.DiscardPolicy());
-
-            // 构造池
-            log.info(&quot;[ShardedRedisFactory] [initByShard] [success] [hosts:&#123;&#125;] [password:&#123;&#125;] [masterName:&#123;&#125;] [pool:&#123;&#125;]&quot;, hosts, password);
-        &#125;
-
-        private JedisPool getJedisPool(int c) &#123;
-            int index = c % size;
-            return pools.get(index);
-        &#125;
-
-        private static int getIndexFromPath(String path) &#123;
-            String first=path.split(&quot;\\.&quot;)[0];
-            return  first.charAt(first.length() - 1);
-        &#125;
-
-        /**
-         * @param filePath file path
-         * @return
-         */
-        public byte[] get(String filePath) &#123;
-            if (cacheIsAvailable()) return null;
-            JedisPool jedisPool = getJedisPool(getIndexFromPath(filePath));
-            Jedis jedis = null;
-            try &#123;
-                jedis = jedisPool.getResource();
-                return jedis.get(filePath.getBytes());
-            &#125; catch (Exception e) &#123;
-                log.error(e.getMessage());
-                return null;
-            &#125; finally &#123;
-                if (jedis != null)
-                    jedisPool.returnResource(jedis);
-            &#125;
-        &#125;
-
-        public void asynSet(String filePath, byte[] datas)&#123;
-            if (cacheIsAvailable()) return;
-            threadPoolExecutor.execute(()-&gt;&#123;
-                    JedisPool jedisPool = getJedisPool(getIndexFromPath(filePath));
-                    Jedis jedis = null;
-                    try &#123;
-                        jedis = jedisPool.getResource();
-                        jedis.set(filePath.getBytes(), datas);
-                    &#125; catch (Exception e) &#123;
-                        log.error(e.getMessage());
-                    &#125; finally &#123;
-                        if (jedis != null)
-                            jedisPool.returnResource(jedis);
-                    &#125;
-            &#125;);
-        &#125;
-        private boolean cacheIsAvailable() &#123;
-            if(pools.size()==0)&#123;
-                return true;
-            &#125;
-            return false;
-        &#125;
-
-    &#125;</code></pre>
-<p>##测试代码如下</p>
-<pre><code>        public static void main(String[] args) &#123;
-            FileRedisFactory fileRedisFactory = new FileRedisFactory(&quot;172.31.xxx.xxx:6379#0;172.31.xx.xxx:6379#1;172.31.xxx.xxx:6379#2;172.31.xxx.xxx:6379#3&quot;);
-            System.out.println(fileRedisFactory);
-            Map&lt;String,String&gt; map=new HashMap&lt;&gt;();
-
-            for(int i=0;i&lt;20;i++)&#123;
-                map.put(&quot;&quot;+i,&quot;&quot;+i);
-            &#125;
-
-            for (int j = 0; j &lt;50 ; j++) &#123;
-                Thread thread=new Thread()&#123;
-                    @Override
-                    public void run() &#123;
-                        while(true)&#123;
-                            Set&lt;String&gt; s=map.keySet();
-
-                            s.forEach(i-&gt;&#123;
-                                fileRedisFactory.set(i + &quot;&quot;, (i + &quot;&quot;).getBytes());
-                            &#125;);
-                        &#125;
-                    &#125;
-                &#125;;
-                thread.start();
-            &#125;
-            for (int k = 0; k &lt;50 ; k++) &#123;
-                Thread thread=new Thread()&#123;
-                    @Override
-                    public void run() &#123;
-                        while(true)&#123;
-                            Set&lt;String&gt; s=map.keySet();
-                            s.forEach(i-&gt;&#123;
-                                byte[] first=fileRedisFactory.get(i+&quot;&quot;);
-                                if(first==null)&#123;
-                                    System.out.println(i+&quot;&quot;+first);
-                                    return;
-                                &#125;
-                                try&#123;
-                                String temp=(new String(first));
-                                if(!temp.equals(i+&quot;&quot;))&#123;
-                                    System.out.println(i+&quot;======&quot;+temp);
-                                    System.exit(-1);
-                                &#125;&#125;catch(Exception e)&#123;
-                                    e.printStackTrace();
-                                &#125;
-                            &#125;);
-                        &#125;
-                    &#125;
-                &#125;;
-                thread.start();
-            &#125;
-        &#125;</code></pre>
-<p>若你和连接到redis服务器之间的网络不是很稳定<br>在运行时，我们会发现，有奇怪的现像出现：</p>
-<pre><code>    1======2
-    3======8</code></pre>
-<p>这时，我们就在对redis操作时，异常的地方修改成如下代码：</p>
-<pre><code>    catch (Exception e) &#123;
-          log.error(e.getMessage());
-          e.printStackTrace();
-          return null;
-    &#125; </code></pre>
-<p>就会看到报TimeOut的Exception</p>
-<pre><code>我们将：
-        &lt;dependency&gt;
-            &lt;groupId&gt;redis.clients&lt;/groupId&gt;
-            &lt;artifactId&gt;jedis&lt;/artifactId&gt;
-            &lt;version&gt;2.6.2&lt;/version&gt;
-        &lt;/dependency&gt;
-
-替换成：
-        &lt;dependency&gt;
-            &lt;groupId&gt;redis.clients&lt;/groupId&gt;
-            &lt;artifactId&gt;jedis&lt;/artifactId&gt;
-            &lt;version&gt;2.7.3&lt;/version&gt;
-        &lt;/dependency&gt;</code></pre>
-<p>这时我们去Google上查询的同时也看了一下新的代码，<br>     我们原来用的：</p>
-<pre><code>    jedisPool.returnResource(jedis);
-
- 已经变成了：
-
-
-   /**
-    * @deprecated starting from Jedis 3.0 this method won&#39;t exist. Resouce cleanup should be done
-    *             using @see &#123;@link redis.clients.jedis.Jedis#close()&#125;
-    */
-   @Deprecated
-   public void returnResource(final Jedis resource) &#123;
-     if (resource != null) &#123;
-       try &#123;
-         resource.resetState();
-         returnResourceObject(resource);
-       &#125; catch (Exception e) &#123;
-         returnBrokenResource(resource);
-         throw new JedisException(&quot;Could not return the resource to the pool&quot;, e);
-       &#125;
-     &#125;
-   &#125;</code></pre>
-<p>同时我们也查到了一个文章<a target="_blank" rel="noopener" href="http://www.cnblogs.com/wcd144140/p/4883139.html">JedisPool异常Jedis链接处理</a></p>
-<p>#修改后的代码：</p>
-<pre><code>import com.google.common.collect.Lists;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.*;
-
-/**
- * Created by Aaron on 15/11/12.
- */
-public class FileRedisFactory &#123;
-    private static Logger log = LoggerFactory.getLogger(FileRedisFactory.class);
-    public ThreadPoolExecutor threadPoolExecutor;
-    // 格式为 ： 127.0.0.1:6379#0;127.0.0.2:6379#1    IP:PORT#index
-    private String hosts;
-    private String password;
-    private int size;
-    private List&lt;JedisPool&gt; pools=Lists.newArrayList();//连接池
-
-    public FileRedisFactory(String hosts, String password) &#123;
-        this.hosts = hosts;
-        this.password = password;
-        this.init(hosts, password);
-    &#125;
-
-    public FileRedisFactory(String hosts) &#123;
-        this.hosts = hosts;
-        this.init(hosts, null);
-    &#125;
-
-
-    private synchronized void init(String hosts, String password) &#123;
-        if (StringUtils.isNotEmpty(hosts)) &#123;
-            String[] hostsArray = hosts.split(&quot;;&quot;);
-            List&lt;String&gt; hostList = Arrays.asList(hostsArray);
-            Collections.sort(hostList);
-            System.out.println(hostList);
-            for (String host : hostList) &#123;
-                try &#123;
-                    String[] uriDb=host.split(&quot;#&quot;);
-                    String[] host_port = uriDb[0].split(&quot;:&quot;);
-                    String ip = host_port[0];
-                    String port = host_port[1];
-                    int index=uriDb.length&gt;0?Integer.valueOf(uriDb[1]):0;
-                    GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
-
-                    poolConfig.setMaxTotal(16);
-                    poolConfig.setMaxIdle(16);
-                    if (StringUtils.isNotEmpty(password)) &#123;
-                        pools.add(new JedisPool(poolConfig, ip, Integer.valueOf(port), 2000, password, index));
-                    &#125; else &#123;
-                        pools.add(new JedisPool(poolConfig, ip, Integer.valueOf(port), 2000, null, index));
-                    &#125;
-                &#125; catch (Exception e) &#123;
-                    pools = Lists.newArrayList();
-                    log.error(&quot;[ShardedRedisFactory] [initByShard] [error] [hosts:&quot; + hosts + &quot;] [password:&quot; + password + &quot;]&quot;, e);
-                &#125;
-            &#125;
-            size = pools.size();
-        &#125;
-
-        this.threadPoolExecutor = new ThreadPoolExecutor(10,20,3, TimeUnit.MINUTES,new LinkedBlockingDeque&lt;&gt;(50),new ThreadPoolExecutor.DiscardPolicy());
-
-        // 构造池
-        log.info(&quot;[ShardedRedisFactory] [initByShard] [success] [hosts:&#123;&#125;] [password:&#123;&#125;] [masterName:&#123;&#125;] [pool:&#123;&#125;]&quot;, hosts, password);
-    &#125;
-
-    private JedisPool getJedisPool(int c) &#123;
-        int index = c % size;
-        return pools.get(index);
-    &#125;
-
-    private static int getIndexFromPath(String path) &#123;
-        String first=path.split(&quot;\\.&quot;)[0];
-        return  first.charAt(first.length() - 1);
-    &#125;
-
-    /**
-     * @param filePath file path
-     * @return
-     */
-    public byte[] get(String filePath) &#123;
-        if (cacheIsAvailable()) return null;
-        JedisPool jedisPool = getJedisPool(getIndexFromPath(filePath));
-        Jedis jedis = null;
-        try &#123;
-            jedis = jedisPool.getResource();
-            return jedis.get(filePath.getBytes());
-        &#125; catch (Exception e) &#123;
-            log.error(e.getMessage());
-            return null;
-        &#125; finally &#123;
-            if (jedis != null)
-                jedis.close();
-        &#125;
-    &#125;
-
-    public String set(String filePath, byte[] datas) &#123;
-        if (cacheIsAvailable()) return null;
-        JedisPool jedisPool = getJedisPool(getIndexFromPath(filePath));
-        Jedis jedis = null;
-        try &#123;
-            jedis = jedisPool.getResource();
-            return jedis.set(filePath.getBytes(), datas);
-        &#125; catch (Exception e) &#123;
-            log.error(e.getMessage());
-            return null;
-        &#125; finally &#123;
-            if (jedis != null)
-                jedis.close();
-        &#125;
-    &#125;
-
-    public void asynSet(String filePath, byte[] datas,long expx)&#123;
-        if (cacheIsAvailable()) return;
-        threadPoolExecutor.execute(()-&gt;&#123;
-                JedisPool jedisPool = getJedisPool(getIndexFromPath(filePath));
-                Jedis jedis = null;
-                try &#123;
-                    jedis = jedisPool.getResource();
-                    jedis.set(filePath.getBytes(), datas,&quot;NX&quot;.getBytes(),&quot;EX&quot;.getBytes(),expx);
-                &#125; catch (Exception e) &#123;
-                    log.error(e.getMessage());
-                &#125; finally &#123;
-                    if (jedis != null)
-                        jedis.close();
-                &#125;
-        &#125;);
-    &#125;
-    private boolean cacheIsAvailable() &#123;
-        if(pools.size()==0)&#123;
-            return true;
-        &#125;
-        return false;
-    &#125;
-
-&#125;</code></pre>
-<p>#总结：</p>
-<ol>
-<li>在使用做新功能时，方便时要添加开关或合理的回滚方案，方便快速的减少事故的进行</li>
-<li>排查错误，一查到底</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/11/22/redis%E8%87%B4%E5%91%BD%E9%94%99%E8%AF%AF%E7%9A%84%E5%87%BA%E7%8E%B0/" data-id="ckfci5hni001pvl2fdarf1ru3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-redis索引" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/10/redis%E7%B4%A2%E5%BC%95/" class="article-date">
-  <time datetime="2015-11-09T16:00:00.000Z" itemprop="datePublished">2015-11-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a>►<a class="article-category-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/">缓存</a>►<a class="article-category-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/redis/">redis</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/10/redis%E7%B4%A2%E5%BC%95/">redis索引</a>
-    </h1>
-  
-
-      </header>
+        <a class="flink" href="/2016/01/10/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90%E7%9B%AE%E5%BD%95/">
+            <div class="list">
+                <div class="postname">
+                    我的音乐目录
+                </div>
+                <div class="posttime">
+                    January 10th
+                </div>
+            </div>
+        </a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h1><pre><code>brew install redis
-
-安装后，你会看到这几个命令
-redis-benchmark   redis-check-aof   redis-check-dump  redis-cli         redis-sentinel    redis-server</code></pre>
-<h1 id="先了解如何命令行操作"><a href="#先了解如何命令行操作" class="headerlink" title="先了解如何命令行操作"></a>先了解如何命令行操作</h1><pre><code>启动：redis-server
-连接：redis-cli</code></pre>
-<h1 id="官网命令列表：http-redis-io-commands-（英文）"><a href="#官网命令列表：http-redis-io-commands-（英文）" class="headerlink" title="官网命令列表：http://redis.io/commands （英文）"></a>官网命令列表：<a target="_blank" rel="noopener" href="http://redis.io/commands">http://redis.io/commands</a> （英文）</h1><p>##1、连接操作相关的命令</p>
-<pre><code>    quit：关闭连接（connection）
-    auth：简单密码认证</code></pre>
-<p>##2、对value操作的命令</p>
-<pre><code>    exists(key)：确认一个key是否存在
-    del(key)：删除一个key
-    type(key)：返回值的类型
-    keys(pattern)：返回满足给定pattern的所有key
-    randomkey：随机返回key空间的一个key
-    rename(oldname, newname)：将key由oldname重命名为newname，若newname存在则删除newname表示的key
-    dbsize：返回当前数据库中key的数目
-    expire：设定一个key的活动时间（s）
-    ttl：获得一个key的活动时间
-    select(index)：按索引查询
-    move(key, dbindex)：将当前数据库中的key转移到有dbindex索引的数据库
-    flushdb：删除当前选择数据库中的所有key
-    flushall：删除所有数据库中的所有key</code></pre>
-<p>##3、对String操作的命令</p>
-<pre><code>    set(key, value)：给数据库中名称为key的string赋予值value
-    get(key)：返回数据库中名称为key的string的value
-    getset(key, value)：给名称为key的string赋予上一次的value
-    mget(key1, key2,…, key N)：返回库中多个string（它们的名称为key1，key2…）的value
-    setnx(key, value)：如果不存在名称为key的string，则向库中添加string，名称为key，值为value
-    setex(key, time, value)：向库中添加string（名称为key，值为value）同时，设定过期时间time
-    mset(key1, value1, key2, value2,…key N, value N)：同时给多个string赋值，名称为key i的string赋值value i
-    msetnx(key1, value1, key2, value2,…key N, value N)：如果所有名称为key i的string都不存在，则向库中添加string，
-    名称key i赋值为value i
-    incr(key)：名称为key的string增1操作
-    incrby(key, integer)：名称为key的string增加integer
-    decr(key)：名称为key的string减1操作
-    decrby(key, integer)：名称为key的string减少integer
-    append(key, value)：名称为key的string的值附加value
-    substr(key, start, end)：返回名称为key的string的value的子串</code></pre>
-<p>##4、对List操作的命令</p>
-<pre><code>    rpush(key, value)：在名称为key的list尾添加一个值为value的元素
-    lpush(key, value)：在名称为key的list头添加一个值为value的 元素
-    llen(key)：返回名称为key的list的长度
-    lrange(key, start, end)：返回名称为key的list中start至end之间的元素（下标从0开始，下同）
-    ltrim(key, start, end)：截取名称为key的list，保留start至end之间的元素
-    lindex(key, index)：返回名称为key的list中index位置的元素
-    lset(key, index, value)：给名称为key的list中index位置的元素赋值为value
-    lrem(key, count, value)：删除count个名称为key的list中值为value的元素。
-    count为0，删除所有值为value的元素，count&gt;0从头至尾删除count个值为value的元素，count&lt;0从尾到头删除|count|个值为value的元素。 
-    lpop(key)：返回并删除名称为key的list中的首元素 rpop(key)：返回并删除名称为key的list中的尾元素 
-    blpop(key1, key2,… key N, timeout)：lpop命令的block版本。
-    即当timeout为0时，若遇到名称为key i的list不存在或该list为空，则命令结束。
-    如果timeout&gt;0，则遇到上述情况时，等待timeout秒，如果问题没有解决，则对keyi+1开始的list执行pop操作。
-    brpop(key1, key2,… key N, timeout)：rpop的block版本。参考上一命令。
-    rpoplpush(srckey, dstkey)：返回并删除名称为srckey的list的尾元素，并将该元素添加到名称为dstkey的list的头部</code></pre>
-<p>##5、对Set操作的命令</p>
-<pre><code>    sadd(key, member)：向名称为key的set中添加元素member
-    srem(key, member) ：删除名称为key的set中的元素member
-    spop(key) ：随机返回并删除名称为key的set中一个元素
-    smove(srckey, dstkey, member) ：将member元素从名称为srckey的集合移到名称为dstkey的集合
-    scard(key) ：返回名称为key的set的基数
-    sismember(key, member) ：测试member是否是名称为key的set的元素
-    sinter(key1, key2,…key N) ：求交集
-    sinterstore(dstkey, key1, key2,…key N) ：求交集并将交集保存到dstkey的集合
-    sunion(key1, key2,…key N) ：求并集
-    sunionstore(dstkey, key1, key2,…key N) ：求并集并将并集保存到dstkey的集合
-    sdiff(key1, key2,…key N) ：求差集
-    sdiffstore(dstkey, key1, key2,…key N) ：求差集并将差集保存到dstkey的集合
-    smembers(key) ：返回名称为key的set的所有元素
-    srandmember(key) ：随机返回名称为key的set的一个元素</code></pre>
-<p>##6、对zset（sorted set）操作的命令</p>
-<pre><code>    zadd(key, score, member)：向名称为key的zset中添加元素member，score用于排序。如果该元素已经存在，则根据score更新该元素的顺序。
-    zrem(key, member) ：删除名称为key的zset中的元素member
-    zincrby(key, increment, member) ：如果在名称为key的zset中已经存在元素member，则该元素的score增加increment；
-    否则向集合中添加该元素，其score的值为increment
-    zrank(key, member) ：返回名称为key的zset（元素已按score从小到大排序）中member元素的rank（即index，从0开始），
-    若没有member元素，返回“nil”
-    zrevrank(key, member) ：返回名称为key的zset（元素已按score从大到小排序）中member元素的rank（即index，从0开始），
-    若没有member元素，返回“nil”
-    zrange(key, start, end)：返回名称为key的zset（元素已按score从小到大排序）中的index从start到end的所有元素
-    zrevrange(key, start, end)：返回名称为key的zset（元素已按score从大到小排序）中的index从start到end的所有元素
-    zrangebyscore(key, min, max)：返回名称为key的zset中score &gt;= min且score &lt;= max的所有元素 
-    zcard(key)：返回名称为key的zset的基数 zscore(key, element)：返回名称为key的zset中元素element的
-    score zremrangebyrank(key, min, max)：删除名称为key的zset中rank &gt;= min且rank &lt;= max的所有元素 
-    zremrangebyscore(key, min, max) ：删除名称为key的zset中score &gt;= min且score &lt;= max的所有元素
-    zunionstore / zinterstore(dstkeyN, key1,…,keyN, WEIGHTS w1,…wN, AGGREGATE SUM|MIN|MAX)：对N个zset求并集和交集，
-    并将最后的集合保存在dstkeyN中。对于集合中每一个元素的score，在进行AGGREGATE运算前，都要乘以对于的WEIGHT参数。
-    如果没有提供WEIGHT，默认为1。默认的AGGREGATE是SUM，即结果集合中元素的score是所有集合对应元素进行SUM运算的值，而MIN和MAX是指，
-    结果集合中元素的score是所有集合对应元素中最小值和最大值。</code></pre>
-<p>##7、对Hash操作的命令</p>
-<pre><code>    hset(key, field, value)：向名称为key的hash中添加元素field&lt;—&gt;value
-    hget(key, field)：返回名称为key的hash中field对应的value
-    hmget(key, field1, …,field N)：返回名称为key的hash中field i对应的value
-    hmset(key, field1, value1,…,field N, value N)：向名称为key的hash中添加元素field i&lt;—&gt;value i
-    hincrby(key, field, integer)：将名称为key的hash中field的value增加integer
-    hexists(key, field)：名称为key的hash中是否存在键为field的域
-    hdel(key, field)：删除名称为key的hash中键为field的域
-    hlen(key)：返回名称为key的hash中元素个数
-    hkeys(key)：返回名称为key的hash中所有键
-    hvals(key)：返回名称为key的hash中所有键对应的value
-    hgetall(key)：返回名称为key的hash中所有的键（field）及其对应的value
-    8、持久化
-
-    save：将数据同步保存到磁盘
-    bgsave：将数据异步保存到磁盘
-    lastsave：返回上次成功将数据保存到磁盘的Unix时戳
-    shundown：将数据同步保存到磁盘，然后关闭服务
-    9、远程服务控制
-
-    info：提供服务器的信息和统计
-    monitor：实时转储收到的请求
-    slaveof：改变复制策略设置
-    config：在运行时配置Redis服务器</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/11/10/redis%E7%B4%A2%E5%BC%95/" data-id="ckfci5hng001kvl2f83xd15vy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
+        
+        
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2015年 🕛
+                </p>
+            </div>
+            
+        
+        <a class="flink" href="/2015/12/27/%E5%B0%86amr,caf%E8%BD%ACmp3/">
+            <div class="list">
+                <div class="postname">
+                    将amr,caf转mp3
+                </div>
+                <div class="posttime">
+                    December 27th
+                </div>
+            </div>
+        </a>
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">下一页 &amp;raquo;</a>
-  </nav>
-
-</section>
         
-          <aside id="sidebar">
-  
+        
+        <a class="flink" href="/2015/12/08/FASTFS/">
+            <div class="list">
+                <div class="postname">
+                    FASTDFS
+                </div>
+                <div class="posttime">
+                    December 8th
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">Java 基本知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/CAP/">CAP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/rpc/">rpc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/">zookeeper</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/">Kafka</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">文件存储</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/">缓存</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/redis/">redis</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/%E5%91%BD%E4%BB%A4/">命令</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E4%B9%A6%E7%B1%8D/">书籍</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/">日常工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/ansible/">ansible</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/mac/">mac</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/python/">python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/JMeter/">JMeter</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E8%BF%90%E5%8A%A8/">运动</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E9%9F%B3%E4%B9%90/">音乐</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/%E7%BB%8F%E5%85%B8%E5%9D%91/">经典坑</a></li></ul></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
+        
+        
+        <a class="flink" href="/2015/12/08/git%E5%B7%A5%E4%BD%9C%E4%B8%8E%E5%AD%A6%E4%B9%A0/">
+            <div class="list">
+                <div class="postname">
+                    git工作与学习
+                </div>
+                <div class="posttime">
+                    December 8th
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protobuf/" rel="tag">Protobuf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/" rel="tag">awk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/" rel="tag">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/core/" rel="tag">core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/" rel="tag">crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-rq/" rel="tag">django-rq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-schedule/" rel="tag">django-schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastcgi/" rel="tag">fastcgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastfs/" rel="tag">fastfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux%E5%91%BD%E4%BB%A4/" rel="tag">linux命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mp3/" rel="tag">mp3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nocomment/" rel="tag">nocomment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl/" rel="tag">openssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pattern/" rel="tag">pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsa/" rel="tag">rsa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/" rel="tag">sed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/share/" rel="tag">share</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" rel="tag">一致性算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F/" rel="tag">人生</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" rel="tag">人生感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" rel="tag">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" rel="tag">代码仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" rel="tag">压力测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" rel="tag">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/" rel="tag">存储</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6/" rel="tag">定时</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="tag">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E6%82%9F/" rel="tag">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" rel="tag">服务治理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" rel="tag">消息对列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%96%91%E6%83%91/" rel="tag">疑惑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" rel="tag">算法加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" rel="tag">音频转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">项目管理工具</a></li></ul>
-    </div>
-  </div>
-
-
-  
+        
+        
+        <a class="flink" href="/2015/11/22/redis%E8%87%B4%E5%91%BD%E9%94%99%E8%AF%AF%E7%9A%84%E5%87%BA%E7%8E%B0/">
+            <div class="list">
+                <div class="postname">
+                    redis致命错误的出现
+                </div>
+                <div class="posttime">
+                    November 22nd
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Protobuf/" style="font-size: 10px;">Protobuf</a> <a href="/tags/angularjs/" style="font-size: 15px;">angularjs</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/awk/" style="font-size: 10px;">awk</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/book/" style="font-size: 18.33px;">book</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/core/" style="font-size: 10px;">core</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-rq/" style="font-size: 10px;">django-rq</a> <a href="/tags/django-schedule/" style="font-size: 10px;">django-schedule</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/fastcgi/" style="font-size: 10px;">fastcgi</a> <a href="/tags/fastfs/" style="font-size: 10px;">fastfs</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/linux%E5%91%BD%E4%BB%A4/" style="font-size: 11.67px;">linux命令</a> <a href="/tags/maven/" style="font-size: 11.67px;">maven</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/music/" style="font-size: 10px;">music</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nocomment/" style="font-size: 11.67px;">nocomment</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/pattern/" style="font-size: 15px;">pattern</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/rsa/" style="font-size: 11.67px;">rsa</a> <a href="/tags/schedule/" style="font-size: 16.67px;">schedule</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/share/" style="font-size: 10px;">share</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" style="font-size: 10px;">一致性算法</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 10px;">人生</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 10px;">人生感悟</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" style="font-size: 10px;">人脸识别</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" style="font-size: 10px;">代码仓库</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">压力测试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 11.67px;">图片处理</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 15px;">多线程</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 10px;">存储</a> <a href="/tags/%E5%AE%9A%E6%97%B6/" style="font-size: 10px;">定时</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 15px;">并发</a> <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">性能测试</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 10px;">感悟</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" style="font-size: 11.67px;">服务治理</a> <a href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" style="font-size: 15px;">消息对列</a> <a href="/tags/%E7%96%91%E6%83%91/" style="font-size: 10px;">疑惑</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 11.67px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">算法加密</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 13.33px;">缓存</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.67px;">运维</a> <a href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">音频转换</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 11.67px;">项目管理工具</a>
-    </div>
-  </div>
-
-  
+        
+        
+        <a class="flink" href="/2015/11/10/redis%E7%B4%A2%E5%BC%95/">
+            <div class="list">
+                <div class="postname">
+                    redis索引
+                </div>
+                <div class="posttime">
+                    November 10th
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
-    </div>
-  </div>
+</div>
 
-
-  
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: 万松 | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/">Alfred Workflow快速打开idea项目</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/15/redis/">redis</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">微服务相关概念.md</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/29/%E6%8E%92%E5%BA%8F/">排序</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/29/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%89%A9%E5%B1%95/">二分法查找及扩展</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 万松<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
     
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="light">
+<input type="hidden" id="valine_appid" value="b13h0PpoiVVieODkmdrjUw2R-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="NMiO8n8rxtwYIaUdndXwbcKH">
+
+<script src="/libs/jquery.min.js"></script>
 
 
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+<script src="/libs/highlight/highlight.pack.js"></script>
 
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
+<script src="/js/js.js"></script>
 
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>

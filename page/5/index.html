@@ -1,1474 +1,290 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta charset="utf-8">
-  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Share
+    </title>
+    <meta name="description" content= 嘿，我是刘训灼～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,万松,Wansong,Aaron >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
 
-  
-  <title>Share</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生活点滴和知识分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Share">
-<meta property="og:url" content="http://www.wansonglife.com/page/5/index.html">
-<meta property="og:site_name" content="Share">
-<meta property="og:description" content="生活点滴和知识分享">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="万松">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Share" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.2.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Share</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wansonglife.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="detail-Django+Mysql+实现周边查询" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/02/Django+Mysql+%E5%AE%9E%E7%8E%B0%E5%91%A8%E8%BE%B9%E6%9F%A5%E8%AF%A2/" class="article-date">
-  <time datetime="2015-09-01T16:00:00.000Z" itemprop="datePublished">2015-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/02/Django+Mysql+%E5%AE%9E%E7%8E%B0%E5%91%A8%E8%BE%B9%E6%9F%A5%E8%AF%A2/">Django,Mysql,空间数据是通过Google地图和高德地图进行采集的</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##环境</p>
-<p>Django,Mysql,空间数据是通过Google地图和高德地图进行采集的</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">$ mysql -V</span><br><span class="line">mysql  Ver <span class="number">14.14</span> Distrib <span class="number">5.6</span><span class="number">.20</span>, <span class="keyword">for</span> osx10<span class="number">.9</span> (x86_64) <span class="keyword">using</span>  EditLine <span class="keyword">wrapper</span></span><br></pre></td></tr></table></figure>
-
-<p>##需求描述</p>
-<p>mysql中存储了一些地理空间点类型的数，要进行周边查询。</p>
-<p>##MySQL空间相关的局限性</p>
-<p><a target="_blank" rel="noopener" href="http://dev.mysql.com/doc/refman/5.6/en/spatial-relation-functions.html">MySQL空间扩展的功能</a>仅支持包络框相关的操作(MySQL称之为最小边框，或简称为 MBR)。也就是说，MySQL符合OGC标准。</p>
-<blockquote>
-<p>目前,MySQL没有实现Contains,Crosses,Disjoint,Intersects,Overlaps,Touches函数，可以通过MBR来实现同样效果操作。</p>
-</blockquote>
-<p>也就是说，在MySQL进行如contains类似的空间查询时，可以通过bbcontains来实现同样效果的操作。</p>
-<p><code>注意：</code></p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">只有MyISAM引擎的MySQL表才真正的支持空间索引<span class="comment">(R-trees)</span>。也就是说，当你要使用MySQL提供的空间扩展时，你要在快速查询空间数据和数据的完整性之间做一个选择 － MyISAM的表不支持事务和外键约束。</span><br></pre></td></tr></table></figure>
-
-
-<p>##数据库配置</p>
-<p>空间表引擎 Engine:InnoDB</p>
-<p>###创建数据库</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">mysql&gt;<span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> project_test@localhost IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;project_test&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>; </span><br><span class="line">mysql&gt;<span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> project_test@&quot;%&quot; IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;project_test&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>; </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>第一句增加了一个 project_test 用户授权通过本地机（localhost)访问，密码“project_test”。</p>
-</li>
-<li><p>第二句则是授与 project_test 用户从任何其它主机发起的访问（通配符％）。 </p>
-</li>
-</ul>
-<p>###配置数据源</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.contrib.gis.db.backends.mysql&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;project_test&#x27;</span>,        # <span class="keyword">Or</span> <span class="type">path</span> <span class="keyword">to</span> <span class="keyword">database</span> file <span class="keyword">if</span> <span class="keyword">using</span> sqlite3.</span><br><span class="line">    <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;project_test&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;project_test&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,           # Empty <span class="keyword">for</span> localhost through <span class="keyword">domain</span> sockets <span class="keyword">or</span> <span class="string">&#x27;127.0.0.1&#x27;</span> <span class="keyword">for</span> localhost through TCP.</span><br><span class="line">    <span class="string">&#x27;PORT&#x27;</span>: <span class="string">&#x27;3306&#x27;</span>,                # <span class="keyword">Set</span> <span class="keyword">to</span> empty string <span class="keyword">for</span> <span class="keyword">default</span>.</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<p>##数据模型的构建</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.gis.db <span class="keyword">import</span> models <span class="keyword">as</span> gismodels</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppPoint</span>(<span class="params">gismodels.Model</span>):</span></span><br><span class="line">    description = gismodels.TextField(verbose_name=_(<span class="string">u&quot;描述信息&quot;</span>), max_length=<span class="number">500</span>,</span><br><span class="line">                                      blank=<span class="literal">True</span>, null=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    point = gismodels.PointField(spatial_index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    objects = gismodels.GeoManager()</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-<h2 id="Django-Geographic-framework-1-7"><a href="#Django-Geographic-framework-1-7" class="headerlink" title="Django Geographic framework 1.7"></a><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/">Django Geographic framework 1.7</a></h2><p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/ref/contrib/gis/">GeoDjango</a>打算做世界级的地理学Web框架。它的目标是尽可能方便是的利用强大空间数据构建GIS Web 应用。</p>
-<p>###GeoQuerySet API</p>
-<p><code>class GeoQuerySet([model=None])</code></p>
-<p>####空间查询</p>
-<p>正如使用<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/ref/models/querysets/#queryset-api">QuerySet API</a>时一样，在过滤器链(<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/topics/db/queries/#chaining-filters">chaining filters</a>)上加上GeoQuerySet进行筛选。除了通常的字段(<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/ref/models/querysets/#field-lookups">Field lookups</a>)查询，它还提供了空间字段<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/ref/contrib/gis/model-api/#django.contrib.gis.db.models.GeometryField">GeometryField</a>的查询。</p>
-<p>可以在<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/ref/contrib/gis/db-api/#spatial-lookups-intro">这里</a>查看空间查询介绍</p>
-<p>下面Django对不同数据库 空间查询操作支持统计表：</p>
-<pre><code>    Lookup Type            PostGIS    Oracle    MySQL [7]    SpatiaLite
-
-    bbcontains            X                X             X
-    bboverlaps            X                 X             X
-    contained            X                 X             X
-    contains            X         X        X             X
-    contains_properly    X               
-    coveredby            X         X          
-    covers                X         X          
-    crosses                X                               X
-    disjoint            X         X        X             X
-    distance_gt            X         X                      X
-    distance_gte        X         X                      X
-    distance_lt            X         X                      X
-    distance_lte           X         X                      X
-    dwithin                X         X          
-    equals                X         X        X             X
-    exact                X         X        X             X
-    intersects            X         X        X             X
-    overlaps            X         X        X             X
-    relate                X         X                     X
-    same_as                X         X        X             X
-    touches                X         X        X             X
-    within                X         X        X             X
-    left                X               
-    right                X               
-    overlaps_left       X               
-    overlaps_right      X               
-    overlaps_above      X               
-    overlaps_below      X               
-    strictly_above      X               
-    strictly_below      X               </code></pre>
-<p>####我这里只关注一下对mysql的空间操作支持</p>
-<blockquote>
-<p>按我们的需要我们选用 <code>within</code></p>
-</blockquote>
-<ol>
-<li><p>bbcontains</p>
-<p> 支持：<code>PostGIS</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-<p> 查询数据库中空间数据的bbox包含在指定的空间bbox内的数据。</p>
-<pre><code> 数据库         操作  
-
- PostGIS       poly ~ geom
- MySQL         MBRContains(poly,geom)
- SpatiaLite    MbrContains(poly,geom)</code></pre>
-</li>
-</ol>
-<ol start="2">
-<li><p>bboverlaps</p>
-<p> 支持：<code>PostGIS</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-<p> 查询数据库中空间数据的bbox与指定的空间bbox相交的数据。</p>
-<pre><code> 数据库         操作  
-
- PostGIS       poly &amp;&amp; geom
- MySQL         MBROverlops(poly,geom)
- SpatiaLite    MbrOverlops(poly,geom)</code></pre>
-</li>
-<li><p>contained</p>
-<p> 支持：<code>PostGIS</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-<p> 查询数据库中空间数据的bbox完全包含指定的空间bbox的数据。</p>
-<pre><code> 数据库         操作  
-
- PostGIS       poly @ geom
- MySQL         MBRWithin(poly,geom)
- SpatiaLite    MbrWithin(poly,geom)</code></pre>
-</li>
-<li><p>contains</p>
-<p> 支持：<code>PostGIS</code>,<code>Oracle</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-<p> Example:</p>
-<pre><code> Zipcode.objects.filter(poly__contains=geom)</code></pre>
-<p> 查询数据库中空间数据包含指定的空间图形的数据。</p>
-<pre><code> 数据库         操作  
-
- PostGIS       ST_Contains(poly, geom)
- Oracle        SDO_CONTAINS(poly, geom)
- MySQL         MBRContains(poly, geom)
- SpatiaLite    Contains(poly, geom)</code></pre>
-</li>
-</ol>
-<ol start="5">
-<li><p>disjoint</p>
-<p> 支持：<code>PostGIS</code>,<code>Oracle</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-<p> Example:</p>
-<pre><code> Zipcode.objects.filter(poly__disjoint=geom)</code></pre>
-<p> 查询数据库中与指定的空间图形相离的空间数据。</p>
-<pre><code> 数据库         操作  
-
- PostGIS       ST_Disjoint(poly, geom)
- Oracle        SDO_GEOM.RELATE(poly, geom)
- MySQL         MBRDisjoint(poly, geom)
- SpatiaLite    Disjoint(poly, geom)</code></pre>
-</li>
-<li><p>equals</p>
-<p> 支持：<code>PostGIS</code>,<code>Oracle</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-</li>
-<li><p>exact，same_as</p>
-<p> 支持：<code>PostGIS</code>,<code>Oracle</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-</li>
-<li><p>intersects</p>
-<p> 支持：<code>PostGIS</code>,<code>Oracle</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-<p> 查询数据库中与指定的空间图形相交的空间数据。</p>
-<p> Example:</p>
-<pre><code>     Zipcode.objects.filter(poly__intersects=geom)</code></pre>
-</li>
-</ol>
-<pre><code>        数据库         操作  
-
-        PostGIS       ST_Intersects(poly, geom)
-        Oracle        SDO_OVERLAPBDYINTERSECT(poly, geom)
-        MySQL         MBRIntersects(poly, geom)
-        SpatiaLite    Intersects(poly, geom)</code></pre>
-<ol start="9">
-<li><p>overlaps</p>
-<p> 支持：<code>PostGIS</code>,<code>Oracle</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-</li>
-</ol>
-<ol start="10">
-<li><p>touches</p>
-<p>支持：<code>PostGIS</code>,<code>Oracle</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-<p>Example:</p>
-<pre><code>    Zipcode.objects.filter(poly__touches=geom)</code></pre>
-<p>查询与指定的空间几何图形相接的数据。</p>
-<pre><code>    数据库         操作  
-
-    PostGIS       ST_Touches(poly, geom)
-    Oracle        SDO_TOUCH(poly, geom)
-    MySQL         MBRTouches(poly, geom)
-    SpatiaLite    Touches(poly, geom)</code></pre>
-</li>
-<li><p>within</p>
-<p>支持：<code>PostGIS</code>,<code>Oracle</code>,<code>MySQL</code>,<code>SpatiaLite</code></p>
-<p>Example:</p>
-<pre><code>    Zipcode.objects.filter(poly__within=geom)</code></pre>
-<p>查询包含在指定的空间几何图形中的数据。</p>
-<pre><code>    数据库         操作  
-
-    PostGIS       ST_Within(poly, geom)
-    Oracle        SDO_INSIDE(poly, geom)
-    MySQL         MBRWithin(poly, geom)
-    SpatiaLite    Within(poly, geom)</code></pre>
-</li>
-</ol>
-<blockquote>
-<p>现在知道了要用 within 来查询数据，另一个问题来了，如何生成半径大小为R中心坐标为(x,y)的geom呢。</p>
-</blockquote>
-<p>####创建空间几何图形</p>
-<p>可以通过多种方式创建<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/ref/contrib/gis/geos/#django.contrib.gis.geos.GEOSGeometry">GeosGeometry</a>。第一种方法，就是通过一些参数直接实例化。</p>
-<ul>
-<li>下面是分别通过WKT,HEX,WKB和GeoJSON方式直接创建 Geometry 的方法：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">30</span>]: pnt = GEOSGeometry(<span class="string">&#x27;POINT(5 23)&#x27;</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">31</span>]: pnt = GEOSGeometry(<span class="string">&#x27;010100000000000000000014400000000000003740&#x27;</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">32</span>]: pnt = GEOSGeometry(buffer(<span class="string">&#x27;\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x14@\x00\x00\x00\x00\x00\x007@&#x27;</span>))</span><br><span class="line"></span><br><span class="line">In [<span class="number">33</span>]: pnt = GEOSGeometry(<span class="string">&#x27;&#123; &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ 5.000000, 23.000000 ] &#125;&#x27;</span>) <span class="comment"># GeoJSON   </span></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>另一种方式就是通过特定类型的空间几何对象的构造器来进行创建该类型的Geometry实例</li>
-</ul>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">In [<span class="number">34</span>]: <span class="keyword">from</span> django.contrib.gis.geos <span class="keyword">import</span> Point</span><br><span class="line"></span><br><span class="line">In [<span class="number">35</span>]: pnt = Point(<span class="number">5</span>,<span class="number">23</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">36</span>]: pnt</span><br><span class="line">Out[<span class="number">36</span>]: &lt;Point object at <span class="number">0x10735bb50</span>&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>最后一种方法就是通过 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/ref/contrib/gis/geos/#django.contrib.gis.geos.fromstr">fromstr()</a>和 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.7/ref/contrib/gis/geos/#django.contrib.gis.geos.fromfile">fromfile</a> 工厂方法来创建Geometry实例。它们分别接收字符串或文件</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">37</span>]: <span class="keyword">from</span> django.contrib.gis.geos <span class="keyword">import</span> fromstr,fromfile</span><br><span class="line"></span><br><span class="line">In [<span class="number">38</span>]: pnt = fromstr(<span class="string">&#x27;POINT(5 23)&#x27;</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">39</span>]: pnt = fromfile(<span class="string">&#x27;/path/to/pnt.wkt&#x27;</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">34</span>]: pnt = fromfile(open(<span class="string">&#x27;/path/to/pnt.wkt&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<p>####实现查询周边几何点的功能</p>
-<blockquote>
-<p>通过上面的学习，在Django中实现mysql数据的周边查询只能通过模糊的查询，<br>我们这里通过构建一个包络框进行模糊查询：</p>
-</blockquote>
-<ul>
-<li>构建一个包络框</li>
-</ul>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.gis.geos <span class="keyword">import</span> (<span class="type">Polygon</span>,<span class="type">Point</span>)</span><br><span class="line"></span><br><span class="line"><span class="type">point</span> = <span class="type">Point</span>(<span class="number">130</span>,<span class="number">39</span>)</span><br><span class="line"></span><br><span class="line">buffer=<span class="type">point</span>.buffer(degree)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>进行within查询</li>
-</ul>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="module-access"><span class="module"><span class="identifier">AppPoint</span>.</span></span>objects.filter(point__within=buffer)</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>问题</li>
-</ul>
-<p>这里给的半径通常是米为km，但是这个构建buffer的方法需要的参数是一个度。</p>
-<pre><code>degree=l*180/(math.pi*6371)</code></pre>
-<p>##测试方法和数据</p>
-<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="function">def <span class="title">get_point</span><span class="params">(<span class="built_in">point</span>,r)</span>:</span></span><br><span class="line"><span class="function">    EARTH_R</span>=<span class="number">6378.137</span></span><br><span class="line">    <span class="built_in">buffer</span> = <span class="built_in">point</span>.<span class="built_in">buffer</span>(r*<span class="number">180</span>/(math.pi*EARTH_R))</span><br><span class="line">    aps=AppPoint.objects.filter(point__within=<span class="built_in">buffer</span>)</span><br><span class="line">    <span class="keyword">for</span> ap in aps:</span><br><span class="line">        <span class="built_in">print</span> ap.<span class="built_in">point</span>.json,(math.pi*EARTH_R*ap.<span class="built_in">point</span>.distance(<span class="built_in">point</span>)/<span class="number">180</span>)</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-<p>其中点与点间的距离方法distance在django中解释为：</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">Returns the distance between the closest points on this Geometry</span><br><span class="line"><span class="keyword">and</span> the other. Units will be <span class="keyword">in</span> those of the coordinate<span class="built_in"> system </span>of</span><br><span class="line">the Geometry.</span><br></pre></td></tr></table></figure>
-
-<p>下面是测试数据：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">b</span> <span class="string">=</span> [[<span class="number">116.27497</span>,<span class="number">39.95708</span>,<span class="number">2573</span>],</span><br><span class="line">[<span class="number">116.48103</span>,<span class="number">39.96657</span>,<span class="number">4292</span>],</span><br><span class="line"><span class="string">...</span></span><br><span class="line">[<span class="number">116.13621</span>,<span class="number">39.92686</span>,<span class="number">528</span>],</span><br><span class="line">[<span class="number">116.39494</span>,<span class="number">39.87986</span>,<span class="number">138</span>],</span><br><span class="line">[<span class="number">116.389</span>,<span class="number">39.8799</span>,<span class="number">2151</span>],</span><br><span class="line">[<span class="number">116.4858</span>,<span class="number">39.9361</span>,<span class="number">4709</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">创建数据：</span></span><br><span class="line"><span class="attr">for b in a:</span>                                   </span><br><span class="line">    <span class="string">AppPoint.objects.create(description=b.count,point=Point(b[0],b[1]))</span></span><br><span class="line">    </span><br><span class="line"><span class="string">输出结果：</span></span><br><span class="line"> <span class="string">get_point(Point(116.4,39.8),8)</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.4214</span>, <span class="number">39.85925</span> ] &#125; <span class="number">7.01270604176</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.33663</span>, <span class="number">39.79076</span> ] &#125; <span class="number">7.1289114023</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.43555</span>, <span class="number">39.80307</span> ] &#125; <span class="number">3.97213681829</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.42803</span>, <span class="number">39.86696</span> ] &#125; <span class="number">8.08069287815</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.41776</span>, <span class="number">39.8526</span> ] &#125; <span class="number">6.18016458489</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.41467</span>, <span class="number">39.86627</span> ] &#125; <span class="number">7.5557334976</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.37254</span>, <span class="number">39.82765</span> ] &#125; <span class="number">4.33799658047</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.36128</span>, <span class="number">39.85648</span> ] &#125; <span class="number">7.62292984489</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.41574</span>, <span class="number">39.80051</span> ] &#125; <span class="number">1.75308830872</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.40075</span>, <span class="number">39.81592</span> ] &#125; <span class="number">1.77417182449</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.45339</span>, <span class="number">39.83341</span> ] &#125; <span class="number">7.01111345466</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.39799</span>, <span class="number">39.84366</span> ] &#125; <span class="number">4.86535674431</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.38116</span>, <span class="number">39.85952</span> ] &#125; <span class="number">6.94973919946</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.3385</span>, <span class="number">39.82914</span> ] &#125; <span class="number">7.57577153659</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.3777</span>, <span class="number">39.86207</span> ] &#125; <span class="number">7.34200348969</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.39454</span>, <span class="number">39.86518</span> ] &#125; <span class="number">7.28121719546</span></span><br><span class="line">&#123; <span class="attr">&quot;type&quot;:</span> <span class="string">&quot;Point&quot;</span>, <span class="attr">&quot;coordinates&quot;:</span> [ <span class="number">116.41095</span>, <span class="number">39.84127</span> ] &#125; <span class="number">4.75311465912</span></span><br></pre></td></tr></table></figure>
-
-<p>##总结</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">from</span> django.contrib.gis.geos <span class="keyword">import</span> (<span class="type">Polygon</span>,<span class="type">Point</span>)</span><br><span class="line">    <span class="keyword">import</span> math</span><br><span class="line">    <span class="type">point</span> = <span class="type">Point</span>(<span class="number">130</span>,<span class="number">39</span>)</span><br><span class="line">    EARTH_R=<span class="number">6378.137</span></span><br><span class="line">    buffer = <span class="type">point</span>.buffer(r*<span class="number">180</span>/(math.pi*EARTH_R))</span><br><span class="line">    aps=AppPoint.objects.<span class="keyword">filter</span>(point__within=buffer)</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">##新的问题</span><br><span class="line">###上面这种方法得到的是没有排序的结果，目前要进行由近到远进行排序，通过</span><br><span class="line">`SQRT(POW( ABS( X(<span class="keyword">Location</span>) – X(@center)), <span class="number">2</span>) + POW(ABS(Y(<span class="keyword">Location</span>) – Y(@center)), <span class="number">2</span>))`得到一个大致的距离因子，然后根据这个进行排序。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>queryset.extra(select={‘distance_factor’: “SQRT(POWER(ABS(X(point) - “+str(x)+”),2) + POWER(ABS(Y(point) - “+str(y)+”),2))”}).order_by(‘distance_factor’)</p>
-<figure class="highlight clean"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">###在线上遇到了下面的问题：</span><br></pre></td></tr></table></figure>
-<p>rps[0].point.distance(rps[1].point)<br>python: GeometryComponentFilter.cpp:35: virtual void geos::geom::GeometryComponentFilter::filter_ro(const geos::geom::Geometry*): Assertion `0’ failed.</p>
-<figure class="highlight less"><table><tr><td class="code"><pre><span class="line">线上直接使用<span class="selector-tag">distance</span>时报错。</span><br><span class="line"></span><br><span class="line">然后比较了一下<span class="selector-tag">python</span>的<span class="selector-tag">distance</span>得到的值，其实是和`<span class="selector-tag">SQRT</span>(POW( ABS( X(Location) – X(<span class="variable">@center</span>)), <span class="number">2</span>) + POW(ABS(Y(Location) – Y(<span class="variable">@center</span>)), <span class="number">2</span>))`得到的值是一样的。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>(‘…..python’, 0.0071949078163964595)<br>(‘self’, 0.0071949078163964595)</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">故处些最终到终心点的距离使用了 <span class="code">`distance_factor`</span> 来代替。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">##注意</span></span><br><span class="line"></span><br><span class="line"><span class="section">###[<span class="string">经纬度坐标系采用GCJ-2标准,对于Google,高德地图和腾讯地图可以直接使用</span>](<span class="link">http://wangsheng2008love.blog.163.com/blog/static/78201689201461674727642/</span>)</span></span><br><span class="line"><span class="section">###地球坐标系 (WGS-84) 到火星坐标系 (GCJ-02) 的转换算法</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">####下面是通过html5获取坐标，然后转化后的当前我的位置截图</span></span><br><span class="line">![<span class="string">loading</span>](<span class="link">/images/project/xy_trans_position.png =x400</span>)</span><br><span class="line"><span class="section">####腾讯高德对其转化都有现成的实现</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>    var a = 6378245.0
-    var ee = 0.00669342162296594323
-
-    function out_of_china(lat,lon)&#123;
-        if (lon &lt; 72.004 || lon &gt; 137.8347)
-            return true
-        if (lat &lt; 0.8293 || lat &gt; 55.8271)
-            return true
-    &#125;
-    function transformlat(x, y) &#123;
-
-        var result = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * Math.sqrt(Math.abs(x))
-        result += (20.0 * Math.sin(6.0 * Math.PI * x) + 20.0 * Math.sin(2.0 * Math.PI * x)) * 2.0 / 3.0
-        result += (20.0 * Math.sin(Math.PI * y) + 40.0 * Math.sin(Math.PI / 3.0 * y)) * 2.0 / 3.0
-        result += (160.0 * Math.sin(Math.PI / 12.0 * y) + 320.0 * Math.sin(Math.PI / 30.0 * y)) * 2.0 / 3.0
-        return result
-    &#125;
-    function transformlon(x, y) &#123;
-        var result = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * Math.sqrt(Math.abs(x))
-        result += (20.0 * Math.sin(6.0 * Math.PI * x) + 20.0 * Math.sin(2.0 * Math.PI * x)) * 2.0 / 3.0
-        result += (20.0 * Math.sin(Math.PI * x) + 40.0 * Math.sin(Math.PI / 3.0 * x)) * 2.0 / 3.0
-        result += (150.0 * Math.sin(Math.PI / 12.0 * x) + 300.0 * Math.sin(Math.PI / 30.0 * x)) * 2.0 / 3.0
-        return result
-    &#125;
-
-    function wgs2gcj(wgslat, wgslon) &#123;
-        if (out_of_china(wgslat, wgslon)) &#123;
-            return [wgslat, wgslon]
-        &#125;
-        var lat = transformlat(wgslon - 105.0, wgslat - 35.0)
-        var lon = transformlon(wgslon - 105.0, wgslat - 35.0)
-        var rad_lat = Math.PI / 180.0 * wgslat
-       var  magic = Math.sin(rad_lat)
-        magic = 1 - ee * magic * magic
-        var sqrt_magic = Math.sqrt(magic)
-        lat = (180.0 * lat) / (Math.PI * (a * (1 - ee)) / (magic * sqrt_magic))
-        lon = (180.0 * lon) / (Math.PI * a * Math.cos(rad_lat) / sqrt_magic)
-        var chnlat = wgslat + lat
-        var chnlon = wgslon + lon
-        return [chnlat, chnlon]
-    &#125;</code></pre>
-<pre><code>
-##参考
-&gt;0. [JAVSCRIPT Math](http://www.w3school.com.cn/jsref/jsref_obj_math.asp)
-
-&gt;1. [MySQL空间数据库–查询点到多点间的最短路径](http://www.javabloger.com/article/mysql-spatial-database.html)
-
-&gt;2. [W3 Geolocation API Specification](http://www.w3.org/TR/geolocation-API/#position_interface)
-
-&gt;3. [关于百度map和高德map，关于map坐标系](http://wangsheng2008love.blog.163.com/blog/static/78201689201461674727642/)
-
-&gt;4. [iOS 火星坐标相关整理及解决方案汇总](http://it.taocms.org/04/507.htm)
-
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/09/02/Django+Mysql+%E5%AE%9E%E7%8E%B0%E5%91%A8%E8%BE%B9%E6%9F%A5%E8%AF%A2/" data-id="ckfci5hq500awvl2f74li7t6v" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openssl/" rel="tag">openssl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rsa/" rel="tag">rsa</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-ionic 第三章 Trendicity 项目实例" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/31/ionic%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20Trendicity%20%E9%A1%B9%E7%9B%AE%E5%AE%9E%E4%BE%8B/" class="article-date">
-  <time datetime="2015-08-30T16:00:00.000Z" itemprop="datePublished">2015-08-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/31/ionic%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20Trendicity%20%E9%A1%B9%E7%9B%AE%E5%AE%9E%E4%BE%8B/">第三章 ionic 实例 Trendicity</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>现在在你的工具箱中有很多工具，让我们来谈谈开发一个真正的手机应用。Instagram是一个非常受欢迎的照片分享应用。使这些照片更加有趣并且展示一些Ionic功能，我们将会涉及到一个我们开发应用，它叫 Trendicity。这个应用以多种方式获取和展示Instagram的照片。</p>
-<p>一种方式就是根据照片的位置在地图上进行展示。另一种方式就是将照片展示在可以滑动的卡片上，并且用户可以标示出喜欢的照片。最后一种方式，我们以列表的形式展示照片和更多有关照片信息。</p>
-<p>这个完整的<a target="_blank" rel="noopener" href="https://github.com/trendicity/trendicity">Trendicity</a>应用可以在Github上找到。你可以下载它并在你的浏览器或者设备或仿真器上运行。</p>
-<p>Trendicity应用是作为一个side menu 应用建成的，可是，它也很好的结合了tabs方式。我们将会从几方面去讨论这个应用。Side Menu和用户的操作选项，搜索功能，和加载服务的使用和（地图示图，卡片视图和列表视图）tabs。</p>
-<p>我们通过构建这个应用来深入了解代码。</p>
-<p>##Side menu</p>
-<p>侧边菜单由以下菜单项构成：</p>
-<ul>
-<li>HOME</li>
-<li>Favorites</li>
-<li>About</li>
-<li>Login/Logout</li>
-</ul>
-<p>下面是Trendicity侧边菜单的截图。关于怎么样实现侧边菜单和路由时一直带着它的细节，请看第四章：实现侧边菜单和配置路由。</p>
-<p><img src="/images/ionic/side_menu.png" alt="侧边菜单"></p>
-<p>##Home</p>
-<p>HOME菜单选项点击时会调用HomtCtrl和展示地图Tab。地图上将会展示附近的一些图片。</p>
-<p><img src="/images/ionic/photo_on_map.png" alt="侧边菜单"></p>
-<p>##Favorites</p>
-<p>大体上，Trendicity应用的收藏功的实现有三部分组成：<code>FavoritesService</code>,<code>FavoritesCtrl</code>和<code>favorites.html</code>模版。</p>
-<p>收藏功能有两种类型的照片会进行收存放：用户生成的和自己收藏的。前者是通过add-favorite模态窗口添加的，后者是通过地址位置直接关联到Instagram相片的。</p>
-<p>这一部分，我们将会实际操作创建和删除收藏，看一下收藏功能是如何实现及<code>FavoritesCtrl</code>和<code>FavoritesServices</code>之间是如何交互的。</p>
-<p>###收藏列表</p>
-<p>收藏数据在一个列表中展现。当用户进入这个视图，会触发<code>$ionicView.enter</code>事件，这个视图中的数据将自动刷新：</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$scope</span>.<span class="symbol">$o</span>n(<span class="string">&#x27;$ionicView.enter&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">// Update favorites</span></span><br><span class="line">   <span class="symbol">$scope</span>.favorites = FavoritesService.getFavorites();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>列表中的每一条收藏条目点击时都会在此相片的地理位置为中心定位到地图上。下面是收藏视图中展示收藏数据的代码：</p>
-<figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">ion-list</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">ion-item</span> <span class="attr">class</span>=<span class="string">&quot;item-icon-right&quot;</span></span></span></span><br><span class="line"><span class="xml">    ng-repeat=&quot;favorite in favorites track by favorite.id&quot; ui-sref=&quot;app.home.map(</span><span class="template-variable">&#123; latitude: favorite.lat, longitude: favorite.lng &#125;</span><span class="xml">)&quot;&gt;</span></span><br><span class="line"><span class="xml">    \</span><span class="template-variable">&#123;\&#123; favorite.city \&#125;</span><span class="xml">\&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;icon ion-ios-arrow-forward icon-accessory&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">ion-option-button</span> <span class="attr">class</span>=<span class="string">&quot;button-assertive&quot;</span> <span class="attr">ng-click</span>=<span class="string">&quot;deleteFavorite(favorite)&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          Remove</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">ion-option-button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">ion-item</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">ion-list</span>&gt;</span>  </span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/ionic/favorites_list.png" alt="收藏列表"></p>
-<p>添加一些友好的提示信息，当没有收藏信息要展示时，做如下操作：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Display message when no favorites exist --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;vertical-center-container&quot;</span> <span class="attr">ng-show</span>=<span class="string">&quot;!favorites.length&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;vertical-center text-center&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;icon ion-heart-broken assertive&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Looks like you haven&#x27;t favorited anything yet...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/ionic/no_favorited.png" alt="收藏列表"></p>
-<p>###添加收藏</p>
-<p>为了保持代码的可维护性，我们决定将开发添加收藏功能的的代码进行解藕合。因此，我们将它拆分成了 FavoritesCtrl,FavoritesService,add-favorite.html模版，和add-favorite-form指令，让它们组合到一起完成这个功能。</p>
-<p>添加收藏的动作，从点击右上角的’+’号打开一个添加收藏的模态窗口。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-nav-buttons</span> <span class="attr">side</span>=<span class="string">&quot;right&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;button button-icon ion-ios-plus-empty&quot;</span> <span class="attr">ng-click</span>=<span class="string">&quot;showModalAddFavorite()&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-nav-buttons</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>点击这个按钮会触发FavoriteCtrl的showModalAddFavorite()方法，它会打开添加收藏的模态窗口。</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$scope</span>.showModalAddFavorite = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="symbol">$scope</span>.modalAddFavorite.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>模态窗口中的内容都是有add-favorite-form指令负责生成。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">add-favorite-form</span> <span class="attr">on-submit</span>=<span class="string">&quot;addFavorite(favorite)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">add-favorite-form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-content</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>![添加收藏](/images/ionic/add_favorite.png =300x)</p>
-<p>addFavoriteForm指令会在其内部处理onSubmit。当这个表单填写的没有问题提交时，会调用addFavoriteForm中的submit方法。也就是说，一旦表单没有问题，指令会调用submit方法，通过调用他的on-submit属性。</p>
-<p>现在，指今如何知道去哪里找到addFavorite(favorite)方法呢？<br>当我们初始化模态时，会将FavoriteCtrl的作用域一并传入。因此，这个模态的作用域是继承自它的父作用域（即收藏视图的作用域）；</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$io</span>nicModal.fromTemplateUrl(<span class="string">&#x27;templates/modals/add-favorite.html&#x27;</span>, &#123;</span><br><span class="line">   scope: <span class="symbol">$scope</span></span><br><span class="line"> &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">modal</span>) </span>&#123;</span><br><span class="line">   <span class="symbol">$scope</span>.modalAddFavorite = modal;</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这样，addFavorite()方法已经与控制器的作用域相关联：</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Add a new favorite using the service</span></span><br><span class="line"><span class="symbol">$scope</span>.addFavorite = <span class="function"><span class="keyword">function</span>(<span class="params">favorite</span>) </span>&#123;</span><br><span class="line">  FavoritesService.add(favorite).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="symbol">$scope</span>.favorites = FavoritesService.getFavorites();</span><br><span class="line">    <span class="symbol">$scope</span>.hideModalAddFavorite();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>当调用FavoritesService’s add()方法后，将会更新收藏列表并具隐藏add-favorite模态。</p>
-<p>###添加收藏表单指令</p>
-<p>addFavoriteForm指令使用templates/directives/add-favorite-form.html作为它的模版。这个视图包含了表单的基础验证：</p>
-<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line">&lt;form name=<span class="string">&quot;formAddFavorite&quot;</span> no-validate&gt;</span><br><span class="line">  &lt;label <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;item item-input item-stacked-label&quot;</span> ng-<span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;&#123; &#x27;item-error&#x27;: formAddFavorite.$attempt &amp;&amp; formAddFavorite.city.$invalid, &#x27;item-valid&#x27;: formAddFavorite.city.$valid &#125;&quot;</span>&gt;</span><br><span class="line">    &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;input-label&quot;</span>&gt;<span class="type">City</span>&lt;/span&gt;</span><br><span class="line">    &lt;input <span class="class"><span class="keyword">type</span></span>=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;city&quot;</span> ng-model=<span class="string">&quot;favorite.city&quot;</span> placeholder=<span class="string">&quot;Dallas&quot;</span> required=<span class="string">&quot;required&quot;</span>&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;label <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;item item-input item-stacked-label&quot;</span> ng-<span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;&#123; &#x27;item-error&#x27;: formAddFavorite.$attempt &amp;&amp; formAddFavorite.region.$invalid, &#x27;item-valid&#x27;: formAddFavorite.region.$valid &#125;&quot;</span>&gt;</span><br><span class="line">    &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;input-label&quot;</span>&gt;<span class="type">State</span> or <span class="type">Country</span>&lt;/span&gt;</span><br><span class="line">    &lt;input <span class="class"><span class="keyword">type</span></span>=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;region&quot;</span> ng-model=<span class="string">&quot;favorite.region&quot;</span> placeholder=<span class="string">&quot;TX&quot;</span> required=<span class="string">&quot;required&quot;</span>&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;button button-full button-positive&quot;</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">&quot;button&quot;</span> ng-click=<span class="string">&quot;submit()&quot;</span>&gt;<span class="type">Add</span>&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>“Add”按钮会调用命令的submit()方法，会添加一个$attempt字段到表单中，标示用户已经最近已经提交了一次这个表单。这个字段被用来高亮不合法和没有输入的输入选项。</p>
-<p><img src="/images/ionic/invalid_form.png" alt="有问题的表单"></p>
-<p>最后，当这个表单验证通过后，指令会通过模态中的一个属性调用onSubmit()方法：</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$scope</span>.submit = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="symbol">$scope</span>.formAddFavorite.<span class="symbol">$attempt</span> = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (<span class="symbol">$scope</span>.formAddFavorite.<span class="symbol">$valid</span>) &#123;</span><br><span class="line">         <span class="symbol">$scope</span>.onSubmit(&#123; <span class="attr">favorite</span>: <span class="symbol">$scope</span>.favorite &#125;);</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>![合法的表单](/images/ionic/valid_form.png =300x)</p>
-<p>而且，在这个模态关闭时，其中添加收藏的表单会自动清空。它是通过监听modal.hidden事件来进行实现的：</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$scope</span>.<span class="symbol">$o</span>n(<span class="string">&#x27;modal.hidden&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="comment">// Clear form</span></span><br><span class="line">       <span class="symbol">$scope</span>.favorite = <span class="literal">null</span>;</span><br><span class="line">       <span class="symbol">$scope</span>.formAddFavorite.<span class="symbol">$attempt</span> = <span class="literal">false</span>;</span><br><span class="line">       <span class="symbol">$scope</span>.formAddFavorite.<span class="symbol">$set</span>Pristine(<span class="literal">true</span>);</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>###删除收藏</p>
-<p>当你滑动收藏条目时就可以进行删除收藏操作。</p>
-<p>![删除收藏](/images/ionic/remove_operate.png =300x)</p>
-<p>点击删除按钮，将会调用FavoritesCtrl的deleteFavorite()方法删除当前收藏的引用。在控制器这边，这个方法会调用FavoritesService的delete方法，将收藏列表中的当前操作的收藏项删除。</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Delete a favorite using the service and update scope var</span></span><br><span class="line"><span class="symbol">$scope</span>.deleteFavorite = <span class="function"><span class="keyword">function</span> (<span class="params">favorite</span>) </span>&#123;</span><br><span class="line">  <span class="symbol">$scope</span>.favorites = FavoritesService.delete(favorite);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>###收藏服务</p>
-<p>FavoritesService是用标准方式来处理Trendicity中与收藏相关的服务。它将收藏相关逻辑与Trendicity其它功能隔离开。用这种方式的另一个好处就是FavoritesService服务可以在任何一个 Controller中使用。像我们在列表视图中实现的那样,这个服务被用来收藏自己喜欢的地理位置。</p>
-<p>这个服务提供了三个方法：add(),getFavorites()和delete()</p>
-<p>正如它们的名字叫的那样，getFavorites()会直接返回当前本地的所有收藏。</p>
-<p>添加收藏时的处理方式根据收藏的类型而定。对于人们经常收藏的城市或区域，这个类型的收藏会用GeolocationService的addressToPosition()方法获取地理坐标。这个实现我们在稍后章节中会进行讨论。当获取到了地址经纬度，这个收藏会统一格式化一种结构存储到本地的收藏数组中。</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">var<span class="built_in"> address </span>= favorite.city + <span class="string">&#x27;, &#x27;</span> + favorite.region;</span><br><span class="line">    return GeolocationService.addressToPosition(address).then(function (data) &#123;</span><br><span class="line">      var newLocation = &#123;</span><br><span class="line">        id: favoritesId,</span><br><span class="line">        city: address,</span><br><span class="line">        lat: data.latitude,</span><br><span class="line">        lng: data.longitude</span><br><span class="line">      &#125;;</span><br><span class="line">      favorites.push(newLocation);</span><br><span class="line">      localStorageService.<span class="builtin-name">set</span>(<span class="string">&#x27;Favorites&#x27;</span>, favorites);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>针对具体的收藏，收藏会在列表视图的控制器中进行合适的格式化处理，和用户添加的收藏的处理过程相信，存放到本地收藏数据中。</p>
-<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">new</span><span class="type">Location</span> = &#123;</span><br><span class="line">   id: <span class="type">favoritesId</span>,</span><br><span class="line">   city: <span class="type">address</span>,</span><br><span class="line">   lat: <span class="type">data</span>.latitude,</span><br><span class="line">   lng: <span class="type">data</span>.longitude</span><br><span class="line">&#125;;</span><br><span class="line">favorites.push(<span class="keyword">new</span><span class="type">Location</span>);</span><br><span class="line">localStorageService.<span class="keyword">set</span>(<span class="string">&#x27;Favorites&#x27;</span>, favorites);</span><br></pre></td></tr></table></figure>
-
-<p>为了确保准确定位，这个服务为第一个收藏生成了一个对应的ID。每一个id都是根据当前系统的时间生成的：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.add = <span class="function"><span class="keyword">function</span> (<span class="params">favorite</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">var</span> favorites = <span class="built_in">this</span>.getFavorites() || [];</span><br><span class="line">   <span class="keyword">var</span> favoritesId =  <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>删除收藏的工作通过使用lodash的remove()方法实现。删除了收藏后，更新本地收藏并将最新的收藏列表返回。</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">// DELETE</span></span><br><span class="line"><span class="keyword">this</span>.delete = function (favorite) &#123;</span><br><span class="line">  <span class="keyword">var</span> favorites = <span class="keyword">this</span>.getFavorites();</span><br><span class="line">  _.remove(favorites, favorite); <span class="comment">// jshint ignore:line</span></span><br><span class="line">  localStorageService.<span class="keyword">set</span>(<span class="string">&#x27;Favorites&#x27;</span>, favorites);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getFavorites();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>##About</p>
-<p>‘About’菜单选项点击时会滑出界面，包含一些应用的介绍信息。这个页面会在应用程序第一次加载时显示。</p>
-<p><img src="/images/ionic/about_1.png"></p>
-<p><img src="/images/ionic/about_2.png"></p>
-<p><img src="/images/ionic/about_3.png"></p>
-<p>##Login/Logout</p>
-<p>当用户还没有登陆要登陆时，点击菜单的’Login’时会显示登陆界面。一旦用户登陆后，再点开菜单，’Logout’选项将出展示。</p>
-<p>下面是www/templates/menu.html部分代码片断，展示了如何用ng-show和ng-hide实现上述功能。</p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&lt;ion-<span class="built_in">item</span> menu-close <span class="built_in">class</span>=<span class="string">&quot;item-icon-left&quot;</span> ng-click=<span class="string">&quot;login()&quot;</span> ng-hide=<span class="string">&quot;isLoggedIn()&quot;</span>&gt;</span><br><span class="line">    &lt;i <span class="built_in">class</span>=<span class="string">&quot;icon ion-log-in&quot;</span>&gt;&lt;/i&gt;</span><br><span class="line">    Login</span><br><span class="line">&lt;/ion-<span class="built_in">item</span>&gt;</span><br><span class="line">&lt;ion-<span class="built_in">item</span> menu-close <span class="built_in">class</span>=<span class="string">&quot;item-icon-left&quot;</span> ng-click=<span class="string">&quot;logout()&quot;</span> ng-show=<span class="string">&quot;isLoggedIn()&quot;</span>&gt;</span><br><span class="line">    &lt;i <span class="built_in">class</span>=<span class="string">&quot;icon ion-log-out&quot;</span>&gt;&lt;/i&gt;</span><br><span class="line">    Logout</span><br><span class="line">&lt;/ion-<span class="built_in">item</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>你可以在www/controllers/app.js文件中找到isLoggedIn,login和logout方法：</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Determine if the user is logged into Instagram</span></span><br><span class="line"><span class="symbol">$scope</span>.isLoggedIn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> InstagramService.isLoggedIn();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Open the login modal</span></span><br><span class="line"><span class="symbol">$scope</span>.login = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="symbol">$scope</span>.loginModal.show();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Perform the logout action when the user invokes the logout link</span></span><br><span class="line"><span class="symbol">$scope</span>.logout = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  InstagramService.logout();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>isLoggedIn方法会调用InstagramService的isLoggedIn()方法来获取当前登陆状态。退出方法会调用InstagramService的logout()方法来进行登记退出动作。我们会在第八章讲解更多关于InstagramService相关的内容。</p>
-<p>为了做更多和Instagram相关并有趣的事情，我们需要用户登陆到Instagram。为了实现这个，我们使用一个$ionicModal显示为什么让用户登陆的简要的描述。当选择了登陆选项，login方法被调用，用户会看到一个登陆模态。</p>
-<p>![登陆截图](/images/ionic/login.png =300x)</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Create the login modal that we will use later</span></span><br><span class="line">$ionicModal.fromTemplateUrl(<span class="string">&#x27;templates/modals/login.html&#x27;</span>, &#123;</span><br><span class="line">  scope: $scope,</span><br><span class="line">  animation: <span class="string">&#x27;slide-in-up&#x27;</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">modal</span>) </span>&#123;</span><br><span class="line">  $scope.loginModal = modal;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Triggered in the login modal to close it</span></span><br><span class="line">$scope.closeLogin = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  InstagramService.loginCancelled();</span><br><span class="line">  $scope.loginModal.hide();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Cleanup the modal when we&#x27;re done with it!</span></span><br><span class="line">$scope.$on(<span class="string">&#x27;$destroy&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  $scope.loginModal.remove();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>通常，登陆页面像下面截图中展示一样。但是由于我们要与Instagram集成，我们需要OAuth的方式进行登陆。</p>
-<p><img src="/images/ionic/normal_login.png" alt="登陆截图"></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-modal-view</span> <span class="attr">id</span>=<span class="string">&quot;login&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-header-bar</span> <span class="attr">class</span>=<span class="string">&quot;bar-transparent&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;buttons&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;button button-light button-clear button-icon button-right icon ion-close&quot;</span> <span class="attr">ng-click</span>=<span class="string">&quot;closeLogin()&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-header-bar</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ion-content</span> <span class="attr">scroll</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;vertical-center-container&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;vertical-center&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row light-bg&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;text-center&quot;</span>&gt;</span>Login with Instagram to<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;text-center&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;icon ion-heart assertive&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> Like Posts<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;icon ion-images&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> View Your Feed<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;icon ion-star energized&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> View Your Liked Posts<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;button button-block button-positive button-outline icon-left ion-social-instagram-outline&quot;</span> <span class="attr">ng-click</span>=<span class="string">&quot;loginToInstagram()&quot;</span>&gt;</span>Login with Instagram<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ion-content</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-modal-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>用Oauth代替传统的登陆方式，让用户知道一旦登陆到了Instagram,他们能做哪些事情。一旦用户确定登陆到Instagram,我们会调用www/controllers/app.js中的loginToInstagram方法：</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Perform the OAuth login to Instagram</span></span><br><span class="line"><span class="symbol">$scope</span>.loginToInstagram = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="symbol">$scope</span>.loginModal.hide();</span><br><span class="line">  InstagramService.login();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>这个方法将会用InAppBrowser Cordova插件执行OAuth授权。我们会使用这个插件打开一个登陆到Instagram窗口。Trendicity应用没有对用户名和密码进行处理。</p>
-<p>![Instagram登陆](/images/ionic/instagram_login.png =300x)</p>
-<p>##Search</p>
-<p>搜索图标就是在列表或卡片视图的右上角的放大镜图标。用户有以下查询选项：</p>
-<ul>
-<li>Trending - 按当前在Instagram上帖子的受欢迎程序进行排序。</li>
-<li>Nearby - 当前用户所在位置1KM范围内发布的帖子。</li>
-<li>My Feed - 当前用户提供给Instagram的信息。</li>
-<li>My Liked Posts -当前用户喜欢的帖子。</li>
-</ul>
-<p>![search](/images/ionic/search.png =300x)</p>
-<p>在HomeCtrl中，我们设置了查询功能。为了关注搜索功能，下面代码进行稍微的压缩。</p>
-<p>首先，我们定义了一些作用域变量来保存帖子和查询变量。我们使用了两个javascript对象来存放，所以当值发生变化时，对象不会丢失。</p>
- <figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$scope</span>.model = PostsService.getModel();</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$scope</span>.search = &#123;value:POST_TYPE.NEARBY&#125;;</span></span><br></pre></td></tr></table></figure>
-
-<p> 接下来，我们设置$scope.getPosts方法，它将会根据查询值决定哪些查询方法会被调用。</p>
- <figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">$scope.getPosts = <span class="keyword">function</span>(value) &#123;</span><br><span class="line">  <span class="keyword">if</span> (value<span class="operator"> === </span>POST_TYPE.TRENDING) &#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">PostsService</span>.</span></span>find<span class="constructor">PopularPosts()</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value<span class="operator"> === </span>POST_TYPE.NEARBY) &#123;</span><br><span class="line">    $scope.find<span class="constructor">NearbyPosts()</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value<span class="operator"> === </span>POST_TYPE.USER_FEED) &#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">PostsService</span>.</span></span>find<span class="constructor">UserFeedPosts()</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value<span class="operator"> === </span>POST_TYPE.LIKED) &#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">PostsService</span>.</span></span>find<span class="constructor">LikedPosts()</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p> 通过$watch监听ionicPopover中查询变量值的变化来及时调用$scope.getPosts方法来进行查询。<br> <figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$scope</span>.updatePosts = <span class="function"><span class="keyword">function</span> (<span class="params">searchValue</span>) </span>&#123;</span><br><span class="line">  <span class="symbol">$scope</span>.getPosts(searchValue);</span><br><span class="line">  <span class="symbol">$scope</span>.closePopover();</span><br><span class="line">  <span class="symbol">$io</span>nicScrollDelegate.scrollTop();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="symbol">$scope</span>.<span class="symbol">$watc</span>h(<span class="string">&#x27;search.value&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Triggered when user changes search value</span></span><br><span class="line">    <span class="symbol">$scope</span>.updatePosts(newValue);</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br></pre></td></tr></table></figure></p>
-<p>为了实现ionicPopover,我们首先需要通过 fromTemplateUrl 方法加载 html 模版。我们在这里将其作用域设置为当前作用域。当template加载时，我们将popover设置到这个作用域中，方便我们后面进行调用。</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$io</span>nicPopover.fromTemplateUrl(<span class="string">&#x27;templates/search.html&#x27;</span>, &#123;</span><br><span class="line">  scope: <span class="symbol">$scope</span>,</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">popover</span>) </span>&#123;</span><br><span class="line">  <span class="symbol">$scope</span>.popover = popover;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>下面这段 search.html 模版片段。我们使用了ion-popover-view 组件定义这个视图。我们使用 ion-header-bar 组件展示弹出窗口的标题。我们将 ion-radio 组件列表放到 ion-content 组件中。ion-radio组件选择后，会作为搜索参考值。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-popover-view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-header-bar</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>Search<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-header-bar</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-content</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ion-radio</span> <span class="attr">ng-model</span>=<span class="string">&quot;search.value&quot;</span> <span class="attr">value</span>=<span class="string">&quot;TR&quot;</span>&gt;</span>Trending<span class="tag">&lt;/<span class="name">ion-radio</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ion-radio</span> <span class="attr">ng-model</span>=<span class="string">&quot;search.value&quot;</span> <span class="attr">value</span>=<span class="string">&quot;NB&quot;</span>&gt;</span>Nearby<span class="tag">&lt;/<span class="name">ion-radio</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ion-radio</span> <span class="attr">ng-model</span>=<span class="string">&quot;search.value&quot;</span> <span class="attr">value</span>=<span class="string">&quot;UF&quot;</span>&gt;</span>My Feed<span class="tag">&lt;/<span class="name">ion-radio</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ion-radio</span> <span class="attr">ng-model</span>=<span class="string">&quot;search.value&quot;</span> <span class="attr">value</span>=<span class="string">&quot;LP&quot;</span>&gt;</span>My Liked Posts<span class="tag">&lt;/<span class="name">ion-radio</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-content</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-popover-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>当用户点击在templates/home.html中定义的导航按钮时 这个 ionicPopover 将会弹出。下面地这段代码：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-nav-buttons</span> <span class="attr">side</span>=<span class="string">&quot;right&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;button button-icon icon ion-ios-search&quot;</span> <span class="attr">ng-click</span>=<span class="string">&quot;openPopover($event)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-nav-buttons</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>由上面代码可以看到，当用户点击Search图标时，会调用openPopover方法。我们要做的就是让popover显示。当选择了一个值时，将会调用closePopover方法，在这个方法中，我们要确认popover是已经定义并是打开的。如何条件满足，我们就将其关闭。最后一件事情就是为popover设置一个$destroy监听，当popover被从Dom中移除时调用。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$scope.openPopover = <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</span><br><span class="line">     $scope.popover.show($event);</span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line">   $scope.closePopover = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">if</span> ($scope.popover &amp;&amp; $scope.popover.isShown()) &#123;</span><br><span class="line">       $scope.popover.hide();</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Cleanup the popover when we&#x27;re done with it!</span></span><br><span class="line">   $scope.$on(<span class="string">&#x27;$destroy&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">if</span> ($scope.popover) &#123;</span><br><span class="line">       $scope.popover.remove();</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>##加载服务</p>
-<p>当照片进行加载时，用户会不知道应用在做什么，我们应该通知用户当前是在加载数据。我们可以使用$ionicLoading组件来完成这件事情。</p>
-<p>![loading](/images/ionic/ionic_loading.png =300x)</p>
-<p>一种聪明的方式就是将 $ionicLoading 组件调用用放在一个HTTP拦截器中。下面是我们压缩后的代码：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">.factory(<span class="string">&#x27;TrendicityInterceptor&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">$injector, $q</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hideLoadingModalIfNecessary = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> $http = $http || $injector.get(<span class="string">&#x27;$http&#x27;</span>);</span><br><span class="line">      <span class="keyword">if</span> ($http.pendingRequests.length === <span class="number">0</span>) &#123;</span><br><span class="line">        $injector.get(<span class="string">&#x27;$ionicLoading&#x27;</span>).hide();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      request: <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">        $injector.get(<span class="string">&#x27;$ionicLoading&#x27;</span>).show();</span><br><span class="line">       ...</span><br><span class="line">      requestError: <span class="function"><span class="keyword">function</span>(<span class="params">rejection</span>) </span>&#123;</span><br><span class="line">        hideLoadingModalIfNecessary();</span><br><span class="line">        <span class="keyword">return</span> $q.reject(rejection);</span><br><span class="line">      &#125;,</span><br><span class="line">      response: <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">        hideLoadingModalIfNecessary();</span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">      &#125;,</span><br><span class="line">      responseError: <span class="function"><span class="keyword">function</span>(<span class="params">rejection</span>) </span>&#123;</span><br><span class="line">        hideLoadingModalIfNecessary();</span><br><span class="line">        <span class="keyword">return</span> $q.reject(rejection);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>当HTTP请求发生时，request方法将会被调用。这里我们显示文字 “Loading”。为了避免依赖死循环，我们需要用Angular $injector组件来获取$ionicLoading服务。</p>
-<p>当HTTP请求出现错误时，这里会调用requestError方法。我们会调用hideLoadingModalIfNecesary()方法，这个方法会检查是否有HTTP请求在被调用，如果没有ionicLoading服务会将自己隐藏。</p>
-<p>当HTTP响应成功时，会调用response方法。之后做的事情与错误时的处理方法类似。</p>
-<p>当HTTP响应错误时，会调用responseError方法。之后做的事情与上面两种情况处理方法类似。</p>
-<p>为了使我们的HTTP拦截器生效，我们需要让AngularJS知道它的存在。一般我们会在www/app.js中做这件事情。这里是我们将拦截器通过$httpProvider添加到拦截器数据中的方法：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">.config(<span class="function"><span class="keyword">function</span>(<span class="params">$httpProvider</span>) </span>&#123;</span><br><span class="line">  $httpProvider.interceptors.push(<span class="string">&#x27;TrendicityInterceptor&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>注意，这里我们没有显示真正的提示信息，只是在www/app.js中设置了一个默认信息:</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">.<span class="keyword">constant</span>(<span class="string">&#x27;$ionicLoadingConfig&#x27;</span>, &#123;</span><br><span class="line">  <span class="keyword">template</span>: <span class="string">&#x27;&lt;ion-spinner&gt;&lt;/ion-spinner&gt;Loading...&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>我们在第七章会详细讲解：设计应用。现在，我们只是想告诉你为什么不向ionicLoading show方法中传入信息。</p>
-<p>##Map视图选项</p>
-<p>将当前提交的信息在一个可以交互的地图上展示。一个标记会将用户的位置标在地图上。别的照片按它的位置展现在地图上。当点击这个这个标记时，相关联的照片会展现出来。如果你移动地图到一个位置 ，然后点击右上角的刷新图标；就会加载当前位置周边的照片。若想了解如何实现的，请看第五章：在ionic上集成地图。</p>
-<p>##Card实图选项</p>
-<p>卡片视图将以卡片叠加的方式来展现照片。若用户不喜欢当前的照片，可以将图片向左侧拖拽或划动。如果喜欢的话可以向右侧拖拽或划动。</p>
-<p>这些可以摆动的卡券与非常受欢迎的手机应用Tinder相似。这种类似的实用的功能在Tinder中经常会被用到。</p>
-<p>Drify（该公司负责我们的ionic技术）创始人之一Max Lynch已经创建了一个划动卡片的库，这个库经常会被ionic开发团队引用。在ionic中这样的效果展示通常会比较受欢迎的。</p>
-<p>这个类库用CSS的动画来实现卡片左右拖拽和摆动的效果。他也使用了一个物理样式动化效果库Collide来实现将图片下拉时的动画效果。</p>
-<p>在使用Tinder卡片库之前，一个非常相似的卡片划动效果被创建。我们只是在这里提一下它，在你看到这块时不要好奇。我们在这里没有涉及到这个库。</p>
-<p>###工作文件</p>
-<p>与该视图相关的文件位置在：<code>www/templates/tab-card.html</code>,<code>www/templates/card-intro.html</code>,<code>www/js/controllers/card.js</code>和<code>www/js/directives/no-touch-move.js</code>。</p>
-<p>###popup介绍</p>
-<p>当导航到卡片实图时，我们决定弹出展示说明信息，来向用户介绍和让他们熟悉如何使用卡片的操作。</p>
-<p>我们使用$ionicPopup服务来展示Ionic样式的弹出窗信息。这个服务允许你定义四种类型的弹出窗：</p>
-<ul>
-<li><p>show(选项) ：通过加载的选项设置来完全自定义弹出窗</p>
-</li>
-<li><p>alert(选项) ：带有一个按钮的弹出窗</p>
-</li>
-<li><p>confirm(选项)：带有确认信息和“取消”和“确认”铵钮的弹出窗</p>
-</li>
-<li><p>prompt(选项)：和confirm一样，但是多出一个与用户交互的输入框。</p>
-</li>
-</ul>
-<p>为我们Trendicity应用，自定义了一个弹出窗如：</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span> Show explanation message</span><br><span class="line"><span class="variable">$ionicPopup</span>.show(&#123;</span><br><span class="line">  title: <span class="string">&#x27;Swipe Cards&#x27;</span>,</span><br><span class="line">  templateUrl: <span class="string">&#x27;templates/popups/card-intro.html&#x27;</span>,</span><br><span class="line">  scope: <span class="variable">$scope</span>,</span><br><span class="line">  buttons: [</span><br><span class="line">    &#123;</span><br><span class="line">      text: <span class="string">&#x27;Next&#x27;</span>,</span><br><span class="line">      type: <span class="string">&#x27;button-positive&#x27;</span>,</span><br><span class="line">      onTap: <span class="keyword">function</span>(e) &#123;</span><br><span class="line">        <span class="keyword">if</span> (slidebox.currentIndex() === <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="regexp">//</span> Go to <span class="keyword">next</span> slide</span><br><span class="line">          slidebox.<span class="keyword">next</span>();</span><br><span class="line"></span><br><span class="line">          <span class="regexp">//</span> Change button text</span><br><span class="line">          e.target.innerHTML = <span class="string">&#x27;OK&#x27;</span>;</span><br><span class="line"></span><br><span class="line">          e.preventDefault();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="regexp">//</span> Close popup</span><br><span class="line">          return;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>弹出窗的信息体部分通过template和templateUrl选项进行定义。我们这里单独定义这个模版文件：templates/card-intro.html</p>
-<p>我们的模版文件中包含一个划动的盒子，可以流畅的在照片与照片之间进行划动。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ion-slide-box</span> <span class="attr">does-continue</span>=<span class="string">&quot;false&quot;</span> <span class="attr">show-pager</span>=<span class="string">&quot;false&quot;</span> <span class="attr">delegate-handle</span>=<span class="string">&quot;card-intro-slidebox&quot;</span> <span class="attr">ng-init</span>=<span class="string">&quot;disableSlideBox()&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-slide</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;full-image&quot;</span> <span class="attr">src</span>=<span class="string">&quot;img/swipe-right.png&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-slide</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ion-slide</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;full-image&quot;</span> <span class="attr">src</span>=<span class="string">&quot;img/swipe-left.png&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ion-slide</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ion-slide-box</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这个盒子组件是由AngularJS服务$ionicSlideBoxDelegate生成。这个服务允许你控制这个组件的行为，如划动时的效果和控制是否自动播放。另外当再次渲染这个盒子时调用update()方法。</p>
-<p>我们这里，禁止照片的自动切换和用户划动，而所有的操作只能通过铵钮来进行完成。</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Disable intro slidebox sliding</span></span><br><span class="line">  <span class="symbol">$scope</span>.disableSlideBox = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="symbol">$io</span>nicSlideBoxDelegate.enableSlide(<span class="literal">false</span>);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>弹出窗口提供了一个回调onTap,这里可以让用户去自己做一些事情。如果当前是第一个照片，点击“Next”铵钮，我们通过调用$ionicSlideBoxDelegate.$getByHandle(‘card-intro-slidebox’)实例的next()打开下一张照片,并且修改铵钮的文字为”OK”同时防止弹出窗口关闭。另外，当在最后一个照片时，我们会调用return并关闭弹出窗口。</p>
-<p>最后，每次用户访问卡片视图时，我们会查看一下本地存储seenCardIntro的值来判断用户是否已经看这个卡片。</p>
-<p>###Card视图</p>
-<p>在www/templates/tab-card.html文件中，我们会展示卡片集合。我们通过ng-repeat来迭代显示照片。让后我们定义一些属性来响应用户对卡片的操作。</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">ion-view</span> <span class="attr">title</span>=<span class="string">&quot;Card View&quot;</span> <span class="attr">cache-view</span>=<span class="string">&quot;false&quot;</span> <span class="attr">no-scroll</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">ion-content</span> <span class="attr">class</span>=<span class="string">&quot;has-header padding&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-if</span>=<span class="string">&quot;model.currentPosts.length&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">td-cards</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">td-card</span> <span class="attr">ng-repeat</span>=<span class="string">&quot;post in model.currentPosts&quot;</span> <span class="attr">on-destroy</span>=<span class="string">&quot;cardDestroyed($index)&quot;</span></span></span></span><br><span class="line"><span class="xml">                         on-transition-left=&quot;cardTransitionedLeft($index)&quot;</span></span><br><span class="line"><span class="xml">                         on-transition-right=&quot;cardTransitionedRight($index)&quot;&gt;</span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;image&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;no-text&quot;</span>&gt;</span>NOPE<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;<span class="name">img</span> <span class="attr">ng-src</span>=<span class="string">&quot;</span></span></span><span class="template-variable">&#123;&#123; <span class="name">post.images.low_resolution.url</span> &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;yes-text&quot;</span>&gt;</span>LIKE<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;/<span class="name">td-card</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">td-cards</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">ion-content</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">ion-view</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>###Card视图对应的controller</p>
-<p>我们需要CardViewCtrl使侧边滑出菜单失效，因为它会与Tinder卡片功能冲突 。这里我们通过$ionicSidemenuDelegate来设置当内容进入视图时拖拽不可用。当离开视图时，我们恢复可用，使别的视图下可以打开侧边菜单。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">.controller(<span class="string">&#x27;CardViewCtrl&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  $scope,</span></span></span><br><span class="line"><span class="function"><span class="params">  $ionicSideMenuDelegate,</span></span></span><br><span class="line"><span class="function"><span class="params">  $ionicPopup,</span></span></span><br><span class="line"><span class="function"><span class="params">  $ionicSlideBoxDelegate,</span></span></span><br><span class="line"><span class="function"><span class="params">  $timeout,</span></span></span><br><span class="line"><span class="function"><span class="params">  $ionicHistory,</span></span></span><br><span class="line"><span class="function"><span class="params">  localStorageService,</span></span></span><br><span class="line"><span class="function"><span class="params">  PostsService,</span></span></span><br><span class="line"><span class="function"><span class="params">  InstagramService</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Disable side-menu drag so that it doesnt interfere with our tinder cards functionality</span></span><br><span class="line">  $scope.$on(<span class="string">&#x27;$ionicView.enter&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $ionicHistory.clearHistory();</span><br><span class="line">    $ionicSideMenuDelegate.canDragContent(<span class="literal">false</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  $scope.$on(<span class="string">&#x27;$ionicView.leave&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $ionicSideMenuDelegate.canDragContent(<span class="literal">true</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!localStorageService.get(<span class="string">&#x27;seenCardIntro&#x27;</span>)) &#123;</span><br><span class="line">    <span class="comment">// Mark intro as seen</span></span><br><span class="line">    localStorageService.set(<span class="string">&#x27;seenCardIntro&#x27;</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> slidebox = $ionicSlideBoxDelegate.$getByHandle(<span class="string">&#x27;card-intro-slidebox&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Disable intro slidebox sliding</span></span><br><span class="line">    $scope.disableSlideBox = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $ionicSlideBoxDelegate.enableSlide(<span class="literal">false</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Show explanation message</span></span><br><span class="line">    $ionicPopup.show(&#123;</span><br><span class="line">      title: <span class="string">&#x27;Swipe Cards&#x27;</span>,</span><br><span class="line">      templateUrl: <span class="string">&#x27;templates/popups/card-intro.html&#x27;</span>,</span><br><span class="line">      scope: $scope,</span><br><span class="line">      buttons: [</span><br><span class="line">        &#123;</span><br><span class="line">          text: <span class="string">&#x27;Next&#x27;</span>,</span><br><span class="line">          type: <span class="string">&#x27;button-positive&#x27;</span>,</span><br><span class="line">          onTap: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (slidebox.currentIndex() === <span class="number">0</span>) &#123;</span><br><span class="line">              <span class="comment">// Go to next slide</span></span><br><span class="line">              slidebox.next();</span><br><span class="line"></span><br><span class="line">              <span class="comment">// Change button text</span></span><br><span class="line">              e.target.innerHTML = <span class="string">&#x27;OK&#x27;</span>;</span><br><span class="line"></span><br><span class="line">              e.preventDefault();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="comment">// Close popup</span></span><br><span class="line">              <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  $scope.cardTransitionedLeft = <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</span><br><span class="line">    console.log(<span class="string">&#x27;cardTransitionedLeft called with index:&#x27;</span> + index);</span><br><span class="line">    <span class="keyword">if</span> (!InstagramService.isLoggedIn()) &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;not sure if you liked it before or not since you are not logged in; doing nothing!&#x27;</span>);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> post = $scope.model.currentPosts[index];</span><br><span class="line">    <span class="keyword">if</span> (post.user_has_liked) &#123; <span class="comment">// jshint ignore:line</span></span><br><span class="line">      PostsService.dislikePost(post.id)</span><br><span class="line">        .success(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          console.log(<span class="string">&#x27;you disliked it!&#x27;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;you didnt like it in the first place!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  $scope.cardTransitionedRight = <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</span><br><span class="line">    console.log(<span class="string">&#x27;cardTransitionedRight called with index:&#x27;</span> + index);</span><br><span class="line">    <span class="keyword">if</span> (!InstagramService.isLoggedIn()) &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;not sure if you liked it before or not since you are not logged in; if you login, we will like it for you&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> post = $scope.model.currentPosts[index];</span><br><span class="line">    <span class="keyword">if</span> (!post.user_has_liked) &#123; <span class="comment">// jshint ignore:line</span></span><br><span class="line">      PostsService.likePost(post.id)</span><br><span class="line">        .success(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          console.log(<span class="string">&#x27;you liked it!&#x27;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;you already liked it previously!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  $scope.cardDestroyed = <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</span><br><span class="line">    console.log(<span class="string">&#x27;cardDestroyed called with index:&#x27;</span> + index);</span><br><span class="line">    $scope.model.currentPosts.splice(index, <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>这里cardTransitionedLeft和cardTransitionRight 方法基本上一样的，除了，左滑进代表不喜欢，右滑是代表喜欢。两者都要判断是否已经登陆。如何用户喜欢当前的卡片但又没有登陆时，会要求用户登陆。一旦登陆成功，这个卡片就会被收藏。这是我们安全认证方案的结果。你可以通过第六章节的 验证 来了解更多的信息。</p>
-<p>当一个卡片一旦过渡完并且被销毁时就会调用cardDestroyed方法。我们这里只是将卡片从照片数组中删除。</p>
-<p>##List视图选项</p>
-<p>Trendicity的列表选项是为了展示ionic核心的列表功能而开发的。比较受欢迎的组件为：拉取刷新，button bars action sheets,视图中的手势。这一部分我们将解析开发列表的过程，和上述的组件。</p>
-<p>###涉及文件</p>
-<p>列表视图功能涉及的文件：www/templates/tab-list.html,www/js/controllers/list.js和www/js/directives/on-dbl-top.js。路由在www/js/app.js中定义的：</p>
-<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.state</span>(<span class="string">&#x27;app.home.list&#x27;</span>,&#123;</span><br><span class="line">        <span class="attribute">url</span>:<span class="string">&#x27;/list&#x27;</span>,</span><br><span class="line">        <span class="attribute">views</span>:&#123;</span><br><span class="line">            <span class="string">&#x27;tab-list&#x27;</span>:&#123;</span><br><span class="line">                <span class="attribute">templateUrl</span>:<span class="string">&#x27;templates/tab-list.html&#x27;</span>,</span><br><span class="line">                <span class="attribute">controller</span>:<span class="string">&#x27;ListViewCtrl&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>###模板布局</p>
-<p>列表视图模板可以被切分成三部分：刷新，帖子列表，和包含用户可操作铵钮的铵钮条。</p>
-<p>###刷新帖子列表</p>
-<p>Ionic提供了非常有用的指令，名字为ion-refresher。在使用这个组件时，将标签放到你的视图上，并添加在视图控制器中添加一个处理用户交互的方法，一旦用户向下拉取内容或者触发刷新机制。</p>
-<p>![列表视图](/images/ionic/list_view.png =300x)</p>
-<p>为了保存简单易用，我们选择一个刷新铵钮（ion-arrow-down-c）来代替默认的图标,同时设置下拉时提示的文字。</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;ion-refresher <span class="attribute">pulling-icon</span>=<span class="string">&quot;ion-ios-arrow-up&quot;</span> <span class="attribute">spinner</span>=<span class="string">&quot;none&quot;</span> <span class="attribute">pulling-text</span>=<span class="string">&quot;Pull to refresh...&quot;</span> <span class="attribute">on-refresh</span>=<span class="string">&quot;doRefresh()&quot;</span>&gt;&lt;/ion-refresher&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>注意：这个命令允许你通过下面属性来覆盖它默认的配置：</p>
-<ul>
-<li>on-refresh:一旦用户下拉放开后触发刷新机制。</li>
-<li>on-pulling:一旦用户开始下拉时调用。</li>
-<li>pulling-icon:当用户下拉时显示的图标。</li>
-<li>pulling-text:当用户下拉时显示的文本。</li>
-<li>refreshing-icon:当刷新机制一旦触发，这个图标就会显示。</li>
-<li>refreshing-text:一旦数据刷新后，显示的文本。</li>
-<li>disable-pulling-rotation:一旦on-refresh调用开始调用，停止旋转图标。</li>
-</ul>
-<p>ionrefresher组件值得注意的提升就是，添加了一个定时器，当很快获取到数据时，刷新显示数据也要耗时最少要400ms。这种情况超时创造一个平滑过渡的假像，使用户感觉到数据是刷新了。</p>
-<p>我们回到Trendicity,refresher设置当用户希望获取新的帖子时，触发控制器的doRefresh方法。下面就是刷新时调用的方法：</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span> Refresh feed posts</span><br><span class="line"><span class="variable">$scope</span>.doRefresh = <span class="keyword">function</span>() &#123;</span><br><span class="line">  <span class="variable">$scope</span>.getPosts(<span class="variable">$scope</span>.search.value);</span><br><span class="line"></span><br><span class="line">  <span class="regexp">//</span> Hide ion-refresher</span><br><span class="line">  <span class="variable">$scope</span>.<span class="variable">$broadcast</span>(<span class="string">&#x27;scroll.refreshComplete&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>就像前面章节解释的那样，我们使用HomeCtrl的getPosts方式</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/08/31/ionic%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20Trendicity%20%E9%A1%B9%E7%9B%AE%E5%AE%9E%E4%BE%8B/" data-id="ckfci5hqd00bzvl2f8ilucch0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-ionic 第二章 开发环境 工具和工作流程介绍" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/27/ionic%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20%E5%B7%A5%E5%85%B7%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D/" class="article-date">
-  <time datetime="2015-08-26T16:00:00.000Z" itemprop="datePublished">2015-08-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/27/ionic%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20%E5%B7%A5%E5%85%B7%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D/">第二章 ionic 开发环境 工具和工作流程介绍</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">本章节，我们将会学到运行一个Inoic项目需要哪些技能。你将会安装基础的构建模块，学习如何使用Ionic命令行工具(cli)初始化一个项目，学习如何添加不同的平台和插件及如何在本地浏览器，仿真器和真实的设备上进行测试。</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">##安装必备工具:<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js和Git</span><br><span class="line"></span><br><span class="line">Ionic使用功能强大的模块管理工具<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js,<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js 是一个Javascript基础平台，通过它可以很容易的进行web应用的构建。由于<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js的无处不在和其包管理特性，使用ionic的安装和部署非常简单。</span><br><span class="line"></span><br><span class="line">##安装<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js</span><br><span class="line"></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js通过下载安装器安装在windows上或到<span class="literal">[这里]</span>(http:<span class="comment">//nodejs.org/down-load/)下载针对于OS X的安装程序。在OS X上也可以通过Homebrew进行安装。另外，你可以执行下面命令进行安装。</span></span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">$ brew install node </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>安装完后，你可以打一个命令行，输入下面命令进行测试：</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">node</span><span class="title"></span></span><br><span class="line"><span class="title"></span></span><br></pre></td></tr></table></figure>
-<p>它会打开一个控制台。它就像是浏览器中的javascript控制台一样。你可以在这个控制台中编写合法的javascript代码。如：</p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">&gt; <span class="built_in">console</span>.info(<span class="string">&#x27;Hello World&#x27;</span>);</span><br><span class="line">Hello World</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>按两次CTRL+C就可以退出Node.js控制台</p>
-<p>##安装Git</p>
-<p>NPM是Node.js的依赖管理，bower是browser的依赖管理。由于ionic是基于html5的移动混合应用开发工具和服务套件。bower只是安装和依赖管理。有一些bower模块需要Git,因此在开始之前你必须要先安装Git.</p>
-<p>可以在 <a target="_blank" rel="noopener" href="http://git-scm.com/downloads">git-scm.com/downloads</a>下载各个平台的Git安装程序。</p>
-<p>一旦你安装了Git,打开终端，输入：</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">$ git version</span><br><span class="line">git version <span class="number">2.3</span><span class="number">.2</span> (Apple Git<span class="number">-55</span>)</span><br></pre></td></tr></table></figure>
-
-<p>##安装Installing Ionic<br>现在你已经安装了Node.js和Git,安装Ionic就变的非常容易了。打开终端，输入：</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> -g cordova ionic</span><br></pre></td></tr></table></figure>
-<p>这行命令就是让NPM安装cordova和ionic包，和他们所依赖的模块。加上-g这个选项，意味着NPM在全局中安装它他们，因此你就可以在所有项目中使用它们。</p>
-<p>一旦NPM选择完，就会输出一个安装汇总。下面你可以验证安装。</p>
-<p>##Cordova</p>
-<p>下面花一些时间去讲解Cordova是什么，是非常值得的，因为他是Ionic为什么如此强大的最重要的原因。</p>
-<p>Cordova 是一个社区驱动的开源项目，它是HTML和手机原生功能之间的桥梁。它使开发者能够构建一个html应用，这个应用可以直接使用手机原生的功能，如何像机，地理位置，设备的方向等。另外，Cordova目的是创建一些跨平台的接口，使你创建html应用而不用关心是iphone应用还是在android应用。</p>
-<p>你可以在<a target="_blank" rel="noopener" href="http://cordova.apache.org/">这里</a>了解决更多关于Cordova的知识。</p>
-<p>##Ionic命令行 （CLI)</p>
-<p>为了使你能更方便的使用Ionic，Ionic提供了命令行接口。</p>
-<ul>
-<li>创建一个新的工程</li>
-<li>添加平台</li>
-<li>添加插件</li>
-<li>编译和在仿真器中运行你的工程</li>
-<li>在设备上运行你的</li>
-<li>打包应用和发布</li>
-</ul>
-<p>##创建一个新的工程<br>让我们创建一个新的应用。打开终端，定位到你想把本书涉及到的代码存放的位置。在这目录下面输入下面的创建应用的命令。</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$</span> ionic <span class="built_in">start</span> trendicity tabs</span><br></pre></td></tr></table></figure>
-
-<p>这个ionic start命令可以让你指定一个模版用来初始化Ionic应用的结构。上面这个例子，你指定了tabs模版。开箱即用的，Ionic支持空白模版（不指定模版，默认就是空白的），tabs和 sidemenu。另外,如何你想提供一个自定义模版，你可以指定一个CodePen URL.</p>
-<p>一旦上面那个命令执行完，你就已经配置好了一个Ionic工程，就会看到下面信息：</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">Your Ionic project is <span class="built_in">read</span> <span class="built_in">to</span> go ! Some quick tips:</span><br><span class="line"></span><br><span class="line"> * cd <span class="keyword">into</span> your project: $ cd trendicity</span><br><span class="line"></span><br><span class="line"> * Setup this project <span class="built_in">to</span> use Sass: ionic setup sass</span><br><span class="line"></span><br><span class="line"> * Develop <span class="keyword">in</span> <span class="keyword">the</span> browser <span class="keyword">with</span> live reload: ionic serve</span><br><span class="line"></span><br><span class="line"> * Add <span class="keyword">a</span> <span class="built_in">platform</span> (ios <span class="keyword">or</span> Android): ionic <span class="built_in">platform</span> <span class="built_in">add</span> ios [android]</span><br><span class="line">   Note: iOS development requires OS X currently</span><br><span class="line">   See <span class="keyword">the</span> Android Platform Guide <span class="keyword">for</span> full Android installation instructions:</span><br><span class="line">   <span class="keyword">https</span>://cordova.apache.org/docs/en/edge/guide_platforms_android_index.md.html</span><br><span class="line"></span><br><span class="line"> * Build your app: ionic build &lt;PLATFORM&gt;</span><br><span class="line"></span><br><span class="line"> * Simulate your app: ionic emulate &lt;PLATFORM&gt;</span><br><span class="line"></span><br><span class="line"> * Run your app <span class="keyword">on</span> <span class="title">a</span> <span class="title">device</span>: <span class="title">ionic</span> <span class="title">run</span> &lt;<span class="title">PLATFORM</span>&gt;</span><br><span class="line"></span><br><span class="line"> * Package <span class="keyword">an</span> app <span class="keyword">using</span> Ionic package service: ionic package &lt;MODE&gt; &lt;PLATFORM&gt;</span><br><span class="line"></span><br><span class="line">For more help use ionic <span class="comment">--help or ionic docs</span></span><br><span class="line"></span><br><span class="line">Visit <span class="keyword">the</span> Ionic docs: <span class="keyword">http</span>://ionicframework.com/docs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">New! Add push notifications <span class="built_in">to</span> your Ionic app <span class="keyword">with</span> Ionic Push (alpha)!</span><br><span class="line"><span class="keyword">https</span>://apps.ionic.io/signup</span><br><span class="line">+<span class="comment">---------------------------------------------------------+</span></span><br><span class="line">+ New Ionic Updates <span class="keyword">for</span> August <span class="number">2015</span></span><br><span class="line">+</span><br><span class="line">+ The View App just landed. Preview your apps <span class="keyword">on</span> <span class="title">any</span> <span class="title">device</span></span><br><span class="line">+ <span class="keyword">http</span>://view.ionic.io</span><br><span class="line">+</span><br><span class="line">+ Invite anyone <span class="built_in">to</span> preview <span class="keyword">and</span> test your app</span><br><span class="line">+ ionic share EMAIL</span><br><span class="line">+</span><br><span class="line">+ Generate splash screens <span class="keyword">and</span> icons <span class="keyword">with</span> ionic resource</span><br><span class="line">+ <span class="keyword">http</span>://ionicframework.com/blog/automating-icons-<span class="keyword">and</span>-splash-screens/</span><br><span class="line">+</span><br><span class="line">+<span class="comment">---------------------------------------------------------+</span></span><br></pre></td></tr></table></figure>
-
-<p>同时你会看到一些快捷提示。你可以随时查看这些提示，通过下面这个命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ionic --<span class="built_in">help</span></span></span><br></pre></td></tr></table></figure>
-
-<p>这个将会输出一个Ionic命令行支持的指今列表</p>
-<p>看一下刚才那个命令为你创建了哪些东西</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">$ cd trendicity</span><br><span class="line">$ ls -F</span><br><span class="line">total <span class="number">40</span></span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff   <span class="number">118</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> bower.json</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff   <span class="number">864</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> config.xml</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">1388</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> gulpfile.js</span><br><span class="line">drwxr-xr-x  <span class="number">4</span> Aaron  staff   <span class="number">136</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> hooks/</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff    <span class="number">42</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> ionic.project</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff   <span class="number">581</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> package.json</span><br><span class="line">drwxr-xr-x  <span class="number">4</span> Aaron  staff   <span class="number">136</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> platforms/</span><br><span class="line">drwxr-xr-x  <span class="number">9</span> Aaron  staff   <span class="number">306</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> plugins/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> Aaron  staff   <span class="number">102</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> scss/</span><br><span class="line">drwxr-xr-x  <span class="number">8</span> Aaron  staff   <span class="number">272</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> www/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>bower.json</code>:管理你的Bower依赖</p>
-<p><code>gulpfile.js</code>:Gulp是一个构建工具。更多的信息可参在<a target="_blank" rel="noopener" href="http://www.gulpjs.com/">这里</a>找到。这个文件管理构建的流程。</p>
-<p><code>ionic.project</code>:ionic工程配置文件。</p>
-<p><code>plugins/</code>:Ionic插件文件放在此目录下。稍后你会了解更多关于这插件的信息。</p>
-<p><code>www/</code>:你的应用文件放在此目录下。</p>
-<p><code>config.xml</code>:Cordova的配置文件。</p>
-<p><code>hooks/</code>:Cordova的hooks 这里面有一个说明文件，我可以根据此文件来创建一系列的目录，这些目录里面可以创建一些脚本，这些脚本分别在ionic运行的不同时期进行执行。</p>
-<p><code>package.json</code> :管理Node.js依赖的文件</p>
-<p><code>scss/</code>: SASS 文件。</p>
-<p>好，现在，我们把重点放在 <code>www</code> 目录。</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">localhost:trendicity Aaron$ cd www</span><br><span class="line">localhost:www Aaron$ ls -F</span><br><span class="line">total <span class="number">8</span></span><br><span class="line">drwxr-xr-x  <span class="number">3</span> Aaron  staff  <span class="number">102</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> css/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> Aaron  staff  <span class="number">102</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> img/</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">858</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> index.html</span><br><span class="line">drwxr-xr-x  <span class="number">4</span> Aaron  staff  <span class="number">136</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> js/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> Aaron  staff  <span class="number">102</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> lib/</span><br><span class="line">drwxr-xr-x  <span class="number">8</span> Aaron  staff  <span class="number">272</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> templates/</span><br></pre></td></tr></table></figure>
-
-<p><code>css/</code>:你的应用的CSS文件<br><code>img/</code>:你的应用中用到的图片<br><code>index.html</code>:你的应用的入口<br><code>js/</code>:你的javascript代码<br><code>lib/</code>:第三方库和Ionic库<br><code>templates/</code>:你的应用的HTML模版</p>
-<p>在js引以为文件夹中会发现有三个文件：</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">localhost:js Aaron$ ls -F</span><br><span class="line">total <span class="number">16</span></span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">1916</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> app.js</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">1544</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> controllers.js</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">1542</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> services.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>若没有发现services.js文件，你可以自己创建一个。</p>
-<p><code>app.js</code>:你的应用的入口，它包括路由信息。<br><code>controllers.js</code>:包括例子应用的所有的控制器。<br><code>services.js</code>:应用的可重用的服务。</p>
-<p>值得注意的是，这是一个简化的项目结构，随着你的项目的增长，你需要去完善它。</p>
-<p>##在浏览器上部署</p>
-<p>刚开始时，与通过仿真器测试相比，在浏览器中进行测试是最快的方式。它是可以在浏览器中进行测试的，因为Ionic是一个基于html5的平台。另外，Ionic现有的内置功能让其变得更加简单。在你的命令行中的工程目录下，输入以下命令。</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">$ ionic serve</span><br><span class="line"><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">**</span></span><br><span class="line"><span class="strong"> Upgrade warning - for the CLI to run correctly,      </span></span><br><span class="line"><span class="strong"> it is highly suggested to upgrade the following:     </span></span><br><span class="line"><span class="strong"></span></span><br><span class="line"><span class="strong"> Please update your Node runtime to version  &gt;=0.12.x</span></span><br><span class="line"><span class="strong"></span></span><br><span class="line"><span class="strong">**</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span></span><br><span class="line">Running live reload server: http://192.168.1.7:35729</span><br><span class="line">Watching : [ &#x27;www/<span class="strong">**/<span class="emphasis">*&#x27;, &#x27;!www/lib/<span class="strong">**/<span class="emphasis">*&#x27; ]</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">Running dev server: http://192.168.1.7:8100</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">Ionic server commands, enter:</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  restart or r to restart the client app from the root</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  goto or g and a url to have the app navigate to the given url</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  consolelogs or c to enable/disable console log output</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  serverlogs or s to enable/disable server log output</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  quit or q to shutdown the server and exit</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis"></span></span></span></span></span><br></pre></td></tr></table></figure>
-
-<p>上面的命令执行完成后，将会打开一个浏览器窗口并且访问你的应用。恭喜你，你的应用已经成功运行！</p>
-<p>如何浏览器窗口没有自动打开， Ionic通知你在浏览器中打开这个应用。你上面你会看到</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">1.7</span>:<span class="number">35729</span></span><br></pre></td></tr></table></figure>
-
-<p>这个命令将会监视你的工程文件的变化，因此当你改变工程中的文件时，视图也会自动刷新。你可以通过修改工程的一个文件并注意着浏览器的重新加载来进行测试。打开./www/templates/tab-dash.html 文件并且修改：</p>
-<p><code>&lt;h1&gt;Dash&lt;/Dash&gt;</code></p>
-<p>修改为：</p>
-<p><code>&lt;h1&gt;Trendicity&lt;/h1&gt;</code></p>
-<p>保存后，浏览器会立即发生刷新，你就会看到刚才修改文件后的变化。</p>
-<p>##代理</p>
-<p>当你的应用需要访问不允许跨域访问的资源的APIs时，在浏览器测试时，你将会遇到问题。幸运的是Ionic团队已经 通过代理请求的方式来解决上面的问题。</p>
-<p>在你应用的根目录下打开ionic.project。</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">cat ionic.<span class="keyword">project</span> </span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;trendicity&quot;</span>,</span><br><span class="line">  <span class="string">&quot;app_id&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>添加代理数据到你的文件中：</p>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">cat ionic.<span class="keyword">project</span> </span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;trendicity&quot;</span>,</span><br><span class="line">  <span class="string">&quot;app_id&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;proxies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;path&quot;</span>:<span class="string">&quot;/proxied/resources&quot;</span>,</span><br><span class="line">    <span class="string">&quot;proxyUrl&quot;</span>:<span class="string">&#x27;https://api.somesite.com/resources&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中的path是你本地想被代理的路径，这个proxyUrl是真正的你想被请求的API.在你的应用中，你现在可以请求<code>http://localhost:8100/proxied/resources</code>其实是访问的<code>https://api.somesite.com/resources</code>.</p>
-<p>注意，代理的配置仅在浏览器中进行测试时需要用到。在设备上和仿真器中不需要用这个配置文件。</p>
-<p>##添加平台</p>
-<p>当你发布之前，或者在你构建一个应用时，你需要决定你想将此应用部署到哪些平台上。然后告诉给Ionic,通过CLI,安装构建成这此平台的应用时所必须的先决条件。让我们来添加IOS平台。</p>
-<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">$ ionic <span class="keyword">platform</span> ios</span><br></pre></td></tr></table></figure>
-
-<p>它将会安装一些必须的依赖并准备将你的工程构建成IOS平台的应用。注意，如何你不是在Apple电脑上，你是不能够添加iOS平台的。</p>
-<p>或，你可以添加Android平台：</p>
-<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">$ ionic <span class="keyword">platform</span> android</span><br></pre></td></tr></table></figure>
-
-<p>Android平台与iOS相比，需要安装一些额外的东西 当你都是在Apple电脑上执行上面的命令时。在稍后的章节中你会了解到更多关于Android安装的信息。</p>
-<p>如何你决定选择在Android平台上进行测试，建议你不要使用Android默认的仿真器。因为它太慢了。你可以安装使用Geny-mogion仿真器，它比默认访真器要快一些。你可以在<a target="_blank" rel="noopener" href="http://www.genymotion.com/">这里</a>了解更多的内容。</p>
-<p>##构建应用</p>
-<p>用Ionic构建应用是容易的。构建一个iOS平台的应用，通过如下命令：</p>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>ionic build ios</span><br></pre></td></tr></table></figure>
-
-<p>一旦构建成功，你会看到输出下面信息：</p>
-<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"><span class="bullet">** </span>BUILD SUCCEEDED</span><br></pre></td></tr></table></figure>
-
-<p>##编译和在仿真器中运行你的工程<br>Ionic支持直接通过CLI加载设备仿真器。加载你的编译文件到iOS仿真器(确保你已经安装了<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/">ios-sim</a>)。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ionic <span class="built_in">emulate</span> ios</span></span><br></pre></td></tr></table></figure>
-<p>如何你之前没有进行编译，Ionic会创建iOS平台的编译文件。执行这个命令之后，iOS 仿真器将会加载，并且你的应用将会在其中加载。</p>
-<p>像是在浏览器中测试一样，你可以修改你的应用文件时，让仿真器中的应用自动刷新。执行下面的命令，等待仿真器加载你的应用，然后修改应用的文件进行观察仿真器中应用的变化。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ionic <span class="built_in">emulate</span> ios -livereload</span></span><br></pre></td></tr></table></figure>
-<p>第一次修改工程，都会花大量的时间去编译和加载到仿真器。</p>
-<p>##在设备上运行</p>
-<p>仿真器是非常强大的，但是在发布之前，你仍然想在真实的设备上测试你的应用。</p>
-<p>###iOS<br>在iOS设备上部署，需要有一个iOS开发帐户，在Apple设备上运行XCode。iOS开发者账户是收费的。你可以在<a target="_blank" rel="noopener" href="https://developer.apple.com/programs/">developer.apple.com/programs/</a>了解更多。</p>
-<p>你可以在这里下载Xcode:(developer.apple.com/xcode/downloads/)[<a target="_blank" rel="noopener" href="https://developer.apple.com/xcode/downloads/]">https://developer.apple.com/xcode/downloads/]</a></p>
-<p>一旦你正确安装了XCode和拥有你自己的开发者账户，在XCode中打开你工程的/platform/ios文件夹，然后进行测试。</p>
-<p>###Android</p>
-<p>到目前为止，我们主要集中在构建、模拟和运行iOS应用程序。原因是，如果你在Apple电脑上进行开发，启动和运行都是非常容易的，但是它避免了使用Ionic进遇到的最大的一件事情。你编写一次应用，可以编译成两个平台的版本。让我们花一点时间看一下在Android平台上启动和运行时的一些选项。</p>
-<p>###Android SDK安装</p>
-<p>第一件事就是下载和安装Android SDK.可以在这里下载：<a target="_blank" rel="noopener" href="http://developer.android.com/sdk/index.html">developer.android.com/sdk/</a>。可以在这里找到安装步骤：<a target="_blank" rel="noopener" href="http://developer.android.com/sdk/installing/">developer.android.com/sdk/installing/</a>。</p>
-<p>###Ionic box</p>
-<p>很多人发现安装Android SDK是比较困难的过程。由于这个原因，Ionic小组已经创建了一个Vagrant box来帮助你简化这个过程。如何你对Vagrant不是很熟悉的话，它是一个创建虚拟机的平台，主要是创建开发环境。你可以在这里了解更多:<a target="_blank" rel="noopener" href="http://www.vagrantup.com/">www.vagrantup.com</a>。你可以使用不同的虚拟机运行器，但是最常用的是VirtualBox。</p>
-<p>为了使用Vagrant box,你首先安装VirtualBox,或者别的被Vagrant支付的虚拟机运行器。VirtualBox是免费的，你可以在这里进行下载:<a target="_blank" rel="noopener" href="http://www.virtualbox.org/wiki/Downloads">www.virtualbox.org/wiki/Downloads</a>。一旦安装好了VirtualBox，下载并安装Vagrant:<a target="_blank" rel="noopener" href="http://www.vagrantup.com/downloads.html">www.vagrantup.com/downloads.html</a>。</p>
-<p>一旦你安装好了VirtualBox和Vagrant，进入到你的工程目录下面，克隆Ionic box资源，并且启动它。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ..</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/driftyco/ionic-box</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ionic-box</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant up</span></span><br></pre></td></tr></table></figure>
-<p>你第一次执行时，可能要花费几分钟，因为Vagrant需要下载一个虚拟机镜像文件。在你在Ionic box上编译你的应用前，你需要将你的项目代码目录与虚拟机共享。在你的编译器中打开ionic-box/Vagrantfile。找到下面这行：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta"># config.vm.synced_folder <span class="meta-string">&quot;../data&quot;</span>, <span class="meta-string">&quot;/vagrant_data&quot;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>修改为：</p>
-<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="built_in">config</span>.vm.<span class="keyword">synced_folder </span><span class="string">&quot;../trendicity&quot;</span>, <span class="string">&quot;/home/vagrant/trendicity&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>保存这个文件并重新加载你的Vagrant实例：</p>
-<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$vagrant</span> reload</span></span><br></pre></td></tr></table></figure>
-
-<p>现在让我们为vagrant实例添加SSH,并针对Android进行构建。</p>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>vagrant ssh</span><br><span class="line">vagrant<span class="variable">@ionic</span>-<span class="symbol">android:</span>~<span class="variable">$ </span>cd trendicity/</span><br><span class="line">vagrant<span class="variable">@ionic</span>-<span class="symbol">android:</span>~<span class="regexp">/trendicity$ ionic platform android</span></span><br></pre></td></tr></table></figure>
-
-<p>现在将你的Android设备通过USB连接到你的电脑。你可以通过下面的命令确认你的设备已经连接上。</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">vagrant@ionic-android:~<span class="regexp">/trendicity$ sudo /</span>home<span class="regexp">/vagrant/</span>android-sdk-linux<span class="regexp">/platform-tools/</span>adb devices</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>确认你的设备已经连接上，然后通过下面的命令在你设备上启动应用：</p>
-<figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line">vagrant<span class="symbol">@ionic</span>-android:~/trendicity$ ionic <span class="built_in">run</span> android</span><br></pre></td></tr></table></figure>
-
-<p>当你看到下面的信息，就证明上面的命令执行成功了：</p>
-<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">Installing</span></span> app on device ...</span><br><span class="line"><span class="function"><span class="title">Lanuching</span></span> application ...</span><br><span class="line">LAUNCH SUCCESS  </span><br></pre></td></tr></table></figure>
-
-<p>恭喜！你已经成功在android设备上运行了你的应用。</p>
-<p>上面看上去在你的设备上运行应用程序是很多麻烦，同时它证明了android sdk安装是多么的困难，以及ionic团队如何使它些困难变的简单易用。</p>
-<p>##添加插件</p>
-<p>Ionic和Cordova是非常强大的工具，但是为了提高性能和最小化你的就应用，你可能不希望默认安装所有东西。你可能添加别的功能通过添加插件的方式。让我们给将要使用地理定位功能的应用添加地理位置插件。</p>
-<p>在你的项目根目录，输入以下命令。注意，你可以在本地命令行中执行下面命令，也可以在ionic box 的命令行中输入以下命令：</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">$ ionic plugin <span class="keyword">add</span><span class="bash"> org.apache.cordova.geolocation</span></span><br></pre></td></tr></table></figure>
-
-<p>Ionic将会安装一些必须的组件，使你的应用程序可以使用地理定位功能。稍后，当你深入到本书例子 Trendicity应用 的细节时，你会看到如何使用这个地理定位插件。</p>
-<p>你也要以自动在这里<a target="_blank" rel="noopener" href="http://plugins.cordova.io/">plugins.cordova.io/</a>了解一下别的插件，以备将来更好的使用到自己的项目中。</p>
-<p>##最佳源代码控制实践</p>
-<p>因为Ionic和Cordova安装的文件对不同的平台是不一样的，这些文件是没有必要加入版本控制的。让我们看一下，哪些东西要存放到我们的版本控制中，还有哪些不用存放。</p>
-<p>###Git和模版化应用</p>
-<p>如何你使用Git(本书的作者们强烈推荐使用Git),和如何通过Ionic命令行创建你的应用，你可能注意到它创建了一个<code>.gitignore</code>文件，它里面包含一些你不需要版本控制的文件引用。你可以选择跳过本章剩余的部分而直接查看这个文件<code>.gitignore</code>，下面是它的内容：</p>
-<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$</span> cat .gitignore </span><br><span class="line"># Specifies intentionally untracked <span class="keyword">files</span> to ignore when <span class="keyword">using</span> Git</span><br><span class="line"># http:<span class="comment">//git-scm.com/docs/gitignore</span></span><br><span class="line"></span><br><span class="line">node_modules/</span><br><span class="line">platforms/</span><br><span class="line">plugins/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>###根目录下面的文件</p>
-<p>根目录下所有的文件，你就都应该加入版本控制。它们包含了项目的配置信息，没有它们，你的项目将无法正确编译。</p>
-<p>###包含的目录<br><code>./hooks</code>,<code>./scss</code>,和最重要的<code>./www</code> 都应该加入到你的版本控制。</p>
-<p>###不需要包含的目录</p>
-<p><code>./node_modules</code>,<code>./platforms</code>, 和 <code>./plugins</code> 都不需要加入版本控制。他们包含了许多二进制文件和一些额外的编译时生成的文件，这些文件在部署时都会重新生成。也都会在你在新的机器上检出代码时自动生成。</p>
-<p>##总结</p>
-<p>你现在准备开始创建你的应用。你拥有了创建一个应用需要的所有工具：你可以通过浏览器或者仿真器进行测试，你可以通过添加插件的方式去访问一些高级的功能，并可以让你的应用在真实的设备上进行运行。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/08/27/ionic%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20%E5%B7%A5%E5%85%B7%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D/" data-id="ckfci5hq400auvl2fc2swemvy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-ionic schedule" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/24/ionic%20schedule/" class="article-date">
-  <time datetime="2015-08-23T16:00:00.000Z" itemprop="datePublished">2015-08-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/24/ionic%20schedule/">ionic 学习计划</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###1. 第一章 ionic基本介绍</p>
-<blockquote>
-<p>08.24 </p>
-</blockquote>
-<p>###2. 第二章  开发环境 工具和工作流程介绍 </p>
-<blockquote>
-<p>08.25-08.27 </p>
-</blockquote>
-<p>###3. 第三章 Trendicity 项目实例</p>
-<blockquote>
-<p>08.28-09-20 </p>
-</blockquote>
-<p>###4. 第四章 实现菜单滑动和设置路线</p>
-<blockquote>
-<p>09.20-10.30 </p>
-</blockquote>
-<p>###5. 第五章 与地图的集成</p>
-<blockquote>
-<p>10-01-10.10 </p>
-</blockquote>
-<p>###6. 第六章 权限制控制</p>
-<blockquote>
-<p>10.11 </p>
-</blockquote>
-<p>###7. 第七章 设计应用</p>
-<blockquote>
-<p>10.12-10.20 </p>
-</blockquote>
-<p>###8. 第八章 与服务的交互</p>
-<blockquote>
-<p>10.22 </p>
-</blockquote>
-<p>###9. 第九章 下一步要做什么呢？</p>
-<blockquote>
-<p>10.25 </p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/08/24/ionic%20schedule/" data-id="ckfci5hmn000bvl2fbtnggyke" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-ionic 第一章 基本介绍" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/24/ionic%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/" class="article-date">
-  <time datetime="2015-08-23T16:00:00.000Z" itemprop="datePublished">2015-08-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/24/ionic%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/">第一章ionic 基本介绍</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">21</span>世纪，手机应用兴起。硬件正变的更好，软件的能力也成几何倍的增长。手机应用的需求空前的高，开发者们也努力开发各种主流平台的应用以满足市场的需求。</span><br><span class="line"></span><br><span class="line">最流行的方式就是编写原生的应用，但是编写原生的应用需要对多门语言进行深入的理解，例如：IOS/OSX使用的Objective-C 和 Swift，别外一个就是Android开发使用的Java。另外开发人员要熟悉各种开发框架及SDK来生成应用。像这样当同时开发一个应用要分别开发不同平台的版本，对于一个团对来说难度就大了。</span><br><span class="line">混合模式开发(Hybrid development)，可以说是解决上面问题的最有效的方式。其实，混杂模式应用是在本地容器上包装了一层。这种结构让我们仅通过用HTML5+CSS3和javascript就可以开发移动应用，不用直接与某一个平台进行交互。很多开发者为了满足快速增长类似于一个产品要有多平台的版本的需要，目前已经使用了这种方式。自从智能手机的到来，很多类似的框架也产生了。Sencha Touch,Kendo UI,和jQuery mobile是比较受欢迎的移动框架。也有一些控制DOM的框架，如Facebook的React库，Google的AngularJS和<span class="module-access"><span class="module"><span class="identifier">Backbone</span>.</span></span>js.另外，Bootstrap,Foundation和Topcoat 服务帮助你设计混杂应用。最后，有很多混杂开发平台如Apache基金会的Cordova 一个开源平台。</span><br><span class="line">面对那么多的框架体系，选择哪个来开发你的应用是比较头痛的事情。大部分这些框架不能充分利用手机装置并且当我们使用其生成应用时会出现各种问题。所以Ionic就出现了。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>###Ionic</p>
-<pre><code>Ionic是由Drifty研发的，一个聪明的开发和设计小组。这个公司之前已经成功开发过多个项目，如：Jetstrap,一个bootstrap构建工具，和Codiqa,在线拖放构建混合应用程序和移动网站的工具。Drifty目前的使命是改变未来移动软件开发，特别是混杂手机应用开发，Ionic就会实现这些事情。
-Ionic将Apache的Cordova平台，AngularJS和Angular-ui-router通过Ionic开发好的应用架构和组件和样式组合起来。实质上Ionic集成了最好的手机框架，让你专注于自己的功能设计和实现。
-基于Cordova，Inoic是可以使用大量的Cordova插件,这些插件可以使用原生的一些东西，如访问设备的相机，照片和地理坐标等等。另外，这个平台还让你创建原生的通知，和捕获设备的运动方向，实际上，这样我们基本就看不出原生应用和混杂应用的区别了。
-更重要的是，Ionic决定集成AngularJS使你能够访问大量的功能.那是一个非常了不起的架构上的决定，因为它可以帮你把你的代码组织到controllers,services,和directives中，方便代码的管理。最后，有了AngularJS，大量开源社区的模块都可以使用了，可以使人你扩展Ionic的核心功能。如，Trendicity 这个应用，我们就集成了有名的angular-local-storage模块来存储在Instagram上发表的最喜欢的东西。
-而且，Ionic在开源社区中已经非常受关注。不仅仅因为这个框架它本身开源，而是它的开发团队编写了详细的文档和在CodePen上收集有用的代码样例。别一个非常好的资源就是，可以与其它社区交流和直接与ionic团队直接进行交流的公共论坛。
-接下来的章节，我们会用ionic一步步的创建Trendicity用ionic。此外，我们会深入学习ionic在构建混合移动应用程序中的使用。</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/08/24/ionic%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/" data-id="ckfci5hmo000cvl2f2drk0bmi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-学习计划" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/24/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="article-date">
-  <time datetime="2015-08-23T16:00:00.000Z" itemprop="datePublished">2015-08-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/24/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">我的读书计划</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div class="col-xs-12">
-<table class="table table-bordered">
-    <tr>
-    <th>书名</th>
-    <th>作者</th>
-    <th>计划学习时间</th>
-    <th>详细记划</th>
-    </tr>
-    <tr>
-        <td>《Developing an Ionic Edge》</td>
-        <td>Anton Shevchenko,Robi van Baalen,keith D. Moore,Diego Netto,Alan Levicki</td>
-        <td>08.24 到 10.30</td>
-        <td><a href="/book/2015/08/24/ionic schedule.html">详细记划</a></td>
-    </tr>
-    <tr>
-        <td><a target="_blank" rel="noopener" href="http://spark.apache.org/">spark</a></td>
-        <td>Apache Spark</td>
-        <td>11.0 到 12.30</td>
-        <td>待计划</td>
-    </tr>
-</table>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Share" type="application/atom+xml">
+</head>
+<body id="bodyx">
+    <div class="hd logodiv">
+    <img src="/img/male.png" class="logopng" alt="logo">
+    <p class="logot">
+         生活点滴和知识分享 
+         <span class="logo_2"></span>
+        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
+            Share
+        </h3>
+    </p>
 </div>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/08/24/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" data-id="ckfci5hmr000fvl2fhuom3hh9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nocomment/" rel="tag">nocomment</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-django定时调度的几种方式" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/21/django%E5%AE%9A%E6%97%B6%E8%B0%83%E5%BA%A6%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="article-date">
-  <time datetime="2015-08-20T16:00:00.000Z" itemprop="datePublished">2015-08-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/">语言</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+<div class="hd">
+    <ol class="breadcrumb">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/21/django%E5%AE%9A%E6%97%B6%E8%B0%83%E5%BA%A6%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">django core task</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="定时调度的问题"><a href="#定时调度的问题" class="headerlink" title="定时调度的问题"></a>定时调度的问题</h1><p>1.前言</p>
-<p>  最近在项目中做一个定时统计数据的功能，如何做到定时调用统计方法呢？</p>
-<pre><code>在网上看了一下，大致有三种方式
-
-
-1. [编写Django Command ，用cron进行定时调度](http://www.cnblogs.com/linjiqin/p/3965046.html)
-
-2. 第一种方式的升级版实现[django-crontab实现Django定时任务](http://www.zhidaow.com/post/django-crontab)
-
-3. 编写Django Command 然后rq_scheduler定时把任务提交给队列，由worker进行处理
-
-这里我选用的是第三种方式</code></pre>
-<p>2.编写Django Command 然后rq_scheduler定时把任务提交给队列，由worker进行处理</p>
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>*Putting a job in the scheduler</p>
-<p>*Running a scheduler that will move scheduled jobs into queues when the time comes</p>
-<p>*RQ Scheduler comes with a script rqscheduler that runs a scheduler process that polls Redis once every minute and move scheduled jobs to the relevant queues when they need to be executed:</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">scheduler.schedule(</span><br><span class="line">    scheduled_time=datetime.now(), # <span class="type">Time</span> <span class="keyword">for</span> first execution, <span class="keyword">in</span> UTC timezone</span><br><span class="line">    func=func,                     # <span class="keyword">Function</span> <span class="keyword">to</span> be queued</span><br><span class="line">    args=[arg1, arg2],             # Arguments passed <span class="keyword">into</span> <span class="keyword">function</span> <span class="keyword">when</span> executed</span><br><span class="line">    kwargs=&#123;<span class="string">&#x27;foo&#x27;</span>: <span class="string">&#x27;bar&#x27;</span>&#125;,         # Keyword arguments passed <span class="keyword">into</span> <span class="keyword">function</span> <span class="keyword">when</span> executed</span><br><span class="line">    <span class="type">interval</span>=<span class="number">60</span>,                   # <span class="type">Time</span> <span class="keyword">before</span> the <span class="keyword">function</span> <span class="keyword">is</span> <span class="keyword">called</span> again, <span class="keyword">in</span> seconds</span><br><span class="line">    repeat=<span class="number">10</span>                      # Repeat this number <span class="keyword">of</span> times (<span class="keyword">None</span> means repeat forever)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<p>##使用方法</p>
-<p>###初始化：</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">from</span> analytics.etl <span class="keyword">import</span> analytics_etl</span><br><span class="line">In [<span class="number">2</span>]: analytics_etl.init()</span><br></pre></td></tr></table></figure>
-
-
-<ol>
-<li>安装rq_scheduler<br> pip install rq_scheduler</li>
-<li>编写测试command   scheduler_command.py</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">class Command(BaseCommand):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">help</span> = <span class="string">&quot;process  analytics data&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> handle(<span class="keyword">self</span>, *args, **options):</span><br><span class="line">        first_process_datetime=datetime.now()+timedelta(<span class="keyword">days</span>=<span class="number">1</span>)</span><br><span class="line">        first_process_datetime.replace(<span class="keyword">hour</span>=<span class="number">1</span>,<span class="keyword">minute</span>=<span class="number">0</span>,<span class="keyword">second</span>=<span class="number">0</span>,<span class="keyword">microsecond</span>=<span class="number">0</span>)</span><br><span class="line">        first_process_datetime=dateformat.local_to_utc(first_process_datetime)</span><br><span class="line">        scheduler.schedule(first_process_datetime,process,<span class="built_in">interval</span>=<span class="built_in">interval</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>###调用job</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">python manage.py scheduler_<span class="keyword">command</span> <span class="params">--settings=local_settings</span></span><br></pre></td></tr></table></figure>
-
-<p>###启动rqscheduler</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">rqscheduler执行一次就ＯＫ</span><br><span class="line">python manage.py rqscheduler <span class="attribute">--settings</span>=local_settings</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动一个rqworker-default"><a href="#启动一个rqworker-default" class="headerlink" title="启动一个rqworker default"></a>启动一个rqworker default</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">启动一个工作者，</span><br><span class="line">python manage.py rqworker<span class="built_in"> default </span><span class="attribute">--settings</span>=local_settings</span><br></pre></td></tr></table></figure>
-
-<p>###查看当前有多少job:</p>
-<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> django_rq</span><br><span class="line"></span><br><span class="line"><span class="title">scheduler</span>=django_rq.get_scheduler(&#x27;<span class="keyword">default</span>&#x27;)</span><br><span class="line"></span><br><span class="line"><span class="title">jobs</span>=scheduler.get_jobs()</span><br></pre></td></tr></table></figure>
-
-<p>###取消job</p>
-<p><code>scheduler.cancel(job)</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/08/21/django%E5%AE%9A%E6%97%B6%E8%B0%83%E5%BA%A6%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" data-id="ckfci5hml0007vl2f2u5pdg3i" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crontab/" rel="tag">crontab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django-rq/" rel="tag">django-rq</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django-schedule/" rel="tag">django-schedule</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6/" rel="tag">定时</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-大牛推荐书籍" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/20/%E5%A4%A7%E7%89%9B%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%B1%8D/" class="article-date">
-  <time datetime="2015-08-19T16:00:00.000Z" itemprop="datePublished">2015-08-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E4%B9%A6%E7%B1%8D/">书籍</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li><a class="ba" href="/about">关于我👀</a></li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/20/%E5%A4%A7%E7%89%9B%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%B1%8D/">牛人推荐</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以下是摘自刘未鹏博客<a target="_blank" rel="noopener" href="http://mindhacks.cn/2011/11/04/how-to-interview-a-person-for-two-years/">怎么样花两年时间去面试一个人</a></p>
-<h2 id="列一下我所认为的，你面试微软前必须要读的十本书："><a href="#列一下我所认为的，你面试微软前必须要读的十本书：" class="headerlink" title="列一下我所认为的，你面试微软前必须要读的十本书："></a>列一下我所认为的，你面试微软前必须要读的十本书：</h2><figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">    Code: The Hidden <span class="keyword">Language</span> of Computer Hardware and Software （《编码的奥秘》）</span><br><span class="line">    Computer System: A Programmer’s Perspective （《深入理解计算机系统》） / Windows via <span class="keyword">C</span>/<span class="keyword">C</span>++ （《Windows核心编程》 / 《程序员的自我修养》</span><br><span class="line">    Code Complete <span class="number">2</span>（《代码大全》）/ The Pragmatic Programmer （《程序员修炼之道》，我也把这本书称为《代码小全》）</span><br><span class="line">    Programming Pearls （《编程珠玑》） / Algorithms / Algorithm Design / 《编程之美》</span><br><span class="line">    The <span class="keyword">C</span> Programming <span class="keyword">Language</span></span><br><span class="line">    The <span class="keyword">C</span>++ Programming <span class="keyword">Language</span> / Programming: Principles and Practice <span class="keyword">Using</span> <span class="keyword">C</span>++ / Accelerated <span class="keyword">C</span>++</span><br><span class="line">    The Structure and <span class="keyword">Interpretation</span> of Computer Programs （《计算机程序的构造和解释》）</span><br><span class="line">    Clean Code / Implementation Patterns</span><br><span class="line">    Design Patterns （《设计模式》） / Agile Software Development, Principles, Patterns, and Practices</span><br><span class="line">    Refactoring （《重构》）</span><br><span class="line"></span><br><span class="line">（注：<span class="number">1.</span> 以上同一条目下用“/”隔开的表示任选，当然你也可以都读了，相信我，时间是足够的。<span class="number">2.</span> 读这些书并不意味着逐字逐句从第一页读到最后一页——当然你也可以这么做。怎么是聪明高效的读法，可以参考我之前写的关于如何阅读和查找/鉴别书籍/资料的博文）</span><br><span class="line"></span><br><span class="line">注意：以上是我个人认为你面试微软开发职位前必须要读的<span class="number">10</span>本书，它不代表我的雇主的观点。它也只是一个初步的书单，肯定会受到我个人经验和眼界的限制。欢迎大家提意见。</span><br><span class="line"></span><br><span class="line">此外，IT不同子领域的必读书单可能千差万别，所以在发布之前我把这篇文章发给了一些朋友，他们给出了自己的书单（你是不是能看到一些有趣的共同点呢）：</span><br></pre></td></tr></table></figure>
-
-<p>##云风（中国游戏编程先行者，前网易游戏部门资深程序员，简悦创始人）：</p>
-<p>如果面试，我会挑以下的我自己读过的书，让人选择他也读过的部分，再了解他对这些书的理解。这些书其实本质上就是两类，对所面对的东西（程序语言也好，操作系统也好，底层设施也好）本身的理解程度。以及另一类：对设计思想和原则的理解：</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">C++编程思想</span><br><span class="line">Effective C++</span><br><span class="line">深度探索C++对象模型</span><br><span class="line">C++语言的设计和演化</span><br><span class="line">C专家编程</span><br><span class="line">C陷阱与缺陷</span><br><span class="line">C语言接口与实现</span><br><span class="line">Lua程序设计</span><br><span class="line">Linkers <span class="keyword">and</span> Loaders</span><br><span class="line">COM本质论</span><br><span class="line">Windows核心编程</span><br><span class="line">深入解析Windows操作系统</span><br><span class="line">程序员修炼之道</span><br><span class="line">代码大全</span><br><span class="line">UNIX编程艺术</span><br><span class="line">设计模式</span><br><span class="line">代码优化：有效使用内存</span><br><span class="line">深入理解计算机系统</span><br><span class="line">深入理解LINUX内核</span><br><span class="line">TCP<span class="built_in">/IP </span>详解</span><br></pre></td></tr></table></figure>
-
-<p>##冯大辉（丁香园CTO，贝塔咖啡创始人）：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">软件随想录</span><br><span class="line">黑客与画家</span><br><span class="line">重来</span><br><span class="line">UNIX编程艺术</span><br><span class="line">编程人生</span><br></pre></td></tr></table></figure>
-
-
-<p>##洪强宁（豆瓣技术总监）：</p>
-<p>StackOverflow上有一个程序员必读书单帖子，这里仅列出top10，更多参考这里。</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">Code Complete 2</span><br><span class="line">The Mythical Man-Month （《人月神话》）</span><br><span class="line">Code: The Hidden Language of Computer<span class="built_in"> Hardware </span><span class="keyword">and</span> Software （《编码的奥秘》）</span><br><span class="line">TAOCP （不解释）</span><br><span class="line">The Pragmatic Programmer （《程序员修炼之道》）</span><br><span class="line">Design Patterns （《设计模式》）</span><br><span class="line">The Structure <span class="keyword">and</span> Interpretation of Computer Programs （《计算机程序的构造和解释》）</span><br><span class="line">Refactoring （《重构》）</span><br><span class="line">The C Programming Language</span><br><span class="line">Introduction <span class="keyword">to</span> Algorithms （《算法导论》）</span><br></pre></td></tr></table></figure>
-
-
-<p>##郑昀（窝窝团研发副总裁）：</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">工程师入门：</span><br><span class="line">    Code Complete <span class="number">2</span></span><br><span class="line">    程序员修炼之道</span><br><span class="line">    深入理解计算机系统</span><br><span class="line">工程师升级：</span><br><span class="line">    设计模式</span><br><span class="line">    重构——改善既有代码的设计</span><br><span class="line">工程师转型：</span><br><span class="line">    快速软件开发——有效控制与完成进度计划</span><br><span class="line">    人月神话</span><br><span class="line">    IT项目管理那些事儿</span><br><span class="line">    软件随想录</span><br><span class="line">    最后期限</span><br><span class="line">    走出软件作坊</span><br><span class="line">    你的灯亮着吗?——发现问题的真正所在</span><br></pre></td></tr></table></figure>
-
-
-<p>##张峥（微软亚洲研究院副院长）：</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">Algorithms (by Sanjoy Dasgupta, Christos Papadimitriou <span class="keyword">and</span> Umesh Vazirani)</span><br><span class="line">Data Structure <span class="keyword">and</span> Algorithms</span><br><span class="line">The C Programming Language</span><br><span class="line">The Design of the UNIX Operating System</span><br><span class="line">Compilers （龙书）</span><br><span class="line">Computer Architecture: A Quantitative Approach</span><br><span class="line">Flow</span><br><span class="line">Outliers (why hard work <span class="keyword">and</span> luck are both important)</span><br></pre></td></tr></table></figure>
-
-<p>##邹欣（MSRA创新工程中心首席研发经理）：</p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">关于创新的书籍(http</span>:<span class="string">//book.douban.com/doulist/1253169/):</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">The</span> <span class="string">Myths of Innovation</span></span><br><span class="line">    <span class="attr">The</span> <span class="string">Innovator’s Dilemma</span></span><br><span class="line">    <span class="attr">The</span> <span class="string">Innovator’s Solution</span></span><br><span class="line">    <span class="attr">Crossing</span> <span class="string">the Chasm</span></span><br><span class="line">    <span class="attr">Inside</span> <span class="string">Intuit</span></span><br><span class="line">    <span class="attr">盛田昭夫</span></span><br><span class="line">    <span class="attr">杰克·韦尔奇自传</span></span><br><span class="line">    <span class="attr">梦断代码</span></span><br><span class="line">    <span class="attr">Innovation</span></span><br><span class="line">    <span class="attr">浪潮之巅</span></span><br></pre></td></tr></table></figure>
-
-<p>##关于“精通”的一篇博客<a target="_blank" rel="noopener" href="http://www.cnblogs.com/xinz/archive/2011/08/07/2129751.html">《技能的反面：魔方和模仿》</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/08/20/%E5%A4%A7%E7%89%9B%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%B1%8D/" data-id="ckfci5hmj0005vl2f0d8o7ybj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/" rel="tag">book</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-开启我的blog" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/20/%E5%BC%80%E5%90%AF%E6%88%91%E7%9A%84blog/" class="article-date">
-  <time datetime="2015-08-19T16:00:00.000Z" itemprop="datePublished">2015-08-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li><a class="ba" target="_blank" rel="noopener" href="https://aaronwan.github.io">访问主站🎉</a></li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/20/%E5%BC%80%E5%90%AF%E6%88%91%E7%9A%84blog/">我的第一篇博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###为什么写博客</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/beiyuu/Github-Pages-Example/blob/master/_posts/blog/2011-12-18-why-blog.md">世界这么乱，装纯给谁看</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/bangerlee/archive/2011/09/11/2173632.html">我为什么写博客</a></li>
-<li>我认同他们所分享的，所以我也开始了自己的博客之路</li>
-</ol>
-<h3 id="为什么现在才开始"><a href="#为什么现在才开始" class="headerlink" title="为什么现在才开始"></a>为什么现在才开始</h3><ol>
-<li>从2014年就一直想写自己的博客，一直没有沉下心来去写。</li>
-<li>这几天搭档出去休息，我也偷偷的休息一下，将自己的博客这一课给补上。</li>
-</ol>
-<h3 id="写哪些东西"><a href="#写哪些东西" class="headerlink" title="写哪些东西"></a>写哪些东西</h3><ol>
-<li>读书笔记：记录在看书时一些笔记，方便自己日后参考</li>
-<li>项目中遇到难点笔记：项目中遇到问题的解决过程，方便将来参考</li>
-<li>技术分享会总结：记录在技术学习上的点滴</li>
-<li>个人随笔 ：本人一些业余随笔</li>
-<li>关于：本人的简单介绍</li>
-</ol>
-<h3 id="为什么会选择用github-pages呢"><a href="#为什么会选择用github-pages呢" class="headerlink" title="为什么会选择用github pages呢"></a>为什么会选择用github pages呢</h3><ol>
-<li>阮一峰老师的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html">搭建一个免费的，无限流量的Blog—-github Pages和Jekyll入门</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/beiyuu/Github-Pages-Example/blob/master/_posts/blog/2011-12-18-why-blog.md">Github-Pages-Example</a></li>
-<li><a target="_blank" rel="noopener" href="http://jekyll.bootcss.com/">将纯文本转化为静态网站和博客</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.appinn.com/markdown/#link">Markdown的基本语法</a></li>
-<li><a target="_blank" rel="noopener" href="http://lea.verou.me/2011/10/easily-keep-gh-pages-in-sync-with-master/">keep gh-pages in sync with master</a></li>
-</ol>
-<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><ol>
-<li><p>添加网站优化搜索</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加flow</p>
- <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//gi</span>thub.com<span class="regexp">/bubkoo/</span>hexo-filter-flowchart</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/08/20/%E5%BC%80%E5%90%AF%E6%88%91%E7%9A%84blog/" data-id="ckfci5hmk0006vl2faypyem28" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F/" rel="tag">人生</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%84%9F%E6%82%9F/" rel="tag">感悟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%96%91%E6%83%91/" rel="tag">疑惑</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="detail-由 Openssl 软件自动生成RSA 私钥和公钥" class="article article-type-detail" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/01/27/%E7%94%B1%20Openssl%20%E8%BD%AF%E4%BB%B6%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90RSA%20%E7%A7%81%E9%92%A5%E5%92%8C%E5%85%AC%E9%92%A5/" class="article-date">
-  <time datetime="2015-01-26T16:00:00.000Z" itemprop="datePublished">2015-01-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>►<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li><a class="ba" target="_blank" rel="noopener" href="https://github.com/AaronWan">GitHub🐒</a></li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/27/%E7%94%B1%20Openssl%20%E8%BD%AF%E4%BB%B6%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90RSA%20%E7%A7%81%E9%92%A5%E5%92%8C%E5%85%AC%E9%92%A5/">Openssl软件生成RSA私钥和公钥</a>
-    </h1>
-  
 
-      </header>
+            
+<script src="/libs/jquery.min.js"></script>
+
+            
+<script src="/js/search.js"></script>
+
+            
+                <form class="site-search-form">
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(100);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
+    </ol>
+    <hr>
+</div>
+<div class="hd">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##什么是RSA<br>##什么是Openssl软件<br>##如何用Openssl软件生成RSA私钥和公钥</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.wansonglife.com/2015/01/27/%E7%94%B1%20Openssl%20%E8%BD%AF%E4%BB%B6%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90RSA%20%E7%A7%81%E9%92%A5%E5%92%8C%E5%85%AC%E9%92%A5/" data-id="ckfci5hmf0002vl2f2o52525h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rsa/" rel="tag">rsa</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" rel="tag">算法加密</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
-  </nav>
-
-</section>
         
-          <aside id="sidebar">
-  
+        
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2015年 🕛
+                </p>
+            </div>
+            
+        
+        <a class="flink" href="/2015/09/02/Django+Mysql+%E5%AE%9E%E7%8E%B0%E5%91%A8%E8%BE%B9%E6%9F%A5%E8%AF%A2/">
+            <div class="list">
+                <div class="postname">
+                    Django,Mysql,空间数据是通过Google地图和高德地图进行采集的
+                </div>
+                <div class="posttime">
+                    September 2nd
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">Java 基本知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/CAP/">CAP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/rpc/">rpc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/">zookeeper</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/">Kafka</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">文件存储</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/">缓存</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/redis/">redis</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/%E5%91%BD%E4%BB%A4/">命令</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E4%B9%A6%E7%B1%8D/">书籍</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/">日常工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/ansible/">ansible</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/mac/">mac</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/python/">python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/JMeter/">JMeter</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E8%BF%90%E5%8A%A8/">运动</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E9%9F%B3%E4%B9%90/">音乐</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/%E7%BB%8F%E5%85%B8%E5%9D%91/">经典坑</a></li></ul></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
+        
+        
+        <a class="flink" href="/2015/08/31/ionic%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20Trendicity%20%E9%A1%B9%E7%9B%AE%E5%AE%9E%E4%BE%8B/">
+            <div class="list">
+                <div class="postname">
+                    第三章 ionic 实例 Trendicity
+                </div>
+                <div class="posttime">
+                    August 31st
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protobuf/" rel="tag">Protobuf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/" rel="tag">awk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/" rel="tag">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/core/" rel="tag">core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/" rel="tag">crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-rq/" rel="tag">django-rq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-schedule/" rel="tag">django-schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastcgi/" rel="tag">fastcgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastfs/" rel="tag">fastfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux%E5%91%BD%E4%BB%A4/" rel="tag">linux命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mp3/" rel="tag">mp3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nocomment/" rel="tag">nocomment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl/" rel="tag">openssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pattern/" rel="tag">pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsa/" rel="tag">rsa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/" rel="tag">sed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/share/" rel="tag">share</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" rel="tag">一致性算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F/" rel="tag">人生</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" rel="tag">人生感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" rel="tag">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" rel="tag">代码仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" rel="tag">压力测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" rel="tag">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/" rel="tag">存储</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6/" rel="tag">定时</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="tag">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E6%82%9F/" rel="tag">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" rel="tag">服务治理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" rel="tag">消息对列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%96%91%E6%83%91/" rel="tag">疑惑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" rel="tag">算法加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" rel="tag">音频转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">项目管理工具</a></li></ul>
-    </div>
-  </div>
-
-
-  
+        
+        
+        <a class="flink" href="/2015/08/27/ionic%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20%E5%B7%A5%E5%85%B7%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D/">
+            <div class="list">
+                <div class="postname">
+                    第二章 ionic 开发环境 工具和工作流程介绍
+                </div>
+                <div class="posttime">
+                    August 27th
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Protobuf/" style="font-size: 10px;">Protobuf</a> <a href="/tags/angularjs/" style="font-size: 15px;">angularjs</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/awk/" style="font-size: 10px;">awk</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/book/" style="font-size: 18.33px;">book</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/core/" style="font-size: 10px;">core</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-rq/" style="font-size: 10px;">django-rq</a> <a href="/tags/django-schedule/" style="font-size: 10px;">django-schedule</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/fastcgi/" style="font-size: 10px;">fastcgi</a> <a href="/tags/fastfs/" style="font-size: 10px;">fastfs</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/linux%E5%91%BD%E4%BB%A4/" style="font-size: 11.67px;">linux命令</a> <a href="/tags/maven/" style="font-size: 11.67px;">maven</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/music/" style="font-size: 10px;">music</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nocomment/" style="font-size: 11.67px;">nocomment</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/pattern/" style="font-size: 15px;">pattern</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/rsa/" style="font-size: 11.67px;">rsa</a> <a href="/tags/schedule/" style="font-size: 16.67px;">schedule</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/share/" style="font-size: 10px;">share</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" style="font-size: 10px;">一致性算法</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 10px;">人生</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 10px;">人生感悟</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" style="font-size: 10px;">人脸识别</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" style="font-size: 10px;">代码仓库</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">压力测试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 11.67px;">图片处理</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 15px;">多线程</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 10px;">存储</a> <a href="/tags/%E5%AE%9A%E6%97%B6/" style="font-size: 10px;">定时</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 15px;">并发</a> <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">性能测试</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 10px;">感悟</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" style="font-size: 11.67px;">服务治理</a> <a href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" style="font-size: 15px;">消息对列</a> <a href="/tags/%E7%96%91%E6%83%91/" style="font-size: 10px;">疑惑</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 11.67px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">算法加密</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 13.33px;">缓存</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.67px;">运维</a> <a href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">音频转换</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 11.67px;">项目管理工具</a>
-    </div>
-  </div>
-
-  
+        
+        
+        <a class="flink" href="/2015/08/24/ionic%20schedule/">
+            <div class="list">
+                <div class="postname">
+                    ionic 学习计划
+                </div>
+                <div class="posttime">
+                    August 24th
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
-    </div>
-  </div>
-
-
-  
+        
+        
+        <a class="flink" href="/2015/08/24/ionic%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/">
+            <div class="list">
+                <div class="postname">
+                    第一章ionic 基本介绍
+                </div>
+                <div class="posttime">
+                    August 24th
+                </div>
+            </div>
+        </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a href="/2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/">Alfred Workflow快速打开idea项目</a>
-          </li>
         
-          <li>
-            <a href="/2018/04/15/redis/">redis</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">微服务相关概念.md</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/29/%E6%8E%92%E5%BA%8F/">排序</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/29/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%89%A9%E5%B1%95/">二分法查找及扩展</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 万松<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+        <a class="flink" href="/2015/08/24/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+            <div class="list">
+                <div class="postname">
+                    我的读书计划
+                </div>
+                <div class="posttime">
+                    August 24th
+                </div>
+            </div>
+        </a>
     
+        
+        
+        <a class="flink" href="/2015/08/21/django%E5%AE%9A%E6%97%B6%E8%B0%83%E5%BA%A6%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+            <div class="list">
+                <div class="postname">
+                    django core task
+                </div>
+                <div class="posttime">
+                    August 21st
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2015/08/20/%E5%A4%A7%E7%89%9B%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%B1%8D/">
+            <div class="list">
+                <div class="postname">
+                    牛人推荐
+                </div>
+                <div class="posttime">
+                    August 20th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2015/08/20/%E5%BC%80%E5%90%AF%E6%88%91%E7%9A%84blog/">
+            <div class="list">
+                <div class="postname">
+                    我的第一篇博客
+                </div>
+                <div class="posttime">
+                    August 20th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2015/01/27/%E7%94%B1%20Openssl%20%E8%BD%AF%E4%BB%B6%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90RSA%20%E7%A7%81%E9%92%A5%E5%92%8C%E5%85%AC%E9%92%A5/">
+            <div class="list">
+                <div class="postname">
+                    Openssl软件生成RSA私钥和公钥
+                </div>
+                <div class="posttime">
+                    January 27th
+                </div>
+            </div>
+        </a>
+    
+</div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: 万松 | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="light">
+<input type="hidden" id="valine_appid" value="b13h0PpoiVVieODkmdrjUw2R-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="NMiO8n8rxtwYIaUdndXwbcKH">
+
+<script src="/libs/jquery.min.js"></script>
 
 
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+<script src="/libs/highlight/highlight.pack.js"></script>
 
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
+<script src="/js/js.js"></script>
 
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>
