@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Share</title>
+  
+  <subtitle>自强不息,厚德载物</subtitle>
+  <link href="http://www.wansonglife.com/atom.xml" rel="self"/>
+  
+  <link href="http://www.wansonglife.com/"/>
+  <updated>2020-09-20T14:28:34.452Z</updated>
+  <id>http://www.wansonglife.com/</id>
+  
+  <author>
+    <name>万松</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Alfred Workflow快速打开idea项目</title>
+    <link href="http://www.wansonglife.com/2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://www.wansonglife.com/2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/</id>
+    <published>2020-09-20T14:19:49.000Z</published>
+    <updated>2020-09-20T14:28:34.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/alfred/open_idea.gif&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Mac 安装Alfred&lt;/li&gt;
+&lt;li&gt;进行workflow的设置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight</summary>
+        
+      
+    
+    
+    
+    <category term="扩展知识" scheme="http://www.wansonglife.com/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="日常工具" scheme="http://www.wansonglife.com/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="项目管理工具" scheme="http://www.wansonglife.com/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="maven" scheme="http://www.wansonglife.com/tags/maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis</title>
+    <link href="http://www.wansonglife.com/2018/04/15/redis/"/>
+    <id>http://www.wansonglife.com/2018/04/15/redis/</id>
+    <published>2018-04-15T01:23:48.000Z</published>
+    <updated>2018-05-06T12:07:47.000Z</updated>
+    
+    
+    <summary type="html">Java redis</summary>
+    
+    
+    
+    <category term="存储" scheme="http://www.wansonglife.com/categories/%E5%AD%98%E5%82%A8/"/>
+    
+    <category term="缓存" scheme="http://www.wansonglife.com/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="redis" scheme="http://www.wansonglife.com/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/redis/"/>
+    
+    
+    <category term="java" scheme="http://www.wansonglife.com/tags/java/"/>
+    
+    <category term="缓存" scheme="http://www.wansonglife.com/tags/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="redis" scheme="http://www.wansonglife.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务相关概念.md</title>
+    <link href="http://www.wansonglife.com/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/"/>
+    <id>http://www.wansonglife.com/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/</id>
+    <published>2018-04-14T00:53:22.000Z</published>
+    <updated>2018-05-06T05:30:32.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;服务治理基本概念&quot;&gt;&lt;a href=&quot;#服务治理基本概念&quot; class=&quot;headerlink&quot; title=&quot;服务治理基本概念&quot;&gt;&lt;/a&gt;服务治理基本概念&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;服务的伸缩控制&lt;/li&gt;
+&lt;li&gt;身份验证与授权</summary>
+        
+      
+    
+    
+    
+    <category term="分布式" scheme="http://www.wansonglife.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    <category term="CAP" scheme="http://www.wansonglife.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/CAP/"/>
+    
+    
+    <category term="算法" scheme="http://www.wansonglife.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="服务治理" scheme="http://www.wansonglife.com/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>排序</title>
+    <link href="http://www.wansonglife.com/2018/03/29/%E6%8E%92%E5%BA%8F/"/>
+    <id>http://www.wansonglife.com/2018/03/29/%E6%8E%92%E5%BA%8F/</id>
+    <published>2018-03-29T00:04:24.000Z</published>
+    <updated>2018-03-29T00:05:08.000Z</updated>
+    
+    
+    <summary type="html">如:各种排序实现</summary>
+    
+    
+    
+    <category term="算法" scheme="http://www.wansonglife.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="Java" scheme="http://www.wansonglife.com/categories/%E7%AE%97%E6%B3%95/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>二分法查找及扩展</title>
+    <link href="http://www.wansonglife.com/2018/03/29/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%89%A9%E5%B1%95/"/>
+    <id>http://www.wansonglife.com/2018/03/29/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%89%A9%E5%B1%95/</id>
+    <published>2018-03-28T23:59:02.000Z</published>
+    <updated>2018-03-29T11:26:11.000Z</updated>
+    
+    
+    <summary type="html">如:实现二分法查找,查找第一个大于N的值</summary>
+    
+    
+    
+    <category term="算法" scheme="http://www.wansonglife.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="Java" scheme="http://www.wansonglife.com/categories/%E7%AE%97%E6%B3%95/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>微信头像九宫格算法</title>
+    <link href="http://www.wansonglife.com/2018/03/25/%E5%BE%AE%E4%BF%A1%E5%A4%B4%E5%83%8F%E4%B9%9D%E5%AE%AB%E6%A0%BC%E7%AE%97%E6%B3%95/"/>
+    <id>http://www.wansonglife.com/2018/03/25/%E5%BE%AE%E4%BF%A1%E5%A4%B4%E5%83%8F%E4%B9%9D%E5%AE%AB%E6%A0%BC%E7%AE%97%E6%B3%95/</id>
+    <published>2018-03-25T02:46:33.000Z</published>
+    <updated>2018-03-28T08:08:29.000Z</updated>
+    
+    
+    <summary type="html">如:分别计算1-9个头像在九宫格中的位置</summary>
+    
+    
+    
+    <category term="算法" scheme="http://www.wansonglife.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="Java" scheme="http://www.wansonglife.com/categories/%E7%AE%97%E6%B3%95/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>取一个数字二进制中1的个数</title>
+    <link href="http://www.wansonglife.com/2018/03/24/%E5%8F%96%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/"/>
+    <id>http://www.wansonglife.com/2018/03/24/%E5%8F%96%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/</id>
+    <published>2018-03-24T12:10:29.000Z</published>
+    <updated>2018-03-28T08:28:55.000Z</updated>
+    
+    
+    <summary type="html">如:2---&gt;10---&gt;1,5---&gt;101---&gt;2</summary>
+    
+    
+    
+    <category term="算法" scheme="http://www.wansonglife.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="Java" scheme="http://www.wansonglife.com/categories/%E7%AE%97%E6%B3%95/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java.util.concurrent概览</title>
+    <link href="http://www.wansonglife.com/2018/03/24/java-util-concurrent%E6%A6%82%E8%A7%88/"/>
+    <id>http://www.wansonglife.com/2018/03/24/java-util-concurrent%E6%A6%82%E8%A7%88/</id>
+    <published>2018-03-24T09:51:58.000Z</published>
+    <updated>2020-09-21T12:15:41.424Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;java.util.concurrent 包含许多线程安全、测试良好、高性能的并发构建块。不客气地说，创建 java.util.concurrent 的目的就是要实现 Collection</summary>
+        
+      
+    
+    
+    
+    <category term="Java 基本知识" scheme="http://www.wansonglife.com/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="多线程" scheme="http://www.wansonglife.com/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    
+    <category term="多线程" scheme="http://www.wansonglife.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    <category term="并发" scheme="http://www.wansonglife.com/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>The Zen of Python, by Tim Peters</title>
+    <link href="http://www.wansonglife.com/2018/03/24/2015-01-1-PYTHON-%E5%88%9D%E6%AC%A1%E6%8E%A5%E8%A7%A6/"/>
+    <id>http://www.wansonglife.com/2018/03/24/2015-01-1-PYTHON-%E5%88%9D%E6%AC%A1%E6%8E%A5%E8%A7%A6/</id>
+    <published>2018-03-24T07:57:20.000Z</published>
+    <updated>2018-03-24T07:57:20.000Z</updated>
+    
+    
+    <summary type="html">初次接触Python</summary>
+    
+    
+    
+    <category term="扩展知识" scheme="http://www.wansonglife.com/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="语言" scheme="http://www.wansonglife.com/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="python" scheme="http://www.wansonglife.com/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/python/"/>
+    
+    
+    <category term="python" scheme="http://www.wansonglife.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dubbo</title>
+    <link href="http://www.wansonglife.com/2016/10/13/dubbo/"/>
+    <id>http://www.wansonglife.com/2016/10/13/dubbo/</id>
+    <published>2016-10-13T07:12:23.000Z</published>
+    <updated>2018-03-24T07:39:05.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Dubbo在项目中的作用&quot;&gt;&lt;a href=&quot;#Dubbo在项目中的作用&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="分布式" scheme="http://www.wansonglife.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    <category term="rpc" scheme="http://www.wansonglife.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/rpc/"/>
+    
+    
+    <category term="java" scheme="http://www.wansonglife.com/tags/java/"/>
+    
+    <category term="dubbo" scheme="http://www.wansonglife.com/tags/dubbo/"/>
+    
+    <category term="服务治理" scheme="http://www.wansonglife.com/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Paxos</title>
+    <link href="http://www.wansonglife.com/2016/09/16/paxos/"/>
+    <id>http://www.wansonglife.com/2016/09/16/paxos/</id>
+    <published>2016-09-16T06:58:22.000Z</published>
+    <updated>2018-03-24T07:39:05.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;作者介绍&quot;&gt;&lt;a href=&quot;#作者介绍&quot; class=&quot;headerlink&quot; title=&quot;作者介绍&quot;&gt;&lt;/a&gt;作者介绍&lt;/h2&gt;&lt;p&gt;1982，Lamport</summary>
+        
+      
+    
+    
+    
+    <category term="分布式" scheme="http://www.wansonglife.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    <category term="CAP" scheme="http://www.wansonglife.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/CAP/"/>
+    
+    
+    <category term="算法" scheme="http://www.wansonglife.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="一致性算法" scheme="http://www.wansonglife.com/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MAC下完成人脸检测代码环境构建</title>
+    <link href="http://www.wansonglife.com/2016/09/15/MAC%E4%B8%8B%E5%AE%8C%E6%88%90%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/"/>
+    <id>http://www.wansonglife.com/2016/09/15/MAC%E4%B8%8B%E5%AE%8C%E6%88%90%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/</id>
+    <published>2016-09-15T10:29:07.000Z</published>
+    <updated>2018-03-24T07:38:41.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;工作中用到图片的截图，但在使用过程中出现了一个尴尬的问题，就是截图时，有的人没有了头&lt;br&gt;，只留下身子.&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="项目" scheme="http://www.wansonglife.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="方案" scheme="http://www.wansonglife.com/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="python" scheme="http://www.wansonglife.com/tags/python/"/>
+    
+    <category term="图片处理" scheme="http://www.wansonglife.com/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+    
+    <category term="人脸识别" scheme="http://www.wansonglife.com/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第N次百望山到植物园</title>
+    <link href="http://www.wansonglife.com/2016/09/12/%E7%AC%ACN%E6%AC%A1%E7%99%BE%E6%9C%9B%E5%B1%B1%E5%88%B0%E6%A4%8D%E7%89%A9%E5%9B%AD/"/>
+    <id>http://www.wansonglife.com/2016/09/12/%E7%AC%ACN%E6%AC%A1%E7%99%BE%E6%9C%9B%E5%B1%B1%E5%88%B0%E6%A4%8D%E7%89%A9%E5%9B%AD/</id>
+    <published>2016-09-12T11:23:10.000Z</published>
+    <updated>2018-03-24T07:38:33.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;为什么是N次&quot;&gt;&lt;a href=&quot;#为什么是N次&quot; class=&quot;headerlink&quot; title=&quot;为什么是N次&quot;&gt;&lt;/a&gt;为什么是N次&lt;/h2&gt;&lt;p&gt;2015年已经多次走这样同一个路线&lt;/p&gt;
+&lt;h2 id=&quot;为什么第N次记录了一下&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="http://www.wansonglife.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="运动" scheme="http://www.wansonglife.com/categories/%E7%94%9F%E6%B4%BB/%E8%BF%90%E5%8A%A8/"/>
+    
+    
+    <category term="人生感悟" scheme="http://www.wansonglife.com/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图片处理环境构建</title>
+    <link href="http://www.wansonglife.com/2016/09/12/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/"/>
+    <id>http://www.wansonglife.com/2016/09/12/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/</id>
+    <published>2016-09-12T08:30:53.000Z</published>
+    <updated>2018-03-24T07:38:18.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="项目" scheme="http://www.wansonglife.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="方案" scheme="http://www.wansonglife.com/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="运维" scheme="http://www.wansonglife.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="nginx" scheme="http://www.wansonglife.com/tags/nginx/"/>
+    
+    <category term="fastcgi" scheme="http://www.wansonglife.com/tags/fastcgi/"/>
+    
+    <category term="图片处理" scheme="http://www.wansonglife.com/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的音乐目录</title>
+    <link href="http://www.wansonglife.com/2016/01/10/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90%E7%9B%AE%E5%BD%95/"/>
+    <id>http://www.wansonglife.com/2016/01/10/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90%E7%9B%AE%E5%BD%95/</id>
+    <published>2016-01-09T16:00:00.000Z</published>
+    <updated>2018-03-24T07:38:10.000Z</updated>
+    
+    
+    <summary type="html">music</summary>
+    
+    
+    
+    <category term="生活" scheme="http://www.wansonglife.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="音乐" scheme="http://www.wansonglife.com/categories/%E7%94%9F%E6%B4%BB/%E9%9F%B3%E4%B9%90/"/>
+    
+    
+    <category term="music" scheme="http://www.wansonglife.com/tags/music/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>将amr,caf转mp3</title>
+    <link href="http://www.wansonglife.com/2015/12/27/%E5%B0%86amr,caf%E8%BD%ACmp3/"/>
+    <id>http://www.wansonglife.com/2015/12/27/%E5%B0%86amr,caf%E8%BD%ACmp3/</id>
+    <published>2015-12-26T16:00:00.000Z</published>
+    <updated>2018-03-24T07:36:32.000Z</updated>
+    
+    
+    <summary type="html">Java android amr caf mp3</summary>
+    
+    
+    
+    <category term="项目" scheme="http://www.wansonglife.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="方案" scheme="http://www.wansonglife.com/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="java" scheme="http://www.wansonglife.com/tags/java/"/>
+    
+    <category term="音频转换" scheme="http://www.wansonglife.com/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/"/>
+    
+    <category term="arm" scheme="http://www.wansonglife.com/tags/arm/"/>
+    
+    <category term="mp3" scheme="http://www.wansonglife.com/tags/mp3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FASTDFS</title>
+    <link href="http://www.wansonglife.com/2015/12/08/FASTFS/"/>
+    <id>http://www.wansonglife.com/2015/12/08/FASTFS/</id>
+    <published>2015-12-07T16:00:00.000Z</published>
+    <updated>2018-03-24T07:40:23.000Z</updated>
+    
+    
+    <summary type="html">Java fastfs</summary>
+    
+    
+    
+    <category term="存储" scheme="http://www.wansonglife.com/categories/%E5%AD%98%E5%82%A8/"/>
+    
+    <category term="文件存储" scheme="http://www.wansonglife.com/categories/%E5%AD%98%E5%82%A8/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/"/>
+    
+    
+    <category term="存储" scheme="http://www.wansonglife.com/tags/%E5%AD%98%E5%82%A8/"/>
+    
+    <category term="fastfs" scheme="http://www.wansonglife.com/tags/fastfs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git工作与学习</title>
+    <link href="http://www.wansonglife.com/2015/12/08/git%E5%B7%A5%E4%BD%9C%E4%B8%8E%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://www.wansonglife.com/2015/12/08/git%E5%B7%A5%E4%BD%9C%E4%B8%8E%E5%AD%A6%E4%B9%A0/</id>
+    <published>2015-12-07T16:00:00.000Z</published>
+    <updated>2018-03-24T07:40:08.000Z</updated>
+    
+    
+    <summary type="html">Java git</summary>
+    
+    
+    
+    <category term="扩展知识" scheme="http://www.wansonglife.com/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="日常工具" scheme="http://www.wansonglife.com/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="git" scheme="http://www.wansonglife.com/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/git/"/>
+    
+    
+    <category term="git" scheme="http://www.wansonglife.com/tags/git/"/>
+    
+    <category term="代码仓库" scheme="http://www.wansonglife.com/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis致命错误的出现</title>
+    <link href="http://www.wansonglife.com/2015/11/22/redis%E8%87%B4%E5%91%BD%E9%94%99%E8%AF%AF%E7%9A%84%E5%87%BA%E7%8E%B0/"/>
+    <id>http://www.wansonglife.com/2015/11/22/redis%E8%87%B4%E5%91%BD%E9%94%99%E8%AF%AF%E7%9A%84%E5%87%BA%E7%8E%B0/</id>
+    <published>2015-11-21T16:00:00.000Z</published>
+    <updated>2018-03-24T07:36:02.000Z</updated>
+    
+    
+    <summary type="html">Java redis</summary>
+    
+    
+    
+    <category term="项目" scheme="http://www.wansonglife.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="方案" scheme="http://www.wansonglife.com/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/"/>
+    
+    <category term="经典坑" scheme="http://www.wansonglife.com/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/%E7%BB%8F%E5%85%B8%E5%9D%91/"/>
+    
+    
+    <category term="java" scheme="http://www.wansonglife.com/tags/java/"/>
+    
+    <category term="缓存" scheme="http://www.wansonglife.com/tags/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="redis" scheme="http://www.wansonglife.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis索引</title>
+    <link href="http://www.wansonglife.com/2015/11/10/redis%E7%B4%A2%E5%BC%95/"/>
+    <id>http://www.wansonglife.com/2015/11/10/redis%E7%B4%A2%E5%BC%95/</id>
+    <published>2015-11-09T16:00:00.000Z</published>
+    <updated>2018-03-24T07:40:42.000Z</updated>
+    
+    
+    <summary type="html">Java redis</summary>
+    
+    
+    
+    <category term="存储" scheme="http://www.wansonglife.com/categories/%E5%AD%98%E5%82%A8/"/>
+    
+    <category term="缓存" scheme="http://www.wansonglife.com/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="redis" scheme="http://www.wansonglife.com/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/redis/"/>
+    
+    
+    <category term="java" scheme="http://www.wansonglife.com/tags/java/"/>
+    
+    <category term="缓存" scheme="http://www.wansonglife.com/tags/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="redis" scheme="http://www.wansonglife.com/tags/redis/"/>
+    
+  </entry>
+  
+</feed>

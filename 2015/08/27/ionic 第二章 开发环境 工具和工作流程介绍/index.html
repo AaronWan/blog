@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>第二章 ionic 开发环境 工具和工作流程介绍 | Share</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ionic 开发环境 工具和工作流程介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二章 ionic 开发环境 工具和工作流程介绍">
+<meta property="og:url" content="http://www.wansonglife.com/2015/08/27/ionic%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20%E5%B7%A5%E5%85%B7%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="Share">
+<meta property="og:description" content="ionic 开发环境 工具和工作流程介绍">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-08-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-03-24T07:34:49.000Z">
+<meta property="article:author" content="万松">
+<meta property="article:tag" content="book">
+<meta property="article:tag" content="schedule">
+<meta property="article:tag" content="ionic">
+<meta property="article:tag" content="angularjs">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Share" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Share</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wansonglife.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="detail-ionic 第二章 开发环境 工具和工作流程介绍" class="article article-type-detail" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/27/ionic%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20%E5%B7%A5%E5%85%B7%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time datetime="2015-08-26T16:00:00.000Z" itemprop="datePublished">2015-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a>►<a class="article-category-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第二章 ionic 开发环境 工具和工作流程介绍
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">本章节，我们将会学到运行一个Inoic项目需要哪些技能。你将会安装基础的构建模块，学习如何使用Ionic命令行工具(cli)初始化一个项目，学习如何添加不同的平台和插件及如何在本地浏览器，仿真器和真实的设备上进行测试。</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">##安装必备工具:<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js和Git</span><br><span class="line"></span><br><span class="line">Ionic使用功能强大的模块管理工具<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js,<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js 是一个Javascript基础平台，通过它可以很容易的进行web应用的构建。由于<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js的无处不在和其包管理特性，使用ionic的安装和部署非常简单。</span><br><span class="line"></span><br><span class="line">##安装<span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js</span><br><span class="line"></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Node</span>.</span></span>js通过下载安装器安装在windows上或到<span class="literal">[这里]</span>(http:<span class="comment">//nodejs.org/down-load/)下载针对于OS X的安装程序。在OS X上也可以通过Homebrew进行安装。另外，你可以执行下面命令进行安装。</span></span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">$ brew install node </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>安装完后，你可以打一个命令行，输入下面命令进行测试：</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">node</span><span class="title"></span></span><br><span class="line"><span class="title"></span></span><br></pre></td></tr></table></figure>
+<p>它会打开一个控制台。它就像是浏览器中的javascript控制台一样。你可以在这个控制台中编写合法的javascript代码。如：</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">&gt; <span class="built_in">console</span>.info(<span class="string">&#x27;Hello World&#x27;</span>);</span><br><span class="line">Hello World</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>按两次CTRL+C就可以退出Node.js控制台</p>
+<p>##安装Git</p>
+<p>NPM是Node.js的依赖管理，bower是browser的依赖管理。由于ionic是基于html5的移动混合应用开发工具和服务套件。bower只是安装和依赖管理。有一些bower模块需要Git,因此在开始之前你必须要先安装Git.</p>
+<p>可以在 <a target="_blank" rel="noopener" href="http://git-scm.com/downloads">git-scm.com/downloads</a>下载各个平台的Git安装程序。</p>
+<p>一旦你安装了Git,打开终端，输入：</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">$ git version</span><br><span class="line">git version <span class="number">2.3</span><span class="number">.2</span> (Apple Git<span class="number">-55</span>)</span><br></pre></td></tr></table></figure>
+
+<p>##安装Installing Ionic<br>现在你已经安装了Node.js和Git,安装Ionic就变的非常容易了。打开终端，输入：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> -g cordova ionic</span><br></pre></td></tr></table></figure>
+<p>这行命令就是让NPM安装cordova和ionic包，和他们所依赖的模块。加上-g这个选项，意味着NPM在全局中安装它他们，因此你就可以在所有项目中使用它们。</p>
+<p>一旦NPM选择完，就会输出一个安装汇总。下面你可以验证安装。</p>
+<p>##Cordova</p>
+<p>下面花一些时间去讲解Cordova是什么，是非常值得的，因为他是Ionic为什么如此强大的最重要的原因。</p>
+<p>Cordova 是一个社区驱动的开源项目，它是HTML和手机原生功能之间的桥梁。它使开发者能够构建一个html应用，这个应用可以直接使用手机原生的功能，如何像机，地理位置，设备的方向等。另外，Cordova目的是创建一些跨平台的接口，使你创建html应用而不用关心是iphone应用还是在android应用。</p>
+<p>你可以在<a target="_blank" rel="noopener" href="http://cordova.apache.org/">这里</a>了解决更多关于Cordova的知识。</p>
+<p>##Ionic命令行 （CLI)</p>
+<p>为了使你能更方便的使用Ionic，Ionic提供了命令行接口。</p>
+<ul>
+<li>创建一个新的工程</li>
+<li>添加平台</li>
+<li>添加插件</li>
+<li>编译和在仿真器中运行你的工程</li>
+<li>在设备上运行你的</li>
+<li>打包应用和发布</li>
+</ul>
+<p>##创建一个新的工程<br>让我们创建一个新的应用。打开终端，定位到你想把本书涉及到的代码存放的位置。在这目录下面输入下面的创建应用的命令。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$</span> ionic <span class="built_in">start</span> trendicity tabs</span><br></pre></td></tr></table></figure>
+
+<p>这个ionic start命令可以让你指定一个模版用来初始化Ionic应用的结构。上面这个例子，你指定了tabs模版。开箱即用的，Ionic支持空白模版（不指定模版，默认就是空白的），tabs和 sidemenu。另外,如何你想提供一个自定义模版，你可以指定一个CodePen URL.</p>
+<p>一旦上面那个命令执行完，你就已经配置好了一个Ionic工程，就会看到下面信息：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">Your Ionic project is <span class="built_in">read</span> <span class="built_in">to</span> go ! Some quick tips:</span><br><span class="line"></span><br><span class="line"> * cd <span class="keyword">into</span> your project: $ cd trendicity</span><br><span class="line"></span><br><span class="line"> * Setup this project <span class="built_in">to</span> use Sass: ionic setup sass</span><br><span class="line"></span><br><span class="line"> * Develop <span class="keyword">in</span> <span class="keyword">the</span> browser <span class="keyword">with</span> live reload: ionic serve</span><br><span class="line"></span><br><span class="line"> * Add <span class="keyword">a</span> <span class="built_in">platform</span> (ios <span class="keyword">or</span> Android): ionic <span class="built_in">platform</span> <span class="built_in">add</span> ios [android]</span><br><span class="line">   Note: iOS development requires OS X currently</span><br><span class="line">   See <span class="keyword">the</span> Android Platform Guide <span class="keyword">for</span> full Android installation instructions:</span><br><span class="line">   <span class="keyword">https</span>://cordova.apache.org/docs/en/edge/guide_platforms_android_index.md.html</span><br><span class="line"></span><br><span class="line"> * Build your app: ionic build &lt;PLATFORM&gt;</span><br><span class="line"></span><br><span class="line"> * Simulate your app: ionic emulate &lt;PLATFORM&gt;</span><br><span class="line"></span><br><span class="line"> * Run your app <span class="keyword">on</span> <span class="title">a</span> <span class="title">device</span>: <span class="title">ionic</span> <span class="title">run</span> &lt;<span class="title">PLATFORM</span>&gt;</span><br><span class="line"></span><br><span class="line"> * Package <span class="keyword">an</span> app <span class="keyword">using</span> Ionic package service: ionic package &lt;MODE&gt; &lt;PLATFORM&gt;</span><br><span class="line"></span><br><span class="line">For more help use ionic <span class="comment">--help or ionic docs</span></span><br><span class="line"></span><br><span class="line">Visit <span class="keyword">the</span> Ionic docs: <span class="keyword">http</span>://ionicframework.com/docs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">New! Add push notifications <span class="built_in">to</span> your Ionic app <span class="keyword">with</span> Ionic Push (alpha)!</span><br><span class="line"><span class="keyword">https</span>://apps.ionic.io/signup</span><br><span class="line">+<span class="comment">---------------------------------------------------------+</span></span><br><span class="line">+ New Ionic Updates <span class="keyword">for</span> August <span class="number">2015</span></span><br><span class="line">+</span><br><span class="line">+ The View App just landed. Preview your apps <span class="keyword">on</span> <span class="title">any</span> <span class="title">device</span></span><br><span class="line">+ <span class="keyword">http</span>://view.ionic.io</span><br><span class="line">+</span><br><span class="line">+ Invite anyone <span class="built_in">to</span> preview <span class="keyword">and</span> test your app</span><br><span class="line">+ ionic share EMAIL</span><br><span class="line">+</span><br><span class="line">+ Generate splash screens <span class="keyword">and</span> icons <span class="keyword">with</span> ionic resource</span><br><span class="line">+ <span class="keyword">http</span>://ionicframework.com/blog/automating-icons-<span class="keyword">and</span>-splash-screens/</span><br><span class="line">+</span><br><span class="line">+<span class="comment">---------------------------------------------------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>同时你会看到一些快捷提示。你可以随时查看这些提示，通过下面这个命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ionic --<span class="built_in">help</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这个将会输出一个Ionic命令行支持的指今列表</p>
+<p>看一下刚才那个命令为你创建了哪些东西</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">$ cd trendicity</span><br><span class="line">$ ls -F</span><br><span class="line">total <span class="number">40</span></span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff   <span class="number">118</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> bower.json</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff   <span class="number">864</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> config.xml</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">1388</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> gulpfile.js</span><br><span class="line">drwxr-xr-x  <span class="number">4</span> Aaron  staff   <span class="number">136</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> hooks/</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff    <span class="number">42</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> ionic.project</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff   <span class="number">581</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> package.json</span><br><span class="line">drwxr-xr-x  <span class="number">4</span> Aaron  staff   <span class="number">136</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> platforms/</span><br><span class="line">drwxr-xr-x  <span class="number">9</span> Aaron  staff   <span class="number">306</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> plugins/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> Aaron  staff   <span class="number">102</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> scss/</span><br><span class="line">drwxr-xr-x  <span class="number">8</span> Aaron  staff   <span class="number">272</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> www/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>bower.json</code>:管理你的Bower依赖</p>
+<p><code>gulpfile.js</code>:Gulp是一个构建工具。更多的信息可参在<a target="_blank" rel="noopener" href="http://www.gulpjs.com/">这里</a>找到。这个文件管理构建的流程。</p>
+<p><code>ionic.project</code>:ionic工程配置文件。</p>
+<p><code>plugins/</code>:Ionic插件文件放在此目录下。稍后你会了解更多关于这插件的信息。</p>
+<p><code>www/</code>:你的应用文件放在此目录下。</p>
+<p><code>config.xml</code>:Cordova的配置文件。</p>
+<p><code>hooks/</code>:Cordova的hooks 这里面有一个说明文件，我可以根据此文件来创建一系列的目录，这些目录里面可以创建一些脚本，这些脚本分别在ionic运行的不同时期进行执行。</p>
+<p><code>package.json</code> :管理Node.js依赖的文件</p>
+<p><code>scss/</code>: SASS 文件。</p>
+<p>好，现在，我们把重点放在 <code>www</code> 目录。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">localhost:trendicity Aaron$ cd www</span><br><span class="line">localhost:www Aaron$ ls -F</span><br><span class="line">total <span class="number">8</span></span><br><span class="line">drwxr-xr-x  <span class="number">3</span> Aaron  staff  <span class="number">102</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> css/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> Aaron  staff  <span class="number">102</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> img/</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">858</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> index.html</span><br><span class="line">drwxr-xr-x  <span class="number">4</span> Aaron  staff  <span class="number">136</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> js/</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> Aaron  staff  <span class="number">102</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">03</span> lib/</span><br><span class="line">drwxr-xr-x  <span class="number">8</span> Aaron  staff  <span class="number">272</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> templates/</span><br></pre></td></tr></table></figure>
+
+<p><code>css/</code>:你的应用的CSS文件<br><code>img/</code>:你的应用中用到的图片<br><code>index.html</code>:你的应用的入口<br><code>js/</code>:你的javascript代码<br><code>lib/</code>:第三方库和Ionic库<br><code>templates/</code>:你的应用的HTML模版</p>
+<p>在js引以为文件夹中会发现有三个文件：</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">localhost:js Aaron$ ls -F</span><br><span class="line">total <span class="number">16</span></span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">1916</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> app.js</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">1544</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> controllers.js</span><br><span class="line">-rw-r--r--  <span class="number">1</span> Aaron  staff  <span class="number">1542</span>  <span class="number">8</span> <span class="number">30</span> <span class="number">16</span>:<span class="number">04</span> services.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>若没有发现services.js文件，你可以自己创建一个。</p>
+<p><code>app.js</code>:你的应用的入口，它包括路由信息。<br><code>controllers.js</code>:包括例子应用的所有的控制器。<br><code>services.js</code>:应用的可重用的服务。</p>
+<p>值得注意的是，这是一个简化的项目结构，随着你的项目的增长，你需要去完善它。</p>
+<p>##在浏览器上部署</p>
+<p>刚开始时，与通过仿真器测试相比，在浏览器中进行测试是最快的方式。它是可以在浏览器中进行测试的，因为Ionic是一个基于html5的平台。另外，Ionic现有的内置功能让其变得更加简单。在你的命令行中的工程目录下，输入以下命令。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">$ ionic serve</span><br><span class="line"><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">**</span></span><br><span class="line"><span class="strong"> Upgrade warning - for the CLI to run correctly,      </span></span><br><span class="line"><span class="strong"> it is highly suggested to upgrade the following:     </span></span><br><span class="line"><span class="strong"></span></span><br><span class="line"><span class="strong"> Please update your Node runtime to version  &gt;=0.12.x</span></span><br><span class="line"><span class="strong"></span></span><br><span class="line"><span class="strong">**</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span></span><br><span class="line">Running live reload server: http://192.168.1.7:35729</span><br><span class="line">Watching : [ &#x27;www/<span class="strong">**/<span class="emphasis">*&#x27;, &#x27;!www/lib/<span class="strong">**/<span class="emphasis">*&#x27; ]</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">Running dev server: http://192.168.1.7:8100</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">Ionic server commands, enter:</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  restart or r to restart the client app from the root</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  goto or g and a url to have the app navigate to the given url</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  consolelogs or c to enable/disable console log output</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  serverlogs or s to enable/disable server log output</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">  quit or q to shutdown the server and exit</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis"></span></span></span></span></span><br></pre></td></tr></table></figure>
+
+<p>上面的命令执行完成后，将会打开一个浏览器窗口并且访问你的应用。恭喜你，你的应用已经成功运行！</p>
+<p>如何浏览器窗口没有自动打开， Ionic通知你在浏览器中打开这个应用。你上面你会看到</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">1.7</span>:<span class="number">35729</span></span><br></pre></td></tr></table></figure>
+
+<p>这个命令将会监视你的工程文件的变化，因此当你改变工程中的文件时，视图也会自动刷新。你可以通过修改工程的一个文件并注意着浏览器的重新加载来进行测试。打开./www/templates/tab-dash.html 文件并且修改：</p>
+<p><code>&lt;h1&gt;Dash&lt;/Dash&gt;</code></p>
+<p>修改为：</p>
+<p><code>&lt;h1&gt;Trendicity&lt;/h1&gt;</code></p>
+<p>保存后，浏览器会立即发生刷新，你就会看到刚才修改文件后的变化。</p>
+<p>##代理</p>
+<p>当你的应用需要访问不允许跨域访问的资源的APIs时，在浏览器测试时，你将会遇到问题。幸运的是Ionic团队已经 通过代理请求的方式来解决上面的问题。</p>
+<p>在你应用的根目录下打开ionic.project。</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">cat ionic.<span class="keyword">project</span> </span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;trendicity&quot;</span>,</span><br><span class="line">  <span class="string">&quot;app_id&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>添加代理数据到你的文件中：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">cat ionic.<span class="keyword">project</span> </span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;trendicity&quot;</span>,</span><br><span class="line">  <span class="string">&quot;app_id&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;proxies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;path&quot;</span>:<span class="string">&quot;/proxied/resources&quot;</span>,</span><br><span class="line">    <span class="string">&quot;proxyUrl&quot;</span>:<span class="string">&#x27;https://api.somesite.com/resources&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中的path是你本地想被代理的路径，这个proxyUrl是真正的你想被请求的API.在你的应用中，你现在可以请求<code>http://localhost:8100/proxied/resources</code>其实是访问的<code>https://api.somesite.com/resources</code>.</p>
+<p>注意，代理的配置仅在浏览器中进行测试时需要用到。在设备上和仿真器中不需要用这个配置文件。</p>
+<p>##添加平台</p>
+<p>当你发布之前，或者在你构建一个应用时，你需要决定你想将此应用部署到哪些平台上。然后告诉给Ionic,通过CLI,安装构建成这此平台的应用时所必须的先决条件。让我们来添加IOS平台。</p>
+<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">$ ionic <span class="keyword">platform</span> ios</span><br></pre></td></tr></table></figure>
+
+<p>它将会安装一些必须的依赖并准备将你的工程构建成IOS平台的应用。注意，如何你不是在Apple电脑上，你是不能够添加iOS平台的。</p>
+<p>或，你可以添加Android平台：</p>
+<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">$ ionic <span class="keyword">platform</span> android</span><br></pre></td></tr></table></figure>
+
+<p>Android平台与iOS相比，需要安装一些额外的东西 当你都是在Apple电脑上执行上面的命令时。在稍后的章节中你会了解到更多关于Android安装的信息。</p>
+<p>如何你决定选择在Android平台上进行测试，建议你不要使用Android默认的仿真器。因为它太慢了。你可以安装使用Geny-mogion仿真器，它比默认访真器要快一些。你可以在<a target="_blank" rel="noopener" href="http://www.genymotion.com/">这里</a>了解更多的内容。</p>
+<p>##构建应用</p>
+<p>用Ionic构建应用是容易的。构建一个iOS平台的应用，通过如下命令：</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>ionic build ios</span><br></pre></td></tr></table></figure>
+
+<p>一旦构建成功，你会看到输出下面信息：</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"><span class="bullet">** </span>BUILD SUCCEEDED</span><br></pre></td></tr></table></figure>
+
+<p>##编译和在仿真器中运行你的工程<br>Ionic支持直接通过CLI加载设备仿真器。加载你的编译文件到iOS仿真器(确保你已经安装了<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/">ios-sim</a>)。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ionic <span class="built_in">emulate</span> ios</span></span><br></pre></td></tr></table></figure>
+<p>如何你之前没有进行编译，Ionic会创建iOS平台的编译文件。执行这个命令之后，iOS 仿真器将会加载，并且你的应用将会在其中加载。</p>
+<p>像是在浏览器中测试一样，你可以修改你的应用文件时，让仿真器中的应用自动刷新。执行下面的命令，等待仿真器加载你的应用，然后修改应用的文件进行观察仿真器中应用的变化。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ionic <span class="built_in">emulate</span> ios -livereload</span></span><br></pre></td></tr></table></figure>
+<p>第一次修改工程，都会花大量的时间去编译和加载到仿真器。</p>
+<p>##在设备上运行</p>
+<p>仿真器是非常强大的，但是在发布之前，你仍然想在真实的设备上测试你的应用。</p>
+<p>###iOS<br>在iOS设备上部署，需要有一个iOS开发帐户，在Apple设备上运行XCode。iOS开发者账户是收费的。你可以在<a target="_blank" rel="noopener" href="https://developer.apple.com/programs/">developer.apple.com/programs/</a>了解更多。</p>
+<p>你可以在这里下载Xcode:(developer.apple.com/xcode/downloads/)[<a target="_blank" rel="noopener" href="https://developer.apple.com/xcode/downloads/]">https://developer.apple.com/xcode/downloads/]</a></p>
+<p>一旦你正确安装了XCode和拥有你自己的开发者账户，在XCode中打开你工程的/platform/ios文件夹，然后进行测试。</p>
+<p>###Android</p>
+<p>到目前为止，我们主要集中在构建、模拟和运行iOS应用程序。原因是，如果你在Apple电脑上进行开发，启动和运行都是非常容易的，但是它避免了使用Ionic进遇到的最大的一件事情。你编写一次应用，可以编译成两个平台的版本。让我们花一点时间看一下在Android平台上启动和运行时的一些选项。</p>
+<p>###Android SDK安装</p>
+<p>第一件事就是下载和安装Android SDK.可以在这里下载：<a target="_blank" rel="noopener" href="http://developer.android.com/sdk/index.html">developer.android.com/sdk/</a>。可以在这里找到安装步骤：<a target="_blank" rel="noopener" href="http://developer.android.com/sdk/installing/">developer.android.com/sdk/installing/</a>。</p>
+<p>###Ionic box</p>
+<p>很多人发现安装Android SDK是比较困难的过程。由于这个原因，Ionic小组已经创建了一个Vagrant box来帮助你简化这个过程。如何你对Vagrant不是很熟悉的话，它是一个创建虚拟机的平台，主要是创建开发环境。你可以在这里了解更多:<a target="_blank" rel="noopener" href="http://www.vagrantup.com/">www.vagrantup.com</a>。你可以使用不同的虚拟机运行器，但是最常用的是VirtualBox。</p>
+<p>为了使用Vagrant box,你首先安装VirtualBox,或者别的被Vagrant支付的虚拟机运行器。VirtualBox是免费的，你可以在这里进行下载:<a target="_blank" rel="noopener" href="http://www.virtualbox.org/wiki/Downloads">www.virtualbox.org/wiki/Downloads</a>。一旦安装好了VirtualBox，下载并安装Vagrant:<a target="_blank" rel="noopener" href="http://www.vagrantup.com/downloads.html">www.vagrantup.com/downloads.html</a>。</p>
+<p>一旦你安装好了VirtualBox和Vagrant，进入到你的工程目录下面，克隆Ionic box资源，并且启动它。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ..</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/driftyco/ionic-box</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ionic-box</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant up</span></span><br></pre></td></tr></table></figure>
+<p>你第一次执行时，可能要花费几分钟，因为Vagrant需要下载一个虚拟机镜像文件。在你在Ionic box上编译你的应用前，你需要将你的项目代码目录与虚拟机共享。在你的编译器中打开ionic-box/Vagrantfile。找到下面这行：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta"># config.vm.synced_folder <span class="meta-string">&quot;../data&quot;</span>, <span class="meta-string">&quot;/vagrant_data&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>修改为：</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="built_in">config</span>.vm.<span class="keyword">synced_folder </span><span class="string">&quot;../trendicity&quot;</span>, <span class="string">&quot;/home/vagrant/trendicity&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>保存这个文件并重新加载你的Vagrant实例：</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$vagrant</span> reload</span></span><br></pre></td></tr></table></figure>
+
+<p>现在让我们为vagrant实例添加SSH,并针对Android进行构建。</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>vagrant ssh</span><br><span class="line">vagrant<span class="variable">@ionic</span>-<span class="symbol">android:</span>~<span class="variable">$ </span>cd trendicity/</span><br><span class="line">vagrant<span class="variable">@ionic</span>-<span class="symbol">android:</span>~<span class="regexp">/trendicity$ ionic platform android</span></span><br></pre></td></tr></table></figure>
+
+<p>现在将你的Android设备通过USB连接到你的电脑。你可以通过下面的命令确认你的设备已经连接上。</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">vagrant@ionic-android:~<span class="regexp">/trendicity$ sudo /</span>home<span class="regexp">/vagrant/</span>android-sdk-linux<span class="regexp">/platform-tools/</span>adb devices</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>确认你的设备已经连接上，然后通过下面的命令在你设备上启动应用：</p>
+<figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line">vagrant<span class="symbol">@ionic</span>-android:~/trendicity$ ionic <span class="built_in">run</span> android</span><br></pre></td></tr></table></figure>
+
+<p>当你看到下面的信息，就证明上面的命令执行成功了：</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">Installing</span></span> app on device ...</span><br><span class="line"><span class="function"><span class="title">Lanuching</span></span> application ...</span><br><span class="line">LAUNCH SUCCESS  </span><br></pre></td></tr></table></figure>
+
+<p>恭喜！你已经成功在android设备上运行了你的应用。</p>
+<p>上面看上去在你的设备上运行应用程序是很多麻烦，同时它证明了android sdk安装是多么的困难，以及ionic团队如何使它些困难变的简单易用。</p>
+<p>##添加插件</p>
+<p>Ionic和Cordova是非常强大的工具，但是为了提高性能和最小化你的就应用，你可能不希望默认安装所有东西。你可能添加别的功能通过添加插件的方式。让我们给将要使用地理定位功能的应用添加地理位置插件。</p>
+<p>在你的项目根目录，输入以下命令。注意，你可以在本地命令行中执行下面命令，也可以在ionic box 的命令行中输入以下命令：</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">$ ionic plugin <span class="keyword">add</span><span class="bash"> org.apache.cordova.geolocation</span></span><br></pre></td></tr></table></figure>
+
+<p>Ionic将会安装一些必须的组件，使你的应用程序可以使用地理定位功能。稍后，当你深入到本书例子 Trendicity应用 的细节时，你会看到如何使用这个地理定位插件。</p>
+<p>你也要以自动在这里<a target="_blank" rel="noopener" href="http://plugins.cordova.io/">plugins.cordova.io/</a>了解一下别的插件，以备将来更好的使用到自己的项目中。</p>
+<p>##最佳源代码控制实践</p>
+<p>因为Ionic和Cordova安装的文件对不同的平台是不一样的，这些文件是没有必要加入版本控制的。让我们看一下，哪些东西要存放到我们的版本控制中，还有哪些不用存放。</p>
+<p>###Git和模版化应用</p>
+<p>如何你使用Git(本书的作者们强烈推荐使用Git),和如何通过Ionic命令行创建你的应用，你可能注意到它创建了一个<code>.gitignore</code>文件，它里面包含一些你不需要版本控制的文件引用。你可以选择跳过本章剩余的部分而直接查看这个文件<code>.gitignore</code>，下面是它的内容：</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$</span> cat .gitignore </span><br><span class="line"># Specifies intentionally untracked <span class="keyword">files</span> to ignore when <span class="keyword">using</span> Git</span><br><span class="line"># http:<span class="comment">//git-scm.com/docs/gitignore</span></span><br><span class="line"></span><br><span class="line">node_modules/</span><br><span class="line">platforms/</span><br><span class="line">plugins/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>###根目录下面的文件</p>
+<p>根目录下所有的文件，你就都应该加入版本控制。它们包含了项目的配置信息，没有它们，你的项目将无法正确编译。</p>
+<p>###包含的目录<br><code>./hooks</code>,<code>./scss</code>,和最重要的<code>./www</code> 都应该加入到你的版本控制。</p>
+<p>###不需要包含的目录</p>
+<p><code>./node_modules</code>,<code>./platforms</code>, 和 <code>./plugins</code> 都不需要加入版本控制。他们包含了许多二进制文件和一些额外的编译时生成的文件，这些文件在部署时都会重新生成。也都会在你在新的机器上检出代码时自动生成。</p>
+<p>##总结</p>
+<p>你现在准备开始创建你的应用。你拥有了创建一个应用需要的所有工具：你可以通过浏览器或者仿真器进行测试，你可以通过添加插件的方式去访问一些高级的功能，并可以让你的应用在真实的设备上进行运行。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.wansonglife.com/2015/08/27/ionic%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20%E5%B7%A5%E5%85%B7%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D/" data-id="ckfci5hq400auvl2fc2swemvy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/31/ionic%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20Trendicity%20%E9%A1%B9%E7%9B%AE%E5%AE%9E%E4%BE%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第三章 ionic 实例 Trendicity
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/24/ionic%20schedule/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ionic 学习计划</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">Java 基本知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/CAP/">CAP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/rpc/">rpc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/">zookeeper</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/">Kafka</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">文件存储</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/">缓存</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/redis/">redis</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/%E5%91%BD%E4%BB%A4/">命令</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E4%B9%A6%E7%B1%8D/">书籍</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/">日常工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/ansible/">ansible</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/mac/">mac</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/python/">python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/JMeter/">JMeter</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E8%BF%90%E5%8A%A8/">运动</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E9%9F%B3%E4%B9%90/">音乐</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/%E7%BB%8F%E5%85%B8%E5%9D%91/">经典坑</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protobuf/" rel="tag">Protobuf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/" rel="tag">awk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/" rel="tag">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/core/" rel="tag">core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/" rel="tag">crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-rq/" rel="tag">django-rq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-schedule/" rel="tag">django-schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastcgi/" rel="tag">fastcgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastfs/" rel="tag">fastfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux%E5%91%BD%E4%BB%A4/" rel="tag">linux命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mp3/" rel="tag">mp3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nocomment/" rel="tag">nocomment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl/" rel="tag">openssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pattern/" rel="tag">pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsa/" rel="tag">rsa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/" rel="tag">sed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/share/" rel="tag">share</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" rel="tag">一致性算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F/" rel="tag">人生</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" rel="tag">人生感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" rel="tag">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" rel="tag">代码仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" rel="tag">压力测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" rel="tag">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/" rel="tag">存储</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6/" rel="tag">定时</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="tag">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E6%82%9F/" rel="tag">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" rel="tag">服务治理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" rel="tag">消息对列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%96%91%E6%83%91/" rel="tag">疑惑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" rel="tag">算法加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" rel="tag">音频转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">项目管理工具</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Protobuf/" style="font-size: 10px;">Protobuf</a> <a href="/tags/angularjs/" style="font-size: 15px;">angularjs</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/awk/" style="font-size: 10px;">awk</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/book/" style="font-size: 18.33px;">book</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/core/" style="font-size: 10px;">core</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-rq/" style="font-size: 10px;">django-rq</a> <a href="/tags/django-schedule/" style="font-size: 10px;">django-schedule</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/fastcgi/" style="font-size: 10px;">fastcgi</a> <a href="/tags/fastfs/" style="font-size: 10px;">fastfs</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/linux%E5%91%BD%E4%BB%A4/" style="font-size: 11.67px;">linux命令</a> <a href="/tags/maven/" style="font-size: 11.67px;">maven</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/music/" style="font-size: 10px;">music</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nocomment/" style="font-size: 11.67px;">nocomment</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/pattern/" style="font-size: 15px;">pattern</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/rsa/" style="font-size: 11.67px;">rsa</a> <a href="/tags/schedule/" style="font-size: 16.67px;">schedule</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/share/" style="font-size: 10px;">share</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" style="font-size: 10px;">一致性算法</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 10px;">人生</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 10px;">人生感悟</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" style="font-size: 10px;">人脸识别</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" style="font-size: 10px;">代码仓库</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">压力测试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 11.67px;">图片处理</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 15px;">多线程</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 10px;">存储</a> <a href="/tags/%E5%AE%9A%E6%97%B6/" style="font-size: 10px;">定时</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 15px;">并发</a> <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">性能测试</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 10px;">感悟</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" style="font-size: 11.67px;">服务治理</a> <a href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" style="font-size: 15px;">消息对列</a> <a href="/tags/%E7%96%91%E6%83%91/" style="font-size: 10px;">疑惑</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 11.67px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">算法加密</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 13.33px;">缓存</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.67px;">运维</a> <a href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">音频转换</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 11.67px;">项目管理工具</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/">Alfred Workflow快速打开idea项目</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/15/redis/">redis</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">微服务相关概念.md</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/29/%E6%8E%92%E5%BA%8F/">排序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/29/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%89%A9%E5%B1%95/">二分法查找及扩展</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 万松<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>redis | Share</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis">
+<meta property="og:url" content="http://www.wansonglife.com/2018/04/15/redis/index.html">
+<meta property="og:site_name" content="Share">
+<meta property="og:description" content="Java redis">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-04-15T01:23:48.000Z">
+<meta property="article:modified_time" content="2018-05-06T12:07:47.000Z">
+<meta property="article:author" content="万松">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="缓存">
+<meta property="article:tag" content="redis">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Share" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Share</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wansonglife.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/15/redis/" class="article-date">
+  <time datetime="2018-04-15T01:23:48.000Z" itemprop="datePublished">2018-04-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a>►<a class="article-category-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/">缓存</a>►<a class="article-category-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/redis/">redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      redis
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-redis-实现原理"><a href="#一-redis-实现原理" class="headerlink" title="一. redis 实现原理"></a>一. redis 实现原理</h2><h3 id="五种类型的键的底层实现数据结构"><a href="#五种类型的键的底层实现数据结构" class="headerlink" title="五种类型的键的底层实现数据结构"></a>五种类型的键的底层实现数据结构</h3><p>具体命令可参考<a href="2015/11/10/redis%E7%B4%A2%E5%BC%95/">命令</a></p>
+<ol>
+<li><p>SDS( simple dynamic string) 简单动态字符串</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">free</span>;</span><br><span class="line"><span class="keyword">char</span> buf[];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>链表</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">listNode</span>&#123;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">listNode</span> *<span class="title">prev</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">listNode</span> *<span class="title">next</span>;</span></span><br><span class="line"><span class="keyword">void</span> *value;</span><br><span class="line">&#125;listNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">list</span>&#123;</span></span><br><span class="line">listNode *head;</span><br><span class="line">listNode *tail;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> len;</span><br><span class="line"><span class="keyword">void</span> *(*dup)(<span class="keyword">void</span> *ptr);</span><br><span class="line"><span class="keyword">void</span> (*<span class="built_in">free</span>)(<span class="keyword">void</span> *ptr);</span><br><span class="line"><span class="keyword">int</span> (*match)(<span class="keyword">void</span> *ptr,<span class="keyword">void</span> *key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>字典</p>
+<p> Redis 的字典使用哈希表作为底层实现,一个哈希敷衍里面可以有多个节点,每个节点就保存了字典中的一个键值对;</p>
+<p> 新添加一个键值对到字典里时,程序需要先根据键值对的键计算出哈希值和索引值,然后根据索引值,将包含新键值对的哈希表节点放到哈希表数组的指定索引上面.当有两个或以上数量的键被分配到哈希数组的同一个索引上面时,我们称为冲突.这里使用链地址法解决键冲突.</p>
+<ul>
+<li><p>哈希表</p>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictht</span>&#123;</span></span><br><span class="line">dictEntry **table;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> size;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> sizemask;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> used;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  sizemask 值和哈希值一起决定一个键应该被放到table数组的哪个索引上面.</p>
+</li>
+<li><p>哈希表节点</p>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span>&#123;</span></span><br><span class="line"><span class="keyword">void</span> *key;</span><br><span class="line"><span class="keyword">union</span>&#123;</span><br><span class="line"><span class="keyword">void</span> *val;</span><br><span class="line">uint64_tu64;</span><br><span class="line">int64_ts64;</span><br><span class="line">&#125; v;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span> *<span class="title">next</span>;</span> <span class="comment">//解决键冲突的问题</span></span><br><span class="line">&#125; dictEntry;</span><br></pre></td></tr></table></figure></li>
+<li><p>字典</p>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dict</span>&#123;</span></span><br><span class="line">dictType *type; <span class="comment">//类型特定函数</span></span><br><span class="line"><span class="keyword">void</span> *privdata;<span class="comment">//私有数据</span></span><br><span class="line">dictht ht[<span class="number">2</span>];<span class="comment">//哈希表</span></span><br><span class="line"><span class="keyword">int</span> trehashidx;<span class="comment">//索引</span></span><br><span class="line">&#125; dict;</span><br></pre></td></tr></table></figure></li>
+<li><p>rehash(实际过程,是渐进式的)</p>
+<p>  当哈希表中键值的数量太多或太少时,为了让哈希表的负载因子维持在一个合理的范围之内,程序需要对哈希表的大小进行相应的扩展或者收缩.</p>
+<ol>
+<li><p>为字段的ht[1]哈希表分配空间,这个空间大小取决于要执行的操作,以及ht[0]当前包含的键值对数量</p>
+<ol>
+<li>如果是扩展操作,那么大小为第一个大于等于ht[0].used*2的2的n次方</li>
+<li>如果执行的是收缩操作,那么ht[1]的大小为第一个大于等于ht[0].used的2的n次方</li>
+</ol>
+</li>
+<li><p>将保存在ht[0]中的所有键值对rehash到ht[1]上面:rehash指重新计算键的哈希值和索引值,然后将键值对放置到ht[1]哈希表的指定位置上</p>
+</li>
+<li><p>将ht[0]释放空间,同时将ht[0]和ht[1]换位置</p>
+<p>何时进行扩展和收缩<br>负载因子= ht[0].used(已保存的节点数量)/哈希表的大小</p>
+<p>当负载因子大于 5 (待确认),或&lt;0.1 时</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://daoluan.net/%E6%9C%AA%E5%88%86%E7%B1%BB/2014/06/26/decode-redis-data-struct-skiplist.html">跳跃表</a></p>
+<p> skiplist 是一种有序的数据结构,它通过在每个节点中维持多个指向其他节点的指针,从而达到快速访问节点的目的.<br> redis在以下两个地方用到了跳跃表:</p>
+<ol>
+<li>有序集合键 zset</li>
+<li>在集群节点中用途内部数据结构</li>
+</ol>
+</li>
+<li><p>整数集合</p>
+<p> intset 是集合键的底层实现之一,当一个集合只包含整数值元素,并且这个集合的元素数量不多时,Redis就会使用整数集合作为集合键的底层实现.</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SADD numbers 1 3 5 6 7</span><br><span class="line">(integer) 5</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; OBJECT ENCODING numbers</span><br><span class="line">&quot;intset&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; sadd numbers 0943890384093845903845094385</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; smembers numbers</span><br><span class="line">1) &quot;3&quot;</span><br><span class="line">2) &quot;0943890384093845903845094385&quot;</span><br><span class="line">3) &quot;7&quot;</span><br><span class="line">4) &quot;2&quot;</span><br><span class="line">5) &quot;6&quot;</span><br><span class="line">6) &quot;1&quot;</span><br><span class="line">7) &quot;9&quot;</span><br><span class="line">8) &quot;5&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; OBJECT ENCODING numbers</span><br><span class="line">&quot;hashtable&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="每当我们要将一个新元素添加到整数集合里面-并且新元素的类型比整数集合现有的所有元素的类型都要长时-整数集合需要先进行升级-然后才能将新元素添加到整数集合里面-请记住-这里不会降级的"><a href="#每当我们要将一个新元素添加到整数集合里面-并且新元素的类型比整数集合现有的所有元素的类型都要长时-整数集合需要先进行升级-然后才能将新元素添加到整数集合里面-请记住-这里不会降级的" class="headerlink" title=" 每当我们要将一个新元素添加到整数集合里面,并且新元素的类型比整数集合现有的所有元素的类型都要长时,整数集合需要先进行升级,然后才能将新元素添加到整数集合里面,请记住,这里不会降级的"></a> 每当我们要将一个新元素添加到整数集合里面,并且新元素的类型比整数集合现有的所有元素的类型都要长时,整数集合需要先进行升级,然后才能将新元素添加到整数集合里面,请记住,这里不会降级的</h2><p> 其是Redis保存整数值的集合抽象数据结构,它可以保存int16_t,int32_t,int64_t的整数值,并且保证集合中不会出现重复元素.</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">intset</span>&#123;</span></span><br><span class="line"><span class="keyword">uint32_t</span> encoding;<span class="comment">//编码方式 INTSET_ENC_INT16,INTSET_ENC_INT32,INTSET_ENC_INT64</span></span><br><span class="line"><span class="keyword">uint32_t</span> length;<span class="comment">//集合包含的元素数量</span></span><br><span class="line"><span class="keyword">int8_t</span> contents[]; <span class="comment">//保存元素的数组,数组中按值的大小从小到大有序排列,并且数组中不包含任何重复项;其真正的类型取决于encoding属性的值:</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>压缩列表<br> ziplist,是列表键和哈希键的底层实现之一.当一个列表键只包含少量列表项,并且每个列表项要么就是小整数值,要么就是长度比较短的字符串,那么Redis就会使用压缩列表来做列表键的底层实现.</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; rpush kdf djf f df d f d f &quot;sdf&quot;</span><br><span class="line">(integer) 8</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; OBJECT ENCODING kdf</span><br><span class="line">&quot;ziplist&quot;</span><br></pre></td></tr></table></figure>
+
+<p> 压缩列表是为了节约内存而开发的,是由一系列特殊的连续内存块组成的顺序型数据结构.一个压缩列表可以包含任意多个节点,每个节点可以保存一个字节数组或者一个整数值.</p>
+</li>
+</ol>
+<h3 id="对象处理机制以及数据库的实现原理"><a href="#对象处理机制以及数据库的实现原理" class="headerlink" title="对象处理机制以及数据库的实现原理"></a>对象处理机制以及数据库的实现原理</h3><ol>
+<li><p>导入</p>
+<ol>
+<li>Redis 基于这些数据结构创建一个对象系统,其包含 字符串,列表对象,哈希对象,集合对象和有序集合对象 五种类型的对象,每种对象都至少一种我们前面所介绍的数据结构.</li>
+<li>使用对象的好处,我们可以针对不同的使用场景,为对象设置多种不同的数据结构pugmww而优化对象在不同场景下的使用效率.</li>
+<li>对象系统基于引用计数技术的内存回收机制,当程序不再使用某个对象的时候,这个对象所战胜的内存就会被自动释放;另外,Redis还通过引用计数技术实现了对象共享机制,这一机制可以在适当的条件下,通过让多个数据库键共享同一个对象来节约内存.</li>
+<li>对象带有访问时间记录信息,该信息可以用于计算数据库的空转时长 ,在服务器启用了maxmemory功能的情况下,空转时长较大的那些键可能会优先被服务器删除.</li>
+</ol>
+</li>
+<li><p>对象的类型和编码 type</p>
+<p> Redis使用对象来表示数据库中的键值,每次我们在库中新创建一个键值对时,我们至少会创建两个对象,一个是键对象,另一个是值对象.</p>
+ <figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line"><span class="number">127.0.0.1:6379</span>&gt; set name aaron</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0.0.1:6379</span>&gt; get name</span><br><span class="line"><span class="string">&quot;aaron&quot;</span></span><br><span class="line"><span class="number">127.0.0.1:6379</span>&gt; OBJECT ENCODING name</span><br><span class="line"><span class="string">&quot;embstr&quot;</span></span><br><span class="line"><span class="number">127.0.0.1:6379</span>&gt; type name</span><br><span class="line">string</span><br><span class="line"><span class="number">127.0.0.1:6379</span>&gt; OBJECT idletime name</span><br><span class="line">(integer) <span class="number">46</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<p> 每一个对象都由一个redisObject结构表示,该结构中和保存数据有关的三个属性分别是type属性,encoding属性和ptr属性:</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">redisObject</span>&#123;</span></span><br><span class="line"><span class="keyword">unsigned</span> type:<span class="number">4</span>;</span><br><span class="line"><span class="keyword">unsigned</span> encoding:<span class="number">4</span>;</span><br><span class="line"><span class="keyword">void</span> *ptr;<span class="comment">//每日向底层实现数据结构的指针</span></span><br><span class="line"><span class="keyword">int</span> refcount;<span class="comment">//引用计数</span></span><br><span class="line"><span class="keyword">unsigned</span> lru:<span class="number">22</span>;<span class="comment">//该对象最后一次被访问的时间</span></span><br><span class="line">&#125;robj;</span><br></pre></td></tr></table></figure>
+<p> type记录了对象的类型,这个属性的值有 string,list,hash,set,zset</p>
+</li>
+<li><p>编码和底层实现  OBJECT ENCODING<br> 对象的ptr指针指向对象的底层实现数据结构,而这些数据结构由对象的encoding属性决定.也就是说这个对象使用了什么数据结构作为对象的底层实现,这个属性值可以是</p>
+ <figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">int (<span class="name">long</span> 类型)</span><br><span class="line">embstr (<span class="name">embstr</span>编码的简单动态字符串)</span><br><span class="line">raw (简单动态字符串)</span><br><span class="line">ht (字典)</span><br><span class="line">linkedlist (双端链表)</span><br><span class="line">ziplist (压缩链表)</span><br><span class="line">intset (整数集合)</span><br><span class="line">skiplist (跳跃链表和字典)</span><br></pre></td></tr></table></figure>
+<p> 每种类型对象都至少使用了两种不同的编码.</p>
+ <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">string int/embstr/raw</span><br><span class="line">list ziplist/linkedlist</span><br><span class="line">hash ziplist/ht</span><br><span class="line"><span class="builtin-name">set</span>  intset/ht</span><br><span class="line">zset  ziplist/skiplist</span><br></pre></td></tr></table></figure></li>
+<li><p>数据共享 只共享0-9999的字符串对象</p>
+ <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; SET a <span class="number">100</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; OBJECT <span class="built_in">ref</span>count a</span><br><span class="line">(<span class="built_in">int</span>eger) <span class="number">2</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; OBJECT <span class="built_in">ref</span>count a</span><br><span class="line">(<span class="built_in">int</span>eger) <span class="number">2</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; SET b <span class="number">100</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; OBJECT <span class="built_in">ref</span>count a</span><br><span class="line">(<span class="built_in">int</span>eger) <span class="number">3</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="单机数据库的实现"><a href="#单机数据库的实现" class="headerlink" title="单机数据库的实现"></a>单机数据库的实现</h3><ol>
+<li><p>在redisServer结构的db数组中,每个redisDb 结构代表一个数据库,启动服务器时,服务器会根据dbnum来决定应该创建多少个数据库:</p>
+ <figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line">struct redisServer&#123;</span><br><span class="line"><span class="meta">...</span></span><br><span class="line">redisDb *db;</span><br><span class="line">int dbnum;</span><br><span class="line"><span class="meta">...</span></span><br><span class="line">&#125;redisClient</span><br></pre></td></tr></table></figure>
+<p> 客户端可以根据命令select来进行切换目标数据库</p>
+</li>
+<li><p>数据库键空间</p>
+<p> 是一个键值对数据库服务器,其中每个数据库都由一个redisDb结构表示,其中redisDb结构的dict字典保存了数据库中的所有键值对,我们称这个字典为 键空间<br> typedef struct redisDb{<br> dict *dict;<br> dict *expires;  key 是对象,value 是过期时间<br> }redisDb</p>
+</li>
+<li><p>设置生存时间或过期时间</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set name wansong</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; expire name 10</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">&quot;wansong&quot;</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>数据库通知<br> 2.8 新版本中增加的功能,可以通过订阅给它的频道或者模式,来获知数据库中键的变化.及数据库中命令的执行情况.</p>
+</li>
+</ol>
+<h3 id="RDB-持久化和-AOF-持久化的实现原理"><a href="#RDB-持久化和-AOF-持久化的实现原理" class="headerlink" title="RDB 持久化和 AOF 持久化的实现原理"></a>RDB 持久化和 AOF 持久化的实现原理</h3><p>RDB持久化功能,可以将Redis在内存中的数据库状态保存到磁盘里面,避免数据意外丢失.也可以根据服务器配置选项定期执行.<br>该功能可以将某个时间点上的数据库状态保存到一个RDB文件中.该文件是一个经过压缩的二进制文件,通过该文件可以还原生成RDB文件时的数据库状态.</p>
+<ol>
+<li><p>RDB文件的创建与载入</p>
+<p> save 命令会阻塞Redis服务器进程,直到RDB文件创建完毕为止,在服务器进程阻塞期间,服务器不处理任务命令请求.</p>
+<p> bgsave background saving started 该命令会派生出一个子进程,然后由子进程负责创建RDB文件,服务器进程继续处理命令请求</p>
+<p> 创建文件的实际工作由rdbSave函数完成,save和bgsave命令会以不同的方式调用这个函数.</p>
+<p> RDB文件的载入是自动的,当程序启动时会自动载入,另外注意AOF文件的更新频率通常比RDB高,所以:</p>
+<ol>
+<li><p>如果服务器开启了AOF持久化功能,那么服务器会优先使用AOF文件还原数据库状态</p>
+</li>
+<li><p>只有在AOF持久化功能处于关闭状态时,服务器才会使用RDB文件来还原数据库状态.</p>
+<p>载入RDB文件的实际工作由rdbLoad函数完成;文件载入时服务器处于阻塞状态.</p>
+</li>
+</ol>
+</li>
+<li><p>自动间隔性保存</p>
+<p>可以通过save选项设置多个保存条件,但只要其中任意一个条件被满足,服务器就会执行bgsave.</p>
+<p>save 900 1  服务器900秒之内,对数据库进行至少一次修改,就进行bgsave</p>
+</li>
+</ol>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><h4 id="Redis-基于-Reactor模式开发的网络事件处理器-称作-文件事件处理器-File-Event-Handler"><a href="#Redis-基于-Reactor模式开发的网络事件处理器-称作-文件事件处理器-File-Event-Handler" class="headerlink" title="Redis 基于 Reactor模式开发的网络事件处理器,称作 文件事件处理器 (File Event Handler)"></a>Redis 基于 Reactor模式开发的网络事件处理器,称作 文件事件处理器 (File Event Handler)</h4><ol>
+<li>使用I/O多路复用程序来同时监听多个套接字,并根据目前执行的任务来为套接字关联不同的事件</li>
+<li>当被监听的套接字准备好执行连接应答,读取,写入,关闭 等操作时,与其对应的文件事件就会产生,这时1中注册好的事件处理器就来进行处理这些事件</li>
+</ol>
+<h4 id="时间事件-id-when-handlers"><a href="#时间事件-id-when-handlers" class="headerlink" title="时间事件 id/when/handlers"></a>时间事件 id/when/handlers</h4><ol>
+<li>定时事件</li>
+<li>周期性事件</li>
+</ol>
+<h3 id="事务实现原理-ACID"><a href="#事务实现原理-ACID" class="headerlink" title="事务实现原理 ACID"></a>事务实现原理 ACID</h3><h3 id="ServerCron函数"><a href="#ServerCron函数" class="headerlink" title="ServerCron函数"></a>ServerCron函数</h3><blockquote>
+<blockquote>
+<p>服务器 默认每100毫秒执行一次</p>
+</blockquote>
+</blockquote>
+<ol>
+<li>更新服务器时间缓存</li>
+<li>更新LRU时钟(如 Redis对象都会有一个LRU属性,这个属性保存了对象最后一次被命令访问的时间)</li>
+<li>更新服务器每秒执行命令的次数(INFO status)</li>
+<li>更新服务器内存峰值记录</li>
+<li>处理SIGTERM信号 每次运行时,程序会对服务器状态的shutdown_asap属性进行检查,看是否要关闭服务器</li>
+<li>管理客户端资源: 已超时 或 是否清理输出缓冲区</li>
+<li>管理数据库资源: 删除过期键,并在需要时 对字典进行收缩操作</li>
+<li>检查持久化操作的运行状态</li>
+<li>将AOF缓冲区的内容写入到AOF文件</li>
+<li>关闭异步客户端</li>
+<li>增加cronloops计数器的值</li>
+</ol>
+<h3 id="初始化过程"><a href="#初始化过程" class="headerlink" title="初始化过程"></a>初始化过程</h3><p>初始化服务器状态结构,载入配置选项,还原数据库状态,执行事件循环</p>
+<h3 id="订阅与发布实现原理"><a href="#订阅与发布实现原理" class="headerlink" title="订阅与发布实现原理"></a>订阅与发布实现原理</h3><h3 id="Lua-脚本功能的实现原理。"><a href="#Lua-脚本功能的实现原理。" class="headerlink" title="Lua 脚本功能的实现原理。"></a>Lua 脚本功能的实现原理。</h3><h3 id="SORT-命令的实现原理。"><a href="#SORT-命令的实现原理。" class="headerlink" title="SORT 命令的实现原理。"></a>SORT 命令的实现原理。</h3><h3 id="慢查询日志的实现原理。-打开慢查询-查看日期-SLOWLOG-GET"><a href="#慢查询日志的实现原理。-打开慢查询-查看日期-SLOWLOG-GET" class="headerlink" title="慢查询日志的实现原理。 打开慢查询,查看日期 SLOWLOG GET"></a>慢查询日志的实现原理。 打开慢查询,查看日期 SLOWLOG GET</h3><h3 id="高并发如何做到"><a href="#高并发如何做到" class="headerlink" title="高并发如何做到"></a>高并发如何做到</h3><pre><code>虽是单线程单进行,但 使用I/O多路复用(select/epoll,evport,kqueue)程序来同时监听多个套接字 的方式来处理命令请求,并与多个客户端进行通信.</code></pre>
+<h2 id="二-redis-主要关注点"><a href="#二-redis-主要关注点" class="headerlink" title="二. redis 主要关注点"></a>二. redis 主要关注点</h2><h3 id="redis-为什么是单线程"><a href="#redis-为什么是单线程" class="headerlink" title="redis 为什么是单线程"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qqqqq1993qqqqq/article/details/77538202">redis 为什么是单线程</a></h3><h3 id="redis-过期索引是如何做到的"><a href="#redis-过期索引是如何做到的" class="headerlink" title="redis 过期索引是如何做到的"></a>redis 过期索引是如何做到的</h3><ol>
+<li><p>redis 的存储结构</p>
+</li>
+<li><p>删除策略</p>
+ <figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"><span class="bullet">* </span>定时删除:在设置键的过期时间的同时,创建一个定时器,让定时器在键的过期时间来临时,立即对键执行删除操作(对内存友好,最及时)</span><br><span class="line"><span class="bullet">* </span>定期删除:每一段时间,进行数据库过期索引的扫瞄,将已经过期的键 进行删除; 至于删除多少过期键和检查哪些数据库,都由算法决定</span><br><span class="line"><span class="bullet">* </span>惰性删除: 每次取键时,校验一下是否过期,若已经过期 就进行删除</span><br><span class="line"></span><br><span class="line">其实最终使用的是 定期和惰性 两个策略 配合实现</span><br></pre></td></tr></table></figure>
+<h3 id="redis-服务器配置"><a href="#redis-服务器配置" class="headerlink" title="redis 服务器配置"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/joshua317/p/5635297.html">redis 服务器配置</a></h3><h3 id="redis-有哪些功能"><a href="#redis-有哪些功能" class="headerlink" title="redis 有哪些功能"></a><a href="">redis 有哪些功能</a></h3><h3 id="redis-如何Failover"><a href="#redis-如何Failover" class="headerlink" title="redis 如何Failover()"></a>redis 如何Failover()</h3> <figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">哨兵（Sentinel）和复制（<span class="keyword">Replication</span>）</span><br><span class="line">Sentinel可以管理多个Redis服务器，它提供了监控，提醒以及自动的故障转移的功能；<span class="keyword">Replication</span>则是负责让一个Redis服务器可以配备多个备份的服务器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="redis-目前流程的实施架构有哪些"><a href="#redis-目前流程的实施架构有哪些" class="headerlink" title="redis 目前流程的实施架构有哪些"></a>redis 目前流程的实施架构有哪些</h3><ol>
+<li>哨兵Sentinel,复制（replication）</li>
+<li>集群（cluster）</li>
+</ol>
+<h2 id="三-redis-应用场景"><a href="#三-redis-应用场景" class="headerlink" title="三. redis 应用场景"></a>三. <a target="_blank" rel="noopener" href="https://www.cnblogs.com/NiceCui/p/7794659.html">redis 应用场景</a></h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://item.jd.com/11486101.html">Redis设计与实现</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.wansonglife.com/2018/04/15/redis/" data-id="ckfci5ho0002uvl2fe3t94fb2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Alfred Workflow快速打开idea项目
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">微服务相关概念.md</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">Java 基本知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/CAP/">CAP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/rpc/">rpc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/">zookeeper</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/">Kafka</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/">文件存储</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/">缓存</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%98%E5%82%A8/%E7%BC%93%E5%AD%98/redis/">redis</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/%E5%91%BD%E4%BB%A4/">命令</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E4%B9%A6%E7%B1%8D/">书籍</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/">日常工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/ansible/">ansible</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/mac/">mac</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%AD%E8%A8%80/python/">python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/">读书学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E8%AF%BB%E4%B9%A6%E5%AD%A6%E4%B9%A0/ionic/">ionic</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/JMeter/">JMeter</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E8%BF%90%E5%8A%A8/">运动</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/%E9%9F%B3%E4%B9%90/">音乐</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/%E7%BB%8F%E5%85%B8%E5%9D%91/">经典坑</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protobuf/" rel="tag">Protobuf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arm/" rel="tag">arm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awk/" rel="tag">awk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/" rel="tag">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/core/" rel="tag">core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/" rel="tag">crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/" rel="tag">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-rq/" rel="tag">django-rq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django-schedule/" rel="tag">django-schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastcgi/" rel="tag">fastcgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fastfs/" rel="tag">fastfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/" rel="tag">ionic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux%E5%91%BD%E4%BB%A4/" rel="tag">linux命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mp3/" rel="tag">mp3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nocomment/" rel="tag">nocomment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl/" rel="tag">openssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pattern/" rel="tag">pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsa/" rel="tag">rsa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/schedule/" rel="tag">schedule</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/" rel="tag">sed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/share/" rel="tag">share</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" rel="tag">一致性算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F/" rel="tag">人生</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" rel="tag">人生感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" rel="tag">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" rel="tag">代码仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" rel="tag">压力测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" rel="tag">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/" rel="tag">存储</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%97%B6/" rel="tag">定时</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="tag">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E6%82%9F/" rel="tag">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" rel="tag">服务治理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" rel="tag">消息对列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%96%91%E6%83%91/" rel="tag">疑惑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" rel="tag">算法加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" rel="tag">音频转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">项目管理工具</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Protobuf/" style="font-size: 10px;">Protobuf</a> <a href="/tags/angularjs/" style="font-size: 15px;">angularjs</a> <a href="/tags/arm/" style="font-size: 10px;">arm</a> <a href="/tags/awk/" style="font-size: 10px;">awk</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/book/" style="font-size: 18.33px;">book</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/core/" style="font-size: 10px;">core</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/django-rq/" style="font-size: 10px;">django-rq</a> <a href="/tags/django-schedule/" style="font-size: 10px;">django-schedule</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/fastcgi/" style="font-size: 10px;">fastcgi</a> <a href="/tags/fastfs/" style="font-size: 10px;">fastfs</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/linux%E5%91%BD%E4%BB%A4/" style="font-size: 11.67px;">linux命令</a> <a href="/tags/maven/" style="font-size: 11.67px;">maven</a> <a href="/tags/mp3/" style="font-size: 10px;">mp3</a> <a href="/tags/music/" style="font-size: 10px;">music</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nocomment/" style="font-size: 11.67px;">nocomment</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/pattern/" style="font-size: 15px;">pattern</a> <a href="/tags/private/" style="font-size: 10px;">private</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/rsa/" style="font-size: 11.67px;">rsa</a> <a href="/tags/schedule/" style="font-size: 16.67px;">schedule</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/share/" style="font-size: 10px;">share</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" style="font-size: 10px;">一致性算法</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 10px;">人生</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 10px;">人生感悟</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" style="font-size: 10px;">人脸识别</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" style="font-size: 10px;">代码仓库</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">压力测试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 11.67px;">图片处理</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 15px;">多线程</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 10px;">存储</a> <a href="/tags/%E5%AE%9A%E6%97%B6/" style="font-size: 10px;">定时</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 15px;">并发</a> <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">性能测试</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 10px;">感悟</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" style="font-size: 11.67px;">服务治理</a> <a href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" style="font-size: 15px;">消息对列</a> <a href="/tags/%E7%96%91%E6%83%91/" style="font-size: 10px;">疑惑</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 11.67px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">算法加密</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 13.33px;">缓存</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.67px;">运维</a> <a href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">音频转换</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 11.67px;">项目管理工具</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/">Alfred Workflow快速打开idea项目</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/15/redis/">redis</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">微服务相关概念.md</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/29/%E6%8E%92%E5%BA%8F/">排序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/29/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%89%A9%E5%B1%95/">二分法查找及扩展</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 万松<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
