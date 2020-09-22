@@ -122,88 +122,11 @@
     <script>setLoadingBarProgress(40);</script>
   <div class="l_body">
     <div class='container clearfix'>
-      <div class='l_main'>
-        
-  <script>
-    window.subData= { title:'Tag : 人脸识别'}
-  </script>
-
-<section class="post-list">
-	
-    <div class='post-wrapper'>
-      <article class="post reveal">
-    <section class="meta">
-        
-            <h2 class="title">
-                <a href="/2016/09/15/MAC%E4%B8%8B%E5%AE%8C%E6%88%90%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/">
-                    MAC下完成人脸检测代码环境构建
-                </a>
-            </h2>
-        
-        <time>
-            9月 15, 2016
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>, <a href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a>
-    </div>
-
-    </section>
-    <section class="article typo">
-        <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>工作中用到图片的截图，但在使用过程中出现了一个尴尬的问题，就是截图时，有的人没有了头<br>，只留下身子.</p>
-<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><p>通过代码来检测出头部所以位置，然后来决定载哪些区域（目前，只是对一个人进行剪切。</p>
-<h2 id="具体方案"><a href="#具体方案" class="headerlink" title="具体方案"></a>具体方案</h2><ol>
-<li><p>找到一个合适的类库来进行人头位置检测</p>
-<pre><code> _python-opencv_</code></pre>
-</li>
-<li><p>使用python 对人裁剪范围进行处理(GraphicsMagick)得到想要的区域</p>
-</li>
-</ol>
-<h2 id="正题-如何在MAC上安装开发环境"><a href="#正题-如何在MAC上安装开发环境" class="headerlink" title="正题 如何在MAC上安装开发环境"></a>正题 如何在MAC上安装开发环境</h2><p>利用  python-opencv 库<br><a target="_blank" rel="noopener" href="http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/">http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/</a></p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=<span class="regexp">/usr/</span>local \</span><br><span class="line">-D PYTHON2_PACKAGES_PATH=~<span class="regexp">/.virtualenvs/</span>cv<span class="regexp">/lib/</span>python2.<span class="number">7</span>/site-packages \</span><br><span class="line">-D</span><br><span class="line">PYTHON2_LIBRARY=<span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>python<span class="regexp">/2.7.10/</span>Frameworks<span class="regexp">/Python.framework/</span>Versions<span class="regexp">/2.7/</span>bin</span><br><span class="line">\</span><br><span class="line">-D PYTHON2_INCLUDE_DIR=<span class="regexp">/usr/</span>local<span class="regexp">/Frameworks/</span>Python.framework/Headers \</span><br><span class="line">-D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON \</span><br><span class="line">-D BUILD_EXAMPLES=ON \</span><br><span class="line">-D OPENCV_EXTRA_MODULES_PATH=~<span class="regexp">/opencv_contrib/m</span>odules ..</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> <a target="_blank" rel="noopener" href="http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation">http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation</a></p>
- <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">brew</span> <span class="string">tap homebrew/science</span></span><br><span class="line"><span class="attr">brew</span> <span class="string">install opencv3</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p> <a target="_blank" rel="noopener" href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html">http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html</a></p>
-
-
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/python/">python</a>
-                
-                    <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">图片处理</a>
-                
-                    <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/">人脸识别</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-    </div>
-  
-</section>
-
-
-      </div>
       <aside class='l_side'>
         
-  <section class='m_widget about'>
-
-<div class='header'>万松</div>
-<div class='content'>
-<div class='desc'>生活点滴和知识分享</div>
-</div>
-</section>
-
-
   
 <div class="m_widget tagcloud">
-    <div class="header">Tags</div>
+    <div class="header">标签云</div>
     <div class='content'>
         <a href="/tags/Protobuf/" style="font-size: 14px; color: #808080">Protobuf</a> <a href="/tags/angularjs/" style="font-size: 17px; color: #404040">angularjs</a> <a href="/tags/arm/" style="font-size: 14px; color: #808080">arm</a> <a href="/tags/awk/" style="font-size: 14px; color: #808080">awk</a> <a href="/tags/blog/" style="font-size: 14px; color: #808080">blog</a> <a href="/tags/book/" style="font-size: 19px; color: #151515">book</a> <a href="/tags/command/" style="font-size: 14px; color: #808080">command</a> <a href="/tags/core/" style="font-size: 14px; color: #808080">core</a> <a href="/tags/crontab/" style="font-size: 14px; color: #808080">crontab</a> <a href="/tags/django/" style="font-size: 14px; color: #808080">django</a> <a href="/tags/django-rq/" style="font-size: 14px; color: #808080">django-rq</a> <a href="/tags/django-schedule/" style="font-size: 14px; color: #808080">django-schedule</a> <a href="/tags/dubbo/" style="font-size: 14px; color: #808080">dubbo</a> <a href="/tags/fastcgi/" style="font-size: 14px; color: #808080">fastcgi</a> <a href="/tags/fastfs/" style="font-size: 14px; color: #808080">fastfs</a> <a href="/tags/git/" style="font-size: 14px; color: #808080">git</a> <a href="/tags/ionic/" style="font-size: 17px; color: #404040">ionic</a> <a href="/tags/java/" style="font-size: 20px; color: #000">java</a> <a href="/tags/jvm/" style="font-size: 14px; color: #808080">jvm</a> <a href="/tags/linux%E5%91%BD%E4%BB%A4/" style="font-size: 15px; color: #6b6b6b">linux命令</a> <a href="/tags/maven/" style="font-size: 15px; color: #6b6b6b">maven</a> <a href="/tags/mp3/" style="font-size: 14px; color: #808080">mp3</a> <a href="/tags/music/" style="font-size: 14px; color: #808080">music</a> <a href="/tags/mysql/" style="font-size: 14px; color: #808080">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #808080">nginx</a> <a href="/tags/nocomment/" style="font-size: 15px; color: #6b6b6b">nocomment</a> <a href="/tags/openssl/" style="font-size: 14px; color: #808080">openssl</a> <a href="/tags/pattern/" style="font-size: 17px; color: #404040">pattern</a> <a href="/tags/private/" style="font-size: 14px; color: #808080">private</a> <a href="/tags/project/" style="font-size: 14px; color: #808080">project</a> <a href="/tags/python/" style="font-size: 16px; color: #555">python</a> <a href="/tags/redis/" style="font-size: 16px; color: #555">redis</a> <a href="/tags/rsa/" style="font-size: 15px; color: #6b6b6b">rsa</a> <a href="/tags/schedule/" style="font-size: 18px; color: #2b2b2b">schedule</a> <a href="/tags/sed/" style="font-size: 14px; color: #808080">sed</a> <a href="/tags/share/" style="font-size: 14px; color: #808080">share</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #808080">一致性算法</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 14px; color: #808080">人生</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 14px; color: #808080">人生感悟</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" style="font-size: 14px; color: #808080">人脸识别</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" style="font-size: 14px; color: #808080">代码仓库</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">压力测试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 15px; color: #6b6b6b">图片处理</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 17px; color: #404040">多线程</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 14px; color: #808080">存储</a> <a href="/tags/%E5%AE%9A%E6%97%B6/" style="font-size: 14px; color: #808080">定时</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 17px; color: #404040">并发</a> <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">性能测试</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 14px; color: #808080">感悟</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" style="font-size: 15px; color: #6b6b6b">服务治理</a> <a href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" style="font-size: 17px; color: #404040">消息对列</a> <a href="/tags/%E7%96%91%E6%83%91/" style="font-size: 14px; color: #808080">疑惑</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px; color: #6b6b6b">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" style="font-size: 14px; color: #808080">算法加密</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 16px; color: #555">缓存</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 15px; color: #6b6b6b">运维</a> <a href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" style="font-size: 14px; color: #808080">音频转换</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 15px; color: #6b6b6b">项目管理工具</a>
     </div>
@@ -212,7 +135,7 @@
 
 
   <section class='m_widget links'>
-<div class='header'>Links</div>
+<div class='header'>友情链接</div>
 <div class='content'>
     <ul class="entry">
     
@@ -224,8 +147,9 @@
 </div>
 </section>
 
+
   <section class='m_widget categories'>
-<div class='header'>Categories</div>
+<div class='header'>所有分类</div>
 <div class='content'>
     
     <ul class="entry">
@@ -311,7 +235,88 @@
 </div>
 </section>
 
+
       </aside>
+      <aside class='l_about'>
+        <section class='m_widget about'>
+
+<img class='avatar waves-image' src='/images/head/photo2.jpeg' />
+
+<div class='header'>万松</div>
+<div class='content'>
+<div class='desc'>生活点滴和知识分享</div>
+</div>
+</section>
+
+      </aside>
+      <div class='l_main'>
+        
+  <script>
+    window.subData= { title:'Tag : 人脸识别'}
+  </script>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+    <section class="meta">
+        
+            <h2 class="title">
+                <a href="/2016/09/15/MAC%E4%B8%8B%E5%AE%8C%E6%88%90%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA/">
+                    MAC下完成人脸检测代码环境构建
+                </a>
+            </h2>
+        
+        <time>
+            9月 15, 2016
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>, <a href="/categories/%E9%A1%B9%E7%9B%AE/%E6%96%B9%E6%A1%88/">方案</a>
+    </div>
+
+    </section>
+    <section class="article typo">
+        <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>工作中用到图片的截图，但在使用过程中出现了一个尴尬的问题，就是截图时，有的人没有了头<br>，只留下身子.</p>
+<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><p>通过代码来检测出头部所以位置，然后来决定载哪些区域（目前，只是对一个人进行剪切。</p>
+<h2 id="具体方案"><a href="#具体方案" class="headerlink" title="具体方案"></a>具体方案</h2><ol>
+<li><p>找到一个合适的类库来进行人头位置检测</p>
+<pre><code> _python-opencv_</code></pre>
+</li>
+<li><p>使用python 对人裁剪范围进行处理(GraphicsMagick)得到想要的区域</p>
+</li>
+</ol>
+<h2 id="正题-如何在MAC上安装开发环境"><a href="#正题-如何在MAC上安装开发环境" class="headerlink" title="正题 如何在MAC上安装开发环境"></a>正题 如何在MAC上安装开发环境</h2><p>利用  python-opencv 库<br><a target="_blank" rel="noopener" href="http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/">http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/</a></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=<span class="regexp">/usr/</span>local \</span><br><span class="line">-D PYTHON2_PACKAGES_PATH=~<span class="regexp">/.virtualenvs/</span>cv<span class="regexp">/lib/</span>python2.<span class="number">7</span>/site-packages \</span><br><span class="line">-D</span><br><span class="line">PYTHON2_LIBRARY=<span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>python<span class="regexp">/2.7.10/</span>Frameworks<span class="regexp">/Python.framework/</span>Versions<span class="regexp">/2.7/</span>bin</span><br><span class="line">\</span><br><span class="line">-D PYTHON2_INCLUDE_DIR=<span class="regexp">/usr/</span>local<span class="regexp">/Frameworks/</span>Python.framework/Headers \</span><br><span class="line">-D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON \</span><br><span class="line">-D BUILD_EXAMPLES=ON \</span><br><span class="line">-D OPENCV_EXTRA_MODULES_PATH=~<span class="regexp">/opencv_contrib/m</span>odules ..</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation">http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation</a></p>
+ <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">brew</span> <span class="string">tap homebrew/science</span></span><br><span class="line"><span class="attr">brew</span> <span class="string">install opencv3</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p> <a target="_blank" rel="noopener" href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html">http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html</a></p>
+
+
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/python/">python</a>
+                
+                    <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">图片处理</a>
+                
+                    <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/">人脸识别</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+    </div>
+  
+</section>
+
+
+      </div>
       <script>setLoadingBarProgress(60);</script>
     </div>
   </div>
@@ -335,9 +340,9 @@
   
     
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">footer.site_pv: <span id="busuanzi_value_site_pv"></span></span>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
         <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv">footer.site_uv: <span id="busuanzi_value_site_uv"></span></span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
     
 </footer>
 

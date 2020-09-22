@@ -124,100 +124,11 @@
     <script>setLoadingBarProgress(40);</script>
   <div class="l_body">
     <div class='container clearfix'>
-      <div class='l_main'>
-        <article id="post-微信头像九宫格算法"
-  class="post white-box article-type-post"
-  itemscope itemprop="blogPost">
-	<section class='meta'>
-	<h2 class="title">
-  	<a href="/2018/03/25/%E5%BE%AE%E4%BF%A1%E5%A4%B4%E5%83%8F%E4%B9%9D%E5%AE%AB%E6%A0%BC%E7%AE%97%E6%B3%95/">
-    	微信头像九宫格算法
-    </a>
-  </h2>
-	<time>
-	  3月 25, 2018
-	</time>
-	
-    
-    <div class='cats'>
-        <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>, <a href="/categories/%E7%AE%97%E6%B3%95/Java/">Java</a>
-    </div>
-
-	</section>
-	
-		<section class="toc-wrapper"></section>
-	
-	<section class="article typo">
-  	<div class="article-entry" itemprop="articleBody">
-    	<blockquote>
-<blockquote>
-<p>分别计算1-9个头像在九宫格中的位置</p>
-</blockquote>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;ImageCell&gt; <span class="title">createMergeCell</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> totalWidth)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> totalRow = (<span class="keyword">int</span>) Math.ceil(Math.sqrt(n));</span><br><span class="line">      <span class="keyword">int</span> outline = <span class="number">5</span>;</span><br><span class="line">      <span class="keyword">int</span> width = ((totalWidth - outline) / totalRow);</span><br><span class="line">      <span class="keyword">int</span> border = width / <span class="number">20</span>;</span><br><span class="line">      <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> Lists.newArrayList(<span class="keyword">new</span> ImageCell(border, border, width - <span class="number">2</span> * border));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> lastAloneNum = n % totalRow;</span><br><span class="line">      <span class="keyword">int</span> totalFullRow = n / totalRow;</span><br><span class="line">      <span class="keyword">int</span> lastRow = totalRow - totalFullRow - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> firstStartX = (totalWidth - lastAloneNum * width) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">int</span> firstStartY = lastRow * width;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> otherSpace = (totalWidth - totalRow * width) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">int</span> yOffset = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">if</span> (totalRow != totalFullRow + (lastAloneNum != <span class="number">0</span> ? <span class="number">1</span> : <span class="number">0</span>)) &#123;</span><br><span class="line">          yOffset = -width / <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      List&lt;ImageCell&gt; imageCells = Lists.newArrayList();</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">          <span class="keyword">int</span> x = <span class="number">0</span>, y = firstStartY;</span><br><span class="line">          <span class="keyword">if</span> (i &lt; lastAloneNum) &#123;</span><br><span class="line">              x = firstStartX + i * width;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              x = (i - lastAloneNum) % totalRow * width;</span><br><span class="line">              y = firstStartY + ((i - lastAloneNum) / totalRow + <span class="number">1</span>) * width;</span><br><span class="line">          &#125;</span><br><span class="line">          imageCells.add(<span class="keyword">new</span> ImageCell(x + border + otherSpace, y + border + otherSpace + yOffset, width - <span class="number">2</span> * border));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> imageCells;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Data</span></span><br><span class="line">  <span class="meta">@AllArgsConstructor</span></span><br><span class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageCell</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> x;</span><br><span class="line">      <span class="keyword">int</span> y;</span><br><span class="line">      <span class="keyword">int</span> width;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">-------------------n=1---------------------</span><br><span class="line">			x:7,y:7,width:131</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=2---------------------</span><br><span class="line">			x:6,y:42,width:66</span><br><span class="line">			x:78,y:42,width:66</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=3---------------------</span><br><span class="line">			x:45,y:6,width:66</span><br><span class="line">			x:6,y:78,width:66</span><br><span class="line">			x:78,y:78,width:66</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=4---------------------</span><br><span class="line">			x:6,y:6,width:66</span><br><span class="line">			x:78,y:6,width:66</span><br><span class="line">			x:6,y:78,width:66</span><br><span class="line">			x:78,y:78,width:66</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=5---------------------</span><br><span class="line">			x:32,y:29,width:44</span><br><span class="line">			x:80,y:29,width:44</span><br><span class="line">			x:5,y:77,width:44</span><br><span class="line">			x:53,y:77,width:44</span><br><span class="line">			x:101,y:77,width:44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=6---------------------</span><br><span class="line">			x:5,y:29,width:44</span><br><span class="line">			x:53,y:29,width:44</span><br><span class="line">			x:101,y:29,width:44</span><br><span class="line">			x:5,y:77,width:44</span><br><span class="line">			x:53,y:77,width:44</span><br><span class="line">			x:101,y:77,width:44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=7---------------------</span><br><span class="line">			x:56,y:5,width:44</span><br><span class="line">			x:5,y:53,width:44</span><br><span class="line">			x:53,y:53,width:44</span><br><span class="line">			x:101,y:53,width:44</span><br><span class="line">			x:5,y:101,width:44</span><br><span class="line">			x:53,y:101,width:44</span><br><span class="line">			x:101,y:101,width:44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=8---------------------</span><br><span class="line">			x:32,y:5,width:44</span><br><span class="line">			x:80,y:5,width:44</span><br><span class="line">			x:5,y:53,width:44</span><br><span class="line">			x:53,y:53,width:44</span><br><span class="line">			x:101,y:53,width:44</span><br><span class="line">			x:5,y:101,width:44</span><br><span class="line">			x:53,y:101,width:44</span><br><span class="line">			x:101,y:101,width:44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=9---------------------</span><br><span class="line">			x:5,y:5,width:44</span><br><span class="line">			x:53,y:5,width:44</span><br><span class="line">			x:101,y:5,width:44</span><br><span class="line">			x:5,y:53,width:44</span><br><span class="line">			x:53,y:53,width:44</span><br><span class="line">			x:101,y:53,width:44</span><br><span class="line">			x:5,y:101,width:44</span><br><span class="line">			x:53,y:101,width:44</span><br><span class="line">			x:101,y:101,width:44</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-  	</div>
-	  
-		
-	
-		<div class="art-item-footer">
-				
-					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/03/29/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%89%A9%E5%B1%95/" rel="prev"  title="二分法查找及扩展">
-						二分法查找及扩展 
-					</a></span>
-				
-				
-					<span class="art-item-right">next：<a href="/2018/03/24/%E5%8F%96%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/" rel="next"  title="取一个数字二进制中1的个数">
-						取一个数字二进制中1的个数
-					</a><i class="icon icon-chevron-thin-right"></i></span>
-				
-		</div>
-	
-	</section>
-	<br/>
-	<section>
-		
-			<div id="vcomments"></div>
-		
-	</section>
-</article>
-<input type="hidden" id="valine_appid" value="">
-<input type="hidden" id="valine_appKey" value="">
-<script>
-	window.subData = {
-		title: '微信头像九宫格算法',
-		tools: true
-	}
-</script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
-<script>
-	new Valine({
-		el: '#vcomments',
-		appId: "b13h0PpoiVVieODkmdrjUw2R-gzGzoHsz",
-		appKey: "NMiO8n8rxtwYIaUdndXwbcKH",
-		placeholder: '有什么想说的吗？',
-		avatar: "wavatar"
-	})
-</script>
-
-      </div>
       <aside class='l_side'>
         
-  <section class='m_widget about'>
-
-<div class='header'>万松</div>
-<div class='content'>
-<div class='desc'>生活点滴和知识分享</div>
-</div>
-</section>
-
-
   
 <div class="m_widget tagcloud">
-    <div class="header">Tags</div>
+    <div class="header">标签云</div>
     <div class='content'>
         <a href="/tags/Protobuf/" style="font-size: 14px; color: #808080">Protobuf</a> <a href="/tags/angularjs/" style="font-size: 17px; color: #404040">angularjs</a> <a href="/tags/arm/" style="font-size: 14px; color: #808080">arm</a> <a href="/tags/awk/" style="font-size: 14px; color: #808080">awk</a> <a href="/tags/blog/" style="font-size: 14px; color: #808080">blog</a> <a href="/tags/book/" style="font-size: 19px; color: #151515">book</a> <a href="/tags/command/" style="font-size: 14px; color: #808080">command</a> <a href="/tags/core/" style="font-size: 14px; color: #808080">core</a> <a href="/tags/crontab/" style="font-size: 14px; color: #808080">crontab</a> <a href="/tags/django/" style="font-size: 14px; color: #808080">django</a> <a href="/tags/django-rq/" style="font-size: 14px; color: #808080">django-rq</a> <a href="/tags/django-schedule/" style="font-size: 14px; color: #808080">django-schedule</a> <a href="/tags/dubbo/" style="font-size: 14px; color: #808080">dubbo</a> <a href="/tags/fastcgi/" style="font-size: 14px; color: #808080">fastcgi</a> <a href="/tags/fastfs/" style="font-size: 14px; color: #808080">fastfs</a> <a href="/tags/git/" style="font-size: 14px; color: #808080">git</a> <a href="/tags/ionic/" style="font-size: 17px; color: #404040">ionic</a> <a href="/tags/java/" style="font-size: 20px; color: #000">java</a> <a href="/tags/jvm/" style="font-size: 14px; color: #808080">jvm</a> <a href="/tags/linux%E5%91%BD%E4%BB%A4/" style="font-size: 15px; color: #6b6b6b">linux命令</a> <a href="/tags/maven/" style="font-size: 15px; color: #6b6b6b">maven</a> <a href="/tags/mp3/" style="font-size: 14px; color: #808080">mp3</a> <a href="/tags/music/" style="font-size: 14px; color: #808080">music</a> <a href="/tags/mysql/" style="font-size: 14px; color: #808080">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #808080">nginx</a> <a href="/tags/nocomment/" style="font-size: 15px; color: #6b6b6b">nocomment</a> <a href="/tags/openssl/" style="font-size: 14px; color: #808080">openssl</a> <a href="/tags/pattern/" style="font-size: 17px; color: #404040">pattern</a> <a href="/tags/private/" style="font-size: 14px; color: #808080">private</a> <a href="/tags/project/" style="font-size: 14px; color: #808080">project</a> <a href="/tags/python/" style="font-size: 16px; color: #555">python</a> <a href="/tags/redis/" style="font-size: 16px; color: #555">redis</a> <a href="/tags/rsa/" style="font-size: 15px; color: #6b6b6b">rsa</a> <a href="/tags/schedule/" style="font-size: 18px; color: #2b2b2b">schedule</a> <a href="/tags/sed/" style="font-size: 14px; color: #808080">sed</a> <a href="/tags/share/" style="font-size: 14px; color: #808080">share</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #808080">一致性算法</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 14px; color: #808080">人生</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 14px; color: #808080">人生感悟</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" style="font-size: 14px; color: #808080">人脸识别</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" style="font-size: 14px; color: #808080">代码仓库</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">压力测试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 15px; color: #6b6b6b">图片处理</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 17px; color: #404040">多线程</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 14px; color: #808080">存储</a> <a href="/tags/%E5%AE%9A%E6%97%B6/" style="font-size: 14px; color: #808080">定时</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 17px; color: #404040">并发</a> <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">性能测试</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 14px; color: #808080">感悟</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" style="font-size: 15px; color: #6b6b6b">服务治理</a> <a href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" style="font-size: 17px; color: #404040">消息对列</a> <a href="/tags/%E7%96%91%E6%83%91/" style="font-size: 14px; color: #808080">疑惑</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px; color: #6b6b6b">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%8A%A0%E5%AF%86/" style="font-size: 14px; color: #808080">算法加密</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 16px; color: #555">缓存</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 15px; color: #6b6b6b">运维</a> <a href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" style="font-size: 14px; color: #808080">音频转换</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 15px; color: #6b6b6b">项目管理工具</a>
     </div>
@@ -226,7 +137,7 @@
 
 
   <section class='m_widget links'>
-<div class='header'>Links</div>
+<div class='header'>友情链接</div>
 <div class='content'>
     <ul class="entry">
     
@@ -238,8 +149,9 @@
 </div>
 </section>
 
+
   <section class='m_widget categories'>
-<div class='header'>Categories</div>
+<div class='header'>所有分类</div>
 <div class='content'>
     
     <ul class="entry">
@@ -325,7 +237,100 @@
 </div>
 </section>
 
+
       </aside>
+      <aside class='l_about'>
+        <section class='m_widget about'>
+
+<img class='avatar waves-image' src='/images/head/photo2.jpeg' />
+
+<div class='header'>万松</div>
+<div class='content'>
+<div class='desc'>生活点滴和知识分享</div>
+</div>
+</section>
+
+      </aside>
+      <div class='l_main'>
+        <article id="post-微信头像九宫格算法"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/2018/03/25/%E5%BE%AE%E4%BF%A1%E5%A4%B4%E5%83%8F%E4%B9%9D%E5%AE%AB%E6%A0%BC%E7%AE%97%E6%B3%95/">
+    	微信头像九宫格算法
+    </a>
+  </h2>
+	<time>
+	  3月 25, 2018
+	</time>
+	
+    
+    <div class='cats'>
+        <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>, <a href="/categories/%E7%AE%97%E6%B3%95/Java/">Java</a>
+    </div>
+
+	</section>
+	
+		<section class="toc-wrapper"></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<blockquote>
+<blockquote>
+<p>分别计算1-9个头像在九宫格中的位置</p>
+</blockquote>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;ImageCell&gt; <span class="title">createMergeCell</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> totalWidth)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> totalRow = (<span class="keyword">int</span>) Math.ceil(Math.sqrt(n));</span><br><span class="line">      <span class="keyword">int</span> outline = <span class="number">5</span>;</span><br><span class="line">      <span class="keyword">int</span> width = ((totalWidth - outline) / totalRow);</span><br><span class="line">      <span class="keyword">int</span> border = width / <span class="number">20</span>;</span><br><span class="line">      <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> Lists.newArrayList(<span class="keyword">new</span> ImageCell(border, border, width - <span class="number">2</span> * border));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> lastAloneNum = n % totalRow;</span><br><span class="line">      <span class="keyword">int</span> totalFullRow = n / totalRow;</span><br><span class="line">      <span class="keyword">int</span> lastRow = totalRow - totalFullRow - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> firstStartX = (totalWidth - lastAloneNum * width) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">int</span> firstStartY = lastRow * width;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> otherSpace = (totalWidth - totalRow * width) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">int</span> yOffset = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">if</span> (totalRow != totalFullRow + (lastAloneNum != <span class="number">0</span> ? <span class="number">1</span> : <span class="number">0</span>)) &#123;</span><br><span class="line">          yOffset = -width / <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      List&lt;ImageCell&gt; imageCells = Lists.newArrayList();</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">          <span class="keyword">int</span> x = <span class="number">0</span>, y = firstStartY;</span><br><span class="line">          <span class="keyword">if</span> (i &lt; lastAloneNum) &#123;</span><br><span class="line">              x = firstStartX + i * width;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              x = (i - lastAloneNum) % totalRow * width;</span><br><span class="line">              y = firstStartY + ((i - lastAloneNum) / totalRow + <span class="number">1</span>) * width;</span><br><span class="line">          &#125;</span><br><span class="line">          imageCells.add(<span class="keyword">new</span> ImageCell(x + border + otherSpace, y + border + otherSpace + yOffset, width - <span class="number">2</span> * border));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> imageCells;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Data</span></span><br><span class="line">  <span class="meta">@AllArgsConstructor</span></span><br><span class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageCell</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> x;</span><br><span class="line">      <span class="keyword">int</span> y;</span><br><span class="line">      <span class="keyword">int</span> width;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">-------------------n=1---------------------</span><br><span class="line">			x:7,y:7,width:131</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=2---------------------</span><br><span class="line">			x:6,y:42,width:66</span><br><span class="line">			x:78,y:42,width:66</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=3---------------------</span><br><span class="line">			x:45,y:6,width:66</span><br><span class="line">			x:6,y:78,width:66</span><br><span class="line">			x:78,y:78,width:66</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=4---------------------</span><br><span class="line">			x:6,y:6,width:66</span><br><span class="line">			x:78,y:6,width:66</span><br><span class="line">			x:6,y:78,width:66</span><br><span class="line">			x:78,y:78,width:66</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=5---------------------</span><br><span class="line">			x:32,y:29,width:44</span><br><span class="line">			x:80,y:29,width:44</span><br><span class="line">			x:5,y:77,width:44</span><br><span class="line">			x:53,y:77,width:44</span><br><span class="line">			x:101,y:77,width:44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=6---------------------</span><br><span class="line">			x:5,y:29,width:44</span><br><span class="line">			x:53,y:29,width:44</span><br><span class="line">			x:101,y:29,width:44</span><br><span class="line">			x:5,y:77,width:44</span><br><span class="line">			x:53,y:77,width:44</span><br><span class="line">			x:101,y:77,width:44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=7---------------------</span><br><span class="line">			x:56,y:5,width:44</span><br><span class="line">			x:5,y:53,width:44</span><br><span class="line">			x:53,y:53,width:44</span><br><span class="line">			x:101,y:53,width:44</span><br><span class="line">			x:5,y:101,width:44</span><br><span class="line">			x:53,y:101,width:44</span><br><span class="line">			x:101,y:101,width:44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=8---------------------</span><br><span class="line">			x:32,y:5,width:44</span><br><span class="line">			x:80,y:5,width:44</span><br><span class="line">			x:5,y:53,width:44</span><br><span class="line">			x:53,y:53,width:44</span><br><span class="line">			x:101,y:53,width:44</span><br><span class="line">			x:5,y:101,width:44</span><br><span class="line">			x:53,y:101,width:44</span><br><span class="line">			x:101,y:101,width:44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------------n=9---------------------</span><br><span class="line">			x:5,y:5,width:44</span><br><span class="line">			x:53,y:5,width:44</span><br><span class="line">			x:101,y:5,width:44</span><br><span class="line">			x:5,y:53,width:44</span><br><span class="line">			x:53,y:53,width:44</span><br><span class="line">			x:101,y:53,width:44</span><br><span class="line">			x:5,y:101,width:44</span><br><span class="line">			x:53,y:101,width:44</span><br><span class="line">			x:101,y:101,width:44</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  	</div>
+	  
+		
+	
+		<div class="art-item-footer">
+				
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/03/29/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%89%A9%E5%B1%95/" rel="prev"  title="二分法查找及扩展">
+						二分法查找及扩展 
+					</a></span>
+				
+				
+					<span class="art-item-right">next：<a href="/2018/03/24/%E5%8F%96%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/" rel="next"  title="取一个数字二进制中1的个数">
+						取一个数字二进制中1的个数
+					</a><i class="icon icon-chevron-thin-right"></i></span>
+				
+		</div>
+	
+	</section>
+	<br/>
+	<section>
+		
+			<div id="vcomments"></div>
+		
+	</section>
+</article>
+<input type="hidden" id="valine_appid" value="">
+<input type="hidden" id="valine_appKey" value="">
+<script>
+	window.subData = {
+		title: '微信头像九宫格算法',
+		tools: true
+	}
+</script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: "b13h0PpoiVVieODkmdrjUw2R-gzGzoHsz",
+		appKey: "NMiO8n8rxtwYIaUdndXwbcKH",
+		placeholder: '有什么想说的吗？',
+		avatar: "wavatar"
+	})
+</script>
+
+      </div>
       <script>setLoadingBarProgress(60);</script>
     </div>
   </div>
@@ -349,9 +354,9 @@
   
     
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">footer.site_pv: <span id="busuanzi_value_site_pv"></span></span>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
         <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv">footer.site_uv: <span id="busuanzi_value_site_uv"></span></span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
     
 </footer>
 
