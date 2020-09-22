@@ -721,35 +721,6 @@
     
     
     <entry>
-      <title>Protobuf是什么</title>
-      <link href="2015/09/22/Protobuf%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-      <url>2015/09/22/Protobuf%E6%98%AF%E4%BB%80%E4%B9%88/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>欢迎来到protocol buffer的开发者指南文档，一种语言无关、平台无关、扩展性好的用于通信协议、数据存储的结构化数据串行化方法。本文档面向希望使用protocol buffer的Java、C++或Python开发者。这个概览介绍了protocol buffer，并告诉你如何开始，你随后可以跟随<a href="http://code.google.com/apis/protocolbuffers/docs/tutorials.html">编程指导</a>深入了解<a href="http://code.google.com/apis/protocolbuffers/docs/encoding.html">protocol buffer编码方式</a>。<a href="http://code.google.com/apis/protocolbuffers/docs/reference/overview.html">API参考文档</a>同样也是提供了这三种编程语言的版本，不够<a href="http://code.google.com/apis/protocolbuffers/docs/proto.html">协议语言</a>和<a href="http://code.google.com/apis/protocolbuffers/docs/style.html">样式</a>指导都是编写 .proto 文件。</p></blockquote><h4 id="什么是protocol-buffer"><a href="#什么是protocol-buffer" class="headerlink" title="什么是protocol buffer"></a>什么是<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-gpb/">protocol buffer</a></h4><p>ProtocolBuffer是用于结构化数据串行化的灵活、高效、自动的方法，有如XML，不过它更小、更快、也更简单。你可以定义自己的数据结构，然后使用代码生成器生成的代码来读写这个数据结构。你甚至可以在无需重新部署程序的情况下更新数据结构。</p><h4 id="他们如何工作"><a href="#他们如何工作" class="headerlink" title="他们如何工作"></a>他们如何工作</h4><p>你首先需要在一个 .proto 文件中定义你需要做串行化的数据结构信息。每个ProtocolBuffer信息是一小段逻辑记录，包含一系列的键值对。这里有个非常简单的 .proto 文件定义了个人信息:</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">message Person &#123;</span><br><span class="line">    required string name=<span class="number">1</span>;</span><br><span class="line">    required int32 id=<span class="number">2</span>;</span><br><span class="line">    optional string email=<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">PhoneType</span> </span>&#123;</span><br><span class="line">        MOBILE=<span class="number">0</span>;</span><br><span class="line">        HOME=<span class="number">1</span>;</span><br><span class="line">        WORK=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    message PhoneNumber &#123;</span><br><span class="line">        required string number=<span class="number">1</span>;</span><br><span class="line">        optional PhoneType type=<span class="number">2</span> [<span class="keyword">default</span>=HOME];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    repeated PhoneNumber phone=<span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>有如你所见，消息格式很简单，每个消息类型拥有一个或多个特定的数字字段，每个字段拥有一个名字和一个值类型。值类型可以是数字(整数或浮点)、布尔型、字符串、原始字节或者其他ProtocolBuffer类型，还允许数据结构的分级。你可以指定可选字段，必选字段和重复字段。你可以在<a href="http://code.google.com/apis/protocolbuffers/docs/proto.html">proto.html</a>找到更多关于如何编写 .proto 文件的信息。</p><p>一旦你定义了自己的报文格式(message)，你就可以运行ProtocolBuffer编译器，将你的 .proto 文件编译成特定语言的类。</p><h4 id="为什么不用XML"><a href="#为什么不用XML" class="headerlink" title="为什么不用XML?"></a>为什么不用XML?</h4><p>ProtocolBuffer拥有多项比XML更高级的串行化结构数据的特性，ProtocolBuffer：</p><pre><code>    更简单    小3-10倍    快20-100倍    更少的歧义    可以方便的生成数据存取类 </code></pre><p>例如，让我们看看如何在XML中建模Person的name和email字段:</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">person</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>John Doe<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">email</span>&gt;</span>jdoe@example.com<span class="tag">&lt;/<span class="name">email</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">person</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>对应的ProtocolBuffer报文则如下:</p><p>ProtocolBuffer的文本表示<br>这不是正常时使用的二进制数据</p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">person</span> &#123;</span><br><span class="line">    <span class="attribute">name</span>: <span class="string">&quot;John Doe&quot;</span></span><br><span class="line">    email: <span class="string">&quot;jdoe@example.com&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当这个报文编码到ProtocolBuffer的<a href="http://code.google.com/apis/protocolbuffers/docs/encoding.html">二进制格式</a>时(上面的文本仅用于调试和编辑)，它只需要28字节和100-200ns的解析时间。而XML的版本需要69字节(除去空白)和 5000-10000ns的解析时间。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 分布式 </category>
-          
-          <category> 序列化 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> java </tag>
-            
-            <tag> Protobuf </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>一、Kafka介绍</title>
       <link href="2015/09/22/%E4%B8%80%E3%80%81Kafka%E4%BB%8B%E7%BB%8D/"/>
       <url>2015/09/22/%E4%B8%80%E3%80%81Kafka%E4%BB%8B%E7%BB%8D/</url>
@@ -773,6 +744,35 @@
             <tag> java </tag>
             
             <tag> 消息对列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Protobuf是什么</title>
+      <link href="2015/09/22/Protobuf%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+      <url>2015/09/22/Protobuf%E6%98%AF%E4%BB%80%E4%B9%88/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>欢迎来到protocol buffer的开发者指南文档，一种语言无关、平台无关、扩展性好的用于通信协议、数据存储的结构化数据串行化方法。本文档面向希望使用protocol buffer的Java、C++或Python开发者。这个概览介绍了protocol buffer，并告诉你如何开始，你随后可以跟随<a href="http://code.google.com/apis/protocolbuffers/docs/tutorials.html">编程指导</a>深入了解<a href="http://code.google.com/apis/protocolbuffers/docs/encoding.html">protocol buffer编码方式</a>。<a href="http://code.google.com/apis/protocolbuffers/docs/reference/overview.html">API参考文档</a>同样也是提供了这三种编程语言的版本，不够<a href="http://code.google.com/apis/protocolbuffers/docs/proto.html">协议语言</a>和<a href="http://code.google.com/apis/protocolbuffers/docs/style.html">样式</a>指导都是编写 .proto 文件。</p></blockquote><h4 id="什么是protocol-buffer"><a href="#什么是protocol-buffer" class="headerlink" title="什么是protocol buffer"></a>什么是<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-gpb/">protocol buffer</a></h4><p>ProtocolBuffer是用于结构化数据串行化的灵活、高效、自动的方法，有如XML，不过它更小、更快、也更简单。你可以定义自己的数据结构，然后使用代码生成器生成的代码来读写这个数据结构。你甚至可以在无需重新部署程序的情况下更新数据结构。</p><h4 id="他们如何工作"><a href="#他们如何工作" class="headerlink" title="他们如何工作"></a>他们如何工作</h4><p>你首先需要在一个 .proto 文件中定义你需要做串行化的数据结构信息。每个ProtocolBuffer信息是一小段逻辑记录，包含一系列的键值对。这里有个非常简单的 .proto 文件定义了个人信息:</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">message Person &#123;</span><br><span class="line">    required string name=<span class="number">1</span>;</span><br><span class="line">    required int32 id=<span class="number">2</span>;</span><br><span class="line">    optional string email=<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">PhoneType</span> </span>&#123;</span><br><span class="line">        MOBILE=<span class="number">0</span>;</span><br><span class="line">        HOME=<span class="number">1</span>;</span><br><span class="line">        WORK=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    message PhoneNumber &#123;</span><br><span class="line">        required string number=<span class="number">1</span>;</span><br><span class="line">        optional PhoneType type=<span class="number">2</span> [<span class="keyword">default</span>=HOME];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    repeated PhoneNumber phone=<span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>有如你所见，消息格式很简单，每个消息类型拥有一个或多个特定的数字字段，每个字段拥有一个名字和一个值类型。值类型可以是数字(整数或浮点)、布尔型、字符串、原始字节或者其他ProtocolBuffer类型，还允许数据结构的分级。你可以指定可选字段，必选字段和重复字段。你可以在<a href="http://code.google.com/apis/protocolbuffers/docs/proto.html">proto.html</a>找到更多关于如何编写 .proto 文件的信息。</p><p>一旦你定义了自己的报文格式(message)，你就可以运行ProtocolBuffer编译器，将你的 .proto 文件编译成特定语言的类。</p><h4 id="为什么不用XML"><a href="#为什么不用XML" class="headerlink" title="为什么不用XML?"></a>为什么不用XML?</h4><p>ProtocolBuffer拥有多项比XML更高级的串行化结构数据的特性，ProtocolBuffer：</p><pre><code>    更简单    小3-10倍    快20-100倍    更少的歧义    可以方便的生成数据存取类 </code></pre><p>例如，让我们看看如何在XML中建模Person的name和email字段:</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">person</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>John Doe<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">email</span>&gt;</span>jdoe@example.com<span class="tag">&lt;/<span class="name">email</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">person</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>对应的ProtocolBuffer报文则如下:</p><p>ProtocolBuffer的文本表示<br>这不是正常时使用的二进制数据</p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">person</span> &#123;</span><br><span class="line">    <span class="attribute">name</span>: <span class="string">&quot;John Doe&quot;</span></span><br><span class="line">    email: <span class="string">&quot;jdoe@example.com&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当这个报文编码到ProtocolBuffer的<a href="http://code.google.com/apis/protocolbuffers/docs/encoding.html">二进制格式</a>时(上面的文本仅用于调试和编辑)，它只需要28字节和100-200ns的解析时间。而XML的版本需要69字节(除去空白)和 5000-10000ns的解析时间。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分布式 </category>
+          
+          <category> 序列化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> Protobuf </tag>
             
         </tags>
       
@@ -1304,6 +1304,37 @@
     
     
     <entry>
+      <title>我的读书计划</title>
+      <link href="2015/08/24/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
+      <url>2015/08/24/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
+      
+        <content type="html"><![CDATA[<div class="col-xs-12"><table class="table table-bordered">    <tr>    <th>书名</th>    <th>作者</th>    <th>计划学习时间</th>    <th>详细记划</th>    </tr>    <tr>        <td>《Developing an Ionic Edge》</td>        <td>Anton Shevchenko,Robi van Baalen,keith D. Moore,Diego Netto,Alan Levicki</td>        <td>08.24 到 10.30</td>        <td><a href="/book/2015/08/24/ionic schedule.html">详细记划</a></td>    </tr>    <tr>        <td><a href="http://spark.apache.org/">spark</a></td>        <td>Apache Spark</td>        <td>11.0 到 12.30</td>        <td>待计划</td>    </tr></table></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 扩展知识 </category>
+          
+          <category> 读书学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> book </tag>
+            
+            <tag> schedule </tag>
+            
+            <tag> nocomment </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第一章ionic 基本介绍</title>
       <link href="2015/08/24/ionic%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/"/>
       <url>2015/08/24/ionic%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/</url>
@@ -1331,37 +1362,6 @@
             <tag> ionic </tag>
             
             <tag> angularjs </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>我的读书计划</title>
-      <link href="2015/08/24/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
-      <url>2015/08/24/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
-      
-        <content type="html"><![CDATA[<div class="col-xs-12"><table class="table table-bordered">    <tr>    <th>书名</th>    <th>作者</th>    <th>计划学习时间</th>    <th>详细记划</th>    </tr>    <tr>        <td>《Developing an Ionic Edge》</td>        <td>Anton Shevchenko,Robi van Baalen,keith D. Moore,Diego Netto,Alan Levicki</td>        <td>08.24 到 10.30</td>        <td><a href="/book/2015/08/24/ionic schedule.html">详细记划</a></td>    </tr>    <tr>        <td><a href="http://spark.apache.org/">spark</a></td>        <td>Apache Spark</td>        <td>11.0 到 12.30</td>        <td>待计划</td>    </tr></table></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 扩展知识 </category>
-          
-          <category> 读书学习 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> book </tag>
-            
-            <tag> schedule </tag>
-            
-            <tag> nocomment </tag>
             
         </tags>
       
