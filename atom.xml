@@ -104,11 +104,11 @@
   </entry>
   
   <entry>
-    <title>微服务相关概念.md</title>
+    <title>微服务相关概念</title>
     <link href="http://example.com/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/"/>
     <id>http://example.com/2018/04/14/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/</id>
     <published>2018-04-14T00:53:22.000Z</published>
-    <updated>2020-09-23T15:06:33.939Z</updated>
+    <updated>2020-09-23T15:25:46.450Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务治理基本概念"><a href="#服务治理基本概念" class="headerlink" title="服务治理基本概念"></a>服务治理基本概念</h2><ol><li>服务的伸缩控制</li><li>身份验证与授权 *</li><li>服务注册与发现 *</li><li>反向代理与负载均衡</li><li>路由控制 *</li><li>流量切换 *</li><li>日志管理 *</li><li>性能度量、监控与调优 *</li><li>分布式跟踪 *</li><li>过载保护 *</li><li>服务降级 *</li><li>服务部署与版本升级策略支持 *</li><li>错误处理 *</li><li>国际化</li></ol><h3 id="服务的伸缩控制"><a href="#服务的伸缩控制" class="headerlink" title="服务的伸缩控制"></a>服务的伸缩控制</h3><h3 id="身份验证与授权"><a href="#身份验证与授权" class="headerlink" title="身份验证与授权"></a>身份验证与授权</h3><h3 id="服务注册与发现"><a href="#服务注册与发现" class="headerlink" title="服务注册与发现"></a>服务注册与发现</h3><ol><li>dubbo zookeeper</li></ol><h3 id="反向代理与负载均衡"><a href="#反向代理与负载均衡" class="headerlink" title="反向代理与负载均衡"></a>反向代理与负载均衡</h3><ol><li>vertx</li><li>nginx</li></ol>]]></content>
     
