@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>jdk_null有关判断--Optional</title>
+      <link href="2020/09/23/jdk-null%E6%9C%89%E5%85%B3%E5%88%A4%E6%96%AD/"/>
+      <url>2020/09/23/jdk-null%E6%9C%89%E5%85%B3%E5%88%A4%E6%96%AD/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>jdk8之前为空判断使业务代码读起来比较费劲,对整体业务逻辑的理解增加困惑;<br>jdk8支持了 Optional 之后 ,使用我们可以非常轻松的将原本一大块的判断代码块变成一句话;</p></blockquote><h3 id="正常的判空优化效果"><a href="#正常的判空优化效果" class="headerlink" title="正常的判空优化效果"></a>正常的判空优化效果</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Optional.ofNullable(<span class="keyword">null</span>).orElse(<span class="string">&quot;default&quot;</span>)</span><br></pre></td></tr></table></figure><h3 id="从对象中取值时"><a href="#从对象中取值时" class="headerlink" title="从对象中取值时"></a>从对象中取值时</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String userName=<span class="keyword">null</span>;</span><br><span class="line">User user=<span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span>(Objects.isNull(user))&#123;</span><br><span class="line">  userName=<span class="string">&quot;username is null&quot;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  userName=user.getName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">优化后</span><br><span class="line"></span><br><span class="line">userName=Optional.ofNullable(user).map((temp)-&gt;temp.getName()).orElse(<span class="string">&quot;default&quot;</span>);</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">userName=Optional.ofNullable(user).flatMap(user1 -&gt; Optional.ofNullable(user1.getName())).orElse(<span class="string">&quot;happy&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jdk8.java </tag>
+            
+            <tag> jdk </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Alfred Workflow快速打开idea项目</title>
       <link href="2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/"/>
       <url>2020/09/20/alfred%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80idea%E9%A1%B9%E7%9B%AE/</url>
@@ -13,8 +40,6 @@
       
       <categories>
           
-          <category> 扩展知识 </category>
-          
           <category> 日常工具 </category>
           
       </categories>
@@ -22,9 +47,11 @@
       
         <tags>
             
-            <tag> 项目管理工具 </tag>
+            <tag> mac </tag>
             
-            <tag> maven </tag>
+            <tag> alfred </tag>
+            
+            <tag> workflow </tag>
             
         </tags>
       
@@ -42,11 +69,7 @@
       
       <categories>
           
-          <category> 存储 </category>
-          
-          <category> 缓存 </category>
-          
-          <category> redis </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -75,9 +98,7 @@
       
       <categories>
           
-          <category> 分布式 </category>
-          
-          <category> CAP </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -87,6 +108,10 @@
             <tag> 算法 </tag>
             
             <tag> 服务治理 </tag>
+            
+            <tag> 分布式 </tag>
+            
+            <tag> CAP </tag>
             
         </tags>
       
@@ -104,12 +129,20 @@
       
       <categories>
           
-          <category> 算法 </category>
-          
-          <category> Java </category>
+          <category> 技术 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 排序 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -125,12 +158,20 @@
       
       <categories>
           
-          <category> 算法 </category>
-          
-          <category> Java </category>
+          <category> 技术 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 查找 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -146,12 +187,18 @@
       
       <categories>
           
-          <category> 算法 </category>
-          
-          <category> Java </category>
+          <category> 技术 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -167,12 +214,18 @@
       
       <categories>
           
-          <category> 算法 </category>
-          
-          <category> Java </category>
+          <category> 技术 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -188,9 +241,7 @@
       
       <categories>
           
-          <category> Java 基本知识 </category>
-          
-          <category> 多线程 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -200,6 +251,8 @@
             <tag> 多线程 </tag>
             
             <tag> 并发 </tag>
+            
+            <tag> java </tag>
             
         </tags>
       
@@ -217,11 +270,9 @@
       
       <categories>
           
-          <category> 扩展知识 </category>
+          <category> 技术 </category>
           
           <category> 语言 </category>
-          
-          <category> python </category>
           
       </categories>
       
@@ -246,9 +297,7 @@
       
       <categories>
           
-          <category> 分布式 </category>
-          
-          <category> rpc </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -260,6 +309,10 @@
             <tag> dubbo </tag>
             
             <tag> 服务治理 </tag>
+            
+            <tag> 分布式 </tag>
+            
+            <tag> rpc </tag>
             
         </tags>
       
@@ -277,9 +330,7 @@
       
       <categories>
           
-          <category> 分布式 </category>
-          
-          <category> CAP </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -289,6 +340,10 @@
             <tag> 算法 </tag>
             
             <tag> 一致性算法 </tag>
+            
+            <tag> 分布式 </tag>
+            
+            <tag> CAP </tag>
             
         </tags>
       
@@ -305,8 +360,6 @@
       
       
       <categories>
-          
-          <category> 项目 </category>
           
           <category> 方案 </category>
           
@@ -339,14 +392,16 @@
           
           <category> 生活 </category>
           
-          <category> 运动 </category>
-          
       </categories>
       
       
         <tags>
             
             <tag> 人生感悟 </tag>
+            
+            <tag> 运动 </tag>
+            
+            <tag> 爬山 </tag>
             
         </tags>
       
@@ -363,8 +418,6 @@
       
       
       <categories>
-          
-          <category> 项目 </category>
           
           <category> 方案 </category>
           
@@ -392,21 +445,19 @@
       <link href="2016/01/10/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90%E7%9B%AE%E5%BD%95/"/>
       <url>2016/01/10/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90%E7%9B%AE%E5%BD%95/</url>
       
-        <content type="html"><![CDATA[<ul><li><p>Django</p></li><li><p>当我老了</p></li><li><p>朋友</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li><p>Django</p></li><li><p>当我老了</p></li><li><p>朋友</p></li><li><p>冬季到台北来看你</p></li></ul>]]></content>
       
       
       <categories>
           
           <category> 生活 </category>
           
-          <category> 音乐 </category>
-          
       </categories>
       
       
         <tags>
             
-            <tag> music </tag>
+            <tag> 音乐 </tag>
             
         </tags>
       
@@ -423,8 +474,6 @@
       
       
       <categories>
-          
-          <category> 项目 </category>
           
           <category> 方案 </category>
           
@@ -457,9 +506,7 @@
       
       <categories>
           
-          <category> 存储 </category>
-          
-          <category> 文件存储 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -469,6 +516,8 @@
             <tag> 存储 </tag>
             
             <tag> fastfs </tag>
+            
+            <tag> 分布式 </tag>
             
         </tags>
       
@@ -481,16 +530,12 @@
       <link href="2015/12/08/git%E5%B7%A5%E4%BD%9C%E4%B8%8E%E5%AD%A6%E4%B9%A0/"/>
       <url>2015/12/08/git%E5%B7%A5%E4%BD%9C%E4%B8%8E%E5%AD%A6%E4%B9%A0/</url>
       
-        <content type="html"><![CDATA[<h1 id="tag的作用与学习"><a href="#tag的作用与学习" class="headerlink" title="tag的作用与学习"></a>tag的作用与学习</h1><ul><li><p>git tag ‘name’ -m ‘desc’ 创建</p></li><li><p>git tag -d ‘name’ 删除</p></li><li><p>git tag -l  查看</p></li><li><p>git push –tags 提交</p></li><li><p>git push origin :refs/tags/tags_name</p></li></ul><h1 id="git-在使用项目中的实践模型"><a href="#git-在使用项目中的实践模型" class="headerlink" title="git 在使用项目中的实践模型"></a>git 在使用项目中的实践模型</h1><ol><li>master</li><li>release-6.1</li><li>develop</li><li>hotfix-xxx</li><li>release-release-6.1-xx</li></ol>]]></content>
+        <content type="html"><![CDATA[<h3 id="tag的作用与学习"><a href="#tag的作用与学习" class="headerlink" title="tag的作用与学习"></a>tag的作用与学习</h3><ul><li><p>git tag ‘name’ -m ‘desc’ 创建</p></li><li><p>git tag -d ‘name’ 删除</p></li><li><p>git tag -l  查看</p></li><li><p>git push –tags 提交</p></li><li><p>git push origin :refs/tags/tags_name</p></li></ul><h3 id="git-在使用项目中的实践模型"><a href="#git-在使用项目中的实践模型" class="headerlink" title="git 在使用项目中的实践模型"></a>git 在使用项目中的实践模型</h3><ol><li>master</li><li>release-6.1</li><li>develop</li><li>hotfix-xxx</li><li>release-release-6.1-xx</li></ol><h3 id="批量删除tag"><a href="#批量删除tag" class="headerlink" title="批量删除tag"></a>批量删除tag</h3><p>git tag |grep -v ‘v7.2.25-log_report_v9-20200909’ | xargs -I {} git tag -d {}</p>]]></content>
       
       
       <categories>
           
-          <category> 扩展知识 </category>
-          
-          <category> 日常工具 </category>
-          
-          <category> git </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -500,6 +545,10 @@
             <tag> git </tag>
             
             <tag> 代码仓库 </tag>
+            
+            <tag> 经验 </tag>
+            
+            <tag> 工具 </tag>
             
         </tags>
       
@@ -517,22 +566,20 @@
       
       <categories>
           
-          <category> 项目 </category>
+          <category> 技术 </category>
           
-          <category> 方案 </category>
-          
-          <category> 经典坑 </category>
+          <category> 问题总结 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> 缓存 </tag>
             
             <tag> redis </tag>
+            
+            <tag> bug </tag>
             
         </tags>
       
@@ -550,18 +597,12 @@
       
       <categories>
           
-          <category> 存储 </category>
-          
-          <category> 缓存 </category>
-          
-          <category> redis </category>
+          <category> 技术 </category>
           
       </categories>
       
       
         <tags>
-            
-            <tag> java </tag>
             
             <tag> 缓存 </tag>
             
@@ -583,20 +624,16 @@
       
       <categories>
           
-          <category> 扩展知识 </category>
-          
-          <category> 日常工具 </category>
-          
-          <category> ansible </category>
+          <category> 技术 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> ansible </tag>
             
         </tags>
       
@@ -609,23 +646,21 @@
       <link href="2015/10/16/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%80%EF%BC%9A%E6%B6%89%E5%8F%8AMQ%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/"/>
       <url>2015/10/16/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%80%EF%BC%9A%E6%B6%89%E5%8F%8AMQ%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</url>
       
-        <content type="html"><![CDATA[<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h3><blockquote><p><a href="https://github.com/alibaba/RocketMQ">RocketMQ</a></p></blockquote><blockquote><p><a href="http://blog.csdn.net/a19881029/article/details/34446629">参考sean-zou的博客</a><br><a href="http://sofar.blog.51cto.com/353572/1540874">workming 的BLOG </a></p></blockquote><h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><blockquote><p><a href="http://kafka.apache.org/#introduction">Kafka</a></p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h3><blockquote><p><a href="https://github.com/alibaba/RocketMQ">RocketMQ</a><br><a href="http://blog.csdn.net/a19881029/article/details/34446629">参考sean-zou的博客</a><br><a href="http://sofar.blog.51cto.com/353572/1540874">workming 的BLOG </a></p></blockquote><h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><blockquote><p><a href="http://kafka.apache.org/#introduction">Kafka</a></p></blockquote>]]></content>
       
       
       <categories>
           
-          <category> 分布式 </category>
-          
-          <category> 消息队列 </category>
+          <category> 技术 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> 消息对列 </tag>
+            
+            <tag> 分布式 </tag>
             
         </tags>
       
@@ -643,20 +678,22 @@
       
       <categories>
           
-          <category> 测试 </category>
-          
-          <category> 压力测试 </category>
-          
-          <category> JMeter </category>
+          <category> 技术 </category>
           
       </categories>
       
       
         <tags>
             
+            <tag> java </tag>
+            
             <tag> 性能测试 </tag>
             
             <tag> 压力测试 </tag>
+            
+            <tag> 测试 </tag>
+            
+            <tag> jmeter </tag>
             
         </tags>
       
@@ -674,9 +711,7 @@
       
       <categories>
           
-          <category> 分布式 </category>
-          
-          <category> zookeeper </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -685,7 +720,9 @@
             
             <tag> java </tag>
             
-            <tag> 消息对列 </tag>
+            <tag> 分布式 </tag>
+            
+            <tag> zookeeper </tag>
             
         </tags>
       
@@ -703,7 +740,7 @@
       
       <categories>
           
-          <category> Java 基本知识 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -730,9 +767,7 @@
       
       <categories>
           
-          <category> 分布式 </category>
-          
-          <category> 序列化 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -759,11 +794,7 @@
       
       <categories>
           
-          <category> 分布式 </category>
-          
-          <category> 消息队列 </category>
-          
-          <category> Kafka </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -773,6 +804,10 @@
             <tag> java </tag>
             
             <tag> 消息对列 </tag>
+            
+            <tag> kafka </tag>
+            
+            <tag> 分布式 </tag>
             
         </tags>
       
@@ -790,11 +825,7 @@
       
       <categories>
           
-          <category> 分布式 </category>
-          
-          <category> 消息队列 </category>
-          
-          <category> Kafka </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -804,6 +835,10 @@
             <tag> java </tag>
             
             <tag> 消息对列 </tag>
+            
+            <tag> kafka </tag>
+            
+            <tag> 分布式 </tag>
             
         </tags>
       
@@ -821,7 +856,7 @@
       
       <categories>
           
-          <category> 设计模式 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -830,7 +865,7 @@
             
             <tag> java </tag>
             
-            <tag> pattern </tag>
+            <tag> 设计模式 </tag>
             
         </tags>
       
@@ -848,8 +883,6 @@
       
       <categories>
           
-          <category> 扩展知识 </category>
-          
           <category> 日常工具 </category>
           
       </categories>
@@ -857,7 +890,7 @@
       
         <tags>
             
-            <tag> 项目管理工具 </tag>
+            <tag> java </tag>
             
             <tag> maven </tag>
             
@@ -872,12 +905,10 @@
       <link href="2015/09/13/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/"/>
       <url>2015/09/13/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>2015目前我日常工作中常用的工具，在这里进行一次整理备份</p></blockquote><ul><li>IntelliJ IDEA</li><li>Web Storm</li><li>PyCharm</li><li>MindPreview Lite</li><li>SQLPro <a href="http://www.macsqlclient.com/">http://www.macsqlclient.com/</a></li><li>rdm</li><li>redis</li><li>mongodb</li><li>zkcli</li><li>alfred</li></ul><p>zsh + iterm + powerline</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>2015目前我日常工作中常用的工具，在这里进行一次整理备份</p></blockquote><ul><li>IntelliJ IDEA</li><li>Web Storm</li><li>PyCharm</li><li>MindPreview Lite</li><li>SQLPro <a href="http://www.macsqlclient.com/">http://www.macsqlclient.com/</a></li><li>rdm</li><li>redis</li><li>mongodb</li><li>zkcli</li><li>alfred</li><li>hexo </li></ul><p>zsh + iterm + powerline</p>]]></content>
       
       
       <categories>
-          
-          <category> 扩展知识 </category>
           
           <category> 日常工具 </category>
           
@@ -888,9 +919,9 @@
       
         <tags>
             
-            <tag> share </tag>
+            <tag> mac </tag>
             
-            <tag> core </tag>
+            <tag> 软件 </tag>
             
         </tags>
       
@@ -908,7 +939,7 @@
       
       <categories>
           
-          <category> 设计模式 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -917,7 +948,7 @@
             
             <tag> java </tag>
             
-            <tag> pattern </tag>
+            <tag> 设计模式 </tag>
             
         </tags>
       
@@ -935,7 +966,7 @@
       
       <categories>
           
-          <category> 设计模式 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -944,7 +975,7 @@
             
             <tag> java </tag>
             
-            <tag> pattern </tag>
+            <tag> 设计模式 </tag>
             
         </tags>
       
@@ -962,9 +993,7 @@
       
       <categories>
           
-          <category> Java 基本知识 </category>
-          
-          <category> 多线程 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -973,7 +1002,7 @@
             
             <tag> 多线程 </tag>
             
-            <tag> 并发 </tag>
+            <tag> java </tag>
             
         </tags>
       
@@ -991,9 +1020,7 @@
       
       <categories>
           
-          <category> Java 基本知识 </category>
-          
-          <category> 多线程 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -1001,8 +1028,6 @@
         <tags>
             
             <tag> 多线程 </tag>
-            
-            <tag> 并发 </tag>
             
             <tag> java </tag>
             
@@ -1022,7 +1047,7 @@
       
       <categories>
           
-          <category> 设计模式 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -1031,7 +1056,7 @@
             
             <tag> java </tag>
             
-            <tag> pattern </tag>
+            <tag> 设计模式 </tag>
             
         </tags>
       
@@ -1049,9 +1074,7 @@
       
       <categories>
           
-          <category> Java 基本知识 </category>
-          
-          <category> 多线程 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -1060,7 +1083,7 @@
             
             <tag> 多线程 </tag>
             
-            <tag> 并发 </tag>
+            <tag> java </tag>
             
         </tags>
       
@@ -1073,14 +1096,12 @@
       <link href="2015/09/10/%E6%88%91%E7%9A%84%E4%B9%A6%E6%9E%B6/"/>
       <url>2015/09/10/%E6%88%91%E7%9A%84%E4%B9%A6%E6%9E%B6/</url>
       
-        <content type="html"><![CDATA[<h3 id="最近在看的书籍："><a href="#最近在看的书籍：" class="headerlink" title="最近在看的书籍："></a>最近在看的书籍：</h3><ul><li>2020.09.23 <a href="https://github.com/Vonng/ddia">《设计数据密集型应用》</a></li></ul><h3 id="曾经看过的书籍："><a href="#曾经看过的书籍：" class="headerlink" title="曾经看过的书籍："></a>曾经看过的书籍：</h3><ul><li>《Developing an ionic Edge》</li><li>《O’Reilly：Python学习手册（第4版）》</li><li>《Python Cookbook（第3版）中文版》</li><li>《AngularJS》</li><li>《黑客与画家》</li><li>《大教堂与集市》</li><li>《重来》</li><li>《启示录 打造用户喜爱的产品》Marty Cagan著 七印部落 译</li><li>《Vim使用技巧》</li><li><a href="http://search.dangdang.com/?key=%EF%BF%BD%EF%BF%BD0%EF%BF%BD%EF%BF%BD1">《从0到1：开启商业与未来的秘密》</a>【美】彼得 蒂尔 Peter Thiel</li><li><a href="http://search.dangdang.com/?key=%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%C4%A3%CA%BD">《大话设计模式（交互启发式教学 谈笑间详解设计模式 让你爱不释手）》</a> 程杰　著 </li><li><a href="http://product.dangdang.com/23734636.html">《重构 改善既有代码的设计》</a> 【美】Martin Fowler　著，熊节　译</li><li><a href="http://product.dangdang.com/22722790.html">《JavaScript权威指南（第6版）》</a>（美）弗兰纳根　著,淘宝前端团队　译</li><li><a href="http://product.dangdang.com/20848036.html">《干法》</a> 【日】稻盛和夫　著，曹岫云　译　</li><li><a href="http://product.dangdang.com/9349959.html">《精通CSS+DIV网页样式布局》</a>前沿科技 编著</li><li><a href="http://product.dangdang.com/21032154.html">《失控》</a> 凯文凯利　著，东西文库　译</li><li>《JAVA编程思想》</li><li>《JAVA并发编程实战》</li><li>《Java JDK 7学习笔记》</li></ul><h3 id="要看的书籍"><a href="#要看的书籍" class="headerlink" title="要看的书籍"></a>要看的书籍</h3><ul><li><p><a href="http://www.amazon.cn/%E9%9B%86%E8%A3%85%E7%AE%B1%E6%94%B9%E5%8F%98%E4%B8%96%E7%95%8C-%E9%A9%AC%E5%85%8B%C2%B7%E8%8E%B1%E6%96%87%E6%A3%AE/dp/B00HE1PK58/ref=sr_1_1?s=books&ie=UTF8&qid=1442883290&sr=1-1&keywords=%E9%9B%86%E8%A3%85%E7%AE%B1%E6%94%B9%E5%8F%98%E4%B8%96%E7%95%8C">《集装箱改变世界》</a> </p><pre><code> 本书从集装箱的发明史娓娓道来，将一个看似平凡的主题衍变成一个个非同寻常的有趣故事，展现了一项技术的进步是如何改变世界经济形态的。它的价值不在于是什么，而在于怎样使用。在集装箱出现之前，美国的沃尔玛、法国的成衣绝对不会遍地开花。而在集装箱出现之后，货运变得如此便宜，以至于某件产品产自东半球，运至纽约销售，远比在纽约近郊生产该产品来得划算。中国也从此登上国际集装箱海运和世界工厂的舞台。读者在享受阅读的同时，还会有趣地发现，即便是一个简单的创新，也会彻底改变我们的生活</code></pre></li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="最近在看的书籍："><a href="#最近在看的书籍：" class="headerlink" title="最近在看的书籍："></a>最近在看的书籍：</h3><ul><li>2020.09.23 <a href="https://github.com/Vonng/ddia">《设计数据密集型应用》</a></li></ul><h3 id="曾经看过的书籍："><a href="#曾经看过的书籍：" class="headerlink" title="曾经看过的书籍："></a>曾经看过的书籍：</h3><h4 id="工具类技术书籍"><a href="#工具类技术书籍" class="headerlink" title="工具类技术书籍"></a>工具类技术书籍</h4><ul><li>《Developing an ionic Edge》</li><li>《Angular JS权威教程》(Ari Lerner)</li><li>《O’Reilly：Python学习手册（第4版）》</li><li>《Python Cookbook（第3版）中文版》</li><li>《Vim使用技巧》</li><li>《JAVA编程思想》</li><li>《JAVA并发编程实战》</li><li>《Java JDK 7学习笔记》</li><li><a href="http://search.dangdang.com/?key=%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%C4%A3%CA%BD">《大话设计模式（交互启发式教学 谈笑间详解设计模式 让你爱不释手）》</a> 程杰　著 </li><li><a href="http://product.dangdang.com/9349959.html">《精通CSS+DIV网页样式布局》</a>前沿科技 编著</li></ul><h4 id="业务专业相关"><a href="#业务专业相关" class="headerlink" title="业务专业相关"></a>业务专业相关</h4><ul><li>《流程优化与再造》</li></ul><h4 id="思维构建相关"><a href="#思维构建相关" class="headerlink" title="思维构建相关"></a>思维构建相关</h4><ul><li>《黑客与画家》</li><li>《大教堂与集市》</li><li>《重来》</li><li>《启示录 打造用户喜爱的产品》Marty Cagan著 七印部落 译</li><li><a href="http://search.dangdang.com/?key=%EF%BF%BD%EF%BF%BD0%EF%BF%BD%EF%BF%BD1">《从0到1：开启商业与未来的秘密》</a>【美】彼得 蒂尔 Peter Thiel</li><li><a href="http://product.dangdang.com/23734636.html">《重构 改善既有代码的设计》</a> 【美】Martin Fowler　著，熊节　译</li><li><a href="http://product.dangdang.com/22722790.html">《JavaScript权威指南（第6版）》</a>（美）弗兰纳根　著,淘宝前端团队　译</li><li><a href="http://product.dangdang.com/20848036.html">《干法》</a> 【日】稻盛和夫　著，曹岫云　译　</li><li><a href="http://product.dangdang.com/21032154.html">《失控》</a> 凯文凯利　著，东西文库　译</li></ul><h4 id="生活向导"><a href="#生活向导" class="headerlink" title="生活向导"></a>生活向导</h4><ul><li>《平凡的世界》(路遥)</li><li>《尼古拉.特斯拉传》(Steve Law)</li></ul><h3 id="要看的书籍"><a href="#要看的书籍" class="headerlink" title="要看的书籍"></a>要看的书籍</h3><ul><li><a href="http://www.amazon.cn/%E9%9B%86%E8%A3%85%E7%AE%B1%E6%94%B9%E5%8F%98%E4%B8%96%E7%95%8C-%E9%A9%AC%E5%85%8B%C2%B7%E8%8E%B1%E6%96%87%E6%A3%AE/dp/B00HE1PK58/ref=sr_1_1?s=books&ie=UTF8&qid=1442883290&sr=1-1&keywords=%E9%9B%86%E8%A3%85%E7%AE%B1%E6%94%B9%E5%8F%98%E4%B8%96%E7%95%8C">《集装箱改变世界》</a> <blockquote><p>本书从集装箱的发明史娓娓道来，将一个看似平凡的主题衍变成一个个非同寻常的有趣故事，展现了一项技术的进步是如何改变世界经济形态的。它的价值不在于是什么，而在于怎样使用。在集装箱出现之前，美国的沃尔玛、法国的成衣绝对不会遍地开花。而在集装箱出现之后，货运变得如此便宜，以至于某件产品产自东半球，运至纽约销售，远比在纽约近郊生产该产品来得划算。中国也从此登上国际集装箱海运和世界工厂的舞台。读者在享受阅读的同时，还会有趣地发现，即便是一个简单的创新，也会彻底改变我们的生活</p></blockquote></li></ul>]]></content>
       
       
       <categories>
           
-          <category> 扩展知识 </category>
-          
-          <category> 书籍 </category>
+          <category> 书架 </category>
           
       </categories>
       
@@ -1088,8 +1109,6 @@
         <tags>
             
             <tag> book </tag>
-            
-            <tag> nocomment </tag>
             
         </tags>
       
@@ -1111,18 +1130,12 @@
           
           <category> linux </category>
           
-          <category> 命令 </category>
-          
       </categories>
       
       
         <tags>
             
-            <tag> linux命令 </tag>
-            
-            <tag> sed </tag>
-            
-            <tag> awk </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -1144,16 +1157,12 @@
           
           <category> linux </category>
           
-          <category> 命令 </category>
-          
       </categories>
       
       
         <tags>
             
             <tag> linux命令 </tag>
-            
-            <tag> command </tag>
             
         </tags>
       
@@ -1180,17 +1189,11 @@
       
         <tags>
             
-            <tag> rsa </tag>
-            
-            <tag> project </tag>
-            
-            <tag> blog </tag>
-            
-            <tag> openssl </tag>
+            <tag> python </tag>
             
             <tag> mysql </tag>
             
-            <tag> private </tag>
+            <tag> GIS </tag>
             
         </tags>
       
@@ -1212,16 +1215,10 @@
           
           <category> 读书学习 </category>
           
-          <category> ionic </category>
-          
       </categories>
       
       
         <tags>
-            
-            <tag> book </tag>
-            
-            <tag> schedule </tag>
             
             <tag> ionic </tag>
             
@@ -1247,16 +1244,10 @@
           
           <category> 读书学习 </category>
           
-          <category> ionic </category>
-          
       </categories>
       
       
         <tags>
-            
-            <tag> book </tag>
-            
-            <tag> schedule </tag>
             
             <tag> ionic </tag>
             
@@ -1282,16 +1273,10 @@
           
           <category> 读书学习 </category>
           
-          <category> ionic </category>
-          
       </categories>
       
       
         <tags>
-            
-            <tag> book </tag>
-            
-            <tag> schedule </tag>
             
             <tag> ionic </tag>
             
@@ -1317,16 +1302,10 @@
           
           <category> 读书学习 </category>
           
-          <category> ionic </category>
-          
       </categories>
       
       
         <tags>
-            
-            <tag> book </tag>
-            
-            <tag> schedule </tag>
             
             <tag> ionic </tag>
             
@@ -1379,11 +1358,7 @@
       
       <categories>
           
-          <category> 扩展知识 </category>
-          
-          <category> 语言 </category>
-          
-          <category> python </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -1395,39 +1370,6 @@
             <tag> django </tag>
             
             <tag> 定时 </tag>
-            
-            <tag> django-rq </tag>
-            
-            <tag> django-schedule </tag>
-            
-            <tag> crontab </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>牛人推荐</title>
-      <link href="2015/08/20/%E5%A4%A7%E7%89%9B%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%B1%8D/"/>
-      <url>2015/08/20/%E5%A4%A7%E7%89%9B%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%B1%8D/</url>
-      
-        <content type="html"><![CDATA[<p>以下是摘自刘未鹏博客<a href="http://mindhacks.cn/2011/11/04/how-to-interview-a-person-for-two-years/">怎么样花两年时间去面试一个人</a></p><h2 id="列一下我所认为的，你面试微软前必须要读的十本书："><a href="#列一下我所认为的，你面试微软前必须要读的十本书：" class="headerlink" title="列一下我所认为的，你面试微软前必须要读的十本书："></a>列一下我所认为的，你面试微软前必须要读的十本书：</h2><figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">    Code: The Hidden <span class="keyword">Language</span> of Computer Hardware and Software （《编码的奥秘》）</span><br><span class="line">    Computer System: A Programmer’s Perspective （《深入理解计算机系统》） / Windows via <span class="keyword">C</span>/<span class="keyword">C</span>++ （《Windows核心编程》 / 《程序员的自我修养》</span><br><span class="line">    Code Complete <span class="number">2</span>（《代码大全》）/ The Pragmatic Programmer （《程序员修炼之道》，我也把这本书称为《代码小全》）</span><br><span class="line">    Programming Pearls （《编程珠玑》） / Algorithms / Algorithm Design / 《编程之美》</span><br><span class="line">    The <span class="keyword">C</span> Programming <span class="keyword">Language</span></span><br><span class="line">    The <span class="keyword">C</span>++ Programming <span class="keyword">Language</span> / Programming: Principles and Practice <span class="keyword">Using</span> <span class="keyword">C</span>++ / Accelerated <span class="keyword">C</span>++</span><br><span class="line">    The Structure and <span class="keyword">Interpretation</span> of Computer Programs （《计算机程序的构造和解释》）</span><br><span class="line">    Clean Code / Implementation Patterns</span><br><span class="line">    Design Patterns （《设计模式》） / Agile Software Development, Principles, Patterns, and Practices</span><br><span class="line">    Refactoring （《重构》）</span><br><span class="line"></span><br><span class="line">（注：<span class="number">1.</span> 以上同一条目下用“/”隔开的表示任选，当然你也可以都读了，相信我，时间是足够的。<span class="number">2.</span> 读这些书并不意味着逐字逐句从第一页读到最后一页——当然你也可以这么做。怎么是聪明高效的读法，可以参考我之前写的关于如何阅读和查找/鉴别书籍/资料的博文）</span><br><span class="line"></span><br><span class="line">注意：以上是我个人认为你面试微软开发职位前必须要读的<span class="number">10</span>本书，它不代表我的雇主的观点。它也只是一个初步的书单，肯定会受到我个人经验和眼界的限制。欢迎大家提意见。</span><br><span class="line"></span><br><span class="line">此外，IT不同子领域的必读书单可能千差万别，所以在发布之前我把这篇文章发给了一些朋友，他们给出了自己的书单（你是不是能看到一些有趣的共同点呢）：</span><br></pre></td></tr></table></figure><p>##云风（中国游戏编程先行者，前网易游戏部门资深程序员，简悦创始人）：</p><p>如果面试，我会挑以下的我自己读过的书，让人选择他也读过的部分，再了解他对这些书的理解。这些书其实本质上就是两类，对所面对的东西（程序语言也好，操作系统也好，底层设施也好）本身的理解程度。以及另一类：对设计思想和原则的理解：</p><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">C++编程思想</span><br><span class="line">Effective C++</span><br><span class="line">深度探索C++对象模型</span><br><span class="line">C++语言的设计和演化</span><br><span class="line">C专家编程</span><br><span class="line">C陷阱与缺陷</span><br><span class="line">C语言接口与实现</span><br><span class="line">Lua程序设计</span><br><span class="line">Linkers <span class="keyword">and</span> Loaders</span><br><span class="line">COM本质论</span><br><span class="line">Windows核心编程</span><br><span class="line">深入解析Windows操作系统</span><br><span class="line">程序员修炼之道</span><br><span class="line">代码大全</span><br><span class="line">UNIX编程艺术</span><br><span class="line">设计模式</span><br><span class="line">代码优化：有效使用内存</span><br><span class="line">深入理解计算机系统</span><br><span class="line">深入理解LINUX内核</span><br><span class="line">TCP<span class="built_in">/IP </span>详解</span><br></pre></td></tr></table></figure><p>##冯大辉（丁香园CTO，贝塔咖啡创始人）：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">软件随想录</span><br><span class="line">黑客与画家</span><br><span class="line">重来</span><br><span class="line">UNIX编程艺术</span><br><span class="line">编程人生</span><br></pre></td></tr></table></figure><p>##洪强宁（豆瓣技术总监）：</p><p>StackOverflow上有一个程序员必读书单帖子，这里仅列出top10，更多参考这里。</p><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">Code Complete 2</span><br><span class="line">The Mythical Man-Month （《人月神话》）</span><br><span class="line">Code: The Hidden Language of Computer<span class="built_in"> Hardware </span><span class="keyword">and</span> Software （《编码的奥秘》）</span><br><span class="line">TAOCP （不解释）</span><br><span class="line">The Pragmatic Programmer （《程序员修炼之道》）</span><br><span class="line">Design Patterns （《设计模式》）</span><br><span class="line">The Structure <span class="keyword">and</span> Interpretation of Computer Programs （《计算机程序的构造和解释》）</span><br><span class="line">Refactoring （《重构》）</span><br><span class="line">The C Programming Language</span><br><span class="line">Introduction <span class="keyword">to</span> Algorithms （《算法导论》）</span><br></pre></td></tr></table></figure><p>##郑昀（窝窝团研发副总裁）：</p><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">工程师入门：</span><br><span class="line">    Code Complete <span class="number">2</span></span><br><span class="line">    程序员修炼之道</span><br><span class="line">    深入理解计算机系统</span><br><span class="line">工程师升级：</span><br><span class="line">    设计模式</span><br><span class="line">    重构——改善既有代码的设计</span><br><span class="line">工程师转型：</span><br><span class="line">    快速软件开发——有效控制与完成进度计划</span><br><span class="line">    人月神话</span><br><span class="line">    IT项目管理那些事儿</span><br><span class="line">    软件随想录</span><br><span class="line">    最后期限</span><br><span class="line">    走出软件作坊</span><br><span class="line">    你的灯亮着吗?——发现问题的真正所在</span><br></pre></td></tr></table></figure><p>##张峥（微软亚洲研究院副院长）：</p><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">Algorithms (by Sanjoy Dasgupta, Christos Papadimitriou <span class="keyword">and</span> Umesh Vazirani)</span><br><span class="line">Data Structure <span class="keyword">and</span> Algorithms</span><br><span class="line">The C Programming Language</span><br><span class="line">The Design of the UNIX Operating System</span><br><span class="line">Compilers （龙书）</span><br><span class="line">Computer Architecture: A Quantitative Approach</span><br><span class="line">Flow</span><br><span class="line">Outliers (why hard work <span class="keyword">and</span> luck are both important)</span><br></pre></td></tr></table></figure><p>##邹欣（MSRA创新工程中心首席研发经理）：</p><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">关于创新的书籍(http</span>:<span class="string">//book.douban.com/doulist/1253169/):</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">The</span> <span class="string">Myths of Innovation</span></span><br><span class="line">    <span class="attr">The</span> <span class="string">Innovator’s Dilemma</span></span><br><span class="line">    <span class="attr">The</span> <span class="string">Innovator’s Solution</span></span><br><span class="line">    <span class="attr">Crossing</span> <span class="string">the Chasm</span></span><br><span class="line">    <span class="attr">Inside</span> <span class="string">Intuit</span></span><br><span class="line">    <span class="attr">盛田昭夫</span></span><br><span class="line">    <span class="attr">杰克·韦尔奇自传</span></span><br><span class="line">    <span class="attr">梦断代码</span></span><br><span class="line">    <span class="attr">Innovation</span></span><br><span class="line">    <span class="attr">浪潮之巅</span></span><br></pre></td></tr></table></figure><p>##关于“精通”的一篇博客<a href="http://www.cnblogs.com/xinz/archive/2011/08/07/2129751.html">《技能的反面：魔方和模仿》</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 扩展知识 </category>
-          
-          <category> 书籍 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> book </tag>
             
         </tags>
       
@@ -1474,18 +1416,18 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技术 </category>
           
-          <category> 加密解密 </category>
+          <category> 算法 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 算法加密 </tag>
-            
             <tag> rsa </tag>
+            
+            <tag> 加密解密 </tag>
             
         </tags>
       
