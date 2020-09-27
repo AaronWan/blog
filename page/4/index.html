@@ -48,6 +48,7 @@
 			<a class="logo flat-box" href='/' >
 				Share
 			</a>
+
 			<div class='menu'>
 				<ul class='h-list'>
 					
@@ -126,6 +127,96 @@
         
 <section class="post-list">
 	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+    <section class="meta">
+        
+            <h2 class="title">
+                <a href="/2015/09/13/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
+                    设计模式之创建型模式
+                </a>
+            </h2>
+        
+        <time>
+            9月 13, 2015
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+    </div>
+
+    </section>
+    <section class="article typo">
+        <p>##创建型模式<br>这六个模式都是与创建对象相关的</p>
+<ul>
+<li>简单工厂模式（Simple Factory）；</li>
+<li>工厂方法模式（Factory Method）；</li>
+<li>抽象工厂模式（Abstract Factory）；</li>
+<li>创建者模式（Builder）；</li>
+<li>原型模式（Prototype）；</li>
+<li>单例模式（Singleton）；</li>
+</ul>
+<h3 id="简单工厂模式-Simple-Factory-；"><a href="#简单工厂模式-Simple-Factory-；" class="headerlink" title="简单工厂模式(Simple Factory)；"></a>简单工厂模式(Simple Factory)；</h3><h3 id="工厂方法模式-Factory-Method-；"><a href="#工厂方法模式-Factory-Method-；" class="headerlink" title="工厂方法模式(Factory Method)；"></a>工厂方法模式(Factory Method)；</h3><p>建立一个工厂类，对实现同一接口的类进行实例化创建。</p>
+<img  src='/images/pattern/factory_1.png' class='col-xs-12 thumbnail'/>
+``
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.factory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IParser</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">parse</span><span class="params">(Object obj)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.factory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JSONParser</span> <span class="keyword">implements</span> <span class="title">IParser</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">parse</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//create json string</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&#123;class:&quot;</span>+obj.getClass()+<span class="string">&quot;&#125;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.factory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XMLParser</span> <span class="keyword">implements</span> <span class="title">IParser</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">parse</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//create xml string....</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;object&gt;&lt;class&gt;&quot;</span>+obj.getClass()+<span class="string">&quot;&lt;/class&gt;&lt;/object&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.factory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ParserFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span>  String  TYPE_XML=<span class="string">&quot;xml&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String  TYPE_JSON=<span class="string">&quot;json&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IParser <span class="title">buildParser</span><span class="params">(String type)</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (type)&#123;</span><br><span class="line">            <span class="keyword">case</span> ParserFactory.TYPE_XML:<span class="keyword">return</span> <span class="keyword">new</span> XMLParser();</span><br><span class="line">            <span class="keyword">case</span> ParserFactory.TYPE_JSON:<span class="keyword">return</span> <span class="keyword">new</span> JSONParser();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">       IParser parser= ParserFactory.buildParser(ParserFactory.TYPE_JSON);</span><br><span class="line">        System.out.print(parser.parse(parser));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//output &#123;class:JSONParser&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="抽象工厂模式-Abstract-Factory-；"><a href="#抽象工厂模式-Abstract-Factory-；" class="headerlink" title="抽象工厂模式(Abstract Factory)；"></a>抽象工厂模式(Abstract Factory)；</h3><p>工厂方法，每创建一个新的类时，就要个性类工厂类，这样拓展性比较差，如何能通过不个性工厂类而进行扩展呢。这里就用到了抽象工厂模式，就是创建多个工厂，一旦要增加新的类型就增加一个新的工厂，不需要修改现有代码。</p>
+<img  src='/images/pattern/abstractfactory.png' class='col-xs-12 thumbnail'/>
+基于上面代码将ParserFactory工厂类用一个抽象工厂类和两个子工厂类进行代替
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.abstractfactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> design.pattern.factory.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractParserFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> IParser <span class="title">create</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.abstractfactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JSONParserFactory</span> <span class="keyword">extends</span> <span class="title">AbstractParserFactory</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function">IParser <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JSONParser();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.abstractfactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XMLParserFactory</span> <span class="keyword">extends</span> <span class="title">AbstractParserFactory</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function">IParser <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> XMLParser();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="建造者模式-Builder-；"><a href="#建造者模式-Builder-；" class="headerlink" title="建造者模式(Builder)；"></a>建造者模式(Builder)；</h3><p><code>GoF这样定义：</code></p>
+<blockquote>
+<p>建造者模式：是将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+</blockquote>
+<img  src='/images/pattern/builder.png' class='col-xs-12 thumbnail'/>
+咱们这里以创建应用为例，这里我们创建两个应用，考试系统和CRM系统，创建过程是，需求->原型图->开发计划->表设计->架构设计->功能实现->测试->交付 大概是这样一个简单的过程,这里就会看到同样的构建过程得到不同的表示。
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Vector;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Project</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Vector&lt;String&gt; impleProcess=<span class="keyword">new</span> Vector&lt;String&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(String imple)</span></span>&#123;</span><br><span class="line">        impleProcess.add(imple);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Vector&lt;String&gt; <span class="title">getImpleProcess</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> impleProcess;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IProjectBuilder</span> </span>&#123;</span><br><span class="line">    <span class="function">Project <span class="title">getProject</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeRequirement</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makePrototype</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeScheduler</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeTables</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeAppFrameWork</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">programming</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">delivery</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExamProjectBuilder</span> <span class="keyword">implements</span> <span class="title">IProjectBuilder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Project project;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ExamProjectBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project = <span class="keyword">new</span> Project();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Project <span class="title">getProject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> project;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeRequirement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试系统需求&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makePrototype</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试原型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeScheduler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试计划&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeTables</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试系统表&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeAppFrameWork</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建考试应用架构&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">programming</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;考试应用代码实现&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;测试考试应用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delivery</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;交付考试应用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CRMProjectBuilder</span> <span class="keyword">implements</span> <span class="title">IProjectBuilder</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CRMProjectBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project = <span class="keyword">new</span> Project();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Project <span class="title">getProject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> project;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Project project;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeRequirement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM系统需求&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makePrototype</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM原型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeScheduler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM计划&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeTables</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM系统表&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeAppFrameWork</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;创建CRM应用架构&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">programming</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;CRM应用代码实现&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;测试CRM应用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delivery</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.project.process(<span class="string">&quot;交付CRM应用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.builder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Director</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IProjectBuilder builder;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Director</span><span class="params">(IProjectBuilder builder)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.builder=builder;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Project <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.builder.makeRequirement();</span><br><span class="line">        <span class="keyword">this</span>.builder.makePrototype();</span><br><span class="line">        <span class="keyword">this</span>.builder.makeScheduler();</span><br><span class="line">        <span class="keyword">this</span>.builder.makeAppFrameWork();</span><br><span class="line">        <span class="keyword">this</span>.builder.makeTables();</span><br><span class="line">        <span class="keyword">this</span>.builder.programming();</span><br><span class="line">        <span class="keyword">this</span>.builder.test();</span><br><span class="line">        <span class="keyword">this</span>.builder.delivery();</span><br><span class="line">        <span class="keyword">return</span> builder.getProject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Director  director = <span class="keyword">new</span> Director(<span class="keyword">new</span> CRMProjectBuilder());</span><br><span class="line">        Project project = director.process();</span><br><span class="line">        System.out.println(project.getImpleProcess());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出  [创建CRM系统需求, 创建CRM原型, 创建CRM计划, 创建CRM应用架构, 创建CRM系统表, CRM应用代码实现, 测试CRM应用, 交付CRM应用]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="原型模式-Prototype-；"><a href="#原型模式-Prototype-；" class="headerlink" title="原型模式(Prototype)；"></a>原型模式(Prototype)；</h3><p>GoF这样定义：</p>
+<blockquote>
+<p>用原型实例指定创建对象的种类,并且通过拷贝这个原型来创建新的对象。 </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.prototype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Vector;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/13.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeepClonePrototype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>,<span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Vector&lt;String&gt; attrs=<span class="keyword">new</span> Vector&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">deepClone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException, IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">        ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(<span class="keyword">this</span>);</span><br><span class="line">        ByteArrayInputStream bais = <span class="keyword">new</span> ByteArrayInputStream(baos.toByteArray());</span><br><span class="line">        ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(bais);</span><br><span class="line">        <span class="keyword">return</span> ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        Object pro=<span class="keyword">new</span> DeepClonePrototype().deepClone();</span><br><span class="line">        System.out.println(pro.getClass());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="单例模式-Singleton-；"><a href="#单例模式-Singleton-；" class="headerlink" title="单例模式(Singleton)；"></a>单例模式(Singleton)；</h3><blockquote>
+<p>保证一个类仅有一个实例,并提供一个访问它的全局访问点。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design.pattern.singleton;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Aaron on 15/9/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> instance;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Singleton.class.getName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Singleton instance = Singleton.getInstance();</span><br><span class="line">        System.out.print(instance.getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/java/">java</a>
+                
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+    </div>
+  
     <div class='post-wrapper'>
       <article class="post reveal">
     <section class="meta">
@@ -927,264 +1018,6 @@ GoF这样定义:
 
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-    <section class="meta">
-        
-            <h2 class="title">
-                <a href="/2015/09/06/Linux%20sed%E5%91%BD%E4%BB%A4%E4%B8%8Eawk%E5%91%BD%E4%BB%A4/">
-                    sed,awk
-                </a>
-            </h2>
-        
-        <time>
-            9月 6, 2015
-        </time>
-        
-    
-    <div class='cats'>
-        <a href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/">扩展知识</a>, <a href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/linux/">linux</a>
-    </div>
-
-    </section>
-    <section class="article typo">
-        <p>Linux shell编程从初学到精通 </p>
-<blockquote>
-<p>最近工作时遇到了一个问题，就是查看进行时，只查看某些进行的进程号，若直接用ps aux|grep sms  这样会得到一大堆的东东，所以同事推荐用awk,同<br>时也提及了sed。</p>
-</blockquote>
-<blockquote>
-<p>这里抽时间对这两个命令做一个总结，仅为个人学习工作所用。</p>
-</blockquote>
-<p>##sed、awk是什么？</p>
-<pre><code>它们是linux\unix系统中的两种功能强大的文本处理工具。</code></pre>
-<ul>
-<li>有一个sed的编辑器，才有了sed（stream editor）这个名字,它是一个将一系列编辑命令作用于一个文本文件的理想工具。</li>
-<li>由于创建awk的三个作者名称 是Aho、Weinberger和Kernighan，所以得名为AWK,是一种能够对结构化数据进行操作并产生格式化报表的编程语言。</li>
-</ul>
-<p>##sed的使用</p>
-<p>###使用场合</p>
-<ul>
-<li>编辑相对交互式广西编辑器而言太大的文件</li>
-<li>编辑命令太复杂，在交互式文本编辑器中难以输入的情况</li>
-<li>对文件扫描一遍，但是需要执行多个编辑函数的情况</li>
-</ul>
-<p>sed只对缓冲区中的原始文件的副本进行编辑，并不编辑原始的文件。so，若要保存个性后的文件，压根将输出重定向到另一个文件。如：</p>
-<pre><code>sed &#39;sed command&#39; source-file &gt; target-file</code></pre>
-<p>###调用方式<br><code>如何没有指定输入文件sed将从标准输入中接受输入</code></p>
-<ul>
-<li><p>在shell命令行输入命令调用sed，格式为：</p>
-<p>  sed [option] ‘sed command’ 输入文件<br><code>注意此处为单引号将命令引起来</code></p>
-</li>
-<li><p>将sed命令插入脚本文件后，然后通过sed命令调用它，格式为：</p>
-<p>  sed [option] -f sed脚本文件 输入文件</p>
-</li>
-<li><p>将sed命令插入脚本文件后，最常用的方法是设置该脚本文件为可执行，然后直接执行该脚本，格式为：</p>
-<p>  ./sed脚本文件 输入文件</p>
-</li>
-</ul>
-<p><code>但此命令脚本文件，应该以sha-bang(#!)开头，sha-bang后面是解析这个脚本的程序名。</code></p>
-<p>####sed命令选项及其意义</p>
-<ul>
-<li>-n:不打印所有行到标准输出</li>
-<li>-e:将下一个字符串解析为sed编辑命令，如果只传递一个编辑命令给sed，-e选项可以省略</li>
-<li>-f:表示正在调用sed脚本文件</li>
-</ul>
-<p>###命令组成方式</p>
-<pre><code>定位文本行和编辑命令两部分组成</code></pre>
-<p>####定位文本</p>
-<ul>
-<li>使用行号，指定一行，或指定行号范围</li>
-<li>使用正则表达式</li>
-</ul>
-<p><code>下面是sed命令定位文本的方法</code></p>
-<ul>
-<li>x 为指定的行号</li>
-<li>x，y 指定行号范围</li>
-<li>/pattern/ 查询包含模式的行</li>
-<li>/pattern/pattern/ 查询包含两个模式的行</li>
-<li>/pattern/，x 从与模式匹配到x号行之间的行  反之类似</li>
-<li>x，y！查询不包括x和y行号的行</li>
-</ul>
-<p>####常用编辑命令</p>
-<ul>
-<li>p 打印匹配行</li>
-<li>= 打印文件行号</li>
-<li>a\ 在定位行号之后追加文本信息</li>
-<li>i\ 在定们行号之前插入文本信息</li>
-<li>d 删除定位行</li>
-<li>c\ 用新文本替换定位文本</li>
-<li>s 使用替换模式替换相应模式</li>
-<li>r 从另一个文件中读广西</li>
-<li>w 将文本写入到一个文件</li>
-<li>y 变换字符</li>
-<li>q 第一个模式匹配完成后退出</li>
-<li>l 显示与八进制ASCII码等价的控制字符</li>
-<li>{} 在定位行执行的命令组</li>
-<li>n 读取下一个输入行，用下一个命令处理新的行</li>
-<li>h 将模式缓冲区的文本复制到保持缓冲区</li>
-<li>H 将模式缓冲区的文本追加到保持缓冲区</li>
-<li>x 互换模式缓冲区和保持缓冲区的内容</li>
-<li>g 将保持缓冲区的内容复制到模式缓冲区</li>
-<li>G 将保持缓冲区的内容追加到模式缓冲区</li>
-</ul>
-<p>###实例<br>我们就用下面这个文件内容作为事例参考：</p>
-<pre><code>#!/usr/bin/env python
-import os
-import sys
-
-if __name__ == &quot;__main__&quot;:
-    os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;test.settings&quot;)
-
-    from django.core.management import execute_from_command_line
-
-    execute_from_command_line(sys.argv)</code></pre>
-<h4 id="n-选项的使用"><a href="#n-选项的使用" class="headerlink" title="-n 选项的使用"></a>-n 选项的使用</h4><ul>
-<li>使用-n 不输出所有的内容  1p 输出第一行</li>
-</ul>
-<pre><code>➜  linuxstudy  sed -n &#39;1p&#39; manage.py2
-#!/usr/bin/env python</code></pre>
-<ul>
-<li>打印3到6行</li>
-</ul>
-<pre><code>➜  linuxstudy  sed -n &#39;3,6p&#39; manage.py2
-import sys
-
-if __name__ == &quot;__main__&quot;:
-    os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;test.settings&quot;)</code></pre>
-<ul>
-<li>模式匹配</li>
-</ul>
-<pre><code>➜  linuxstudy  sed -n &#39;/environ/p&#39; manage.py2
-    os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;test.settings&quot;)</code></pre>
-<h4 id="e-选项的使用"><a href="#e-选项的使用" class="headerlink" title="- e 选项的使用"></a>- e 选项的使用</h4><ul>
-<li>打印行号：</li>
-</ul>
-<pre><code>    ➜  linuxstudy  sed -n &#39;/env/=&#39; manage.py2
-    1
-    6
-
-添加e选项：
-
-    ➜  linuxstudy  sed -n -e &#39;/env/p&#39; -e &#39;/env/=&#39; manage.py2 
-    #!/usr/bin/env python
-    1
-        os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;test.settings&quot;)
-    6
-
-    `sed不支持多个编辑命令的用法，带多个编辑命令的用法，一般格式为：`
-
-    sed [option] -e 编辑命令 -e 编辑命令 ... -e 编辑命令 输入文件
-
-    将下面命令操作存放到一个后缀为.sed的文件中，让其可执行
-    #!/usr/bin/sed -f 
-    /command/a\
-    we append a new line</code></pre>
-<h4 id="sed文本定位"><a href="#sed文本定位" class="headerlink" title="sed文本定位"></a>sed文本定位</h4><ul>
-<li>匹配元字符 $和.</li>
-</ul>
-<pre><code>    ➜  linuxstudy  sed -n &#39;/\./p&#39; manage.py2
-        os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;test.settings&quot;)
-        from django$.core.management import execute_from_command_line
-        execute_from_command_line(sys.argv)
-    ➜  linuxstudy  sed -n &#39;/\$/p&#39; manage.py2
-        from django$.core.management import execute_from_command_line</code></pre>
-<ul>
-<li>元字符进行匹配</li>
-</ul>
-<pre><code>    $在正则中表示行尾，但在这里表示最后一行
-    sed的基本命令，可以放在单引号外或内都行，根据自己的习惯
-    ➜  linuxstudy  sed  &#39;$p&#39; manage.py2 得取最后一行
-
-    ➜  linuxstudy sed  -n &#39;/.*line/p&#39; manage.py2 找出以line结尾的行</code></pre>
-<ul>
-<li><p>! 符号，表示取反，但是不能用于模式匹配的取反</p>
-<pre><code>  ➜  linuxstudy  sed -n &#39;2,4!p&#39; manage.py2 不打印2到4行 </code></pre>
-</li>
-<li><p>使用行号与关键字匹配限定行范围</p>
-<pre><code>  /pattern/,x和x,/pattern/ 这两种形式其实与x,y一样的，只是将x或y代替罢了
-
-  ➜  linuxstudy  sed -n &#39;4,/mana/p&#39; manage.py2  得到的是从第四行起到与mana匹配的行的内容
-
-  if __name__ == &quot;__main__&quot;:
-      os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;hwbuluo.settings&quot;)
-
-      from django$.core.management import execute_from_command_line</code></pre>
-</li>
-</ul>
-<h4 id="sed文本编辑"><a href="#sed文本编辑" class="headerlink" title="sed文本编辑"></a>sed文本编辑</h4><ul>
-<li><p>插入文本    i\</p>
-<pre><code>  在匹配行的前端插入
-  sed &#39;定位i\text&#39; 文件
-
-  修改上面的追加脚本：
-  #!/usr/bin/sed -f 
-  /command/i\
-  we append a new line</code></pre>
-</li>
-<li><p>修改文本 modify.sed    c\</p>
-<pre><code>  -------------------
-  #!/usr/bin/sed -f
-
-  /command/c\
-  I modify the file.
-  -------------------
-
-  执行：./modify.sed</code></pre>
-</li>
-<li><p>删除文本  d  与追加和插入修改有所不同，这里在后面不需要添加\</p>
-<pre><code>  sed &#39;1,3d&#39; manage.py2</code></pre>
-</li>
-<li><p>替换文本 替换文本与修改文本类似，只是修改是对一整行的个性，替换则是对局部进行修改</p>
-<pre><code>  s/被替换的字符串/新字符串/[替换选项]
-
-  替换选项及意义：
-      g:替换文本中所有出现被替换字符串之处,若不使用此选项，则只替换每行的第一个匹配上的字符串
-      p:与-n选项结合，只打印替换行
-      w 文件名:表示将输出定向到一个文件
-
-  ➜  linuxstudy  sed -n &#39;s/command/============/p&#39; manage.py2 
-      from django$.core.management import execute_from_============_line
-      execute_from_============_line(sys.argv)
-
-  也可以 linuxstudy  sed -n &#39;s/command/============/2p&#39; manage.py2   来替换每行出现的第几个 </code></pre>
-</li>
-</ul>
-<ul>
-<li></li>
-</ul>
-<p>##<a target="_blank" rel="noopener" href="http://www.cnblogs.com/chengmo/archive/2010/10/08/1845913.html">awk的使用</a></p>
-<p>###使用场合<br>###调用方式<br>###实例</p>
-<pre><code>awk -F &#39;:&#39; &#39;BEGIN &#123;count=0;&#125; &#123;name[count] = $1;count++;&#125;;END &#123;for (i=0;i&lt;NR;i++) print i,name[i]&#125;&#39;   /etc/passwd
-
-0 root
-1 daemon
-2 bin
-3 sys
-4 sync
-5 games
-6 man
-7 lp
-8 mail
-
-ls -l |awk &#39;BEGIN &#123;size=0;&#125; &#123;size=size+$5;&#125; END&#123;print &quot;[end]size is&quot;,size/1024/1024 ,&quot;M&quot;&#125;&#39;
-
-[end]size is 0.098505 M</code></pre>
-
-
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/linux/">linux</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-    </div>
-  
 </section>
 
 
@@ -1246,7 +1079,7 @@ ls -l |awk &#39;BEGIN &#123;size=0;&#125; &#123;size=size+$5;&#125; END&#123;pri
     
         <li><a class="flat-box" href="/categories/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/"><div class='name'>扩展知识</div><div class='badget'>7</div></a></li>
     
-        <li><a class="flat-box" href="/categories/%E6%8A%80%E6%9C%AF/"><div class='name'>技术</div><div class='badget'>32</div></a></li>
+        <li><a class="flat-box" href="/categories/%E6%8A%80%E6%9C%AF/"><div class='name'>技术</div><div class='badget'>33</div></a></li>
     
         <li><a class="flat-box" href="/categories/%E6%96%B9%E6%A1%88/"><div class='name'>方案</div><div class='badget'>4</div></a></li>
     
@@ -1272,7 +1105,7 @@ ls -l |awk &#39;BEGIN &#123;size=0;&#125; &#123;size=size+$5;&#125; END&#123;pri
 <div class="m_widget tagcloud">
     <div class="header">标签云</div>
     <div class='content'>
-        <a href="/tags/CAP/" style="font-size: 15px; color: #6b6b6b">CAP</a> <a href="/tags/GIS/" style="font-size: 14px; color: #808080">GIS</a> <a href="/tags/Protobuf/" style="font-size: 14px; color: #808080">Protobuf</a> <a href="/tags/alfred/" style="font-size: 14px; color: #808080">alfred</a> <a href="/tags/angularjs/" style="font-size: 17px; color: #404040">angularjs</a> <a href="/tags/ansible/" style="font-size: 14px; color: #808080">ansible</a> <a href="/tags/arm/" style="font-size: 14px; color: #808080">arm</a> <a href="/tags/book/" style="font-size: 15px; color: #6b6b6b">book</a> <a href="/tags/bug/" style="font-size: 14px; color: #808080">bug</a> <a href="/tags/django/" style="font-size: 14px; color: #808080">django</a> <a href="/tags/dubbo/" style="font-size: 14px; color: #808080">dubbo</a> <a href="/tags/fastcgi/" style="font-size: 14px; color: #808080">fastcgi</a> <a href="/tags/fastfs/" style="font-size: 14px; color: #808080">fastfs</a> <a href="/tags/git/" style="font-size: 14px; color: #808080">git</a> <a href="/tags/ionic/" style="font-size: 17px; color: #404040">ionic</a> <a href="/tags/java/" style="font-size: 20px; color: #000">java</a> <a href="/tags/jdk/" style="font-size: 14px; color: #808080">jdk</a> <a href="/tags/jdk8-java/" style="font-size: 14px; color: #808080">jdk8.java</a> <a href="/tags/jmeter/" style="font-size: 14px; color: #808080">jmeter</a> <a href="/tags/jvm/" style="font-size: 14px; color: #808080">jvm</a> <a href="/tags/kafka/" style="font-size: 15px; color: #6b6b6b">kafka</a> <a href="/tags/linux/" style="font-size: 14px; color: #808080">linux</a> <a href="/tags/linux%E5%91%BD%E4%BB%A4/" style="font-size: 14px; color: #808080">linux命令</a> <a href="/tags/mac/" style="font-size: 15px; color: #6b6b6b">mac</a> <a href="/tags/maven/" style="font-size: 14px; color: #808080">maven</a> <a href="/tags/mp3/" style="font-size: 14px; color: #808080">mp3</a> <a href="/tags/mysql/" style="font-size: 14px; color: #808080">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #808080">nginx</a> <a href="/tags/nocomment/" style="font-size: 14px; color: #808080">nocomment</a> <a href="/tags/python/" style="font-size: 17px; color: #404040">python</a> <a href="/tags/redis/" style="font-size: 16px; color: #555">redis</a> <a href="/tags/rpc/" style="font-size: 14px; color: #808080">rpc</a> <a href="/tags/rsa/" style="font-size: 14px; color: #808080">rsa</a> <a href="/tags/schedule/" style="font-size: 14px; color: #808080">schedule</a> <a href="/tags/workflow/" style="font-size: 14px; color: #808080">workflow</a> <a href="/tags/zookeeper/" style="font-size: 14px; color: #808080">zookeeper</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #808080">一致性算法</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 14px; color: #808080">人生</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 14px; color: #808080">人生感悟</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" style="font-size: 14px; color: #808080">人脸识别</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" style="font-size: 14px; color: #808080">代码仓库</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" style="font-size: 19px; color: #151515">分布式</a> <a href="/tags/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" style="font-size: 14px; color: #808080">加密解密</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">压力测试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 15px; color: #6b6b6b">图片处理</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 17px; color: #404040">多线程</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 14px; color: #808080">存储</a> <a href="/tags/%E5%AE%9A%E6%97%B6/" style="font-size: 14px; color: #808080">定时</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px; color: #808080">工具</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 14px; color: #808080">并发</a> <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">性能测试</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 14px; color: #808080">感悟</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14px; color: #808080">排序</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" style="font-size: 15px; color: #6b6b6b">服务治理</a> <a href="/tags/%E6%9F%A5%E6%89%BE/" style="font-size: 14px; color: #808080">查找</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">测试</a> <a href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" style="font-size: 16px; color: #555">消息对列</a> <a href="/tags/%E7%88%AC%E5%B1%B1/" style="font-size: 14px; color: #808080">爬山</a> <a href="/tags/%E7%96%91%E6%83%91/" style="font-size: 14px; color: #808080">疑惑</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px; color: #2b2b2b">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 14px; color: #808080">经验</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 16px; color: #555">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 17px; color: #404040">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 14px; color: #808080">软件</a> <a href="/tags/%E8%BF%90%E5%8A%A8/" style="font-size: 14px; color: #808080">运动</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 15px; color: #6b6b6b">运维</a> <a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 14px; color: #808080">音乐</a> <a href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" style="font-size: 14px; color: #808080">音频转换</a>
+        <a href="/tags/CAP/" style="font-size: 15px; color: #6b6b6b">CAP</a> <a href="/tags/GIS/" style="font-size: 14px; color: #808080">GIS</a> <a href="/tags/Protobuf/" style="font-size: 14px; color: #808080">Protobuf</a> <a href="/tags/alfred/" style="font-size: 14px; color: #808080">alfred</a> <a href="/tags/angularjs/" style="font-size: 17px; color: #404040">angularjs</a> <a href="/tags/ansible/" style="font-size: 14px; color: #808080">ansible</a> <a href="/tags/arm/" style="font-size: 14px; color: #808080">arm</a> <a href="/tags/book/" style="font-size: 15px; color: #6b6b6b">book</a> <a href="/tags/bug/" style="font-size: 14px; color: #808080">bug</a> <a href="/tags/django/" style="font-size: 14px; color: #808080">django</a> <a href="/tags/dubbo/" style="font-size: 14px; color: #808080">dubbo</a> <a href="/tags/fastcgi/" style="font-size: 14px; color: #808080">fastcgi</a> <a href="/tags/fastfs/" style="font-size: 14px; color: #808080">fastfs</a> <a href="/tags/git/" style="font-size: 14px; color: #808080">git</a> <a href="/tags/ionic/" style="font-size: 17px; color: #404040">ionic</a> <a href="/tags/java/" style="font-size: 20px; color: #000">java</a> <a href="/tags/jdk/" style="font-size: 14px; color: #808080">jdk</a> <a href="/tags/jdk8-java/" style="font-size: 15px; color: #6b6b6b">jdk8.java</a> <a href="/tags/jmeter/" style="font-size: 14px; color: #808080">jmeter</a> <a href="/tags/jvm/" style="font-size: 14px; color: #808080">jvm</a> <a href="/tags/kafka/" style="font-size: 15px; color: #6b6b6b">kafka</a> <a href="/tags/linux/" style="font-size: 14px; color: #808080">linux</a> <a href="/tags/linux%E5%91%BD%E4%BB%A4/" style="font-size: 14px; color: #808080">linux命令</a> <a href="/tags/mac/" style="font-size: 15px; color: #6b6b6b">mac</a> <a href="/tags/maven/" style="font-size: 14px; color: #808080">maven</a> <a href="/tags/mp3/" style="font-size: 14px; color: #808080">mp3</a> <a href="/tags/mysql/" style="font-size: 14px; color: #808080">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #808080">nginx</a> <a href="/tags/nocomment/" style="font-size: 14px; color: #808080">nocomment</a> <a href="/tags/poi/" style="font-size: 14px; color: #808080">poi</a> <a href="/tags/python/" style="font-size: 17px; color: #404040">python</a> <a href="/tags/redis/" style="font-size: 16px; color: #555">redis</a> <a href="/tags/rpc/" style="font-size: 14px; color: #808080">rpc</a> <a href="/tags/rsa/" style="font-size: 14px; color: #808080">rsa</a> <a href="/tags/schedule/" style="font-size: 14px; color: #808080">schedule</a> <a href="/tags/workflow/" style="font-size: 14px; color: #808080">workflow</a> <a href="/tags/zookeeper/" style="font-size: 14px; color: #808080">zookeeper</a> <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #808080">一致性算法</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 14px; color: #808080">人生</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 14px; color: #808080">人生感悟</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/" style="font-size: 14px; color: #808080">人脸识别</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93/" style="font-size: 14px; color: #808080">代码仓库</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" style="font-size: 19px; color: #151515">分布式</a> <a href="/tags/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" style="font-size: 14px; color: #808080">加密解密</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">压力测试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 15px; color: #6b6b6b">图片处理</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 17px; color: #404040">多线程</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 14px; color: #808080">存储</a> <a href="/tags/%E5%AE%9A%E6%97%B6/" style="font-size: 14px; color: #808080">定时</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px; color: #808080">工具</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 14px; color: #808080">并发</a> <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">性能测试</a> <a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 14px; color: #808080">感悟</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14px; color: #808080">排序</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" style="font-size: 15px; color: #6b6b6b">服务治理</a> <a href="/tags/%E6%9F%A5%E6%89%BE/" style="font-size: 14px; color: #808080">查找</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #808080">测试</a> <a href="/tags/%E6%B6%88%E6%81%AF%E5%AF%B9%E5%88%97/" style="font-size: 16px; color: #555">消息对列</a> <a href="/tags/%E7%88%AC%E5%B1%B1/" style="font-size: 14px; color: #808080">爬山</a> <a href="/tags/%E7%96%91%E6%83%91/" style="font-size: 14px; color: #808080">疑惑</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 18px; color: #2b2b2b">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 14px; color: #808080">经验</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 16px; color: #555">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 17px; color: #404040">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 14px; color: #808080">软件</a> <a href="/tags/%E8%BF%90%E5%8A%A8/" style="font-size: 14px; color: #808080">运动</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 15px; color: #6b6b6b">运维</a> <a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 14px; color: #808080">音乐</a> <a href="/tags/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%8D%A2/" style="font-size: 14px; color: #808080">音频转换</a>
     </div>
 </div>
 
